@@ -185,6 +185,20 @@
 
 > Motion check: a fast left swipe advanced the live stack from 01 / 07 to 02 / 07, replaced the front card with the expected next food image, and allowed the stack to settle back into the intended staggered position.
 
+# Free-Direction Drag and Natural Motion Pass
+
+- [x] Apply a final visible-scale refinement to the frame-matched café dog.
+- [x] Support free-direction pointer movement with x/y translation and physically responsive rotation while dragging.
+- [x] Stage the next card’s entry so it rises and settles into the front position instead of appearing instantaneously.
+- [x] Add restrained ambient animation that makes the dog, stack, and controls feel more organic without distracting from the food.
+- [x] Validate desktop/mobile interactions and production build, then save the checkpoint.
+
+> Interaction check: the live stack accepts a diagonal upward-left pointer gesture, uses the combined x/y travel and velocity to select the next food moment, and retains the same pointer/keyboard controls as the earlier horizontal interaction.
+
+> Responsive visual check: the desktop and mobile views retain the white café-dog silhouette, clear drag cue, layered portrait cards, compact controls, and sufficient breathing room around the food-card stack after the free-direction motion update.
+
+> Arrival-transition inspection: the live next control was used after preserving stable card keys across stack reordering; an in-flight transform sample was scheduled to confirm that the previously staggered card rises into front position rather than remounting there.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
