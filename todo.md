@@ -212,6 +212,17 @@
 
 > Mobile visual check: the daily-hours information remains legible in the visit area and the stacked menu presentation keeps its calmer non-yellow text treatment at the narrow breakpoint.
 
+# Card-Transition Continuity and Dog Detail Pass
+
+- [x] Identify the cause of the black flash after the food-card transition completes.
+- [x] Keep a fully loaded incoming food card available throughout the outgoing-card motion and eliminate the black flash.
+- [x] Refine the café dog’s visible silhouette and detail one additional reference-matched pass.
+- [x] Validate consecutive card changes on desktop/mobile and production build, then save a checkpoint.
+
+> Continuity test note: the live stack completed a three-step next-card sequence with `aria-busy=false`; the incoming image reported `complete=true` and a valid natural width, while the underlying frame reports the new maroon gradient fallback rather than black.
+
+> Responsive visual check: the Home experience renders cleanly at desktop and mobile dimensions after the preload change; the active-card fallback remains within the maroon design language rather than producing a black interruption.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.

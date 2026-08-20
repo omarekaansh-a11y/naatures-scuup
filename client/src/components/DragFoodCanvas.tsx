@@ -28,7 +28,7 @@ const ZERO_VECTOR: DragVector = { x: 0, y: 0 };
 function DogMascot() {
   return (
     <svg className="drag-it-mascot" viewBox="0 0 220 178" fill="none" aria-hidden="true" style={{ color: "#fffaf1" }}>
-      <g className="dog-illustration" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.35">
+      <g className="dog-illustration" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.1">
         <path className="dog-steam dog-steam--one" d="M172 42c-8-8 5-13-1-22" />
         <path className="dog-steam dog-steam--two" d="M185 42c8-8-4-14 2-22" />
         <ellipse cx="177" cy="92" rx="31" ry="9" />
@@ -46,7 +46,8 @@ function DogMascot() {
         <path className="dog-body" d="M79 72c-2 14 0 35 8 48 7 12 18 18 30 16 11-2 17-12 14-24-3-12-10-19-19-23" />
         <path className="dog-head" d="M72 50c7-12 28-14 41-4 8 6 12 14 18 14 10 0 18 1 24 7-6 8-17 13-30 14-11 2-23-2-32-10-8-7-15-13-21-21Z" />
         <path className="dog-ear" d="M78 52c-13-8-23 1-18 16 3 10 10 17 18 20" />
-        <path className="dog-eye" d="M105 59q5 7 11 0" />
+        <circle className="dog-eye" cx="109" cy="60" r="1.55" fill="currentColor" stroke="none" />
+        <path className="dog-brow" d="M101 55c4-3 9-3 13-1" />
         <path className="dog-smile" d="M143 69q5 4 10 0" />
         <path className="dog-beret" d="M65 48c6-13 28-21 45-9 5 4 8 8 9 12-18-5-36-3-52 5-3-2-4-5-2-8Z" fill="currentColor" stroke="currentColor" />
         <path className="dog-beret-stem" d="M85 34c-1-5 2-9 7-10" />
@@ -66,6 +67,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isArriving, setIsArriving] = useState(false);
   const [exitDuration, setExitDuration] = useState(280);
+  const [loadedSources, setLoadedSources] = useState<Set<string>>(() => new Set());
   const pointerStartRef = useRef<DragVector>(ZERO_VECTOR);
   const lastMoveRef = useRef({ x: 0, y: 0, time: 0 });
   const dragVectorRef = useRef<DragVector>(ZERO_VECTOR);
@@ -84,6 +86,28 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
     if (renderFrameRef.current !== null) window.cancelAnimationFrame(renderFrameRef.current);
   }, []);
+
+  useEffect(() => {
+    let isCancelled = false;
+    const sourceSet = new Set<string>();
+    const preload = (src: string) => new Promise<void>((resolve) => {
+      const image = new Image();
+      const markReady = () => {
+        sourceSet.add(src);
+        resolve();
+      };
+      image.onload = markReady;
+      image.onerror = markReady;
+      image.src = src;
+      if (image.complete) markReady();
+    });
+
+    Promise.all(items.map((item) => preload(item.src))).then(() => {
+      if (!isCancelled) setLoadedSources(sourceSet);
+    });
+
+    return () => { isCancelled = true; };
+  }, [items]);
 
   const renderDragVector = (nextVector: DragVector, immediately = false) => {
     dragVectorRef.current = nextVector;
@@ -239,6 +263,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
               tabIndex={0}
               role="region"
               aria-label="A stack of Naatures Scuup food photographs. Drag in any direction, or use the arrow keys to reveal another food moment."
+              aria-busy={loadedSources.size < items.length}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={endPointer}
@@ -264,7 +289,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
                       transitionDuration: isFront && isAnimating ? `${exitDuration}ms` : undefined,
                     }}
                   >
-                    <img src={item.src} alt={isFront ? item.alt : ""} draggable={false} loading={isFront ? "eager" : "lazy"} />
+                    <img src={item.src} alt={isFront ? item.alt : ""} draggable={false} loading="eager" decoding="sync" />
                     <figcaption>
                       <span>{item.tag}</span>
                       <strong>{item.label}</strong>

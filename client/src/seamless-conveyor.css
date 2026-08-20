@@ -89,7 +89,7 @@
   margin: 0;
   border: 1px solid rgb(244 240 232 / 22%);
   border-radius: 18px;
-  background: var(--maroon-dark);
+  background: linear-gradient(145deg, var(--maroon-deep), var(--maroon-dark) 72%);
   box-shadow: 0 33px 67px rgb(9 2 5 / 42%);
   transform-origin: 50% 92%;
   transition: transform 780ms cubic-bezier(.16, .86, .22, 1.1), opacity 420ms var(--ease-out), box-shadow 780ms var(--ease-out), filter 780ms var(--ease-out);
@@ -104,7 +104,7 @@
 .drag-it-stack--arriving .drag-it-card--front { box-shadow: 0 39px 74px rgb(9 2 5 / 50%); }
 .drag-it-stack--arriving .drag-it-card--front figcaption { animation: card-caption-arrive 720ms cubic-bezier(.16, .86, .22, 1.1) both; }
 @keyframes card-caption-arrive { from { opacity: .22; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-.drag-it-card img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; filter: saturate(.96) contrast(1.04); }
+.drag-it-card img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; background: var(--maroon-deep); filter: saturate(.96) contrast(1.04); }
 .drag-it-card::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(to top, rgb(24 5 11 / 90%) 0%, rgb(24 5 11 / 45%) 31%, transparent 62%); content: ""; pointer-events: none; }
 
 .drag-it-card figcaption { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 7px; padding: 42% 21px 21px; color: #fff; }
