@@ -13,3 +13,11 @@
 - [x] Identify Swiggy dish images corresponding to listed menu items and record source URLs.
 - [x] Update the Full Menu page with source-backed content and a non-repetitive image treatment.
 - [x] Run type/build checks, visually review both pages, and save a checkpoint.
+
+# Browse-First Menu Controls Checklist
+
+- [x] Convert the full-menu hero into a browse-first display-menu introduction.
+- [x] Add All Items and category-group filtering that does not enable ordering.
+- [x] Add client-side dish search and a display-only sort selector.
+- [x] Validate desktop and mobile states, including empty search results and category switching.
+- [ ] Save the verified interactive menu revision.
