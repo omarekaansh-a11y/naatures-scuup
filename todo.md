@@ -60,3 +60,10 @@
 - [x] Rework the menu into a responsive display-only dish-card grid with price visibility and no ordering controls.
 - [x] Rework the review area into a compact social-proof card grid inspired by the supplied reference.
 - [x] Verify search, filtering, price sorting, review accuracy, and responsive layout; then save a checkpoint.
+
+# Menu Flow and Route Transition Refinement Checklist
+
+- [x] Remove the remaining controls-to-ribbon whitespace on the Full Menu at desktop and mobile widths.
+- [x] Add a vertical page-switch animation and reset each destination route to its top position.
+- [x] Add an accessible header back-to-top control with appropriate scroll-state behavior.
+- [ ] Validate the route transition, top reset, control behavior, and compact menu flow; then save a checkpoint.
