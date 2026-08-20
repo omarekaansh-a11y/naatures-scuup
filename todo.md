@@ -1,7 +1,7 @@
-# Interaction and Slogan Refinement Checklist
+# Home and Full Menu Restructure Checklist
 
-- [x] Analyse the supplied recording for general motion, pacing, and direct-manipulation principles without reproducing its protected design assets or exact layout.
-- [x] Position #FREEZETHEHAPPINESS as a memorable brand signature across the hero, food interaction, and footer without weakening the editorial hierarchy.
-- [x] Rework the Naatures Scuup tactile food canvas and adjacent scroll rhythm using the identified original interaction goals.
-- [x] Preserve the display-only restaurant model and owner-supplied photography.
-- [x] Validate desktop and mobile motion, layout, accessibility, and slogan placement before saving the revised checkpoint.
+- [ ] Audit the current page and components for repeated images, the “The real cravings” gallery, and the embedded home-page menu.
+- [ ] Create a dedicated Full Menu route containing the provided categories, dishes, and descriptions.
+- [ ] Remove the home-page menu and “The real cravings” gallery, then ensure no remaining image URL appears more than once in the site.
+- [ ] Replace the current navigation with an accessible hamburger menu that offers Home and Full Menu.
+- [ ] Validate both pages at desktop and mobile widths, then save the restructured checkpoint.

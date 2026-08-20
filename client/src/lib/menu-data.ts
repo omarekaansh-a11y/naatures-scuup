@@ -1,0 +1,18 @@
+/**
+ * Style reminder — Mall Road Monograph: this is verified, display-only Naatures Scuup menu content.
+ * Descriptions are category-level context supplied for an editorial menu index; no prices, images, ordering, or availability claims are added.
+ */
+export const menuChapters = [
+  { index: "01", slug: "tandoor-starters", title: "Tandoor & Starters", note: "The first share", detail: "Crisp, smoky, tangy and made to arrive at the centre of the table.", dishes: ["Dahi Kabab", "Paneer Tikka", "Hara Bhara Kabab", "Paneer Afghani Tikka", "Crispy Corn", "Chinese Bhel", "Dahi Kabab Roll", "Paneer 65"] },
+  { index: "02", slug: "soups-salads", title: "Soups & Salads", note: "Bright beginnings", detail: "Fresh sides and comforting bowls for a gentler start to the meal.", dishes: ["Onion Salad", "Cucumber Salad", "Green Salad", "Mix Fruit Salad", "Cream of Tomato Soup", "Hot and Sour Soup", "Manchow Soup", "Veg Corn Soup"] },
+  { index: "03", slug: "north-indian", title: "North Indian", note: "Rich, familiar, generous", detail: "Paneer, dal and seasonal vegetable favourites with breads made for every spoonful.", dishes: ["Paneer Lababdar", "Paneer Butter Masala", "Shahi Paneer", "Kadai Paneer", "Malai Kofta", "Dal Makhani", "Mushroom Masala", "Pindi Chana"] },
+  { index: "04", slug: "rice-biryani", title: "Rice & Biryani", note: "A fragrant chapter", detail: "Everyday comforts and fragrant rice plates, from a simple bowl to a celebratory biryani.", dishes: ["Veg Biryani", "Hyderabadi Dum Biryani", "Jeera Rice", "Kashmiri Pulao", "Lemon Rice", "Curd Rice", "Veg Pulao", "Cheese Pulao"] },
+  { index: "05", slug: "south-indian", title: "South Indian", note: "Crisp comfort", detail: "The familiar pull of a well-made dosa, chutney on the side and a table that lingers.", dishes: ["Paneer Dosa", "Plain Dosa", "Uttapam"] },
+  { index: "06", slug: "chinese", title: "Chinese", note: "Wok-tossed energy", detail: "A lively Indo-Chinese chapter with crunch, spice, noodles and satisfying sauces.", dishes: ["Veg Manchurian", "Chilli Paneer", "Paneer Manchurian", "Fried Rice", "Schezwan Rice", "Veg Chowmein", "Hakka Noodles with Gravy", "American Chopsuey"] },
+  { index: "07", slug: "pizza-pasta", title: "Pizza & Pasta", note: "Cheese pulls & twirls", detail: "A crowd-pleasing page of pizzas and pasta for every table mood.", dishes: ["Pizza Indiana", "Cheese Burst Pizza", "Chilli Paneer Pizza", "Paneer Pizza", "Cheese Mushroom Pizza", "Alfredo White Sauce", "Arrabiata Red Sauce", "Rosato Pink Sauce Pasta"] },
+  { index: "08", slug: "burgers-snacks", title: "Burgers & Snacks", note: "Quick-table favourites", detail: "Toasted, stacked, crisp and easy to share—the in-between favourites.", dishes: ["Cheese Burger", "Veg Burger", "Paneer Sandwich", "Honey Chilli Potato", "Cheese Garlic Bread", "Masala Fries", "Chole Bhature", "Paneer Kathi Roll"] },
+  { index: "09", slug: "ice-creams", title: "Ice Creams", note: "The sweet finish", detail: "Seasonal fruit, familiar classics and a reason to make room for another scoop.", dishes: ["Sitafal Ice Cream", "Royal Rose Ice Cream", "Tender Coconut", "Kesar Pista", "Belgian Chocolate", "Alphonso", "Jamun", "Pan Ice Cream"] },
+  { index: "10", slug: "shakes-mocktails", title: "Shakes & Mocktails", note: "Sip slowly", detail: "Cool, bright and made to stretch the conversation a little longer.", dishes: ["Spicy Lemonade", "Virgin Mojito", "Kiwi Blast", "Blue Lagoon", "Oreo Mud Shake", "Kit Kat Break Shake", "Ferro Rocher Shake", "Cold Coffee with Vanilla Ice Cream"] },
+] as const;
+
+export const menuItemCount = menuChapters.reduce((count, chapter) => count + chapter.dishes.length, 0);
