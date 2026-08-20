@@ -75,3 +75,21 @@
 - [x] Remove the two specified menu phrases and add #FREEZETHEHAPPINESS to all five FAQ answers.
 - [x] Refine display titles with an original outline-and-italic editorial system.
 - [x] Validate the moving, loading, and reveal states at desktop and mobile widths; then save a checkpoint.
+
+# Home SVG Reconciliation Repair Checklist
+
+- [x] Inspect Home-route SVG usage and the recent runtime error evidence.
+- [x] Apply a narrowly scoped repair that avoids the invalid SVG child reconciliation path.
+- [x] Validate Home-route rendering, type checking, and production build; then save a checkpoint.
+
+# Menu Chapter Copy Confirmation Checklist
+
+- [x] Locate the starter chapter’s current mood description and confirm the requested wording.
+- [x] Apply the requested label-free copy if the visual editor could not locate its stale target.
+- [x] Validate the Menu and Home routes together, then save the confirmed checkpoint.
+
+# Menu Ribbon Copy Removal Checklist
+
+- [x] Locate the “Mall Road menu · savoury to sweet · every table mood” ribbon phrase.
+- [x] Remove the requested ribbon wording without affecting the category conveyor or browse controls.
+- [x] Validate the Home and Menu routes, including the Home refresh safeguard; then save a checkpoint.

@@ -2,6 +2,7 @@
  * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
  * The only foreground food photography lives in the tactile table, where all seven owner-supplied images appear once each.
  * #FREEZETHEHAPPINESS is a restrained signature; the experience is display-only and never a copy of another restaurant’s layout.
+ * Home-route visual updates use a document refresh in development to keep icon DOM reconciliation stable.
  */
 import { ArrowDownRight, ArrowRight, ChevronRight, MapPin, Sparkles, Star } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -50,7 +51,7 @@ export default function Home() {
           <div className="hero-content">
             <div className="hero-meta reveal-up"><span className="verified-dot" /><span>Vegetarian multi-cuisine restaurant</span><span className="meta-divider" /><span>Mall Road, Kanpur</span><span className="hero-slogan">#FREEZETHEHAPPINESS</span></div>
             <p className="eyebrow reveal-up delay-1">The all-day craving table</p>
-            <h1 id="hero-title" className="editorial-title editorial-title--light reveal-up delay-2"><span className="title-outline">One place.</span><br /><i>Every craving.</i></h1>
+            <h1 id="hero-title" className="editorial-title editorial-title--light reveal-up delay-2"><span className="title-outline">ONE PLACE.</span><br /><i>every craving.</i></h1>
             <p className="hero-copy reveal-up delay-3">South Indian favourites, pizza, Chinese, comfort snacks, shakes, desserts and ice cream—right in the heart of Kanpur.</p>
             <div className="hero-actions reveal-up delay-4">
               <Link className="button button--cream" href="/menu">View the full menu <ArrowDownRight size={17} /></Link>

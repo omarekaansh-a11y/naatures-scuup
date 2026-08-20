@@ -203,7 +203,27 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+/**
+ * The visual editor updates Home.tsx over Vite HMR. A recent title edit showed
+ * that React can occasionally reconcile against an already-replaced Lucide SVG
+ * node during that hot swap. A document refresh avoids that stale-node deletion
+ * path while keeping ordinary development updates fast everywhere else.
+ */
+function vitePluginStableHomeRefresh(): Plugin {
+  return {
+    name: "naatures-stable-home-refresh",
+    apply: "serve",
+    handleHotUpdate({ file, server }) {
+      const homeRoute = path.join("client", "src", "pages", "Home.tsx");
+      if (!file.endsWith(homeRoute)) return;
+
+      server.ws.send({ type: "full-reload", path: "/" });
+      return [];
+    },
+  };
+}
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginStableHomeRefresh()];
 
 export default defineConfig({
   plugins,
