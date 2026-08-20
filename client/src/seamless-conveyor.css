@@ -18,12 +18,31 @@
 
 .drag-it-mascot {
   display: block;
-  width: 192px;
+  width: 232px;
   height: auto;
-  margin: 0 0 16px -11px;
+  margin: 0 0 17px -14px;
   color: var(--cream);
   overflow: visible;
 }
+
+.drag-it-mascot-button {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.drag-it-mascot-button:focus-visible { outline: 2px solid var(--mango); outline-offset: 7px; border-radius: 6px; }
+.drag-it-mascot-button:hover .dog-head { transform: rotate(2.4deg) translateY(-1px); }
+.drag-it-mascot-button:hover .dog-tail { transform: rotate(5deg); }
+.drag-it-mascot-button--reacting .dog-head { animation: dog-greet-head 1.08s cubic-bezier(.2, .8, .25, 1) both; }
+.drag-it-mascot-button--reacting .dog-ear { animation: dog-greet-ear 1.08s cubic-bezier(.2, .8, .25, 1) both; }
+.drag-it-mascot-button--reacting .dog-tail { animation: dog-greet-tail 1.08s cubic-bezier(.2, .8, .25, 1) both; }
+.drag-it-mascot-button--reacting .dog-steam { animation: dog-greet-steam 1.08s cubic-bezier(.2, .8, .25, 1) both; }
 
 .dog-head, .dog-ear, .dog-body { transform-origin: 92px 82px; animation: dog-nod 5.8s cubic-bezier(.45, 0, .55, 1) infinite; }
 .dog-ear { animation-delay: -0.18s; }
@@ -35,6 +54,10 @@
 @keyframes dog-nod { 0%, 100% { transform: rotate(-1.1deg); } 50% { transform: rotate(1.45deg); } }
 @keyframes dog-tail { 0%, 100% { transform: rotate(-1deg); } 50% { transform: rotate(2deg); } }
 @keyframes dog-steam { 0%, 100% { opacity: .42; transform: translateY(4px) rotate(-2deg); } 50% { opacity: 1; transform: translateY(-3px) rotate(2deg); } }
+@keyframes dog-greet-head { 0%, 100% { transform: rotate(-1deg); } 28% { transform: rotate(5.5deg) translateY(-3px); } 56% { transform: rotate(-2deg) translateY(1px); } 78% { transform: rotate(2.4deg); } }
+@keyframes dog-greet-ear { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-9deg) translate(-2px, -1px); } 58% { transform: rotate(4deg); } }
+@keyframes dog-greet-tail { 0%, 100% { transform: rotate(-1deg); } 22% { transform: rotate(10deg); } 44% { transform: rotate(-8deg); } 65% { transform: rotate(7deg); } 82% { transform: rotate(-3deg); } }
+@keyframes dog-greet-steam { 0%, 100% { opacity: .6; transform: translateY(2px); } 45% { opacity: 1; transform: translateY(-7px) rotate(4deg); } }
 
 .drag-it-eyebrow,
 .drag-it-signature,
@@ -133,7 +156,7 @@
   .drag-it-section { padding-block: 75px 83px; }
   .drag-it-layout { grid-template-columns: 1fr; gap: 52px; }
   .drag-it-copy { max-width: 410px; }
-  .drag-it-mascot { width: 166px; margin-bottom: 15px; }
+  .drag-it-mascot { width: 194px; margin-bottom: 15px; }
   .drag-it-copy h2 { font-size: clamp(58px, 17vw, 78px); }
   .drag-it-body { margin-top: 24px; font-size: 13px; }
   .drag-it-playground { width: 100%; justify-self: stretch; }

@@ -223,6 +223,17 @@
 
 > Responsive visual check: the Home experience renders cleanly at desktop and mobile dimensions after the preload change; the active-card fallback remains within the maroon design language rather than producing a black interruption.
 
+# Dog Interaction and Controlled Swipe Pass
+
+- [x] Increase the café dog’s rendered scale while retaining balanced desktop/mobile composition.
+- [x] Add a subtle user-interaction response to the dog without introducing continuous distracting motion.
+- [x] Substantially reduce drag-card velocity projection and post-release exit momentum.
+- [x] Validate the refined interaction at desktop/mobile sizes and save a checkpoint.
+
+> Interaction validation note: the enlarged dog is rendered as a labelled button at the Home drag-it section and activates the short greeting animation on direct click, while preserving the existing ambient café-table motion. The stack reports `aria-busy=false` during the controlled next-card check and returns to a clean settled transform after the deliberately slower exit.
+
+> Responsive visual check: the enlarged café dog holds clear visual presence beside the stack on desktop and remains comfortably proportioned above the card experience on mobile, without collapsing the editorial spacing.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.

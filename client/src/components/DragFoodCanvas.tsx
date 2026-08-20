@@ -20,9 +20,9 @@ type DragFoodCanvasProps = {
 type DragVector = { x: number; y: number };
 
 const VISIBLE_CARDS = 4;
-const DRAG_COMMIT_DISTANCE = 112;
-const VELOCITY_COMMIT_THRESHOLD = 0.48;
-const PROJECTION_TIME = 175;
+const DRAG_COMMIT_DISTANCE = 120;
+const VELOCITY_COMMIT_THRESHOLD = 0.72;
+const PROJECTION_TIME = 68;
 const ZERO_VECTOR: DragVector = { x: 0, y: 0 };
 
 function DogMascot() {
@@ -66,6 +66,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isArriving, setIsArriving] = useState(false);
+  const [dogReacting, setDogReacting] = useState(false);
   const [exitDuration, setExitDuration] = useState(280);
   const [loadedSources, setLoadedSources] = useState<Set<string>>(() => new Set());
   const pointerStartRef = useRef<DragVector>(ZERO_VECTOR);
@@ -75,6 +76,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const dragStartedRef = useRef(false);
   const exitTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
+  const dogTimerRef = useRef<number | null>(null);
   const renderFrameRef = useRef<number | null>(null);
 
   const visibleCards = Array.from({ length: Math.min(VISIBLE_CARDS, items.length) }, (_, index) => items[(activeIndex + index) % items.length]);
@@ -84,8 +86,19 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   useEffect(() => () => {
     if (exitTimerRef.current !== null) window.clearTimeout(exitTimerRef.current);
     if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
+    if (dogTimerRef.current !== null) window.clearTimeout(dogTimerRef.current);
     if (renderFrameRef.current !== null) window.cancelAnimationFrame(renderFrameRef.current);
   }, []);
+
+  const greetDog = () => {
+    setDogReacting(false);
+    window.requestAnimationFrame(() => setDogReacting(true));
+    if (dogTimerRef.current !== null) window.clearTimeout(dogTimerRef.current);
+    dogTimerRef.current = window.setTimeout(() => {
+      setDogReacting(false);
+      dogTimerRef.current = null;
+    }, 1080);
+  };
 
   useEffect(() => {
     let isCancelled = false;
@@ -148,15 +161,15 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     if (isAnimating || exitTimerRef.current !== null) return;
     const horizontalDominant = Math.abs(currentVector.x + velocity.x * PROJECTION_TIME) >= Math.abs(currentVector.y + velocity.y * PROJECTION_TIME);
     const speed = Math.hypot(velocity.x, velocity.y);
-    const momentum = Math.min(speed * 92, 92);
-    const duration = Math.round(Math.max(360, Math.min(560, 530 - speed * 105)));
-    const exitDistance = Math.max(620, window.innerWidth * 0.84) + momentum;
+    const momentum = Math.min(speed * 18, 28);
+    const duration = Math.round(Math.max(520, Math.min(700, 680 - speed * 52)));
+    const exitDistance = Math.max(470, window.innerWidth * 0.7) + momentum;
     const exitY = horizontalDominant
-      ? Math.max(-window.innerHeight * 0.33, Math.min(window.innerHeight * 0.33, currentVector.y + velocity.y * 120))
+      ? Math.max(-window.innerHeight * 0.25, Math.min(window.innerHeight * 0.25, currentVector.y + velocity.y * 68))
       : direction === 1 ? -exitDistance * 0.72 : exitDistance * 0.72;
     const exitX = horizontalDominant
       ? direction === 1 ? -exitDistance : exitDistance
-      : Math.max(-exitDistance * 0.34, Math.min(exitDistance * 0.34, currentVector.x + velocity.x * 120));
+      : Math.max(-exitDistance * 0.24, Math.min(exitDistance * 0.24, currentVector.x + velocity.x * 68));
     setIsDragging(false);
     setIsArriving(false);
     setExitDuration(duration);
@@ -248,7 +261,14 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     <section id="food-canvas" className="drag-it-section" aria-labelledby="drag-it-title">
       <div className="drag-it-layout section-pad">
         <div className="drag-it-copy">
-          <DogMascot />
+          <button
+            type="button"
+            className={`drag-it-mascot-button ${dogReacting ? "drag-it-mascot-button--reacting" : ""}`}
+            onClick={greetDog}
+            aria-label="Greet the Naatures Scuup café dog"
+          >
+            <DogMascot />
+          </button>
           <p className="drag-it-eyebrow">04 / The food edit</p>
           <h2 id="drag-it-title">Drag into<br /><i>the good bits.</i></h2>
           <p className="drag-it-body">A small stack of real table moments from Naatures Scuup. Pull a card aside to find the next craving.</p>
