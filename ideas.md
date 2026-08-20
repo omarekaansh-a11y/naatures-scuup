@@ -71,3 +71,5 @@ Google Maps reviews use a short verbatim preview first, with the complete public
 The Full Menu will maintain fast all-item browsing while restoring an editorial atlas rhythm: in recommended all-item view, each category begins with its numbered chapter heading, appetite-led table mood, and a scoop-stamp fact before the compact dish cards. This visual cadence deliberately interrupts long catalogue runs without removing category, search, or price-sort utility.
 
 Outlined display type is a selective emotional accent rather than the default hierarchy. Filled Cormorant Garamond remains the primary reading voice; outline-and-italic pairings are reserved for short, memorable phrases and introduced words in the homepage and menu experience.
+
+Headline outlines remain concentrated in the hero and one or two short, high-emotion turns; section and chapter headings default to filled Cormorant Garamond. Food photography is treated as a single warm editorial sequence through tighter frames, a consistent tonal veil, and a deliberate savoury-to-sweet order. Customer feedback stays verifiable but appears as a concise selected-proof rail rather than a large dashboard-like grid.

@@ -1,7 +1,7 @@
 /*
  * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
  * Food leads; maroon, cream, fennel green; asymmetric vertical tasting journey; quiet motion.
- * The tactile food canvas is an original direct-manipulation collage, not a carousel or copied layout.
+ * The tactile food canvas is an original slow, straight, direct-manipulation conveyor—not a copied interaction layout.
  */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
@@ -159,6 +159,16 @@ h2 { font-size: clamp(58px, 7.5vw, 112px); color: var(--maroon-deep); }
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 1ms !important; } }
+
+/* Refinement reminder — the food promenade remains a single horizontal line; interaction never requires a text-only instruction. */
+.tactile-table { height: clamp(440px, 38vw, 530px); cursor: grab; }
+.tactile-table__track { display: flex; align-items: center; gap: 0; width: max-content; height: 100%; padding: 0; transition: none; }
+.tactile-table__set { display: flex; flex: 0 0 auto; align-items: center; gap: clamp(18px, 2.25vw, 34px); height: 100%; padding: 0 7vw 0 8.5vw; }
+.tactile-table__opening, .tactile-table__endnote, .tactile-table__cursor, .tactile-table__touch-note, .tactile-table__keyboard-note { display: none; }
+.tactile-table__card, .tactile-table__card--1, .tactile-table__card--2, .tactile-table__card--3, .tactile-table__card--4, .tactile-table__card--5, .tactile-table__card--6, .tactile-table__card--7 { align-self: center; transform: none; }
+.tactile-table__frame { height: clamp(282px, 24vw, 360px); }
+.tactile-table__card figcaption { margin-top: 11px; }
+@media (max-width: 640px) { .tactile-table { height: 372px; }.tactile-table__set { gap: 14px; padding-left: 25px; padding-right: 25px; }.tactile-table__card { flex-basis: 216px; }.tactile-table__frame { height: 258px; } }
 
 /* Display-only refinement — owner-supplied logo, menu discovery, and social/location cues supersede transactional affordances. */
 /* Original tactile table — use the restaurant's own visual world and direct manipulation, never a copied interaction layout. */

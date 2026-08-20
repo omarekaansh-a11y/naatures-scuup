@@ -93,3 +93,11 @@
 - [x] Locate the “Mall Road menu · savoury to sweet · every table mood” ribbon phrase.
 - [x] Remove the requested ribbon wording without affecting the category conveyor or browse controls.
 - [x] Validate the Home and Menu routes, including the Home refresh safeguard; then save a checkpoint.
+
+# Home, Food Conveyor, and Footer Refinement Checklist
+
+- [x] Verify and complete the requested Home hero, story, phone, review, and footer copy changes.
+- [x] Remove the hero scroll cue and add the requested background treatment to the manifesto panel.
+- [x] Replace the freeform food canvas with a slow, straight, draggable infinite conveyor that remains accessible.
+- [x] Add the restaurant Instagram and Facebook handles plus a direct Google Maps link to the footer.
+- [x] Validate desktop and mobile behavior, then save the refined checkpoint.
