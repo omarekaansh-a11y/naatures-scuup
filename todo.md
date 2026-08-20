@@ -36,3 +36,9 @@
 - [x] Add price data and Price: low to high and Price: high to low to the display-only sort selector.
 - [x] Verify that price sorting changes the menu order correctly in All Items and a category view.
 - [x] Validate responsive controls and save the price-sorting revision.
+
+# Mobile Menu Spacing Correction Checklist
+
+- [x] Identify and override the hero and list padding responsible for the two empty gaps.
+- [x] Verify the compact controls-to-ribbon-to-first-category flow on mobile and desktop.
+- [ ] Save the corrected layout revision.
