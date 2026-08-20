@@ -67,6 +67,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isArriving, setIsArriving] = useState(false);
   const [dogReacting, setDogReacting] = useState(false);
+  const [showGreetingCue, setShowGreetingCue] = useState(true);
   const [exitDuration, setExitDuration] = useState(280);
   const [loadedSources, setLoadedSources] = useState<Set<string>>(() => new Set());
   const pointerStartRef = useRef<DragVector>(ZERO_VECTOR);
@@ -77,6 +78,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const exitTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
   const dogTimerRef = useRef<number | null>(null);
+  const greetingCueTimerRef = useRef<number | null>(null);
   const renderFrameRef = useRef<number | null>(null);
 
   const visibleCards = Array.from({ length: Math.min(VISIBLE_CARDS, items.length) }, (_, index) => items[(activeIndex + index) % items.length]);
@@ -87,15 +89,37 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     if (exitTimerRef.current !== null) window.clearTimeout(exitTimerRef.current);
     if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
     if (dogTimerRef.current !== null) window.clearTimeout(dogTimerRef.current);
+    if (greetingCueTimerRef.current !== null) window.clearTimeout(greetingCueTimerRef.current);
     if (renderFrameRef.current !== null) window.cancelAnimationFrame(renderFrameRef.current);
   }, []);
 
+  const dismissGreetingCue = () => {
+    if (greetingCueTimerRef.current !== null) {
+      window.clearTimeout(greetingCueTimerRef.current);
+      greetingCueTimerRef.current = null;
+    }
+    setShowGreetingCue(false);
+  };
+
+  useEffect(() => {
+    greetingCueTimerRef.current = window.setTimeout(() => {
+      setShowGreetingCue(false);
+      greetingCueTimerRef.current = null;
+    }, 4400);
+    return () => {
+      if (greetingCueTimerRef.current !== null) window.clearTimeout(greetingCueTimerRef.current);
+    };
+  }, []);
+
   const greetDog = () => {
+    if (greetingCueTimerRef.current !== null) window.clearTimeout(greetingCueTimerRef.current);
+    setShowGreetingCue(true);
     setDogReacting(false);
     window.requestAnimationFrame(() => setDogReacting(true));
     if (dogTimerRef.current !== null) window.clearTimeout(dogTimerRef.current);
     dogTimerRef.current = window.setTimeout(() => {
       setDogReacting(false);
+      setShowGreetingCue(false);
       dogTimerRef.current = null;
     }, 1080);
   };
@@ -201,6 +225,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     if (!dragStartedRef.current) {
       if (Math.hypot(horizontalTravel, verticalTravel) < 5) return;
       dragStartedRef.current = true;
+      dismissGreetingCue();
       setIsDragging(true);
     }
     event.preventDefault();
@@ -270,7 +295,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
             >
               <DogMascot />
             </button>
-            <span className={`dog-greeting-tooltip ${dogReacting ? "dog-greeting-tooltip--replying" : ""}`} aria-hidden="true">
+            <span className={`dog-greeting-tooltip ${dogReacting ? "dog-greeting-tooltip--replying" : ""} ${showGreetingCue ? "" : "dog-greeting-tooltip--hidden"}`} aria-hidden="true">
               {dogReacting ? "Hello, friend." : "Psst… greet me"}
             </span>
           </div>

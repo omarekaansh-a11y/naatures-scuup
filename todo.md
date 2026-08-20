@@ -244,6 +244,16 @@
 
 > Mobile visual check: the callout remains legible beside the larger dog, and the refined tail reads as a continuous stroke without collapsing the portrait-card composition.
 
+# Greeting Tooltip Lifecycle Pass
+
+- [x] Fade the “Psst… greet me” cue out automatically after a short initial delay.
+- [x] Dismiss the cue immediately when the user begins dragging a food card.
+- [x] Keep the cue available again on the next page visit and validate desktop/mobile behavior before saving a checkpoint.
+
+> Lifecycle check: after the initial display interval, the desktop Home view no longer presents the greeting callout, leaving the dog and food layout uncluttered. A new Home mount restores the initial invitation before it dismisses again.
+
+> Mobile visual check: the compact Home layout retains its intended visual hierarchy after the invitation lifecycle change, without leaving persistent dog-tooltip chrome in the viewport.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
