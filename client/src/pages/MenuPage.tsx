@@ -4,7 +4,7 @@
  */
 import { ArrowDownRight, ChevronDown, Leaf, MapPin, Search } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -84,6 +84,16 @@ export default function MenuPage() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("recommended");
   const reduceMotion = useReducedMotion();
+  useEffect(() => {
+    if (window.location.hash !== "#ice-creams") return;
+    const destinationTimer = window.setTimeout(() => {
+      setActiveGroup("ice-creams");
+      setQuery("");
+      setSort("recommended");
+      window.requestAnimationFrame(() => document.getElementById("ice-creams")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }));
+    }, 440);
+    return () => window.clearTimeout(destinationTimer);
+  }, [reduceMotion]);
   const menuGroups = [{ slug: "all", title: `All items (${menuItemCount})` }, ...menuChapters.map((chapter) => ({ slug: chapter.slug, title: chapter.title }))];
   const normalizedQuery = query.trim().toLowerCase();
   const visibleItems = useMemo(() => {
@@ -119,7 +129,7 @@ export default function MenuPage() {
           <div className="menu-browser__result"><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : menuChapters.find((chapter) => chapter.slug === activeGroup)?.title}</span></div>
         </div>
       </section>
-      <section className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">
+      <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">
         {visibleItems.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">No craving found</p><h2>Try another<br /><i>table mood.</i></h2><p>Search by a dish name, flavour or menu group. Your menu is still here—just waiting for a different word.</p></div>}
         <div className="menu-card-grid">{visibleItems.map(({ dish, chapter }, index) => { const price = zomatoDishPrices[dish]; const previousItem = visibleItems[index - 1]; const showChapterBreak = activeGroup === "all" && sort === "recommended" && (!previousItem || previousItem.chapter.slug !== chapter.slug); const chapterNumber = `${menuChapters.findIndex((menuChapter) => menuChapter.slug === chapter.slug) + 1}`.padStart(2, "0"); return <Fragment key={`${chapter.slug}-${dish}`}>
           {showChapterBreak && <div className="menu-chapter-break"><div><p className="menu-chapter-break__index">{chapterNumber} / Craving chapter</p><h2>{chapter.title}<br /><i>{chapterMoods[chapter.slug]}</i></h2></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}

@@ -101,3 +101,10 @@
 - [x] Replace the freeform food canvas with a slow, straight, draggable infinite conveyor that remains accessible.
 - [x] Add the restaurant Instagram and Facebook handles plus a direct Google Maps link to the footer.
 - [x] Validate desktop and mobile behavior, then save the refined checkpoint.
+
+# Home Ice-Cream Destination Section Checklist
+
+- [ ] Confirm the Full Menu Ice Creams chapter anchor and Home-page insertion point.
+- [ ] Create a unique background-only visual and build the display-only ice-cream destination section.
+- [ ] Link the section directly to the Ice Creams chapter in the Full Menu without adding ordering controls.
+- [ ] Validate desktop/mobile presentation and destination navigation, then save a checkpoint.

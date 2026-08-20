@@ -1,6 +1,7 @@
 /**
  * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
  * The only foreground food photography lives in the tactile table, where all seven owner-supplied images appear once each.
+ * Background-only generative visuals create atmosphere behind HTML copy; no generated food image is presented as a foreground menu item.
  * #FREEZETHEHAPPINESS is a restrained signature; the experience is display-only and never a copy of another restaurant’s layout.
  * Home-route visual updates use a document refresh in development to keep icon DOM reconciliation stable.
  */
@@ -82,6 +83,18 @@ export default function Home() {
         </section>
 
         <DragFoodCanvas items={foodCanvasItems} />
+
+        <section id="ice-cream-destination" className="ice-cream-destination" aria-labelledby="ice-cream-destination-title">
+          <div className="ice-cream-destination__image" role="img" aria-label="Editorial background showing a frozen dessert table" />
+          <div className="ice-cream-destination__veil" />
+          <motion.div className="ice-cream-destination__inner section-pad" initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.48, ease: [0.23, 1, 0.32, 1] }}>
+            <p className="eyebrow eyebrow--mango">04 / The last course</p>
+            <h2 id="ice-cream-destination-title" className="editorial-title editorial-title--light"><span className="title-outline">Save room.</span><br /><i>For the scoop.</i></h2>
+            <p className="ice-cream-destination__copy">From classic ice creams to chilled dessert moments, the last stop on the table deserves its own chapter.</p>
+            <div className="ice-cream-destination__facts" aria-label="Ice cream menu highlights"><span><b>ICE CREAMS</b><small>Dedicated menu chapter</small></span><span><b>CHILLED</b><small>Desserts &amp; shakes</small></span><span><b>NS / SCOOP</b><small>#FREEZETHEHAPPINESS</small></span></div>
+            <Link className="ice-cream-destination__cta" href="/menu#ice-creams">Explore ice creams <ArrowRight size={17} /></Link>
+          </motion.div>
+        </section>
 
         <GoogleReviews />
 
