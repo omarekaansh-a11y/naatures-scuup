@@ -172,6 +172,19 @@
 
 > Live inspection note: the anchored desktop section now shows the seated, right-facing café dog beside a steaming drink and the staggered food stack. The next control advances from card 01 to card 02, and a simulated deliberate left swipe advanced the front card and counter from 02 to 03.
 
+# High-Fidelity Mascot and Motion Pass
+
+- [x] Extract still frames from `1000142172.mp4` and map the mascot’s silhouette, stroke weights, and café-table geometry.
+- [x] Refine the mascot SVG against the reference at the visible rendered size.
+- [x] Add inertial momentum, velocity projection, and clean spring settling to the food-card swipe interaction.
+- [x] Validate the refined animation on desktop and mobile, then save a checkpoint.
+
+> Frame study: the reference mascot is a compact white single-line profile facing right, with a tiny beret/forelock, elongated snout, one visible dot eye, a slender curved seated body, and one leg. It sits on an ornate café chair beside a petite round pedestal table holding a handled cup and two steam strokes.
+
+> Close-up comparison: the rebuilt mark now uses the reference’s bright white profile treatment, filled light beret, long right-facing snout, curved café-chair outline, separate round table, handled cup, and two vertical steam strokes at the same visual scale as the source.
+
+> Motion check: a fast left swipe advanced the live stack from 01 / 07 to 02 / 07, replaced the front card with the expected next food image, and allowed the stack to settle back into the intended staggered position.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
