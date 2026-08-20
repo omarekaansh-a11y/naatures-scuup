@@ -1,7 +1,7 @@
 /*
  * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
  * Food leads; maroon, cream, fennel green; asymmetric vertical tasting journey; quiet motion.
- * The tactile food canvas is an original slow, straight, direct-manipulation conveyor—not a copied interaction layout.
+ * The tactile food canvas is an original slow, straight, seamless direct-manipulation conveyor—not a copied interaction layout.
  */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
@@ -159,6 +159,12 @@ h2 { font-size: clamp(58px, 7.5vw, 112px); color: var(--maroon-deep); }
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 1ms !important; } }
+
+/* Seamless food promenade — duplicated sets meet card-to-card with no padding or gap at the repeat point. */
+.tactile-table__track { gap: 0; padding-inline: 0; }
+.tactile-table__set { gap: 0; padding-inline: 0; }
+.tactile-table__card { margin-inline: 0; }
+@media (max-width: 640px) { .tactile-table__track, .tactile-table__set { gap: 0; padding-inline: 0; } }
 
 /* Refinement reminder — the food promenade remains a single horizontal line; interaction never requires a text-only instruction. */
 .tactile-table { height: clamp(440px, 38vw, 530px); cursor: grab; }

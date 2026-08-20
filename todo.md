@@ -114,3 +114,9 @@
 - [x] Remove the “However the table feels today.” and “Made to linger. Made memorable.” copy blocks.
 - [x] Move the display-only Full Menu link to immediately follow the draggable food section.
 - [x] Validate the revised Home layout and Full Menu navigation at desktop and mobile widths, then save a checkpoint.
+
+# Seamless Food Conveyor Refinement Checklist
+
+- [x] Inspect the repeated food-track markup and spacing rules that create visible joins.
+- [x] Eliminate visual joins and card gaps while preserving low-speed drag interaction and keyboard support.
+- [x] Validate the continuous conveyor at desktop and mobile widths, then save a checkpoint.
