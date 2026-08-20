@@ -1,0 +1,18 @@
+Rice
+
+Plain Rice 100
+Jecra Rice 120
+Kashmiri Pulao 150
+Haidrabadi Dum Biryani 220
+Veg. Biryani 200
+Onion Rice 140
+Lemon Rice 120
+Curd Rice 160
+Veg. Pulao 130
+Cheese Pulao 160
+Peas Pulao 140
+Papad
+
+Papad Fried 30
+Papad Dry 30
+Masala Papad 70

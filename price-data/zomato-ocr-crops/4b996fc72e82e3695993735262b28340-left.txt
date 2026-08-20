@@ -1,0 +1,29 @@
+Sandwich
+
+Veg. Sandwich 130
+BBS (Bombay Bachelors Sandwich) Regular 160
+BBS - Cheese 200
+Paneer Sandwich 190
+Veg. Corn Sandwich 190
+Pasta
+
+Arrabiata (Red Sauce) 250
+Alfredo (White Sauce) 270
+Rosato (Pink Sauce) 280
+Rosato (Green Sauce) 280
+Pizza
+
+Pizza Indiana 200
+Cheese Burst Pizza 220
+Pizza Special 280
+Paneer Pizza 260
+Corn Pizza 260
+Chill Paneer Pizza 280
+Cheese Mashroom Pizza 280
+Margherita Pizza 250
+Italian Fusion Pizza 350
+Burger
+
+Veg Burger 110
+Cheese Burger 130
+Double Cheese Burger 200

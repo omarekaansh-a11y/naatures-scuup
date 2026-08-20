@@ -1,0 +1,15 @@
+Roti
+Plain Roti 25
+Butter Roti 35
+Plain Naan 55
+Butter Naan 65
+| Missi Rot! 50
+| Lachha Paratha 55
+| Khasta Roti 60
+Tawa Rotl 30
+Tawa Roti Butter 40
+Stuff. Naan 80
+Garlic Naan 80
+Paneer Paratha (Tandori) 100
+Stuff paratha
+Aloo/Onilon/Mirchi 90

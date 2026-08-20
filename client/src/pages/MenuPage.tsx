@@ -11,7 +11,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MobileVisitDock } from "@/components/MobileVisitDock";
 import { RouteMeta } from "@/components/RouteMeta";
 import { menuChapters, menuItemCount } from "@/lib/menu-data";
-import { publicDishPrices } from "@/lib/menu-prices";
+import { zomatoDishPrices } from "@/lib/zomato-prices";
 
 const dishNotes: Record<string, string> = {
   "Dahi Kabab":"Classic, creamy Indian appetizer.","Paneer Tikka":"Soft paneer marinated in aromatic spices.","Hara Bhara Kabab":"Tender vegetarian kabab with mint notes.","Paneer Afghani Tikka":"Fragrant spiced paneer, grilled.","Crispy Corn":"Crunchy corn fritters for snacking.","Chinese Bhel":"Crisp, crunchy Chinese-style bhel.","Dahi Kabab Roll":"Crispy, juicy kababs for a quick bite.","Paneer 65":"Crispy paneer with peppers in spicy sauce.",
@@ -46,15 +46,15 @@ function sortDishes(dishes: readonly string[], sort: string) {
   const alphabetical = (a: string, b: string) => a.localeCompare(b);
   if (sort === "az") return [...dishes].sort(alphabetical);
   if (sort === "price-low") return [...dishes].sort((a, b) => {
-    const aPrice = publicDishPrices[a];
-    const bPrice = publicDishPrices[b];
+    const aPrice = zomatoDishPrices[a];
+    const bPrice = zomatoDishPrices[b];
     if (aPrice === undefined) return bPrice === undefined ? alphabetical(a, b) : 1;
     if (bPrice === undefined) return -1;
     return aPrice - bPrice || alphabetical(a, b);
   });
   if (sort === "price-high") return [...dishes].sort((a, b) => {
-    const aPrice = publicDishPrices[a];
-    const bPrice = publicDishPrices[b];
+    const aPrice = zomatoDishPrices[a];
+    const bPrice = zomatoDishPrices[b];
     if (aPrice === undefined) return bPrice === undefined ? alphabetical(a, b) : 1;
     if (bPrice === undefined) return -1;
     return bPrice - aPrice || alphabetical(a, b);
@@ -74,17 +74,26 @@ const priceBrowserStyles = `
   .menu-dish-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.menu-dish-price{flex:0 0 auto;color:var(--maroon);font:800 10px/1 Manrope,sans-serif;letter-spacing:.04em}@media(max-width:640px){.menu-dish-price{font-size:9px}}
 `;
 
+const cardMenuStyles = `
+  .menu-card-list{max-width:1440px;margin:auto;padding-top:clamp(48px,7vw,90px);padding-bottom:clamp(90px,11vw,150px)}.menu-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.menu-dish-card{display:grid;grid-template-rows:auto 1fr auto;min-height:274px;padding:24px;border:1px solid rgba(101,27,43,.19);border-radius:15px;background:rgba(255,255,255,.22);transition:transform .2s var(--ease-out),border-color .2s var(--ease-out),box-shadow .2s var(--ease-out)}.menu-dish-card:hover{transform:translateY(-3px);border-color:rgba(101,27,43,.42);box-shadow:0 13px 28px rgba(53,16,26,.07)}.menu-dish-card__meta{display:flex;align-items:center;gap:7px;margin:0;color:var(--maroon);font-size:8px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.menu-dish-card__meta:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--fennel);box-shadow:0 0 0 4px rgba(139,172,127,.12)}.menu-dish-card:nth-child(3n+2) .menu-dish-card__meta:before{background:var(--mango);box-shadow:0 0 0 4px rgba(228,183,77,.12)}.menu-dish-card h2{max-width:310px;margin:28px 0 11px;color:var(--maroon-deep);font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(31px,2.8vw,43px);font-weight:500;letter-spacing:-.055em;line-height:.87}.menu-dish-card__note{max-width:315px;margin:0;color:rgba(45,31,34,.67);font-size:11px;line-height:1.58}.menu-dish-card footer{display:flex;align-items:end;justify-content:space-between;gap:16px;padding-top:21px;border-top:1px solid rgba(101,27,43,.15)}.menu-dish-card footer div{display:grid;gap:4px}.menu-dish-card footer span{color:rgba(53,16,26,.58);font-size:7px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.menu-dish-card footer strong{color:var(--maroon);font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;font-weight:600;letter-spacing:-.04em;line-height:.8}.menu-dish-card__display{display:inline-flex;align-items:center;justify-content:center;min-height:31px;padding:0 10px;border-radius:999px;background:var(--maroon);color:var(--cream)!important;font-size:7px!important;letter-spacing:.09em!important;white-space:nowrap}.menu-dish-card__display--muted{background:var(--cream-deep);color:var(--maroon)!important;border:1px solid rgba(101,27,43,.2)}@media(max-width:1000px){.menu-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.menu-card-list{padding-top:31px;padding-bottom:94px}.menu-card-grid{grid-template-columns:1fr;gap:10px}.menu-dish-card{min-height:235px;padding:20px}.menu-dish-card h2{margin:22px 0 9px;font-size:36px}.menu-dish-card__note{font-size:10px}.menu-dish-card footer{padding-top:17px}}
+`;
+
 export default function MenuPage() {
   const [activeGroup, setActiveGroup] = useState("all");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("recommended");
   const normalizedQuery = query.trim().toLowerCase();
-  const visibleChapters = useMemo(() => menuChapters
-    .filter((chapter) => activeGroup === "all" || chapter.slug === activeGroup)
-    .map((chapter) => ({ ...chapter, dishes: chapter.dishes.filter((dish) => `${dish} ${noteForDish(dish, chapter.detail)}`.toLowerCase().includes(normalizedQuery)) }))
-    .filter((chapter) => chapter.dishes.length > 0)
-    .map((chapter) => ({ ...chapter, dishes: sortDishes(chapter.dishes, sort) })), [activeGroup, normalizedQuery, sort]);
-  const visibleItemCount = visibleChapters.reduce((count, chapter) => count + chapter.dishes.length, 0);
+  const visibleItems = useMemo(() => {
+    const chapters = menuChapters
+      .filter((chapter) => activeGroup === "all" || chapter.slug === activeGroup)
+      .map((chapter) => ({ ...chapter, dishes: chapter.dishes.filter((dish) => `${dish} ${noteForDish(dish, chapter.detail)}`.toLowerCase().includes(normalizedQuery)) }))
+      .filter((chapter) => chapter.dishes.length > 0);
+    const flatItems = chapters.flatMap((chapter) => chapter.dishes.map((dish) => ({ dish, chapter })));
+    const orderedNames = sortDishes(flatItems.map((item) => item.dish), sort);
+    const order = new Map(orderedNames.map((dish, index) => [dish, index]));
+    return [...flatItems].sort((a, b) => (order.get(a.dish) ?? 0) - (order.get(b.dish) ?? 0));
+  }, [activeGroup, normalizedQuery, sort]);
+  const visibleItemCount = visibleItems.length;
   return <div className="site-shell menu-page-shell">
     <RouteMeta title="Full Digital Menu | Naatures Scuup, Kanpur" description="Browse all 204 vegetarian dishes at Naatures Scuup on Mall Road, Kanpur, with category browsing, search, and display-only price sorting." />
     <SiteHeader paper />
@@ -92,10 +101,11 @@ export default function MenuPage() {
       <style>{chapterStyles}</style>
       <style>{browserStyles}</style>
       <style>{priceBrowserStyles}</style>
+      <style>{cardMenuStyles}</style>
       <section className="menu-page-hero section-pad" aria-labelledby="full-menu-title">
         <Breadcrumbs current="Full menu" />
         <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p><p className="menu-brand-signature">#FREEZETHEHAPPINESS <span>·</span> Mall Road craving atlas</p>
-        <div className="menu-page-hero__grid"><h1 id="full-menu-title">Full digital<br /><i>menu.</i></h1><div><p>Browse every dish by craving, then find the table mood that fits. This guide is made for reading, sharing and planning your Mall Road visit—not for ordering online.</p><span>{menuItemCount} listed dishes · Vegetarian multi-cuisine</span></div></div>
+        <div className="menu-page-hero__grid"><h1 id="full-menu-title">Full digital<br /><i>menu.</i></h1><div><p>Browse every dish by craving, then find the table mood that fits. This guide is made for reading, sharing and planning your Mall Road visit—not for ordering online.</p><span>{menuItemCount} listed dishes · Zomato menu prices where publicly listed</span></div></div>
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
           <div className="menu-browser__bar" role="tablist" aria-label="Menu groups">
             <button className="menu-filter" data-active={activeGroup === "all"} onClick={() => setActiveGroup("all")} role="tab" aria-selected={activeGroup === "all"}>All items ({menuItemCount})</button>
@@ -106,15 +116,9 @@ export default function MenuPage() {
         </div>
       </section>
       <div className="menu-ribbon" aria-hidden="true"><span>Follow the craving · Mall Road menu · savoury to sweet · every table mood · follow the craving · Mall Road menu · savoury to sweet · every table mood · </span></div>
-      <section className="menu-page-list section-pad" aria-label="Full Naatures Scuup menu">
-        {visibleChapters.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">No craving found</p><h2>Try another<br /><i>table mood.</i></h2><p>Search by a dish name, flavour or menu group. Your menu is still here—just waiting for a different word.</p></div>}
-        {visibleChapters.map((chapter) => {
-          const image = swiggyImages[chapter.slug];
-          return <article id={chapter.slug} className="menu-page-category menu-page-category--browser" key={chapter.slug}>
-            <header><p className="eyebrow eyebrow--maroon">{chapter.index} / {chapter.note}</p><h2>{chapter.title}</h2><p>{chapter.detail}</p><div className="menu-chapter-mood">{chapterMoods[chapter.slug]}</div>{image && <figure style={{margin:"28px 0 0",background:"var(--maroon-deep)"}}><img src={image.src} alt={image.alt} style={{display:"block",width:"100%",aspectRatio:"1.35",objectFit:"cover"}} /><figcaption style={{padding:"9px 11px",color:"var(--cream)",fontSize:"7px",fontWeight:800,letterSpacing:".11em",textTransform:"uppercase"}}>{image.caption}</figcaption></figure>}</header>
-            <ol>{chapter.dishes.map((dish, index) => <li key={dish} style={{alignItems:"start"}}><span>{String(index + 1).padStart(2,"0")}</span><div><div className="menu-dish-title"><strong>{dish}</strong>{publicDishPrices[dish] !== undefined && <span className="menu-dish-price">₹{publicDishPrices[dish]}</span>}</div><p style={{margin:"6px 0 0",color:"rgb(33 24 26 / 62%)",fontSize:"10px",lineHeight:1.45}}>{noteForDish(dish, chapter.detail)}</p></div></li>)}</ol>
-          </article>;
-        })}
+      <section className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">
+        {visibleItems.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">No craving found</p><h2>Try another<br /><i>table mood.</i></h2><p>Search by a dish name, flavour or menu group. Your menu is still here—just waiting for a different word.</p></div>}
+        <div className="menu-card-grid">{visibleItems.map(({ dish, chapter }) => { const price = zomatoDishPrices[dish]; return <article className="menu-dish-card" key={`${chapter.slug}-${dish}`}><p className="menu-dish-card__meta">100% pure veg · {chapter.title}</p><div><h2>{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>Zomato menu price</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? "Price not listed" : "Display only"}</span></footer></article>; })}</div>
       </section>
       <section className="menu-page-closing section-pad"><div><p className="eyebrow eyebrow--light">Freeze the happiness</p><h2>Find your<br /><i>table mood.</i></h2></div><div className="menu-page-closing__actions"><a className="button button--cream" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><Link className="text-action text-action--cream" href="/">Back to home <ArrowDownRight size={16} /></Link></div></section>
     </main>

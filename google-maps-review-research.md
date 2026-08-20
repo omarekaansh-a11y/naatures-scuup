@@ -34,3 +34,13 @@ The set below follows the user’s requested selection rule: the six highest vis
 | nandani riyaa | 9 | 5 | “The dosa of this shop is my favourite i always came here just for dosa. Visit this place if u want to eat south India” |
 
 All six reviews were collected from the same [public Google Maps listing](https://www.google.com/maps/place/Naatures+Scoop/@26.4623472,80.3597621,17z/data=!4m8!3m7!1s0x399c47516510d649:0xbf89e3c0bec00bca!8m2!3d26.4623472!4d80.3597621!9m1!1b1!16s%2Fg%2F11c7sr345f?hl=en). The 3-star Food_milai_jodi review is retained because the selection rule is reviewer review count, not rating; it must not be omitted, rewritten, or represented as positive feedback.
+
+## Positive-only replacement selection — 20 August 2026
+
+Following the owner’s instruction to publish only positive reviews, the 3-star Food_milai_jodi review is removed from the website. It is replaced by the next eligible positive reviewer observed in the same public review panel:
+
+| Reviewer | Visible review count | Rating | Public review wording |
+|---|---:|---:|---|
+| Manshi Pandey | 3 | 5 | “Nature’s Scuup is at Mallroad chauraha . You can go to this place if your are looking for some small family gathering or a hangout with friends . It has a nice sitting arrangement. The staff is really friendly and polite . . Now coming to the food I would like to recommend you to try out their . 🍝 Green Pasta : It was rich in taste and creamy . There was a good amount of veggies in it and a plus point it was so nutritious as the sauce was made of Spinach and there was no added colour to it . The pasta did not have any smell of spinach or the taste of it it was perfectly amalgamated with with the pasta . . Recommendation : A must try ! They give it with a seasoned bread . . Price : ₹240/- . 🍲 Chilli Paneer & Singapuri Noodles : I loved the spicy flavour of the chilli paneer gravy which was perfectly gelling up with the not so spicy singapuri noodles . You should really order this as a combo to derive a perfect pleasure of taste . . Recommendation : Yassssss ! Zabardast tha . Price : chilli paneer - ₹ 240/- Singapuri noodles - ₹170/- . Apart from this you can really go and check out their wide Icecream range . The Garlic Naan is a must try with some Paneer Labadar and Dahi bade . . . You can swipe right for the full video of the menu and some drooling dishes like : Chilli Paneer , Singapuri Noodles , Italian Pasta Pizza , Garlic Naan , Paneer Labadar , Dahi bada , Gobhi Manchurian , Dahi Kabab , Bombay Bachelor Sandwich , Dahi cheese kabab roll , chilli paneer Dosa and Fried Icecream 😍 .” |
+
+The website will retain exactly six authentic, all-positive Google Maps reviews. Review text is only previewed or expanded; it is not rewritten.

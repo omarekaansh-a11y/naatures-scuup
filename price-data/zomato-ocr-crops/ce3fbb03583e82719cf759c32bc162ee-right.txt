@@ -1,0 +1,22 @@
+Soup tas
+Cream of Tomato Soup 70 100
+Hot & Sour Soup 80 100
+Manchow Soup 80 120 |
+Veg. Corn Soup 70 6410 —
+Clear Soup 50 80
+Maggi
+Maggi Normal 100
+Maggi Vegetable 120
+Maggi Paneer 140
+Maggi Mushroom 140
+Sizzler
+Veg. Sizzler 300
+Punjabi Sizzler 320
+South Indian
+Plain Dosa 100
+Masala Dosa i120
+Paneer Dosa 150
+Rawa Masala Dosa 150
+Uttapam =
+
+| _—

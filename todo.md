@@ -52,3 +52,11 @@
 - [x] Add unique route titles, descriptions, social sharing metadata, and robots.txt.
 - [x] Implement the six verified Google Maps reviews without fabricating or altering review content.
 - [x] Validate external links, mobile behavior, metadata, reviews, and production build; then save a checkpoint.
+
+# Zomato Pricing and Card-Layout Refinement Checklist
+
+- [x] Recover publicly visible Zomato prices and reconcile exact matches against all displayed dishes without estimating unavailable values.
+- [x] Source a genuine positive Google Maps review to replace the existing 3-star review while retaining six authentic reviews.
+- [x] Rework the menu into a responsive display-only dish-card grid with price visibility and no ordering controls.
+- [x] Rework the review area into a compact social-proof card grid inspired by the supplied reference.
+- [x] Verify search, filtering, price sorting, review accuracy, and responsive layout; then save a checkpoint.
