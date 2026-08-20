@@ -172,7 +172,7 @@ export default function Home() {
             </p>
             <div className="hero-actions reveal-up delay-4">
               <a className="button button--cream" href="tel:+917860880088">
-                Call to order <ArrowDownRight size={17} />
+                Call 078608 80088 <ArrowDownRight size={17} />
               </a>
               <button className="text-action" type="button" onClick={() => goTo("#menu-index")}>
                 Explore the menu <ArrowRight size={17} />
@@ -288,6 +288,7 @@ export default function Home() {
                 <p className="eyebrow eyebrow--maroon">{selected.note}</p>
                 <p>{selected.detail}</p>
                 <a href="tel:+917860880088" className="inline-link">Call to order <Phone size={15} /></a>
+                <span className="menu-call-note">078608 80088</span>
               </div>
             </aside>
           </div>
@@ -335,6 +336,11 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      <nav className="mobile-order-dock" aria-label="Quick restaurant actions">
+        <a href="tel:+917860880088"><Phone size={16} /> Call to order</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer"><MapPin size={16} /> Directions</a>
+      </nav>
 
       <footer className="site-footer">
         <div className="footer-top">

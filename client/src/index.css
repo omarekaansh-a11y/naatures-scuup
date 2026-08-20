@@ -158,3 +158,14 @@ h2 { font-size: clamp(58px, 7.5vw, 112px); color: var(--maroon-deep); }
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 1ms !important; } }
+
+/* Refinement layer — preserve Mall Road Monograph while making the next conversion step unmistakable. */
+.menu-call-note { display: block; margin-top: 8px; color: rgb(244 240 232 / 53%); font-size: 9px; font-weight: 800; letter-spacing: .13em; }
+.mobile-order-dock { display: none; }
+
+@media (max-width: 640px) {
+  .mobile-order-dock { position: fixed; z-index: 30; right: 12px; left: 12px; bottom: 12px; display: grid; grid-template-columns: 1.2fr .8fr; border: 1px solid rgb(244 240 232 / 20%); background: rgb(53 16 26 / 95%); color: var(--cream); box-shadow: 0 11px 30px rgb(33 24 26 / 30%); backdrop-filter: blur(12px); }
+  .mobile-order-dock a { min-height: 49px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  .mobile-order-dock a + a { border-left: 1px solid rgb(244 240 232 / 20%); color: var(--mango); }
+  .site-footer { padding-bottom: 88px; }
+}
