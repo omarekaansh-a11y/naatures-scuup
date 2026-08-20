@@ -5,10 +5,10 @@
  */
 import { useEffect, useState } from "react";
 import {
+  AtSign,
   ArrowDownRight,
   ArrowRight,
   ChevronRight,
-  Instagram,
   MapPin,
   Menu as MenuIcon,
   Sparkles,
@@ -218,7 +218,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="footer-top"><p className="footer-signoff">A little more appetite<br />is always a good idea.</p><div className="footer-identity"><img src={ownerLogo} alt="Naatures Scuup — Freeze the happiness" /><p>126, The Mall Road<br />Kanpur, Uttar Pradesh</p></div></div>
-        <div className="footer-bottom"><div className="footer-contact"><span>078608 80088</span><a className="footer-social" href="https://www.facebook.com/naaturesscuup/" target="_blank" rel="noreferrer"><Instagram size={14} /> @naaturesscuup</a></div><p>Multi-cuisine vegetarian dining &amp; desserts in Kanpur.</p><p>© {new Date().getFullYear()} Naatures Scuup</p></div>
+        <div className="footer-bottom"><div className="footer-contact"><span>078608 80088</span><a className="footer-social" href="https://www.facebook.com/naaturesscuup/" target="_blank" rel="noreferrer"><AtSign size={14} /> @naaturesscuup</a></div><p>Multi-cuisine vegetarian dining &amp; desserts in Kanpur.</p><p>© {new Date().getFullYear()} Naatures Scuup</p></div>
       </footer>
     </div>
   );
