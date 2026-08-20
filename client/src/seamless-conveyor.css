@@ -14,7 +14,10 @@
   gap: clamp(54px, 9vw, 155px);
 }
 
-.drag-it-copy { max-width: 390px; }
+/* Mall Road Monograph: the dog is a fine-line, interactive café companion; its cue is playful but secondary to the food cards. */
+.drag-it-copy { position: relative; max-width: 390px; }
+
+.drag-it-mascot-wrap { position: relative; display: inline-flex; align-items: flex-start; }
 
 .drag-it-mascot {
   display: block;
@@ -36,6 +39,43 @@
   line-height: 0;
 }
 
+.dog-greeting-tooltip {
+  position: absolute;
+  top: 14px;
+  left: 184px;
+  z-index: 2;
+  width: max-content;
+  max-width: 142px;
+  padding: 8px 10px;
+  border: 1px solid rgb(244 240 232 / 42%);
+  background: rgb(63 10 22 / 92%);
+  box-shadow: 0 8px 22px rgb(9 2 5 / 18%);
+  color: var(--cream);
+  font-family: Manrope, sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .045em;
+  line-height: 1;
+  pointer-events: none;
+  transform: rotate(-2deg);
+  animation: dog-tooltip-float 3.8s ease-in-out infinite;
+}
+
+.dog-greeting-tooltip::before {
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 1px solid rgb(244 240 232 / 42%);
+  border-left: 1px solid rgb(244 240 232 / 42%);
+  background: rgb(63 10 22 / 92%);
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.dog-greeting-tooltip--replying { animation: dog-tooltip-reply 1.08s cubic-bezier(.2, .8, .25, 1) both; }
+
 .drag-it-mascot-button:focus-visible { outline: 2px solid var(--mango); outline-offset: 7px; border-radius: 6px; }
 .drag-it-mascot-button:hover .dog-head { transform: rotate(2.4deg) translateY(-1px); }
 .drag-it-mascot-button:hover .dog-tail { transform: rotate(5deg); }
@@ -47,7 +87,7 @@
 .dog-head, .dog-ear, .dog-body { transform-origin: 92px 82px; animation: dog-nod 5.8s cubic-bezier(.45, 0, .55, 1) infinite; }
 .dog-ear { animation-delay: -0.18s; }
 .dog-body { animation-delay: -0.32s; }
-.dog-tail { transform-origin: 73px 129px; animation: dog-tail 4.7s ease-in-out infinite; }
+.dog-tail { transform-box: view-box; transform-origin: 87px 120px; animation: dog-tail 4.7s ease-in-out infinite; }
 .dog-steam { animation: dog-steam 2.8s ease-in-out infinite; }
 .dog-steam--two { animation-delay: -1.15s; }
 
@@ -58,6 +98,8 @@
 @keyframes dog-greet-ear { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-9deg) translate(-2px, -1px); } 58% { transform: rotate(4deg); } }
 @keyframes dog-greet-tail { 0%, 100% { transform: rotate(-1deg); } 22% { transform: rotate(10deg); } 44% { transform: rotate(-8deg); } 65% { transform: rotate(7deg); } 82% { transform: rotate(-3deg); } }
 @keyframes dog-greet-steam { 0%, 100% { opacity: .6; transform: translateY(2px); } 45% { opacity: 1; transform: translateY(-7px) rotate(4deg); } }
+@keyframes dog-tooltip-float { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-4px) rotate(-2deg); } }
+@keyframes dog-tooltip-reply { 0%, 100% { transform: translateY(0) rotate(-2deg); } 32% { transform: translateY(-6px) rotate(1deg) scale(1.03); } 64% { transform: translateY(1px) rotate(-3deg); } }
 
 .drag-it-eyebrow,
 .drag-it-signature,
@@ -157,6 +199,7 @@
   .drag-it-layout { grid-template-columns: 1fr; gap: 52px; }
   .drag-it-copy { max-width: 410px; }
   .drag-it-mascot { width: 194px; margin-bottom: 15px; }
+  .dog-greeting-tooltip { top: 10px; left: 153px; max-width: 128px; padding: 7px 9px; font-size: 7.5px; }
   .drag-it-copy h2 { font-size: clamp(58px, 17vw, 78px); }
   .drag-it-body { margin-top: 24px; font-size: 13px; }
   .drag-it-playground { width: 100%; justify-self: stretch; }
@@ -176,6 +219,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dog-head, .dog-ear, .dog-body, .dog-tail, .dog-steam, .drag-it-hint svg { animation: none; }
+  .dog-head, .dog-ear, .dog-body, .dog-tail, .dog-steam, .dog-greeting-tooltip, .drag-it-hint svg { animation: none; }
   .drag-it-card { transition: none !important; }
 }

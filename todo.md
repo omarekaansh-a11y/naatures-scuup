@@ -234,6 +234,16 @@
 
 > Responsive visual check: the enlarged café dog holds clear visual presence beside the stack on desktop and remains comfortably proportioned above the card experience on mobile, without collapsing the editorial spacing.
 
+# Mascot Polish and Greeting Tooltip Pass
+
+- [x] Repair the dog-tail path so it joins the body as one continuous visible illustration.
+- [x] Add a brief playful tooltip that invites visitors to greet the dog.
+- [x] Confirm the refined mascot and tooltip remain balanced on desktop and mobile, then save a checkpoint.
+
+> Desktop visual check: the tail now begins at the body’s existing lower contour, creating a single uninterrupted visible line. The “Psst… greet me” cue sits beside the dog’s head as a small playful callout while keeping the card stack dominant.
+
+> Mobile visual check: the callout remains legible beside the larger dog, and the refined tail reads as a continuous stroke without collapsing the portrait-card composition.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.

@@ -54,7 +54,7 @@ function DogMascot() {
         <path className="dog-front-leg" d="M91 100c-1 13 1 24 8 33M114 105c-1 11 1 19 7 27" />
         <path className="dog-paw" d="M94 132c7 4 14 4 20-1M118 130c7 4 12 4 17 0" />
         <path d="M86 110c-8 2-11 10-7 16M106 112c5 4 7 10 4 15" />
-        <path className="dog-tail" d="M82 129c-9 4-17 3-23-1M83 134c-7 7-15 10-24 8" />
+        <path className="dog-tail" d="M87 120c-11 2-18 9-17 16-8 3-15 1-21-5" />
       </g>
     </svg>
   );
@@ -261,14 +261,19 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     <section id="food-canvas" className="drag-it-section" aria-labelledby="drag-it-title">
       <div className="drag-it-layout section-pad">
         <div className="drag-it-copy">
-          <button
-            type="button"
-            className={`drag-it-mascot-button ${dogReacting ? "drag-it-mascot-button--reacting" : ""}`}
-            onClick={greetDog}
-            aria-label="Greet the Naatures Scuup café dog"
-          >
-            <DogMascot />
-          </button>
+          <div className="drag-it-mascot-wrap">
+            <button
+              type="button"
+              className={`drag-it-mascot-button ${dogReacting ? "drag-it-mascot-button--reacting" : ""}`}
+              onClick={greetDog}
+              aria-label="Greet the Naatures Scuup café dog"
+            >
+              <DogMascot />
+            </button>
+            <span className={`dog-greeting-tooltip ${dogReacting ? "dog-greeting-tooltip--replying" : ""}`} aria-hidden="true">
+              {dogReacting ? "Hello, friend." : "Psst… greet me"}
+            </span>
+          </div>
           <p className="drag-it-eyebrow">04 / The food edit</p>
           <h2 id="drag-it-title">Drag into<br /><i>the good bits.</i></h2>
           <p className="drag-it-body">A small stack of real table moments from Naatures Scuup. Pull a card aside to find the next craving.</p>
