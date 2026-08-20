@@ -1,9 +1,10 @@
 /**
  * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
  * Authentic restaurant photography leads in the foreground; approved background treatment only.
- * Display-only service: discovery, menu browsing, location, and brand story — never ordering or reservations.
+ * Original tactile food canvas extends the display-only discovery journey — never ordering, reservations, or copied layouts.
  */
 import { useEffect, useState } from "react";
+import { DragFoodCanvas } from "@/components/DragFoodCanvas";
 import {
   AtSign,
   ArrowDownRight,
@@ -16,7 +17,7 @@ import {
   X,
 } from "lucide-react";
 
-const ownerLogo = "/manus-storage/naatures-scuup-owner-logo_ffd775f3.jpg";
+const ownerLogo = "/manus-storage/naatures-scuup-logo-repaired_2ae03ab9.png";
 const authenticImages = {
   pizza: "/manus-storage/NS1_10e3ab35.png",
   iceCreamCup: "/manus-storage/NS2_17e883c9.png",
@@ -26,6 +27,16 @@ const authenticImages = {
   pastaGreen: "/manus-storage/Screenshot(108)_6acee474.png",
   iceCreamCounter: "/manus-storage/Screenshot(106)_f7d47076.png",
 } as const;
+
+const foodCanvasItems = [
+  { src: authenticImages.pizza, label: "Pizza", note: "The share plate", alt: "Restaurant pizza with a chilled drink" },
+  { src: authenticImages.kababs, label: "Kababs", note: "The first pass", alt: "Restaurant-made kababs with onion rings and garnish" },
+  { src: authenticImages.pastaRed, label: "Pasta", note: "The comfort bowl", alt: "Restaurant pasta topped with herbs and cream sauce" },
+  { src: authenticImages.starterPlate, label: "Starters", note: "Crisp at the centre", alt: "Crisp restaurant starter served with garnish" },
+  { src: authenticImages.pastaGreen, label: "Pasta", note: "A bright plate", alt: "Creamy green pasta with olives and garlic bread" },
+  { src: authenticImages.iceCreamCup, label: "Scoops", note: "Make room", alt: "Scoops of ice cream in Naatures Scuup cups" },
+  { src: authenticImages.iceCreamCounter, label: "Counter", note: "The last stop", alt: "Two bright scoops of ice cream served at the restaurant counter" },
+] as const;
 
 const menuChapters = [
   {
@@ -228,6 +239,8 @@ export default function Home() {
             <figure className="gallery-card gallery-card--icecream"><img src={authenticImages.iceCreamCup} alt="Scoops of ice cream in Naatures Scuup cups" loading="lazy" /></figure>
           </div>
         </section>
+
+        <DragFoodCanvas items={foodCanvasItems} />
 
         <section id="location" className="location-section section-pad" aria-labelledby="location-title">
           <div className="location-map-art" aria-hidden="true"><span className="map-road map-road--one" /><span className="map-road map-road--two" /><span className="map-road map-road--three" /><span className="map-marker"><MapPin size={22} fill="currentColor" /> <b>Naatures Scuup</b></span><span className="map-label map-label--one">Mall Road</span><span className="map-label map-label--two">Kanpur</span><span className="map-label map-label--three">The Mall</span></div>
