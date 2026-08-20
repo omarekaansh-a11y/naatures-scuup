@@ -67,3 +67,7 @@ Owner-supplied restaurant photography is the foreground visual evidence across t
 The Full Menu is an editorial craving atlas rather than a static catalogue. Every chapter carries a small appetite cue through a named table mood and a mango or fennel scoop-stamp; the craving ribbon appears before the menu chapters as a second, recognisable navigation rhythm. The two available public Swiggy restaurant images are reserved for their relevant Pizza & Pasta and Ice Creams chapters, never repeated.
 
 Google Maps reviews use a short verbatim preview first, with the complete public wording available on demand. This preserves review authenticity while preventing dense customer proof from dominating the food-led page rhythm.
+
+The Full Menu will maintain fast all-item browsing while restoring an editorial atlas rhythm: in recommended all-item view, each category begins with its numbered chapter heading, appetite-led table mood, and a scoop-stamp fact before the compact dish cards. This visual cadence deliberately interrupts long catalogue runs without removing category, search, or price-sort utility.
+
+Outlined display type is a selective emotional accent rather than the default hierarchy. Filled Cormorant Garamond remains the primary reading voice; outline-and-italic pairings are reserved for short, memorable phrases and introduced words in the homepage and menu experience.

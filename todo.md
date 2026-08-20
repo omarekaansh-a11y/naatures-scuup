@@ -67,3 +67,11 @@
 - [x] Add a vertical page-switch animation and reset each destination route to its top position.
 - [x] Add an accessible header back-to-top control with appropriate scroll-state behavior.
 - [ ] Validate the route transition, top reset, control behavior, and compact menu flow; then save a checkpoint.
+
+# Motion, Conveyor, and Title Refinement Checklist
+
+- [x] Convert the menu category strip into a pauseable infinite conveyor that preserves accessible category selection.
+- [x] Add a restrained route-loading layer and scroll-reveal animation with reduced-motion support.
+- [x] Remove the two specified menu phrases and add #FREEZETHEHAPPINESS to all five FAQ answers.
+- [x] Refine display titles with an original outline-and-italic editorial system.
+- [x] Validate the moving, loading, and reveal states at desktop and mobile widths; then save a checkpoint.
