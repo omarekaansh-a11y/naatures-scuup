@@ -128,3 +128,37 @@
 - [x] Confirm whether reviewer-name capitalization can be corrected without modifying published review wording.
 - [x] Remove the requested Full Menu dish-count line and category mood taglines.
 - [x] Validate desktop/mobile presentation and save the completed checkpoint.
+
+# Food Image Gutter and Title Color Correction Checklist
+
+- [ ] Inspect the food-card image framing that produces visible image-to-image gutters.
+- [ ] Remove the visual gutters while preserving distinct images, drag behavior, and image accessibility.
+- [ ] Correct the specified Home italic title color for reliable contrast.
+- [ ] Validate desktop and mobile presentation, then save a checkpoint.
+
+# Header Logo Crop and Slogan Stack Checklist
+
+- [ ] Inspect the supplied logo presentation and current name-and-slogan positioning.
+- [ ] Remove the logo background visually through non-destructive crop and fit styling.
+- [ ] Place #FREEZETHEHAPPINESS directly below Naatures Scuup in the header lockup.
+- [ ] Validate Home and Full Menu headers at desktop and mobile widths, then save a checkpoint.
+
+# Reference-Aligned Food Conveyor Checklist
+
+- [x] Analyze the supplied conveyor-belt reference for motion speed, image rhythm, and direct-manipulation cues.
+- [x] Refine the food-strip framing and repeated-motion behavior to match the reference’s continuous visual rhythm.
+- [ ] Preserve accessible drag, touch, and keyboard use while removing any residual transition artifacts.
+- [x] Correct the shared header logo crop and placement directly from the current rendered treatment.
+- [ ] Validate desktop/mobile presentation against the reference, then save a checkpoint.
+
+> Desktop verification note: the header owner mark now renders without the prior white rectangular field, and the Home rail uses centered 2:3 food cards, a 20px visual cadence, image-overlay captions, and side chevrons.
+
+# New Drag-Strip Reference Alignment Checklist
+
+- [x] Analyze `1000142172.mp4` for the exact card composition, movement model, and control treatment.
+- [x] Transform the Home draggable strip to match the new reference without adding generated foreground food imagery.
+- [x] Reproduce the approved dog interaction element from the new recording as part of the Home drag strip.
+- [x] Preserve direct drag, touch, keyboard access, and the corrected transparent header logo treatment.
+- [x] Validate desktop/mobile rendering and production build, then save the updated checkpoint.
+
+> Visual validation note: desktop and mobile now present the intended deep-maroon split composition, a line-art beret dog with subtle steam movement, layered portrait food cards, clear drag guidance, and compact previous/next controls.

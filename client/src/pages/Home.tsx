@@ -26,13 +26,13 @@ const authenticImages = {
 } as const;
 
 const foodCanvasItems = [
-  { src: authenticImages.pizza, label: "Pizza", note: "The share plate", alt: "Restaurant pizza with a chilled drink" },
-  { src: authenticImages.kababs, label: "Kababs", note: "The first pass", alt: "Restaurant-made kababs with onion rings and garnish" },
-  { src: authenticImages.pastaRed, label: "Pasta", note: "The comfort bowl", alt: "Restaurant pasta topped with herbs and cream sauce" },
-  { src: authenticImages.starterPlate, label: "Starters", note: "Crisp at the centre", alt: "Crisp restaurant starter served with garnish" },
-  { src: authenticImages.pastaGreen, label: "Pasta", note: "A bright plate", alt: "Creamy green pasta with olives and garlic bread" },
-  { src: authenticImages.iceCreamCup, label: "Scoops", note: "Make room", alt: "Scoops of ice cream in Naatures Scuup cups" },
-  { src: authenticImages.iceCreamCounter, label: "Counter", note: "The last stop", alt: "Two bright scoops of ice cream served at the restaurant counter" },
+  { src: authenticImages.pizza, tag: "PIZZA", label: "Pizza", note: "The share plate", alt: "Restaurant pizza with a chilled drink" },
+  { src: authenticImages.kababs, tag: "STARTERS", label: "Kababs", note: "The first pass", alt: "Restaurant-made kababs with onion rings and garnish" },
+  { src: authenticImages.pastaRed, tag: "PASTA", label: "Pasta", note: "The comfort bowl", alt: "Restaurant pasta topped with herbs and cream sauce" },
+  { src: authenticImages.starterPlate, tag: "SNACKS", label: "Starters", note: "Crisp at the centre", alt: "Crisp restaurant starter served with garnish" },
+  { src: authenticImages.pastaGreen, tag: "PASTA", label: "Pasta", note: "A bright plate", alt: "Creamy green pasta with olives and garlic bread" },
+  { src: authenticImages.iceCreamCup, tag: "ICE CREAM", label: "Scoops", note: "Make room", alt: "Scoops of ice cream in Naatures Scuup cups" },
+  { src: authenticImages.iceCreamCounter, tag: "DESSERTS", label: "Counter", note: "The last stop", alt: "Two bright scoops of ice cream served at the restaurant counter" },
 ] as const;
 
 function scrollToId(id: string) {

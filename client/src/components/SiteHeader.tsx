@@ -6,7 +6,7 @@ import { ArrowUp, Menu as MenuIcon, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 
-const ownerLogo = "/manus-storage/naatures-scuup-logo-repaired_2ae03ab9.png";
+const ownerLogo = "/manus-storage/naatures-scuup-logo-transparent_7cd2ca72.png";
 
 export function SiteHeader({ paper = false }: { paper?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,13 +27,22 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
     { index: "02", label: "Full Menu", href: "/menu" },
   ];
 
-  return (
-    <>
-      <header className={`site-header site-header--hamburger ${(paper || isScrolled) ? "site-header--scrolled" : ""}`}>
-        <Link className="brand-logo-link" href="/" aria-label="Naatures Scuup home" onClick={closeMenu}>
-          <img className="brand-logo" src={ownerLogo} alt="Naatures Scuup — Freeze the happiness" />
-          <span className="brand-text"><strong>Naatures Scuup</strong><small>#FREEZETHEHAPPINESS</small></span>
-        </Link>
+	  return (
+	    <>
+	      <header className={`site-header site-header--hamburger ${(paper || isScrolled) ? "site-header--scrolled" : ""}`}>
+	        <Link className="brand-logo-link" href="/" aria-label="Naatures Scuup home" onClick={closeMenu}>
+	          <span className="brand-logo-crop" aria-hidden="true">
+	            <svg className="brand-logo" viewBox="0 0 1920 1920" preserveAspectRatio="xMidYMid slice">
+	              <defs>
+	                <filter id="owner-logo-white-knockout" colorInterpolationFilters="sRGB">
+	                  <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1.6 -1.6 -1.6 0 4.6" />
+	                </filter>
+	              </defs>
+	              <image href={ownerLogo} width="1920" height="1920" preserveAspectRatio="xMidYMid slice" filter="url(#owner-logo-white-knockout)" />
+	            </svg>
+	          </span>
+	          <span className="brand-text"><strong>Naatures Scuup</strong><small>#FREEZETHEHAPPINESS</small></span>
+	        </Link>
         <div className="site-header-actions">
           <button className={`site-top-control ${isScrolled ? "site-top-control--active" : ""}`} type="button" onClick={returnToTop} disabled={!isScrolled} aria-label="Return to the top of this page"><span>Top</span><ArrowUp size={15} strokeWidth={1.9} /></button>
           <button className="site-menu-toggle" type="button" aria-label={isOpen ? "Close site menu" : "Open site menu"} aria-expanded={isOpen} aria-controls="site-navigation" onClick={() => setIsOpen((open) => !open)}>
