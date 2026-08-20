@@ -1,6 +1,6 @@
 /**
  * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
- * Food leads; maroon, cream, fennel green; asymmetric vertical tasting journey; quiet motion.
+ * Authentic restaurant photography leads in the foreground; approved background treatment only.
  * Display-only service: discovery, menu browsing, location, and brand story — never ordering or reservations.
  */
 import { useEffect, useState } from "react";
@@ -17,6 +17,15 @@ import {
 } from "lucide-react";
 
 const ownerLogo = "/manus-storage/naatures-scuup-owner-logo_ffd775f3.jpg";
+const authenticImages = {
+  pizza: "/manus-storage/NS1_10e3ab35.png",
+  iceCreamCup: "/manus-storage/NS2_17e883c9.png",
+  starterPlate: "/manus-storage/NS3_a099f388.png",
+  kababs: "/manus-storage/Screenshot(107)_33b7f867.png",
+  pastaRed: "/manus-storage/Screenshot(109)_b4ce8442.png",
+  pastaGreen: "/manus-storage/Screenshot(108)_6acee474.png",
+  iceCreamCounter: "/manus-storage/Screenshot(106)_f7d47076.png",
+} as const;
 
 const menuChapters = [
   {
@@ -180,7 +189,7 @@ export default function Home() {
               <p className="body-large">The table can move from a crisp dosa to a hot pizza, from a cool shake to something sweet. Naatures Scuup brings together familiar favourites for every kind of gathering.</p>
               <button className="inline-link" type="button" onClick={() => goTo("#location")}>Discover Mall Road <ChevronRight size={17} /></button>
             </div>
-            <figure className="story-image image-frame image-frame--tall"><img src="/manus-storage/naatures-scuup-dosa_99a20908.jpg" alt="Crisp masala dosa with chutneys" /><figcaption>Made for the long lunch and the quick catch-up.</figcaption></figure>
+            <figure className="story-image image-frame image-frame--tall"><img src={authenticImages.kababs} alt="Restaurant-made kababs with onion rings and garnish" /><figcaption>Made for the long lunch and the quick catch-up.</figcaption></figure>
             <div className="story-stamp" aria-label="One place every craving"><span>One place</span><Sparkles size={18} /><span>Every craving</span></div>
           </div>
         </section>
@@ -188,8 +197,8 @@ export default function Home() {
         <section id="experience" className="experience-section">
           <div className="experience-header section-pad"><p className="eyebrow eyebrow--light">02 / Choose your chapter</p><div><h2>However the table<br />feels <i>today.</i></h2><p>Start savoury. Finish sweet. Follow the appetite wherever it goes.</p></div></div>
           <div className="experience-composition">
-            <figure className="experience-image experience-image--primary"><img src="/manus-storage/naatures-scuup-live-ice-cream_e00c391b.jpg" alt="Live ice cream rolls with chocolate and colourful toppings" loading="lazy" /></figure>
-            <article className="experience-words"><p className="eyebrow eyebrow--cream">The sweet finish</p><h3>Made live.<br /><i>Made memorable.</i></h3><p>Fruit-forward flavours, favourite classics and a little theatre from the ice cream counter.</p><button className="text-action text-action--cream" type="button" onClick={() => { setActiveCategory(8); goTo("#menu-index"); }}>See ice cream flavours <ArrowRight size={17} /></button></article>
+            <figure className="experience-image experience-image--primary"><img src={authenticImages.iceCreamCounter} alt="Two bright scoops of ice cream served at the restaurant counter" loading="lazy" /></figure>
+            <article className="experience-words"><p className="eyebrow eyebrow--cream">The sweet finish</p><h3>Made to linger.<br /><i>Made memorable.</i></h3><p>Favourite flavours, familiar classics and a sweet reason to leave room for a second scoop.</p><button className="text-action text-action--cream" type="button" onClick={() => { setActiveCategory(8); goTo("#menu-index"); }}>See ice cream flavours <ArrowRight size={17} /></button></article>
             <div className="experience-aside"><span>Save room</span><span>09 / 10</span></div>
           </div>
         </section>
@@ -208,11 +217,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="pasta-section"><div className="pasta-copy"><p className="eyebrow eyebrow--light">A table for every appetite</p><h2>From hot plates<br />to <i>cold scoops.</i></h2><p>Explore pizza, pasta, warm snacks and the favourites that keep a long table happy.</p><button className="button button--cream" type="button" onClick={() => { setActiveCategory(6); goTo("#menu-index"); }}>Explore pizza &amp; pasta <ArrowDownRight size={17} /></button></div><figure className="pasta-image"><img src="/manus-storage/naatures-scuup-pizza-pasta_b0a49e06.jpg" alt="Vegetarian pizza, pasta and a refreshing mojito" loading="lazy" /></figure></section>
+        <section className="pasta-section"><div className="pasta-copy"><p className="eyebrow eyebrow--light">A table for every appetite</p><h2>From hot plates<br />to <i>cold scoops.</i></h2><p>Explore pizza, pasta, warm snacks and the favourites that keep a long table happy.</p><button className="button button--cream" type="button" onClick={() => { setActiveCategory(6); goTo("#menu-index"); }}>Explore pizza &amp; pasta <ArrowDownRight size={17} /></button></div><figure className="pasta-image"><img src={authenticImages.pastaRed} alt="Restaurant pasta topped with herbs and cream sauce" loading="lazy" /></figure></section>
+
+        <section className="authentic-gallery section-pad" aria-labelledby="gallery-title">
+          <div className="gallery-heading"><p className="eyebrow eyebrow--maroon">04 / From the table</p><h2 id="gallery-title">The real<br /><i>cravings.</i></h2><p>Food photographed at Naatures Scuup, from starters and pasta to pizza and ice cream.</p></div>
+          <div className="gallery-grid">
+            <figure className="gallery-card gallery-card--pizza"><img src={authenticImages.pizza} alt="Restaurant pizza with a chilled drink" loading="lazy" /></figure>
+            <figure className="gallery-card gallery-card--pasta"><img src={authenticImages.pastaGreen} alt="Creamy green pasta with olives and garlic bread" loading="lazy" /></figure>
+            <figure className="gallery-card gallery-card--starter"><img src={authenticImages.starterPlate} alt="Crisp restaurant starter served with garnish" loading="lazy" /></figure>
+            <figure className="gallery-card gallery-card--icecream"><img src={authenticImages.iceCreamCup} alt="Scoops of ice cream in Naatures Scuup cups" loading="lazy" /></figure>
+          </div>
+        </section>
 
         <section id="location" className="location-section section-pad" aria-labelledby="location-title">
           <div className="location-map-art" aria-hidden="true"><span className="map-road map-road--one" /><span className="map-road map-road--two" /><span className="map-road map-road--three" /><span className="map-marker"><MapPin size={22} fill="currentColor" /> <b>Naatures Scuup</b></span><span className="map-label map-label--one">Mall Road</span><span className="map-label map-label--two">Kanpur</span><span className="map-label map-label--three">The Mall</span></div>
-          <div className="location-content"><p className="eyebrow eyebrow--maroon">04 / Make your way over</p><h2 id="location-title">Meet us on<br /><i>Mall Road.</i></h2><p className="location-address">The Mall, 126, The Mall Rd,<br />Mirpur, Kanpur, Uttar Pradesh 208004</p><div className="location-actions"><a className="button button--maroon" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><p className="location-phone">078608 80088</p></div><div className="location-facts"><span><Star size={14} fill="currentColor" /> 4.0 on Google</span><span>Vegetarian</span><span>₹200–₹400</span></div></div>
+          <div className="location-content"><p className="eyebrow eyebrow--maroon">05 / Make your way over</p><h2 id="location-title">Meet us on<br /><i>Mall Road.</i></h2><p className="location-address">The Mall, 126, The Mall Rd,<br />Mirpur, Kanpur, Uttar Pradesh 208004</p><div className="location-actions"><a className="button button--maroon" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><p className="location-phone">078608 80088</p></div><div className="location-facts"><span><Star size={14} fill="currentColor" /> 4.0 on Google</span><span>Vegetarian</span><span>₹200–₹400</span></div></div>
         </section>
       </main>
 

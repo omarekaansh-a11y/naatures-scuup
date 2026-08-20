@@ -1,7 +1,6 @@
-# Display-Only Update Checklist
+# Authentic Restaurant Photography Update
 
-- [x] Upload and install the owner-supplied Naatures Scuup logo without recreating or altering it.
-- [x] Turn the supplied menu into a browsable, display-only menu presentation using verified categories and dishes.
-- [x] Remove all order, telephone-order, booking, and reservation actions from the page.
-- [x] Add the verified mobile number and social media handle to the footer.
-- [x] Revalidate desktop and mobile presentation, then save the updated checkpoint.
+- [x] Copy the seven owner-supplied restaurant images into the approved static-asset directory without reopening or altering them.
+- [x] Upload the supplied images for durable website use.
+- [x] Replace every foreground artificial food image with an appropriate supplied authentic photograph; retain only the current generated background treatment.
+- [x] Revalidate desktop and mobile image composition, then save the updated checkpoint.

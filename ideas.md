@@ -59,3 +59,5 @@ The owner-supplied official logo is mandatory when it is made available. It is c
 ## Style Decisions
 
 The build must remain original: it may use broad principles of premium editorial hospitality such as image-led storytelling, generous spacing, and subtle transitions, but it must not reproduce the reference site’s distinct visual identity, copyrighted content, or exact layout. The brand’s own Kanpur setting, multi-cuisine range, and vegetarian dining context drive the final site.
+
+Owner-supplied restaurant photography is the foreground visual evidence across the site. Generated imagery is retained only as the pre-approved background treatment; real food images use intentional crops, a gentle warm editorial veil, and a disciplined sequence rather than raw gallery presentation. The official owner logo is presented as a small authenticity mark, while Mall Road Maroon, warm rice paper, the typographic system, and the menu-chapter structure carry the premium identity. Fennel green and mango remain supporting chapter accents only.
