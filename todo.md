@@ -29,3 +29,10 @@
 - [x] Add or extend concise source-backed dish notes without inventing unavailable details.
 - [x] Verify all-item count, group counts, search, sort, and responsive presentation.
 - [ ] Save the validated 204-item menu revision.
+
+# Verified Price Sorting Checklist
+
+- [x] Recover publicly visible prices for the expanded 204-item menu without inferring missing values.
+- [x] Add price data and Price: low to high and Price: high to low to the display-only sort selector.
+- [x] Verify that price sorting changes the menu order correctly in All Items and a category view.
+- [x] Validate responsive controls and save the price-sorting revision.
