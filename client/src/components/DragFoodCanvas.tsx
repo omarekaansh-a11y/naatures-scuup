@@ -124,7 +124,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       setDogReacting(false);
       setShowGreetingCue(false);
       dogTimerRef.current = null;
-    }, 1080);
+    }, 1420);
   };
 
   const celebrateSwipe = () => {

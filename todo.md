@@ -272,6 +272,16 @@
 
 > Validation note: the committed-swipe branch now passes the happy-reaction flag unconditionally after its existing direction calculation. The desktop and mobile Home layouts remain visually unchanged outside the intended dog response, and type checking plus production build passed.
 
+# Enhanced Direct Dog Greeting Pass
+
+- [x] Increase the visible range and clarity of the direct dog-greeting animation.
+- [x] Preserve the restrained, non-looping nature of the interaction response.
+- [x] Validate the stronger greeting on desktop/mobile and save a checkpoint.
+
+> Interaction note: the direct greeting now reads as a single, visible hello—an elastic mascot bounce, fuller head-and-ear greeting, two blinks, a broad smile, a six-beat tail wag, and a higher steam flourish—before settling back into the existing quiet idle pose.
+
+> Responsive check: full-page desktop and 375px-wide mobile inspections retain the intended deep-maroon card-stack composition, clear café-dog silhouette, and non-overlapping tooltip location. Type checking and the production build also passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
