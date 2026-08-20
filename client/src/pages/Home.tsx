@@ -77,12 +77,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="experience-section experience-section--text">
-          <div className="experience-header section-pad"><p className="eyebrow eyebrow--light">From first plate to last scoop</p><motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.22 }} transition={{ duration: 0.48, ease: [0.23, 1, 0.32, 1] }}><h2 className="editorial-title editorial-title--light">However the table<br />feels <i>today.</i></h2><p>From crisp starters to a cool last scoop, follow the appetite wherever it goes.</p></motion.div></div>
-          <div className="experience-typographic section-pad"><p className="experience-large-word">Savour</p><motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.22 }} transition={{ duration: 0.48, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}><p className="eyebrow eyebrow--cream">The long-table mood</p><h3 className="editorial-title editorial-title--light">Made to linger.<br /><i>Made memorable.</i></h3><p>Familiar favourites, comforting plates and a sweet reason to leave room for a second scoop.</p><Link className="text-action text-action--cream" href="/menu#ice-creams">Explore the full menu <ArrowRight size={17} /></Link></motion.div><span>Kanpur<br />at the table</span></div>
-        </section>
-
         <DragFoodCanvas items={foodCanvasItems} />
+        <section className="food-menu-bridge" aria-label="Explore the full menu"><Link className="button button--cream" href="/menu">Explore the full menu <ArrowRight size={17} /></Link></section>
 
         <section id="ice-cream-destination" className="ice-cream-destination" aria-labelledby="ice-cream-destination-title">
           <div className="ice-cream-destination__image" role="img" aria-label="Editorial background showing a frozen dessert table" />

@@ -108,3 +108,9 @@
 - [ ] Create a unique background-only visual and build the display-only ice-cream destination section.
 - [ ] Link the section directly to the Ice Creams chapter in the Full Menu without adding ordering controls.
 - [ ] Validate desktop/mobile presentation and destination navigation, then save a checkpoint.
+
+# Home Experience Copy and Link Relocation Checklist
+
+- [x] Remove the “However the table feels today.” and “Made to linger. Made memorable.” copy blocks.
+- [x] Move the display-only Full Menu link to immediately follow the draggable food section.
+- [x] Validate the revised Home layout and Full Menu navigation at desktop and mobile widths, then save a checkpoint.
