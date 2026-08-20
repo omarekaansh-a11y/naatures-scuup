@@ -7,6 +7,9 @@ import { useMemo, useState } from "react";
 import { Link } from "wouter";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { MobileVisitDock } from "@/components/MobileVisitDock";
+import { RouteMeta } from "@/components/RouteMeta";
 import { menuChapters, menuItemCount } from "@/lib/menu-data";
 import { publicDishPrices } from "@/lib/menu-prices";
 
@@ -83,13 +86,15 @@ export default function MenuPage() {
     .map((chapter) => ({ ...chapter, dishes: sortDishes(chapter.dishes, sort) })), [activeGroup, normalizedQuery, sort]);
   const visibleItemCount = visibleChapters.reduce((count, chapter) => count + chapter.dishes.length, 0);
   return <div className="site-shell menu-page-shell">
+    <RouteMeta title="Full Digital Menu | Naatures Scuup, Kanpur" description="Browse all 204 vegetarian dishes at Naatures Scuup on Mall Road, Kanpur, with category browsing, search, and display-only price sorting." />
     <SiteHeader paper />
     <main className="menu-page" id="top">
       <style>{chapterStyles}</style>
       <style>{browserStyles}</style>
       <style>{priceBrowserStyles}</style>
       <section className="menu-page-hero section-pad" aria-labelledby="full-menu-title">
-        <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p>
+        <Breadcrumbs current="Full menu" />
+        <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p><p className="menu-brand-signature">#FREEZETHEHAPPINESS <span>·</span> Mall Road craving atlas</p>
         <div className="menu-page-hero__grid"><h1 id="full-menu-title">Full digital<br /><i>menu.</i></h1><div><p>Browse every dish by craving, then find the table mood that fits. This guide is made for reading, sharing and planning your Mall Road visit—not for ordering online.</p><span>{menuItemCount} listed dishes · Vegetarian multi-cuisine</span></div></div>
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
           <div className="menu-browser__bar" role="tablist" aria-label="Menu groups">
@@ -114,5 +119,6 @@ export default function MenuPage() {
       <section className="menu-page-closing section-pad"><div><p className="eyebrow eyebrow--light">Freeze the happiness</p><h2>Find your<br /><i>table mood.</i></h2></div><div className="menu-page-closing__actions"><a className="button button--cream" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><Link className="text-action text-action--cream" href="/">Back to home <ArrowDownRight size={16} /></Link></div></section>
     </main>
     <SiteFooter />
+    <MobileVisitDock />
   </div>;
 }

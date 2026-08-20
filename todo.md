@@ -42,3 +42,13 @@
 - [x] Identify and override the hero and list padding responsible for the two empty gaps.
 - [x] Verify the compact controls-to-ribbon-to-first-category flow on mobile and desktop.
 - [ ] Save the corrected layout revision.
+
+# Display-Only Trust, SEO, and Mobile Enhancement Checklist
+
+- [x] Audit existing navigation, metadata, mobile controls, map, and content sections against the requested enhancement list.
+- [x] Collect exactly six authentic eligible Google Maps reviews, retaining reviewer names, visible review counts, ratings, wording, and source links.
+- [x] Add a custom 404 page, breadcrumbs, useful internal links, a restaurant story section, five FAQs, and a response-time promise.
+- [x] Add above-fold and sticky mobile display-only CTAs for the menu and directions, plus a verified map/directions treatment.
+- [x] Add unique route titles, descriptions, social sharing metadata, and robots.txt.
+- [x] Implement the six verified Google Maps reviews without fabricating or altering review content.
+- [x] Validate external links, mobile behavior, metadata, reviews, and production build; then save a checkpoint.

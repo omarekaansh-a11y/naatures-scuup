@@ -16,7 +16,7 @@ export function SiteFooter() {
         <div className="footer-identity footer-identity--text">
           <p className="footer-title">Naatures Scuup</p>
           <p>126, The Mall Road<br />Kanpur, Uttar Pradesh</p>
-          <Link href="/menu">View full menu</Link>
+          <div className="footer-links"><Link href="/menu">View full menu</Link><Link href="/#reviews">Google Maps reviews</Link><Link href="/#faq">Visit FAQs</Link></div>
         </div>
       </div>
       <div className="footer-bottom">

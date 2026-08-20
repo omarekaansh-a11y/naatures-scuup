@@ -6,6 +6,9 @@
 import { ArrowDownRight, ArrowRight, ChevronRight, MapPin, Sparkles, Star } from "lucide-react";
 import { Link } from "wouter";
 import { DragFoodCanvas } from "@/components/DragFoodCanvas";
+import { GoogleReviews } from "@/components/GoogleReviews";
+import { MobileVisitDock } from "@/components/MobileVisitDock";
+import { RouteMeta } from "@/components/RouteMeta";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
@@ -36,6 +39,7 @@ function scrollToId(id: string) {
 export default function Home() {
   return (
     <div className="site-shell">
+      <RouteMeta title="Naatures Scuup | Vegetarian Restaurant on Mall Road, Kanpur" description="Explore the display-only digital menu for Naatures Scuup, a vegetarian multi-cuisine restaurant at 126, The Mall Road, Kanpur." />
       <SiteHeader />
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
@@ -48,7 +52,7 @@ export default function Home() {
             <p className="hero-copy reveal-up delay-3">South Indian favourites, pizza, Chinese, comfort snacks, shakes, desserts and ice cream—right in the heart of Kanpur.</p>
             <div className="hero-actions reveal-up delay-4">
               <Link className="button button--cream" href="/menu">View the full menu <ArrowDownRight size={17} /></Link>
-              <button className="text-action" type="button" onClick={() => scrollToId("#location")}>Find us on Mall Road <ArrowRight size={17} /></button>
+              <button className="text-action" type="button" onClick={() => scrollToId("#location")}>Directions to Mall Road <ArrowRight size={17} /></button>
             </div>
           </div>
           <div className="hero-trust reveal-up delay-4" aria-label="Restaurant information"><span><Star size={14} fill="currentColor" /> 4.0</span><span>819 Google reviews</span><span>₹200–₹400 per person</span></div>
@@ -77,12 +81,16 @@ export default function Home() {
 
         <DragFoodCanvas items={foodCanvasItems} />
 
+        <GoogleReviews />
+
         <section id="location" className="location-section section-pad" aria-labelledby="location-title">
-          <div className="location-map-art" aria-hidden="true"><span className="map-road map-road--one" /><span className="map-road map-road--two" /><span className="map-road map-road--three" /><span className="map-marker"><MapPin size={22} fill="currentColor" /> <b>Naatures Scuup</b></span><span className="map-label map-label--one">Mall Road</span><span className="map-label map-label--two">Kanpur</span><span className="map-label map-label--three">The Mall</span></div>
+          <a className="location-map-live location-map-art" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer" aria-label="Open Naatures Scuup in Google Maps for directions"><span className="map-road map-road--one" /><span className="map-road map-road--two" /><span className="map-road map-road--three" /><span className="map-marker"><MapPin size={22} fill="currentColor" /> <b>Naatures Scuup</b></span><span className="map-label map-label--one">Mall Road</span><span className="map-label map-label--two">Kanpur</span><span className="map-label map-label--three">The Mall</span></a>
           <div className="location-content"><p className="eyebrow eyebrow--maroon">03 / Make your way over</p><h2 id="location-title">Meet us on<br /><i>Mall Road.</i></h2><p className="location-address">The Mall, 126, The Mall Rd,<br />Mirpur, Kanpur, Uttar Pradesh 208004</p><div className="location-actions"><a className="button button--maroon" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><p className="location-phone">078608 80088</p></div><div className="location-facts"><span><Star size={14} fill="currentColor" /> 4.0 on Google</span><span>Vegetarian</span><span>₹200–₹400</span></div></div>
         </section>
+        <section id="faq" className="faq-section section-pad" aria-labelledby="faq-title"><div><p className="eyebrow eyebrow--maroon">05 / Before you visit</p><h2 id="faq-title">Good to<br /><i>know.</i></h2><p>Questions about a visit? Call <a href="tel:07860880088">078608 80088</a>. We aim to respond within the current service window.</p></div><div className="faq-list"><details open><summary>Where is Naatures Scuup?</summary><p>Find us at 126, The Mall Road, Mirpur, Kanpur, Uttar Pradesh 208004.</p></details><details><summary>Is the menu vegetarian?</summary><p>Yes. The restaurant presents a vegetarian multi-cuisine menu.</p></details><details><summary>What can I browse online?</summary><p>The digital menu lists 204 dishes across 17 groups, with search and display-only sorting.</p></details><details><summary>Can I order or reserve from this website?</summary><p>No. This website is a display guide only; it does not offer ordering or reservations.</p></details><details><summary>How do I get directions?</summary><p>Use the directions link above or the sticky mobile directions control to open Google Maps.</p></details></div></section>
       </main>
       <SiteFooter />
+      <MobileVisitDock />
     </div>
   );
 }

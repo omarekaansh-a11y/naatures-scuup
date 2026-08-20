@@ -65,3 +65,5 @@ Owner-supplied restaurant photography is the foreground visual evidence across t
 **#FREEZETHEHAPPINESS** is the brand’s joy-and-ice-cream signature. It appears as a concise, all-caps editorial stamp at celebratory moments—within the hero metadata, the tactile food-canvas end note, and the footer—without replacing the main positioning, chapter labels, or headline voice.
 
 The Full Menu is an editorial craving atlas rather than a static catalogue. Every chapter carries a small appetite cue through a named table mood and a mango or fennel scoop-stamp; the craving ribbon appears before the menu chapters as a second, recognisable navigation rhythm. The two available public Swiggy restaurant images are reserved for their relevant Pizza & Pasta and Ice Creams chapters, never repeated.
+
+Google Maps reviews use a short verbatim preview first, with the complete public wording available on demand. This preserves review authenticity while preventing dense customer proof from dominating the food-led page rhythm.
