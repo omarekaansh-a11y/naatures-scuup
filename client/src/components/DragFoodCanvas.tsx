@@ -127,7 +127,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     }, 1080);
   };
 
-  const celebrateRightSwipe = () => {
+  const celebrateSwipe = () => {
     if (happyDogTimerRef.current !== null) window.clearTimeout(happyDogTimerRef.current);
     setDogHappy(false);
     window.requestAnimationFrame(() => setDogHappy(true));
@@ -217,7 +217,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     setExitDuration(duration);
     setIsAnimating(true);
     renderDragVector({ x: exitX, y: exitY }, true);
-    if (shouldCelebrate) celebrateRightSwipe();
+    if (shouldCelebrate) celebrateSwipe();
     finishExit(direction, duration);
   };
 
@@ -289,8 +289,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       const direction = horizontalDominant
         ? (projectedVector.x < 0 || (projectedVector.x === 0 && velocity.x < 0) ? 1 : -1)
         : (projectedVector.y < 0 || (projectedVector.y === 0 && velocity.y < 0) ? 1 : -1);
-      const isRightwardSwipe = horizontalDominant && (projectedVector.x > 0 || (projectedVector.x === 0 && velocity.x > 0));
-      swipeCard(direction, velocity, vector, isRightwardSwipe);
+      swipeCard(direction, velocity, vector, true);
       return;
     }
     velocityRef.current = ZERO_VECTOR;

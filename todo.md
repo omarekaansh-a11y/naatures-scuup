@@ -264,6 +264,14 @@
 
 > Responsive check: the mobile Home composition retains the enlarged dog and food-card stack with comfortable spacing after the right-swipe reaction was added.
 
+# All-Direction Happy Dog Reaction Pass
+
+- [x] Remove the right-swipe-only condition while retaining committed-swipe detection.
+- [x] Trigger the same brief happy dog response after every valid card swipe direction.
+- [x] Validate left, right, and vertical swipe reactions with the production build, then save a checkpoint.
+
+> Validation note: the committed-swipe branch now passes the happy-reaction flag unconditionally after its existing direction calculation. The desktop and mobile Home layouts remain visually unchanged outside the intended dog response, and type checking plus production build passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
