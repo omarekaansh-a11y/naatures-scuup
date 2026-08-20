@@ -1,5 +1,5 @@
 /**
- * Style reminder — Mall Road Monograph: a slow, straight food promenade that feels like an editorial table edge.
+ * Style reminder — Mall Road Monograph: a slow, straight, seamless food promenade that feels like an editorial table edge.
  * Owner photographs remain unique foreground assets; low-key motion, direct dragging, and keyboard controls preserve accessibility.
  */
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
@@ -166,7 +166,6 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       <div className="tactile-table-intro section-pad">
         <div className="tactile-table-index"><span>04 / Freeze frame</span><small>Seven moments<br />from Mall Road</small></div>
         <div>
-          <p className="eyebrow eyebrow--light">A table in motion</p>
           <h2 id="tactile-table-title">Hold the<br /><i>happy bits.</i></h2>
           <p>Drift across real moments from the Naatures Scuup counter—each one a small reason to linger longer at the table.</p>
         </div>

@@ -120,3 +120,11 @@
 - [x] Inspect the repeated food-track markup and spacing rules that create visible joins.
 - [x] Eliminate visual joins and card gaps while preserving low-speed drag interaction and keyboard support.
 - [x] Validate the continuous conveyor at desktop and mobile widths, then save a checkpoint.
+
+# Header Identity and Conveyor Continuity Checklist
+
+- [x] Add “Naatures Scuup” and “#FREEZETHEHAPPINESS” to the shared header without weakening menu access.
+- [x] Investigate and remove the remaining visible food-conveyor gaps without altering the supplied food imagery.
+- [x] Confirm whether reviewer-name capitalization can be corrected without modifying published review wording.
+- [x] Remove the requested Full Menu dish-count line and category mood taglines.
+- [x] Validate desktop/mobile presentation and save the completed checkpoint.

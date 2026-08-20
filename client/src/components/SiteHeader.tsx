@@ -1,5 +1,5 @@
 /**
- * Style reminder — Mall Road Monograph: the navigation is a quiet, logo-led display-only portal.
+ * Style reminder — Mall Road Monograph: the navigation is a quiet, logo-led display-only portal with a compact name-and-slogan signature.
  * It exposes only Home and Full Menu, never ordering, reservations, or a copied navigation pattern.
  */
 import { ArrowUp, Menu as MenuIcon, X } from "lucide-react";
@@ -32,6 +32,7 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
       <header className={`site-header site-header--hamburger ${(paper || isScrolled) ? "site-header--scrolled" : ""}`}>
         <Link className="brand-logo-link" href="/" aria-label="Naatures Scuup home" onClick={closeMenu}>
           <img className="brand-logo" src={ownerLogo} alt="Naatures Scuup — Freeze the happiness" />
+          <span className="brand-text"><strong>Naatures Scuup</strong><small>#FREEZETHEHAPPINESS</small></span>
         </Link>
         <div className="site-header-actions">
           <button className={`site-top-control ${isScrolled ? "site-top-control--active" : ""}`} type="button" onClick={returnToTop} disabled={!isScrolled} aria-label="Return to the top of this page"><span>Top</span><ArrowUp size={15} strokeWidth={1.9} /></button>
