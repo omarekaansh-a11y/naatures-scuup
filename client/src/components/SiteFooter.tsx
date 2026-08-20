@@ -16,6 +16,7 @@ export function SiteFooter() {
         <div className="footer-identity footer-identity--text">
           <div className="footer-logo-panel" aria-label="Naatures Scuup"><span aria-hidden="true">NS</span><strong>Naatures <i>Scuup</i></strong></div>
           <p>126, The Mall Road<br />Kanpur, Uttar Pradesh</p>
+          <p className="footer-hours">Open daily · 12:00 PM–10:30 PM</p>
           <div className="footer-links"><Link href="/menu">View full menu</Link><Link href="/#reviews">Google Maps reviews</Link><Link href="/#faq">Visit FAQs</Link></div>
         </div>
       </div>

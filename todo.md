@@ -199,6 +199,19 @@
 
 > Arrival-transition inspection: the live next control was used after preserving stable card keys across stack reordering; an in-flight transform sample was scheduled to confirm that the previously staggered card rises into front position rather than remounting there.
 
+# Motion, Hours, and Menu-Color Refinement Checklist
+
+- [x] Tune the drag distance, velocity projection, exit timing, and snap-back curve for a slightly heavier card feel.
+- [x] Add the restaurant’s opening and closing hours in prominent visitor-facing locations.
+- [x] Remove yellow text treatments from the Full Menu and preserve clear hierarchy with maroon, cream, and neutral tones.
+- [x] Validate the revised desktop/mobile experience and production build, then save a checkpoint.
+
+> Hours source note: Justdial lists Naatures Scuup at 126, Mall Road and states “Opens at 12:00 PM” (<https://www.justdial.com/Kanpur/Naatures-Scuup-Opposite-Globus-Mega-Mall-Mall-Road/0512PX512-X512-170419160110-P8Z1_BZDET>). The public Zomato listing/search result indicates 12 noon–10:30 PM for the regular schedule (<https://www.zomato.com/kanpur/naatures-scuup-birhana-road>). The site will present this concisely as “Open daily · 12:00 PM–10:30 PM.”
+
+> Desktop visual check: the hours appear in the Home visit information and Full Menu header while the card-based menu retains a restrained maroon, cream, and fennel text hierarchy without yellow lettering.
+
+> Mobile visual check: the daily-hours information remains legible in the visit area and the stacked menu presentation keeps its calmer non-yellow text treatment at the narrow breakpoint.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.

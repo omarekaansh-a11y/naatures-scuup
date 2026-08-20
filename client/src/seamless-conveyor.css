@@ -90,9 +90,9 @@
   border: 1px solid rgb(244 240 232 / 22%);
   border-radius: 18px;
   background: var(--maroon-dark);
-  box-shadow: 0 26px 48px rgb(9 2 5 / 34%);
+  box-shadow: 0 33px 67px rgb(9 2 5 / 42%);
   transform-origin: 50% 92%;
-  transition: transform 620ms cubic-bezier(.18, .9, .22, 1.08), opacity 340ms var(--ease-out), box-shadow 620ms var(--ease-out), filter 620ms var(--ease-out);
+  transition: transform 780ms cubic-bezier(.16, .86, .22, 1.1), opacity 420ms var(--ease-out), box-shadow 780ms var(--ease-out), filter 780ms var(--ease-out);
   pointer-events: none;
   will-change: transform;
   backface-visibility: hidden;
@@ -100,9 +100,9 @@
 
 .drag-it-card--front { pointer-events: auto; }
 .drag-it-stack--dragging .drag-it-card--front { transition: none; }
-.drag-it-stack--animating .drag-it-card--front { transition-timing-function: cubic-bezier(.13, .89, .18, 1); }
-.drag-it-stack--arriving .drag-it-card--front { box-shadow: 0 30px 58px rgb(9 2 5 / 47%); }
-.drag-it-stack--arriving .drag-it-card--front figcaption { animation: card-caption-arrive 580ms cubic-bezier(.18, .9, .22, 1.08) both; }
+.drag-it-stack--animating .drag-it-card--front { transition-timing-function: cubic-bezier(.12, .78, .18, 1); }
+.drag-it-stack--arriving .drag-it-card--front { box-shadow: 0 39px 74px rgb(9 2 5 / 50%); }
+.drag-it-stack--arriving .drag-it-card--front figcaption { animation: card-caption-arrive 720ms cubic-bezier(.16, .86, .22, 1.1) both; }
 @keyframes card-caption-arrive { from { opacity: .22; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 .drag-it-card img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; filter: saturate(.96) contrast(1.04); }
 .drag-it-card::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(to top, rgb(24 5 11 / 90%) 0%, rgb(24 5 11 / 45%) 31%, transparent 62%); content: ""; pointer-events: none; }

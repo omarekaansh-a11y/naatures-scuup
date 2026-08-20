@@ -20,9 +20,9 @@ type DragFoodCanvasProps = {
 type DragVector = { x: number; y: number };
 
 const VISIBLE_CARDS = 4;
-const DRAG_COMMIT_DISTANCE = 88;
-const VELOCITY_COMMIT_THRESHOLD = 0.34;
-const PROJECTION_TIME = 210;
+const DRAG_COMMIT_DISTANCE = 112;
+const VELOCITY_COMMIT_THRESHOLD = 0.48;
+const PROJECTION_TIME = 175;
 const ZERO_VECTOR: DragVector = { x: 0, y: 0 };
 
 function DogMascot() {
@@ -123,15 +123,16 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const swipeCard = (direction: number, velocity: DragVector = ZERO_VECTOR, currentVector: DragVector = dragVectorRef.current) => {
     if (isAnimating || exitTimerRef.current !== null) return;
     const horizontalDominant = Math.abs(currentVector.x + velocity.x * PROJECTION_TIME) >= Math.abs(currentVector.y + velocity.y * PROJECTION_TIME);
-    const momentum = Math.min(Math.hypot(velocity.x, velocity.y) * 150, 136);
-    const duration = Math.round(Math.max(270, Math.min(430, 390 - Math.hypot(velocity.x, velocity.y) * 135)));
-    const exitDistance = Math.max(560, window.innerWidth * 0.78) + momentum;
+    const speed = Math.hypot(velocity.x, velocity.y);
+    const momentum = Math.min(speed * 92, 92);
+    const duration = Math.round(Math.max(360, Math.min(560, 530 - speed * 105)));
+    const exitDistance = Math.max(620, window.innerWidth * 0.84) + momentum;
     const exitY = horizontalDominant
-      ? Math.max(-window.innerHeight * 0.36, Math.min(window.innerHeight * 0.36, currentVector.y + velocity.y * 150))
+      ? Math.max(-window.innerHeight * 0.33, Math.min(window.innerHeight * 0.33, currentVector.y + velocity.y * 120))
       : direction === 1 ? -exitDistance * 0.72 : exitDistance * 0.72;
     const exitX = horizontalDominant
       ? direction === 1 ? -exitDistance : exitDistance
-      : Math.max(-exitDistance * 0.38, Math.min(exitDistance * 0.38, currentVector.x + velocity.x * 150));
+      : Math.max(-exitDistance * 0.34, Math.min(exitDistance * 0.34, currentVector.x + velocity.x * 120));
     setIsDragging(false);
     setIsArriving(false);
     setExitDuration(duration);
@@ -161,14 +162,14 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     const horizontalTravel = event.clientX - pointerStartRef.current.x;
     const verticalTravel = event.clientY - pointerStartRef.current.y;
     if (!dragStartedRef.current) {
-      if (Math.hypot(horizontalTravel, verticalTravel) < 4) return;
+      if (Math.hypot(horizontalTravel, verticalTravel) < 5) return;
       dragStartedRef.current = true;
       setIsDragging(true);
     }
     event.preventDefault();
     const nextVector = {
-      x: Math.max(-360, Math.min(360, horizontalTravel)),
-      y: Math.max(-270, Math.min(270, verticalTravel)),
+      x: Math.max(-335, Math.min(335, horizontalTravel)),
+      y: Math.max(-250, Math.min(250, verticalTravel)),
     };
     const elapsed = Math.max(1, event.timeStamp - lastMoveRef.current.time);
     const instantaneousVelocity = {
@@ -176,8 +177,8 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       y: (event.clientY - lastMoveRef.current.y) / elapsed,
     };
     velocityRef.current = {
-      x: velocityRef.current.x * 0.58 + instantaneousVelocity.x * 0.42,
-      y: velocityRef.current.y * 0.58 + instantaneousVelocity.y * 0.42,
+      x: velocityRef.current.x * 0.72 + instantaneousVelocity.x * 0.28,
+      y: velocityRef.current.y * 0.72 + instantaneousVelocity.y * 0.28,
     };
     lastMoveRef.current = { x: event.clientX, y: event.clientY, time: event.timeStamp };
     renderDragVector(nextVector);
@@ -197,7 +198,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     setIsDragging(false);
     if (cancelled) {
       velocityRef.current = ZERO_VECTOR;
-      renderDragVector(ZERO_VECTOR, true);
+      renderDragVector(ZERO_VECTOR);
       return;
     }
     const projectedDistance = Math.hypot(projectedVector.x, projectedVector.y);
@@ -211,7 +212,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       return;
     }
     velocityRef.current = ZERO_VECTOR;
-    renderDragVector(ZERO_VECTOR, true);
+    renderDragVector(ZERO_VECTOR);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
