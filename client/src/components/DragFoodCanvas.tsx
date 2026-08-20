@@ -1,6 +1,6 @@
 /**
- * Style reminder — Mall Road Monograph: a distinct, editorial food-canvas interaction.
- * This is an original direct-manipulation experience for Naatures Scuup, not a carousel or a replica of another site.
+ * Style reminder — Mall Road Monograph: an original direct-drag food tableau.
+ * It uses the owner's photographs and #FREEZETHEHAPPINESS without borrowing another site's composition or controls.
  */
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 
@@ -20,7 +20,7 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const indicatorRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef(0);
   const velocityRef = useRef(0);
   const lastPointerRef = useRef({ x: 0, y: 0, time: 0 });
@@ -40,16 +40,14 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
 
   const renderPosition = (nextPosition: number) => {
     positionRef.current = nextPosition;
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translate3d(${nextPosition}px, 0, 0)`;
-    }
+    if (trackRef.current) trackRef.current.style.transform = `translate3d(${nextPosition}px, 0, 0)`;
   };
 
   const setPosition = (nextPosition: number, withResistance = false) => {
     const minX = getMinX();
     let resolved = nextPosition;
-    if (withResistance && nextPosition > 0) resolved = nextPosition * 0.28;
-    if (withResistance && nextPosition < minX) resolved = minX + (nextPosition - minX) * 0.28;
+    if (withResistance && nextPosition > 0) resolved = nextPosition * 0.24;
+    if (withResistance && nextPosition < minX) resolved = minX + (nextPosition - minX) * 0.24;
     renderPosition(withResistance ? resolved : clamp(resolved, minX, 0));
   };
 
@@ -63,28 +61,25 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const releaseMomentum = () => {
     cancelMomentum();
     const tick = () => {
-      velocityRef.current *= 0.91;
+      velocityRef.current *= 0.9;
       if (Math.abs(velocityRef.current) < 0.014) {
-        const minX = getMinX();
-        renderPosition(clamp(positionRef.current, minX, 0));
+        renderPosition(clamp(positionRef.current, getMinX(), 0));
         momentumFrameRef.current = null;
         return;
       }
       const minX = getMinX();
       const nextPosition = positionRef.current + velocityRef.current * 16;
-      if (nextPosition > 0 || nextPosition < minX) velocityRef.current *= 0.46;
+      if (nextPosition > 0 || nextPosition < minX) velocityRef.current *= 0.42;
       renderPosition(clamp(nextPosition, minX, 0));
       momentumFrameRef.current = window.requestAnimationFrame(tick);
     };
     momentumFrameRef.current = window.requestAnimationFrame(tick);
   };
 
-  const positionIndicator = (event: PointerEvent<HTMLDivElement>) => {
-    const viewport = viewportRef.current;
-    const indicator = indicatorRef.current;
-    if (!viewport || !indicator || event.pointerType === "touch") return;
-    const box = viewport.getBoundingClientRect();
-    indicator.style.transform = `translate3d(${event.clientX - box.left}px, ${event.clientY - box.top}px, 0)`;
+  const positionCursor = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch" || !viewportRef.current || !cursorRef.current) return;
+    const bounds = viewportRef.current.getBoundingClientRect();
+    cursorRef.current.style.transform = `translate3d(${event.clientX - bounds.left}px, ${event.clientY - bounds.top}px, 0)`;
   };
 
   const endDrag = () => {
@@ -100,23 +95,20 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     cancelMomentum();
     draggingRef.current = false;
     velocityRef.current = 0;
-    const now = performance.now();
     startPointerRef.current = { x: event.clientX, y: event.clientY };
-    lastPointerRef.current = { x: event.clientX, y: event.clientY, time: now };
+    lastPointerRef.current = { x: event.clientX, y: event.clientY, time: performance.now() };
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    positionIndicator(event);
+    positionCursor(event);
     const horizontalTravel = event.clientX - startPointerRef.current.x;
     const verticalTravel = event.clientY - startPointerRef.current.y;
-
     if (!draggingRef.current) {
       if (Math.abs(horizontalTravel) < 7 || Math.abs(horizontalTravel) <= Math.abs(verticalTravel)) return;
       draggingRef.current = true;
       setIsDragging(true);
       event.currentTarget.setPointerCapture(event.pointerId);
     }
-
     event.preventDefault();
     const now = performance.now();
     const elapsed = Math.max(1, now - lastPointerRef.current.time);
@@ -127,16 +119,15 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const minX = getMinX();
     if (event.key === "ArrowRight") {
       event.preventDefault();
       cancelMomentum();
-      setPosition(positionRef.current - 180);
+      setPosition(positionRef.current - 220);
     }
     if (event.key === "ArrowLeft") {
       event.preventDefault();
       cancelMomentum();
-      setPosition(positionRef.current + 180);
+      setPosition(positionRef.current + 220);
     }
     if (event.key === "Home") {
       event.preventDefault();
@@ -146,7 +137,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     if (event.key === "End") {
       event.preventDefault();
       cancelMomentum();
-      renderPosition(minX);
+      renderPosition(getMinX());
     }
   };
 
@@ -161,21 +152,22 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   }, []);
 
   return (
-    <section id="food-canvas" className="drag-canvas-section" aria-labelledby="drag-canvas-title">
-      <div className="drag-canvas-intro section-pad">
-        <p className="eyebrow eyebrow--maroon">04 / From the counter</p>
+    <section id="food-canvas" className="tactile-table-section" aria-labelledby="tactile-table-title">
+      <div className="tactile-table-intro section-pad">
+        <div className="tactile-table-index"><span>04 / Freeze frame</span><small>Seven moments<br />from Mall Road</small></div>
         <div>
-          <h2 id="drag-canvas-title">Pull the<br /><i>table closer.</i></h2>
-          <p>Move through a few real moments from the Naatures Scuup kitchen and counter.</p>
+          <p className="eyebrow eyebrow--light">A table you can move through</p>
+          <h2 id="tactile-table-title">Hold the<br /><i>happy bits.</i></h2>
+          <p>Pull sideways to move across real moments from the Naatures Scuup counter. Take your time—every plate is part of the table.</p>
         </div>
       </div>
 
       <div
         ref={viewportRef}
-        className={`drag-canvas ${isDragging ? "drag-canvas--dragging" : ""}`}
+        className={`tactile-table ${isDragging ? "tactile-table--dragging" : ""}`}
         tabIndex={0}
         role="region"
-        aria-label="A draggable canvas of Naatures Scuup food photographs. Drag left or right, or use the arrow keys to explore."
+        aria-label="A draggable tableau of Naatures Scuup food photographs. Drag left or right, or use the arrow keys to explore."
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={endDrag}
@@ -184,21 +176,20 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
         onPointerLeave={() => !draggingRef.current && setIsHovering(false)}
         onKeyDown={handleKeyDown}
       >
-        <div ref={indicatorRef} className={`drag-canvas__indicator ${isHovering ? "drag-canvas__indicator--visible" : ""}`} aria-hidden="true">
-          <span>{isDragging ? "Moving" : "Pull the table"}</span>
-        </div>
-        <p className={`drag-canvas__touch-note ${hasDragged ? "drag-canvas__touch-note--quiet" : ""}`} aria-hidden="true">Swipe sideways to explore</p>
-        <div ref={trackRef} className="drag-canvas__track">
+        <div ref={cursorRef} className={`tactile-table__cursor ${isHovering ? "tactile-table__cursor--visible" : ""}`} aria-hidden="true"><span>{isDragging ? "Keep moving" : "Hold + pull"}</span></div>
+        <div className={`tactile-table__touch-note ${hasDragged ? "tactile-table__touch-note--quiet" : ""}`} aria-hidden="true"><span>Hold and pull</span><b>#FREEZETHEHAPPINESS</b></div>
+        <div ref={trackRef} className="tactile-table__track">
+          <div className="tactile-table__opening" aria-hidden="true"><span>Real food<br />real table</span><i>Make a little room.</i></div>
           {items.map((item, index) => (
-            <figure className={`drag-canvas__card drag-canvas__card--${index + 1}`} key={item.src}>
-              <img src={item.src} alt={item.alt} draggable={false} loading="lazy" />
+            <figure className={`tactile-table__card tactile-table__card--${index + 1}`} key={item.src}>
+              <div className="tactile-table__frame"><img src={item.src} alt={item.alt} draggable={false} loading="lazy" /></div>
               <figcaption><span>{String(index + 1).padStart(2, "0")}</span><strong>{item.label}</strong><em>{item.note}</em></figcaption>
             </figure>
           ))}
-          <div className="drag-canvas__endnote" aria-hidden="true"><span>Made at Mall Road</span><i>See you at the table.</i></div>
+          <div className="tactile-table__endnote" aria-hidden="true"><span>#FREEZETHEHAPPINESS</span><i>See you<br />at the table.</i><small>Mall Road, Kanpur</small></div>
         </div>
       </div>
-      <p className="drag-canvas__keyboard-note section-pad">Drag to explore, or use the left and right arrow keys.</p>
+      <p className="tactile-table__keyboard-note section-pad">Hold and pull to explore. Or use the left and right arrow keys.</p>
     </section>
   );
 }

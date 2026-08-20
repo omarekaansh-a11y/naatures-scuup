@@ -14,7 +14,7 @@
 
 ### Core Principles
 
-The experience follows four principles. First, the food must lead, with high-crop images that make every category feel tangible. Second, variety needs a narrative, so savoury comfort, quick bites, drinks, and live ice cream appear as chapters rather than a generic grid. Third, the interface should be restrained: calm surfaces, decisive typography, and concise calls to action. Fourth, the site must be easy to use at a glance on a phone, particularly for ordering and directions.
+The experience follows four principles. First, the food must lead, with high-crop images that make every category feel tangible. Second, variety needs a narrative, so savoury comfort, quick bites, drinks, and live ice cream appear as chapters rather than a generic grid. Third, the interface should be restrained: calm surfaces, decisive typography, and concise calls to action. Fourth, the site must be easy to use at a glance on a phone, with display-only discovery and directions rather than ordering or reservations.
 
 ### Color Philosophy
 
@@ -30,7 +30,7 @@ The first motif is the **craving ribbon**: a narrow moving line of category name
 
 ### Interaction Philosophy
 
-Every interaction should clarify intent. Navigation scrolls to a meaningful chapter; category selection updates an approachable highlight panel; ordering actions lead directly to the restaurant contact route or present a clear future integration state. Buttons respond with a brief press and careful underline movement rather than bright, generic animation.
+Every interaction should clarify intent. Navigation scrolls to a meaningful chapter; category selection updates an approachable highlight panel; the tactile food canvas responds to direct dragging with gentle resistance and release momentum, while a keyboard path remains available. Buttons respond with a brief press and careful underline movement rather than bright, generic animation.
 
 ### Animation
 
@@ -61,3 +61,5 @@ The owner-supplied official logo is mandatory when it is made available. It is c
 The build must remain original: it may use broad principles of premium editorial hospitality such as image-led storytelling, generous spacing, and subtle transitions, but it must not reproduce the reference site’s distinct visual identity, copyrighted content, or exact layout. The brand’s own Kanpur setting, multi-cuisine range, and vegetarian dining context drive the final site.
 
 Owner-supplied restaurant photography is the foreground visual evidence across the site. Generated imagery is retained only as the pre-approved background treatment; real food images use intentional crops, a gentle warm editorial veil, and a disciplined sequence rather than raw gallery presentation. The official owner logo is presented as a small authenticity mark, while Mall Road Maroon, warm rice paper, the typographic system, and the menu-chapter structure carry the premium identity. Fennel green and mango remain supporting chapter accents only.
+
+**#FREEZETHEHAPPINESS** is the brand’s joy-and-ice-cream signature. It appears as a concise, all-caps editorial stamp at celebratory moments—within the hero metadata, the tactile food-canvas end note, and the footer—without replacing the main positioning, chapter labels, or headline voice.

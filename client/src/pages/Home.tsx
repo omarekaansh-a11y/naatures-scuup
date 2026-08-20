@@ -1,7 +1,7 @@
 /**
  * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
  * Authentic restaurant photography leads in the foreground; approved background treatment only.
- * Original tactile food canvas extends the display-only discovery journey — never ordering, reservations, or copied layouts.
+ * Original tactile food canvas and #FREEZETHEHAPPINESS extend the display-only discovery journey — never ordering, reservations, or copied layouts.
  */
 import { useEffect, useState } from "react";
 import { DragFoodCanvas } from "@/components/DragFoodCanvas";
@@ -177,7 +177,7 @@ export default function Home() {
           <div className="hero-image" role="img" aria-label="An original multi-cuisine vegetarian food spread" />
           <div className="hero-tint" />
           <div className="hero-content">
-            <div className="hero-meta reveal-up"><span className="verified-dot" /><span>Vegetarian multi-cuisine restaurant</span><span className="meta-divider" /><span>Mall Road, Kanpur</span></div>
+            <div className="hero-meta reveal-up"><span className="verified-dot" /><span>Vegetarian multi-cuisine restaurant</span><span className="meta-divider" /><span>Mall Road, Kanpur</span><span className="hero-slogan">#FREEZETHEHAPPINESS</span></div>
             <p className="eyebrow reveal-up delay-1">The all-day craving table</p>
             <h1 id="hero-title" className="reveal-up delay-2">One place.<br /><i>Every craving.</i></h1>
             <p className="hero-copy reveal-up delay-3">South Indian favourites, pizza, Chinese, comfort snacks, shakes, desserts and ice cream—right in the heart of Kanpur.</p>
@@ -249,7 +249,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <div className="footer-top"><p className="footer-signoff">A little more appetite<br />is always a good idea.</p><div className="footer-identity"><img src={ownerLogo} alt="Naatures Scuup — Freeze the happiness" /><p>126, The Mall Road<br />Kanpur, Uttar Pradesh</p></div></div>
+        <div className="footer-top"><div className="footer-voice"><p className="footer-signoff">A little more appetite<br />is always a good idea.</p><p className="footer-slogan">#FREEZETHEHAPPINESS</p></div><div className="footer-identity"><img src={ownerLogo} alt="Naatures Scuup — Freeze the happiness" /><p>126, The Mall Road<br />Kanpur, Uttar Pradesh</p></div></div>
         <div className="footer-bottom"><div className="footer-contact"><span>078608 80088</span><a className="footer-social" href="https://www.facebook.com/naaturesscuup/" target="_blank" rel="noreferrer"><AtSign size={14} /> @naaturesscuup</a></div><p>Multi-cuisine vegetarian dining &amp; desserts in Kanpur.</p><p>© {new Date().getFullYear()} Naatures Scuup</p></div>
       </footer>
     </div>
