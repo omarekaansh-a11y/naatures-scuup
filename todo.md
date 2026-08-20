@@ -282,6 +282,16 @@
 
 > Responsive check: full-page desktop and 375px-wide mobile inspections retain the intended deep-maroon card-stack composition, clear café-dog silhouette, and non-overlapping tooltip location. Type checking and the production build also passed.
 
+# Reference-Matched Home and Menu Transition Pass
+
+- [x] Analyze the supplied reference video’s route-transition choreography, timing, geometry, and visual masking.
+- [x] Rework Home-to-Menu and Menu-to-Home motion to match the reference without altering page content or the existing visual system.
+- [x] Validate repeat route changes at desktop and mobile widths, then save a checkpoint.
+
+> Reference match: navigation now uses a persistent deep-maroon overlay that diagonally sweeps down from the header, introduces the editorial route choices after coverage, and retracts along the same seam to reveal the destination page at its top position. This replaces the prior vertical page enter/exit and loading trace while preserving all Home and Full Menu content.
+
+> Validation: production type/build checks passed; Home and Full Menu held their layouts at desktop and 375px mobile widths; a live Home → Full Menu → Home overlay interaction completed without browser-console errors.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.

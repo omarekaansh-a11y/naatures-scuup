@@ -13,7 +13,6 @@ import { GoogleReviews } from "@/components/GoogleReviews";
 import { MobileVisitDock } from "@/components/MobileVisitDock";
 import { RouteMeta } from "@/components/RouteMeta";
 import { SiteFooter } from "@/components/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader";
 
 const authenticImages = {
   pizza: "/manus-storage/NS1_10e3ab35.png",
@@ -44,7 +43,6 @@ export default function Home() {
   return (
     <div className="site-shell">
       <RouteMeta title="Naatures Scuup | Vegetarian Restaurant on Mall Road, Kanpur" description="Explore the display-only digital menu for Naatures Scuup, a vegetarian multi-cuisine restaurant at 126, The Mall Road, Kanpur." />
-      <SiteHeader />
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-image" role="img" aria-label="Original multi-cuisine vegetarian food background" />

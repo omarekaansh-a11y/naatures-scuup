@@ -7,7 +7,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { SiteFooter } from "@/components/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MobileVisitDock } from "@/components/MobileVisitDock";
 import { RouteMeta } from "@/components/RouteMeta";
@@ -109,7 +108,6 @@ export default function MenuPage() {
   const visibleItemCount = visibleItems.length;
   return <div className="site-shell menu-page-shell">
     <RouteMeta title="Full Digital Menu | Naatures Scuup, Kanpur" description="Browse all 204 vegetarian dishes at Naatures Scuup on Mall Road, Kanpur, with category browsing, search, and display-only price sorting." />
-    <SiteHeader paper />
     <main className="menu-page" id="top">
       <style>{chapterStyles}</style>
       <style>{browserStyles}</style>
