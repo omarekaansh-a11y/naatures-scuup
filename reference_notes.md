@@ -18,3 +18,7 @@ For Naatures Scuup, the original design will retain only broadly applicable prin
 - Phone: 078608 80088
 - Positioning: One place for South Indian favourites, pizza, Chinese, fast food, shakes, desserts, and live ice cream.
 - Trust detail supplied in the brief: 4.0 ★ rating, 819 Google reviews, ₹200–₹400 typical spend.
+
+## Verified public social presence
+
+- Facebook: [Naatures Scuup | Kanpur](https://www.facebook.com/naaturesscuup/) uses the public page path `naaturesscuup`, lists the Mall Road address, and matches the provided mobile number. The footer presents the compatible handle `@naaturesscuup` and links to this public page.
