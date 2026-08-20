@@ -67,6 +67,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isArriving, setIsArriving] = useState(false);
   const [dogReacting, setDogReacting] = useState(false);
+  const [dogHappy, setDogHappy] = useState(false);
   const [showGreetingCue, setShowGreetingCue] = useState(true);
   const [exitDuration, setExitDuration] = useState(280);
   const [loadedSources, setLoadedSources] = useState<Set<string>>(() => new Set());
@@ -78,6 +79,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const exitTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
   const dogTimerRef = useRef<number | null>(null);
+  const happyDogTimerRef = useRef<number | null>(null);
   const greetingCueTimerRef = useRef<number | null>(null);
   const renderFrameRef = useRef<number | null>(null);
 
@@ -89,6 +91,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     if (exitTimerRef.current !== null) window.clearTimeout(exitTimerRef.current);
     if (arrivalTimerRef.current !== null) window.clearTimeout(arrivalTimerRef.current);
     if (dogTimerRef.current !== null) window.clearTimeout(dogTimerRef.current);
+    if (happyDogTimerRef.current !== null) window.clearTimeout(happyDogTimerRef.current);
     if (greetingCueTimerRef.current !== null) window.clearTimeout(greetingCueTimerRef.current);
     if (renderFrameRef.current !== null) window.cancelAnimationFrame(renderFrameRef.current);
   }, []);
@@ -122,6 +125,16 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       setShowGreetingCue(false);
       dogTimerRef.current = null;
     }, 1080);
+  };
+
+  const celebrateRightSwipe = () => {
+    if (happyDogTimerRef.current !== null) window.clearTimeout(happyDogTimerRef.current);
+    setDogHappy(false);
+    window.requestAnimationFrame(() => setDogHappy(true));
+    happyDogTimerRef.current = window.setTimeout(() => {
+      setDogHappy(false);
+      happyDogTimerRef.current = null;
+    }, 940);
   };
 
   useEffect(() => {
@@ -181,7 +194,12 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     }, duration);
   };
 
-  const swipeCard = (direction: number, velocity: DragVector = ZERO_VECTOR, currentVector: DragVector = dragVectorRef.current) => {
+  const swipeCard = (
+    direction: number,
+    velocity: DragVector = ZERO_VECTOR,
+    currentVector: DragVector = dragVectorRef.current,
+    shouldCelebrate = false,
+  ) => {
     if (isAnimating || exitTimerRef.current !== null) return;
     const horizontalDominant = Math.abs(currentVector.x + velocity.x * PROJECTION_TIME) >= Math.abs(currentVector.y + velocity.y * PROJECTION_TIME);
     const speed = Math.hypot(velocity.x, velocity.y);
@@ -199,6 +217,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     setExitDuration(duration);
     setIsAnimating(true);
     renderDragVector({ x: exitX, y: exitY }, true);
+    if (shouldCelebrate) celebrateRightSwipe();
     finishExit(direction, duration);
   };
 
@@ -270,7 +289,8 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       const direction = horizontalDominant
         ? (projectedVector.x < 0 || (projectedVector.x === 0 && velocity.x < 0) ? 1 : -1)
         : (projectedVector.y < 0 || (projectedVector.y === 0 && velocity.y < 0) ? 1 : -1);
-      swipeCard(direction, velocity, vector);
+      const isRightwardSwipe = horizontalDominant && (projectedVector.x > 0 || (projectedVector.x === 0 && velocity.x > 0));
+      swipeCard(direction, velocity, vector, isRightwardSwipe);
       return;
     }
     velocityRef.current = ZERO_VECTOR;
@@ -289,7 +309,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
           <div className="drag-it-mascot-wrap">
             <button
               type="button"
-              className={`drag-it-mascot-button ${dogReacting ? "drag-it-mascot-button--reacting" : ""}`}
+              className={`drag-it-mascot-button ${dogReacting ? "drag-it-mascot-button--reacting" : ""} ${dogHappy ? "drag-it-mascot-button--happy" : ""}`}
               onClick={greetDog}
               aria-label="Greet the Naatures Scuup café dog"
             >

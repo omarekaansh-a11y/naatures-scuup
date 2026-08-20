@@ -254,6 +254,16 @@
 
 > Mobile visual check: the compact Home layout retains its intended visual hierarchy after the invitation lifecycle change, without leaving persistent dog-tooltip chrome in the viewport.
 
+# Right-Swipe Happy Dog Reaction Pass
+
+- [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
+- [x] Trigger a brief happy dog expression and movement after a rightward card swipe.
+- [x] Validate the reaction on desktop and mobile, then save a checkpoint.
+
+> Live reaction check: a simulated committed rightward swipe activated the `drag-it-mascot-button--happy` state while the front-card counter was still in transition, confirming that the happy response begins immediately with the rightward gesture rather than after the next image settles.
+
+> Responsive check: the mobile Home composition retains the enlarged dog and food-card stack with comfortable spacing after the right-swipe reaction was added.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
