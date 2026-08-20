@@ -18,15 +18,16 @@
 
 .drag-it-mascot {
   display: block;
-  width: 164px;
+  width: 180px;
   height: auto;
-  margin: 0 0 22px -7px;
+  margin: 0 0 18px -9px;
   color: var(--cream);
   overflow: visible;
 }
 
-.dog-head, .dog-ear { transform-origin: 60px 70px; animation: dog-nod 4.4s ease-in-out infinite; }
-.dog-ear { animation-delay: -0.24s; }
+.dog-head, .dog-ear, .dog-body { transform-origin: 100px 90px; animation: dog-nod 4.8s ease-in-out infinite; }
+.dog-ear { animation-delay: -0.18s; }
+.dog-body { animation-delay: -0.32s; }
 .dog-steam { animation: dog-steam 2.3s ease-in-out infinite; }
 .dog-steam--two { animation-delay: -1.15s; }
 
@@ -67,6 +68,9 @@
   outline: none;
   cursor: grab;
   touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .drag-it-stack--dragging { cursor: grabbing; }
@@ -82,12 +86,13 @@
   background: var(--maroon-dark);
   box-shadow: 0 26px 48px rgb(9 2 5 / 34%);
   transform-origin: 50% 100%;
-  transition: transform 420ms cubic-bezier(.23, 1, .32, 1), opacity 240ms var(--ease-out);
+  transition: transform 310ms cubic-bezier(.18, .82, .24, 1), opacity 220ms var(--ease-out);
   pointer-events: none;
 }
 
 .drag-it-card--front { pointer-events: auto; }
 .drag-it-stack--dragging .drag-it-card--front { transition: none; }
+.drag-it-stack--animating .drag-it-card--front { transition-duration: 280ms; }
 .drag-it-card img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; filter: saturate(.96) contrast(1.04); }
 .drag-it-card::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(to top, rgb(24 5 11 / 90%) 0%, rgb(24 5 11 / 45%) 31%, transparent 62%); content: ""; pointer-events: none; }
 
@@ -117,7 +122,7 @@
   .drag-it-section { padding-block: 75px 83px; }
   .drag-it-layout { grid-template-columns: 1fr; gap: 52px; }
   .drag-it-copy { max-width: 410px; }
-  .drag-it-mascot { width: 138px; margin-bottom: 19px; }
+  .drag-it-mascot { width: 154px; margin-bottom: 17px; }
   .drag-it-copy h2 { font-size: clamp(58px, 17vw, 78px); }
   .drag-it-body { margin-top: 24px; font-size: 13px; }
   .drag-it-playground { width: 100%; justify-self: stretch; }
@@ -137,6 +142,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dog-head, .dog-ear, .dog-steam { animation: none; }
+  .dog-head, .dog-ear, .dog-body, .dog-steam { animation: none; }
   .drag-it-card { transition: none; }
 }

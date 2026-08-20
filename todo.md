@@ -162,3 +162,18 @@
 - [x] Validate desktop/mobile rendering and production build, then save the updated checkpoint.
 
 > Visual validation note: desktop and mobile now present the intended deep-maroon split composition, a line-art beret dog with subtle steam movement, layered portrait food cards, clear drag guidance, and compact previous/next controls.
+
+# Drag-It Fidelity Refinement Checklist
+
+- [x] Inspect `1000142172.mp4` for the mascot’s exact silhouette, pose, and visual detailing.
+- [x] Rework the dog mascot to closely match the approved reference figure.
+- [x] Smooth the card drag through continuous follow, velocity-aware release, and clean snap behavior on pointer and touch input.
+- [x] Validate desktop/mobile motion and production build, then save the refined checkpoint.
+
+> Live inspection note: the anchored desktop section now shows the seated, right-facing café dog beside a steaming drink and the staggered food stack. The next control advances from card 01 to card 02, and a simulated deliberate left swipe advanced the front card and counter from 02 to 03.
+
+# Implementation Handoff Specification Checklist
+
+- [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
+- [ ] Create an implementation-ready reconstruction brief for another AI.
+- [ ] Deliver the detailed technical specification as a Markdown attachment.
