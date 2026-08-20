@@ -21,3 +21,11 @@
 - [x] Add client-side dish search and a display-only sort selector.
 - [x] Validate desktop and mobile states, including empty search results and category switching.
 - [ ] Save the verified interactive menu revision.
+
+# Confirmed 204-Item Menu Expansion Checklist
+
+- [x] Recover the complete public dish and category data and reconcile it to 204 total items.
+- [x] Replace the 75-item menu data with the complete 204-item display-only data set.
+- [x] Add or extend concise source-backed dish notes without inventing unavailable details.
+- [x] Verify all-item count, group counts, search, sort, and responsive presentation.
+- [ ] Save the validated 204-item menu revision.
