@@ -342,6 +342,14 @@
 
 > Validation result: the dog’s greeting and committed food-card swipe states now map to one tail-led wag sequence, while hover-capable pointers receive a continuous gentle wag only while they remain over the dog. The existing reduced-motion rule disables the tail animation groups. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
 
+# Café-Dog Visible Sniff and Expressive Greeting Pass
+
+- [x] Increase the idle coffee-sniff range and cadence so the lean toward the cup is visibly readable.
+- [x] Add a more expressive whole-body greeting while retaining the clear tail wag.
+- [x] Validate idle, greeting, hover, card-drag, and reduced-motion behavior, then save a checkpoint.
+
+> Validation result: the idle head cycle now uses two distinct forward lean-and-hold sniff beats toward the cup before returning. Direct greeting adds a visible seated body bounce, pose shift, head response, and tail wag; committed card drags remain tail-led, and hover remains a gentle continuous wag. Reduced motion now also disables the whole-mascot greeting animation. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
