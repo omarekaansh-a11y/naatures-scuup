@@ -773,7 +773,7 @@
 - [x] Add consistent visitor-facing hours plus LocalBusiness structured data.
 - [x] Add the Google Search Console verification meta tag after receiving an owner verification token or method.
 - [x] Validate the new hours, structured data, and verification metadata then save a checkpoint.
-- [ ] Complete the Google Search Console Verify action after the verification tag is live on the published domain.
+- [x] Complete the Google Search Console Verify action after the verification tag is live on the published domain.
 
 > Hours source: the existing visitor card and site copy establish daily service from 12:00 PM to 10:30 PM. The same hours are now represented with semantic `time` elements and Restaurant/LocalBusiness-compatible JSON-LD for search engines.
 
@@ -786,3 +786,13 @@
 > Verification token: Google supplied the HTML-tag content token for the existing URL-prefix property. It is now present in the document head, ready to be deployed before the Search Console Verify action is submitted.
 
 > Pre-publish validation: the Restaurant structured data declares daily 12:00–22:30 hours, the visitor card retains matching semantic time values, and the Google verification tag is present in the static document head. Six regression assertions, TypeScript checking, the production build, and whitespace validation passed. Ownership confirmation remains pending until the newly published page exposes the tag to Google.
+
+> Post-publish check: opening the URL-prefix property directly correctly routes the signed-in owner to Search Console’s unverified-property screen, which exposes the `VERIFY YOUR OWNERSHIP` action. The published tag is ready for that final confirmation.
+
+> Verification retry: the first Verify action checked Google’s default HTML-file method rather than the deployed HTML-tag method, so ownership remains unverified. The verification dialog is open again; the next attempt will explicitly expand HTML tag and invoke Verify from that selected method.
+
+> Method selected: the HTML-tag verification panel is now expanded and displays the exact deployed tag. Its Verify action sits below the dialog viewport, so the next interaction will use keyboard navigation to invoke that selected method rather than the HTML-file default.
+
+> Ready to verify: the HTML-tag panel is selected, its token matches the published document-head value, and Google’s visible Verify button now belongs to the HTML-tag method. The owner-authorized final verification action is ready to be submitted.
+
+> Ownership verified: Google Search Console confirmed ownership of `https://naaturescuup-8bm7xaig.manus.space/` through the deployed HTML tag. The verification tag must remain in the document head to retain ownership.
