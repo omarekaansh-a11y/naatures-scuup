@@ -5,11 +5,12 @@
  * #FREEZETHEHAPPINESS is a restrained signature; the experience is display-only and never a copy of another restaurant’s layout.
  * Home-route visual updates use a document refresh in development to keep icon DOM reconciliation stable.
  */
-import { ArrowDown, ArrowDownRight, ArrowRight, ChevronRight, Clock3, Sparkles, Star } from "lucide-react";
+import { ArrowDown, ArrowDownRight, ArrowRight, Clock3, Star } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "wouter";
 import { DragFoodCanvas } from "@/components/DragFoodCanvas";
 import { GoogleReviews } from "@/components/GoogleReviews";
+import { IceCreamOrbit } from "@/components/IceCreamOrbit";
 import { LocationAtlas } from "@/components/LocationAtlas";
 import { MobileVisitDock } from "@/components/MobileVisitDock";
 import { RouteMeta } from "@/components/RouteMeta";
@@ -74,18 +75,7 @@ export default function Home() {
 
         <div className="craving-ribbon" aria-hidden="true"><div><span>Dosa</span><b>•</b><span>Paneer</span><b>•</b><span>Pizza</span><b>•</b><span>Chinese</span><b>•</b><span>Shakes</span><b>•</b><span>Ice cream</span><b>•</b><span>Dosa</span><b>•</b><span>Paneer</span><b>•</b><span>Pizza</span><b>•</b><span>Chinese</span><b>•</b><span>Shakes</span><b>•</b><span>Ice cream</span><b>•</b></div></div>
 
-        <section id="story" className="story-section section-pad">
-          <div className="story-grid story-grid--text">
-            <motion.div className="story-intro" initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.22 }} transition={{ duration: 0.48, ease: [0.23, 1, 0.32, 1] }}>
-              <p className="eyebrow eyebrow--maroon">01 / The Scuup story</p>
-              <h2 className="editorial-title">Come for the craving.<br /><i>Stay for the scoop.</i></h2>
-              <p className="body-large">Move from a crisp dosa to a hot pizza, from a cool shake to something sweet. Naatures Scuup brings together familiar favourites for every kind of gathering. #FREEZETHEHAPPINESS</p>
-              <button className="inline-link" type="button" onClick={() => scrollToId("#location")}>Discover Mall Road <ChevronRight size={17} /></button>
-            </motion.div>
-            <motion.aside className="story-manifesto story-manifesto--mall-road" initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.22 }} transition={{ duration: 0.48, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}><span>Kanpur / Mall Road</span><p>“One table,<br />many <i>moods.</i>”</p><small>#FREEZETHEHAPPINESS</small></motion.aside>
-            <div className="story-stamp" aria-label="One place every craving"><span>One place</span><Sparkles size={18} /><span>Every craving</span></div>
-          </div>
-        </section>
+        <IceCreamOrbit />
 
         <DragFoodCanvas items={foodCanvasItems} />
         <section className="food-menu-bridge" aria-label="Explore the full menu"><Link className="button button--cream" href="/menu">Explore the full menu <ArrowRight size={17} /></Link></section>

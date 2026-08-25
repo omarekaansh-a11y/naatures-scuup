@@ -801,3 +801,13 @@
 
 # Brand Logo Favicon
 - [x] Replace the generic favicon artwork with the supplied Naatures Scuup logo using transparent rendering.
+
+# Ice-Cream Scroll Orbit Planning
+- [x] Analyze the supplied mango ice-cream footage and define a start/end camera-orbit storyboard before the Drag It section.
+- [x] Present the scroll-animation plan for approval before implementation.
+
+# Ice-Cream Scroll Orbit Implementation
+- [x] Upload the approved mango ice-cream footage to durable web storage.
+- [x] Replace the current pre-Drag It bridge with the scroll-scrubbed editorial orbit sequence.
+- [x] Add mobile and reduced-motion fallbacks, plus regression coverage for the video scroll behavior.
+- [x] Validate desktop/mobile scroll behavior and publish the completed sequence.
