@@ -468,6 +468,16 @@
 
 > Responsive verification: at 375×812 the supplied mark uses the corresponding doubled 108×84 frame. Home and Full Menu retain a background-free logo, complete visible artwork, non-overlapping wordmark stack, and unobstructed menu controls.
 
+# Mobile Enlarged-Logo Header Reflow
+
+- [x] Keep the supplied logo at its enlarged 108×84 mobile display frame.
+- [x] Reflow the Top and Menu controls so neither overlaps the brand signature at narrow viewport widths.
+- [x] Validate Home and Full Menu mobile headers, then save a checkpoint.
+
+> Standard mobile verification: at 375×812, the enlarged logo stays fully visible while the Top control uses its arrow-only accessible presentation. Home and Full Menu show clear separation between brand signature, Top arrow, and Menu control.
+
+> Narrow-screen verification: Home and Full Menu at 320×700 retain the same 108×84 supplied-logo frame and show no overlap or clipping. The accessible Top arrow and Menu control remain within a protected right-side action area.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
