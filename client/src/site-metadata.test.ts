@@ -16,8 +16,11 @@ describe("site recovery and social metadata", () => {
     expect(documentHead).toContain('href="/favicon.svg"');
     expect(documentHead).toContain('"@type": "Restaurant"');
     expect(documentHead).toContain('"openingHoursSpecification"');
-    expect(documentHead).toContain('"opens": "12:00"');
-    expect(documentHead).toContain('"closes": "22:30"');
+    expect(documentHead).toContain('"dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"]');
+    expect(documentHead).toContain('"opens": "11:00"');
+    expect(documentHead).toContain('"dayOfWeek": ["Wednesday"]');
+    expect(documentHead).toContain('"opens": "10:00"');
+    expect(documentHead).toContain('"closes": "23:00"');
   });
 
   it("keeps the custom 404 route useful and out of search indexing", () => {

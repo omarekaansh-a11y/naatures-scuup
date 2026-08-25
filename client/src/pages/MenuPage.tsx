@@ -141,7 +141,7 @@ export default function MenuPage() {
       <section className="menu-page-hero section-pad" aria-labelledby="full-menu-title">
         <Breadcrumbs current="Full menu" />
         <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p><p className="menu-brand-signature">#FREEZETHEHAPPINESS <span>·</span> Mall Road craving atlas</p>
-        <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title"><span className="title-outline">Many cravings.</span><br /><i>One table.</i></h1><div><p>From a hot dosa to a chilled scoop, move through every Mall Road mood in one display-only craving atlas—made for reading, sharing and planning the next table.</p><span className="menu-page-hours">17 chapters · 204 dishes · Open daily 12:00 PM–10:30 PM</span></div></div>
+        <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title"><span className="title-outline">Many cravings.</span><br /><i>One table.</i></h1><div><p>From a hot dosa to a chilled scoop, move through every Mall Road mood in one display-only craving atlas—made for reading, sharing and planning the next table.</p><span className="menu-page-hours">17 chapters · 204 dishes · Mon, Tue, Thu–Sun 11 AM–11 PM · Wed 10 AM–11 PM</span></div></div>
       </section>
       <section className="menu-browser-block section-pad" aria-label="Browse Full Menu chapters">
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">

@@ -796,3 +796,5 @@
 > Ready to verify: the HTML-tag panel is selected, its token matches the published document-head value, and Google’s visible Verify button now belongs to the HTML-tag method. The owner-authorized final verification action is ready to be submitted.
 
 > Ownership verified: Google Search Console confirmed ownership of `https://naaturescuup-8bm7xaig.manus.space/` through the deployed HTML tag. The verification tag must remain in the document head to retain ownership.
+# Regular Google Maps Hours Correction
+- [x] Show only the regular weekly Google Maps hours everywhere; exclude temporary holiday-specific wording.

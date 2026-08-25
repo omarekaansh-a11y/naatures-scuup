@@ -62,13 +62,13 @@ export default function Home() {
             </div>
           </div>
             <aside className="hero-table-card reveal-up delay-3" aria-label="Naatures Scuup table guide">
-              <div className="hero-table-card__topline"><span><i /> Mall Road table guide</span><small>Open daily · 12–10:30</small></div>
+              <div className="hero-table-card__topline"><span><i /> Mall Road table guide</span><small>Mon, Tue, Thu–Sun · 11–11<br />Wed · 10–11</small></div>
               <div className="hero-table-card__facts"><span><b>100%</b><small>vegetarian</small></span><span><b>204</b><small>dishes to explore</small></span><span><b>17</b><small>craving chapters</small></span></div>
               <div className="hero-table-card__route"><span>South Indian</span><span>Pizza &amp; Pasta</span><span>Chinese</span><span>Shakes &amp; Scoops</span></div>
               <div className="hero-table-card__footer"><span>One table / many moods</span><Link href="/menu">Browse the menu <ArrowRight size={15} /></Link></div>
             </aside>
           </div>
-          <div className="hero-trust reveal-up delay-4" aria-label="Restaurant information"><span><Star size={14} fill="currentColor" /> 4.0</span><span>819 Google reviews</span><span>₹200–₹400 per person</span><span className="hero-hours"><Clock3 size={13} /> Open daily · 12:00 PM–10:30 PM</span></div>
+          <div className="hero-trust reveal-up delay-4" aria-label="Restaurant information"><span><Star size={14} fill="currentColor" /> 4.0</span><span>819 Google reviews</span><span>₹200–₹400 per person</span><span className="hero-hours"><Clock3 size={13} /> Mon, Tue, Thu–Sun · 11 AM–11 PM · Wed 10 AM–11 PM</span></div>
           <button className="hero-scroll-cue reveal-up delay-4" type="button" onClick={() => scrollToId("#story")} aria-label="Scroll to the Naatures Scuup story"><span>Scroll to discover</span><i><ArrowDown size={16} strokeWidth={1.8} /></i></button>
         </section>
 

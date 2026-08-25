@@ -62,7 +62,7 @@ export function LocationAtlas() {
           </div>
           <div className="visit-card__column">
             <p>Hours</p>
-            <strong>Open daily<br /><time dateTime="12:00">12:00 PM</time>–<time dateTime="22:30">10:30 PM</time></strong>
+            <strong>Mon, Tue, Thu–Sun<br /><time dateTime="11:00">11:00 AM</time>–<time dateTime="23:00">11:00 PM</time><br /><small>Wed: <time dateTime="10:00">10:00 AM</time>–<time dateTime="23:00">11:00 PM</time></small></strong>
           </div>
           <div className="visit-card__column">
             <p>Phone</p>
