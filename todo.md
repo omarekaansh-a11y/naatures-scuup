@@ -356,6 +356,14 @@
 
 > Update note: the Pizza & Pasta and Desserts & Ice Creams plates now use 2176 × 1632 high-resolution restorations of their existing restaurant images. The Vada Pav scene was replaced with a 3000 × 1997 vegetarian burger photograph. The Chinese chapter now uses a high-resolution editorial image specifically composed around noodles lifted with chopsticks and a visible Manchurian bowl. All four retain the established text-safe colour veils.
 
+# Home Mobile Hero and Bottom Navigation Correction
+
+- [x] Correct the mobile Home hero composition so the scenic field, table guide, food imagery, copy, and route line retain the intended reference balance.
+- [x] Change the mobile bottom navigation labels and behavior from Menu / Directions to Home / Directions.
+- [x] Validate the corrected mobile Home view and save a checkpoint.
+
+> Mobile result: the hero now uses a tall, layered scenic field with the food visible behind the composition, a partially off-canvas table guide at the upper right, editorial copy over the maroon terrain, a low mango route line, and a compact trust row. The mobile dock now reads `Home` and `Directions`; desktop treatment remains unchanged. Type/build and 375px/desktop visual checks passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
