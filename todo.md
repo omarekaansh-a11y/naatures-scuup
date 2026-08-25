@@ -421,6 +421,22 @@
 
 > Validation result: the 375px standard phone hero now shows only the editorial message and imagery, with no ledger. The 980px portrait Chrome Desktop Site override still includes its original table-guide treatment. Type checking, the production build, and whitespace validation passed.
 
+# Standard-Mobile Hero Height Compaction
+
+- [x] Reduce the standard-phone Home hero height for a shorter, more compact first screen.
+- [x] Rebalance the copy, actions, route line, trust row, and dock so the compact layout remains clear.
+- [x] Validate the 375px phone view and confirm wider layouts remain unchanged, then save a checkpoint.
+
+> Validation result: at 375px wide, the first content band now begins above the fixed dock while the hero copy, actions, route line, and trust row remain clear. The 1280px desktop frontispiece is unchanged. Type checking, the production build, and whitespace validation passed.
+
+# Standard-Mobile Dock Navigation Update
+
+- [x] Replace the mobile dock Directions action with a Full Menu action.
+- [x] Preserve Home as the current-page action and ensure Full Menu opens the `/menu` route.
+- [x] Validate the compact Home hero, dock labels, active state, and navigation behavior on a phone viewport.
+
+> Validation result: at 375px wide, the compact Home hero exposes the Home and Full Menu dock actions, with Home marked current. The `/menu` view marks Full Menu current while retaining the same two actions. Type checking, the production build, and whitespace validation passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
