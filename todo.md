@@ -684,3 +684,15 @@
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
 - [ ] Create an implementation-ready reconstruction brief for another AI.
 - [ ] Deliver the detailed technical specification as a Markdown attachment.
+
+# Elevated Full Menu Hero Background
+
+- [x] Generate a stronger background-only Full Menu hero visual with cinematic depth and a dark typography-safe left field.
+- [x] Integrate the generated image into the Full Menu hero without adding food, people, brand marks, or text.
+- [x] Validate the renewed image and editorial contrast at desktop and mobile widths, then save a checkpoint.
+
+> Generation brief: late-evening Mall Road ambience expressed through architectural shadow, sculptural brass, softly glowing glass, warm maroon texture, and subtle botanical forms. The left half must remain a deep, uncluttered near-black merlot field for the HTML title; the visual interest belongs on the right.
+
+> Asset selection: use the custom elevated background-only image generated through the built-in fallback after Higgsfield confirmed that its required plan was unavailable. It contains no food, people, logos, signage, or text, and it reserves the visual detail for the right side of the hero.
+
+> Visual validation: at 1280×720, the architectural amber-and-brass scene fills the right half while the left title field remains clean and near-black merlot. At 375×812, the image still reads as an atmospheric backdrop, with all hero copy legible and the mobile header plus route dock unobstructed.
