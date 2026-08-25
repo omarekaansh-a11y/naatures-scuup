@@ -381,6 +381,14 @@
 
 > Motion result: each category plate now eases its image from 1.02 to 1.075 on hover or keyboard focus, with a light saturation lift that keeps the text-safe veils unchanged. The enlarged Home message uses a one-time 820ms fade-and-rise entrance with a deliberate 150ms delay. Both effects are disabled under reduced-motion preference; type/build and 1280px/375px visual checks passed.
 
+# Chrome Desktop Site Portrait Hero Correction
+
+- [x] Add a touch-device portrait override so the Home hero does not collapse into a small desktop composition when Chrome’s Desktop Site mode is enabled.
+- [x] Preserve the intended large title, layered table guide, food backdrop, route line, and lower trust treatment in this mode.
+- [x] Validate standard desktop, standard mobile, and tall touch-viewport behavior, then save a checkpoint.
+
+> Desktop Site result: a 641–1100px portrait media rule now detects the wide CSS viewport Chrome can expose on a phone. It converts the hero from the compressed two-column desktop grid into a tall, layered frontispiece with an 84–124px promise, off-canvas upper-right table guide, visible food field, maroon terrain, route line, and compact bottom trust row. The 980 × 1800 portrait simulation, standard 1280px desktop, and normal 375px mobile view passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
