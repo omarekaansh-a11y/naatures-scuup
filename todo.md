@@ -716,3 +716,11 @@
 - [x] Validate desktop/mobile map behavior and landmark hierarchy, then save a checkpoint.
 
 > Validation result: desktop scroll-wheel and mobile two-finger interaction now control the map without visible zoom or recenter buttons. The default live-map zoom is reduced from 16 to 14 to show a materially wider area, while the fallback begins at a complementary wider scale. A labelled The Mall landmark remains separate from the Naatures Scuup pin. Desktop/mobile visual checks, four regression assertions, TypeScript checking, production build, and whitespace validation passed.
+
+# Mobile Pinch Gesture Repair
+
+- [x] Identify why the reported mobile two-finger pinch is not reaching the current map interaction layer.
+- [x] Repair pinch zoom for the live map and the road-grid fallback while retaining the button-free design.
+- [x] Validate the repaired pinch behavior and save a checkpoint.
+
+> Repair result: the first implementation bound pinch handlers only to the fallback layer, which lives beneath the live map and therefore could not receive touch events when Maps loaded. A dedicated coarse-pointer gesture-capture layer now sits above the live map, takes two-pointer input, calculates pinch scale, and updates the live map zoom directly while retaining the fallback transform. The live mobile map disables native gesture interception, leaving the overlay as the single reliable pinch path.

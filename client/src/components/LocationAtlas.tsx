@@ -8,14 +8,14 @@ const gestureMapStyles = `
   .visit-map__directions{position:absolute;z-index:4;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:0 13px;border:1px solid rgba(244,240,232,.45);border-radius:9px;background:rgba(67,5,23,.88);color:var(--cream);font:800 8px/1 Manrope,sans-serif;letter-spacing:.09em;text-transform:uppercase;backdrop-filter:blur(9px);transition:transform .16s var(--ease-out),background .16s var(--ease-out)}
   .visit-map__directions:hover{background:var(--mango);color:var(--maroon-deep);transform:translateY(-2px)}.visit-map__directions:active{transform:scale(.96)}.visit-map__directions:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
   .visit-map__mall-landmark{position:absolute;z-index:3;top:16%;right:13%;display:grid;gap:3px;padding:7px 9px;border:1px solid rgba(244,240,232,.34);background:rgba(70,6,25,.76);color:var(--cream);font:800 8px/1 Manrope,sans-serif;letter-spacing:.11em;text-transform:uppercase;transform:rotate(-5deg);pointer-events:none}.visit-map__mall-landmark:before{content:"◼";color:var(--mango);font-size:7px}.visit-map__mall-landmark i{color:rgba(244,240,232,.62);font-size:6px;font-style:normal;letter-spacing:.1em}
-  .visit-map__gesture-hint{position:absolute;z-index:3;bottom:16px;left:16px;color:rgba(244,240,232,.64);font:800 7px/1 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}.visit-map__gesture-hint:after{content:"Scroll to explore"}@media(pointer:coarse){.visit-map__gesture-hint:after{content:"Use two fingers to explore"}}@media(max-width:760px){.visit-map__directions{right:10px;bottom:10px;padding-inline:10px;font-size:7px}.visit-map__mall-landmark{top:15%;right:8%;font-size:7px}.visit-map__gesture-hint{bottom:14px;left:14px;font-size:6px}}
+  .visit-map__gesture-capture{display:none}.visit-map__gesture-hint{position:absolute;z-index:3;bottom:16px;left:16px;color:rgba(244,240,232,.64);font:800 7px/1 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}.visit-map__gesture-hint:after{content:"Scroll to explore"}@media(pointer:coarse){.visit-map__gesture-capture{position:absolute;z-index:3;inset:0;display:block;touch-action:pan-y}.visit-map__gesture-hint:after{content:"Use two fingers to explore"}}@media(max-width:760px){.visit-map__directions{right:10px;bottom:10px;padding-inline:10px;font-size:7px}.visit-map__mall-landmark{top:15%;right:8%;font-size:7px}.visit-map__gesture-hint{bottom:14px;left:14px;font-size:6px}}
   @media(prefers-reduced-motion:reduce){.visit-map__directions{transition:none}}
 `;
 
 export function LocationAtlas() {
   const mapRef = useRef<google.maps.Map | null>(null);
   const touchPoints = useRef(new Map<number, { x: number; y: number }>());
-  const touchOrigin = useRef<{ x: number; y: number; zoom: number; distance: number; midpointX: number; midpointY: number } | null>(null);
+  const touchOrigin = useRef<{ x: number; y: number; zoom: number; liveZoom: number; distance: number; midpointX: number; midpointY: number } | null>(null);
   const desktopDrag = useRef<{ x: number; y: number; pointerId: number } | null>(null);
   const [fallbackMap, setFallbackMap] = useState({ x: 0, y: 0, zoom: 0.8 });
 
@@ -26,7 +26,7 @@ export function LocationAtlas() {
       fullscreenControl: false,
       streetViewControl: false,
       zoomControl: false,
-      gestureHandling: window.matchMedia("(pointer: fine)").matches ? "greedy" : "cooperative",
+      gestureHandling: window.matchMedia("(pointer: fine)").matches ? "greedy" : "none",
       scrollwheel: window.matchMedia("(pointer: fine)").matches,
       backgroundColor: "#541222",
     });
@@ -62,7 +62,7 @@ export function LocationAtlas() {
       touchPoints.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
       event.currentTarget.setPointerCapture(event.pointerId);
       const sample = touchSample();
-      if (sample) touchOrigin.current = { ...fallbackMap, ...sample };
+      if (sample) touchOrigin.current = { ...fallbackMap, liveZoom: mapRef.current?.getZoom() ?? 14, ...sample };
       return;
     }
     desktopDrag.current = { x: event.clientX - fallbackMap.x, y: event.clientY - fallbackMap.y, pointerId: event.pointerId };
@@ -76,6 +76,7 @@ export function LocationAtlas() {
       const origin = touchOrigin.current;
       if (!sample || !origin) return;
       const scale = sample.distance / origin.distance;
+      mapRef.current?.setZoom(Math.max(11, Math.min(18, origin.liveZoom + Math.log2(scale))));
       setFallbackMap({ x: Math.max(-90, Math.min(90, origin.x + sample.midpointX - origin.midpointX)), y: Math.max(-70, Math.min(70, origin.y + sample.midpointY - origin.midpointY)), zoom: Math.max(0.68, Math.min(1.35, origin.zoom * scale)) });
       return;
     }
@@ -111,6 +112,7 @@ export function LocationAtlas() {
         <div className="visit-map" aria-label="Interactive map centered on Naatures Scuup">
           <span className="visit-map__fallback" role="presentation" style={{ transform: `translate(${fallbackMap.x}px, ${fallbackMap.y}px) scale(${fallbackMap.zoom})` }} onPointerDown={startFallbackGesture} onPointerMove={moveFallbackGesture} onPointerUp={finishFallbackGesture} onPointerCancel={finishFallbackGesture} onWheel={wheelFallback}><i className="visit-map__road visit-map__road--one" /><i className="visit-map__road visit-map__road--two" /><i className="visit-map__road visit-map__road--three" /><i className="visit-map__road visit-map__road--four" /></span>
           <MapView className="visit-map__canvas" initialCenter={naaturesScuup} initialZoom={14} onMapReady={onMapReady} />
+          <span className="visit-map__gesture-capture" aria-hidden="true" onPointerDown={startFallbackGesture} onPointerMove={moveFallbackGesture} onPointerUp={finishFallbackGesture} onPointerCancel={finishFallbackGesture} />
           <span className="visit-map__tint" aria-hidden="true" />
           <div className="visit-map__place" aria-hidden="true"><span><MapPin size={17} fill="currentColor" /></span><strong>Naatures<br />Scuup</strong><small>Mall Road / Kanpur</small></div>
           <span className="visit-map__mall-landmark" aria-hidden="true">The Mall <i>nearby landmark</i></span>

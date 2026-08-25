@@ -17,6 +17,8 @@ describe("interactive visit map", () => {
     expect(atlas).toContain("startFallbackGesture");
     expect(atlas).toContain("wheelFallback");
     expect(atlas).toContain("gestureHandling");
+    expect(atlas).toContain("visit-map__gesture-capture");
+    expect(atlas).toContain("mapRef.current?.setZoom");
     expect(atlas).toContain("The Mall");
     expect(atlas).toContain('initialZoom={14}');
     expect(atlas).toContain("Use two fingers to explore");
