@@ -43,13 +43,21 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
 	          <span className="brand-logo-crop" aria-hidden="true">
 	            <svg className="brand-logo" viewBox="0 0 1920 1920" preserveAspectRatio="xMidYMid meet">
 	              <defs>
-	              <filter id="owner-logo-background-knockout" colorInterpolationFilters="sRGB">
+	              <filter id="owner-logo-foreground-alpha" colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1920">
 	                <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1.6 -1.6 -1.6 0 4.6" result="whiteKnockout" />
-	                <feColorMatrix in="whiteKnockout" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 1 1 1 0 -0.16" result="colorKeyed" />
-	                <feComposite in="colorKeyed" in2="whiteKnockout" operator="in" />
+	                <feColorMatrix in="whiteKnockout" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 1 -0.5 -0.5 0 -0.1" result="redKey" />
+	                <feColorMatrix in="whiteKnockout" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -0.5 1 -0.5 0 -0.1" result="greenKey" />
+	                <feColorMatrix in="whiteKnockout" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0.5 0.5 -1 0 -0.1" result="yellowKey" />
+	                <feBlend in="redKey" in2="greenKey" mode="screen" result="redGreenKey" />
+	                <feBlend in="redGreenKey" in2="yellowKey" mode="screen" result="chromaKey" />
+	                <feComponentTransfer in="chromaKey" result="hardForeground"><feFuncA type="discrete" tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1" /></feComponentTransfer>
+	                <feComposite in="hardForeground" in2="whiteKnockout" operator="in" />
 	              </filter>
-	              </defs>
-	              <image href={ownerLogo} width="1920" height="1920" preserveAspectRatio="xMidYMid meet" filter="url(#owner-logo-background-knockout)" />
+	              <mask id="owner-logo-foreground-mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1920" {...({ "mask-type": "alpha" } as Record<string, string>)}>
+	                <image href={ownerLogo} width="1920" height="1920" preserveAspectRatio="xMidYMid meet" filter="url(#owner-logo-foreground-alpha)" />
+	              </mask>
+	            </defs>
+	              <image href={ownerLogo} width="1920" height="1920" preserveAspectRatio="xMidYMid meet" mask="url(#owner-logo-foreground-mask)" />
 	            </svg>
 	          </span>
 	          <span className="brand-text"><strong>Naatures Scuup</strong><small>#FREEZETHEHAPPINESS</small></span>

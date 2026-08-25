@@ -428,6 +428,36 @@
 
 > Validation result: the two-stage alpha key removes the black rectangle on the dark Home header and retains a background-free colored mark on the light Full Menu header. The complete wordmark, separate text signature, and responsive layout remain intact. Type checking, the production build, and whitespace validation passed.
 
+# Header Logo Faint Background-Square Final Removal
+
+- [x] Remove the faint square still visible behind the logo in the supplied desktop reference.
+- [x] Preserve the unaltered colored logo mark, full wordmark, transparency, and header hierarchy.
+- [x] Validate dark Home and light Menu headers at mobile and desktop widths, then save a checkpoint.
+
+> Refinement finding: the strengthened source alpha key retained the full colored mark but the dark Home screenshot still showed a faint rectangular cast. The remaining artifact comes from the logo-level CSS drop-shadow rather than the source image, so that shadow has been removed.
+
+> Final visual finding: removing the drop-shadow keeps the light Menu header fully clean, but a very faint square remains on the dark Home header. The final pass needs to isolate colored source pixels more aggressively on the dark header without changing the supplied artwork.
+
+> Strict visual finding: even with the dark-header blend, the desktop Home header still exposes the source square. The next correction must use a hard alpha cutoff that discards all low-saturation background pixels, rather than relying on compositing modes.
+
+> Hard-alpha review: the colored mark remains intact on both headers, but the dark Home header still reveals a faint source rectangle. The final correction will apply the hard foreground key as an SVG mask rather than only as a composited filter output.
+
+> Mask review: the initial SVG mask rendered with a luminance interpretation, allowing the white source background back onto the dark header. The final adjustment explicitly uses alpha masking so the keyed transparency—not source brightness—controls the logo visibility.
+
+> Alpha-mask review: the explicit mask alone still allowed the white source field through because the white-knockout alpha was not multiplied back into the final mask output. The corrected filter now composes the hard foreground key with the white knockout before masking the original artwork.
+
+> Foreground-threshold review: a low-opacity source field was still perceptible on the dark header. The final source-level key applies a stricter alpha cutoff and removes the experimental dark-header blend, leaving no compositing fallback that could tint the header.
+
+> Strict-key review: the source treatment preserved the full colored mark, but a hairline tonal cast remains visible only against the textured dark hero. A final dark-header presentation test will use lightening after the source key, while the light Menu header remains entirely source-filtered.
+
+> Blend review: lightening did not materially improve the final dark-header cast. The last non-destructive presentation test compresses residual dark tones before screen blending, while the light Menu header continues to show the same source-filtered mark unchanged.
+
+> Final source-key finding: brightness-based alpha preserves neutral, textured tones in the source field. The foreground key is now chroma-based, independently retaining the red, green, and yellow artwork ranges and discarding neutral white, black, and low-saturation background tones without editing the supplied file.
+
+> Desktop visual validation: the chroma-based alpha mask removes the rectangular source field completely on the dark Home header and the light Full Menu header. The colored Naatures Scuup artwork and separate full wordmark remain legible; mobile, build, and whitespace checks remain pending.
+
+> Final responsive validation: desktop (1280×720) and mobile (375×812) Home and Full Menu headers show the complete colored artwork with no visible square, clipping, or header overlap. The source image remains unaltered; the SVG applies only an in-browser chroma alpha mask.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
