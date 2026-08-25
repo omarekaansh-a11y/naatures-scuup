@@ -37,23 +37,23 @@ function DogMascot() {
         <path d="M180 89h8c8 0 8 12 0 12h-6" />
         <path d="M153 101h30" />
 
-        <path className="chair-back" d="M39 132C27 111 30 85 44 73c13-11 29-5 36 9" />
-        <path d="M28 142c24-10 68-10 101 1" />
-        <path d="M32 142v26M105 142v26M23 168h94" />
+        <path className="chair-back" d="M40 138C27 115 30 88 45 76c13-11 28-4 35 10" />
+        <path d="M28 146c24-10 68-10 101 1" />
+        <path d="M32 146v26M105 146v26M23 172h94" />
 
         <g className="dog-pose">
-          <path className="dog-tail" d="M91 128c-18-2-29-14-28-30 1-12 8-20 16-19 9 2 11 13 7 24-4 9-10 16-16 20-3 4-1 9 6 12" />
-          <path className="dog-body" d="M89 74c-7 20-5 41 4 54 8 13 20 17 30 10 8-6 8-19 1-30-6-9-14-15-18-26-4-10-3-22 1-33" />
-          <path className="dog-front-leg" d="M96 107c-2 15 0 25 7 34M116 114c-1 11 1 19 7 27" />
-          <path className="dog-paw" d="M100 141c6 3 11 3 16-1M121 141c5 3 10 3 14 0" />
+          <path className="dog-tail" d="M91 132c-18-2-29-14-28-30 1-12 8-20 16-19 9 2 11 13 7 24-4 9-10 16-16 20-3 4-1 9 6 12" />
+          <path className="dog-body" d="M90 76c-7 22-4 45 4 59 8 14 20 18 30 10 8-6 8-19 1-30-6-9-14-15-18-26-4-10-3-22 1-33" />
+          <path className="dog-front-leg" d="M97 112c-2 15 0 25 7 34M116 120c-1 11 1 19 7 27" />
+          <path className="dog-paw" d="M101 146c6 3 11 3 16-1M121 146c5 3 10 3 14 0" />
           <g className="dog-head-group">
-            <path className="dog-head" d="M84 58c8-9 23-10 35-4 8 5 14 10 22 11 10 1 17 4 21 9-6 6-16 9-28 9-12 0-23-4-32-10-7-5-13-9-18-15Z" />
-            <path className="dog-neck" d="M103 76c-4 13-2 24 5 34" />
-            <path className="dog-ear" d="M84 60c-11-4-18 4-15 16 3 10 9 16 17 19" />
-            <path className="dog-eye" d="M108 62q5 4 10 0" />
-            <path className="dog-smile" d="M149 72q4 3 8 0" />
-            <path className="dog-beret" d="M67 48c6-13 28-21 46-9 5 4 8 8 9 12-18-5-37-3-53 5-3-2-4-5-2-8Z" fill="currentColor" stroke="currentColor" />
-            <path className="dog-beret-stem" d="M86 34c-1-5 2-9 7-10" />
+            <path className="dog-head" d="M84 48c8-9 23-10 35-4 8 5 14 10 22 11 10 1 17 4 21 9-6 6-16 9-28 9-12 0-23-4-32-10-7-5-13-9-18-15Z" />
+            <path className="dog-neck" d="M103 68c-5 18-3 33 4 47" />
+            <path className="dog-ear" d="M84 50c-11-4-18 4-15 16 3 10 9 16 17 19" />
+            <path className="dog-eye" d="M108 52q5 4 10 0" />
+            <path className="dog-smile" d="M149 62q4 3 8 0" />
+            <path className="dog-beret" d="M67 40c6-13 28-21 46-9 5 4 8 8 9 12-18-5-37-3-53 5-3-2-4-5-2-8Z" fill="currentColor" stroke="currentColor" />
+            <path className="dog-beret-stem" d="M86 26c-1-5 2-9 7-10" />
           </g>
         </g>
       </g>

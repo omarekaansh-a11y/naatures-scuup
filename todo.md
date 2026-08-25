@@ -374,6 +374,20 @@
 
 > Validation result: the two sniff pauses now stop slightly farther from the cup, retaining a visible steam-facing scent gesture. A restrained ear twitch occurs immediately after the head returns from the second sniff. The existing reduced-motion selector disables both the head and ear animation groups. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
 
+# Five-Stage Taller Upright Café-Dog and Visible Safe-Sniff Rebuild
+
+- [x] Interpret the supplied tall dog reference and lock the upright long-necked seated proportions.
+- [x] Rebuild the torso, neck, seated legs, tail, chair, and cup relationship around the taller posture.
+- [x] Restore a clearly visible sniff that stops safely short of the cup, followed by the ear twitch.
+- [x] Critique the mobile render for upright posture, sniff visibility, and reference fidelity.
+- [x] Apply final corrections, validate desktop/mobile and reduced-motion behavior, then save a checkpoint.
+
+> Tall-reference target: lift the beret, head, and closed-eye profile above a long, tapering neck; extend the upright torso down into the chair seat; keep the table and cup low enough beneath the snout to create a visible scent corridor. The sniff can then use a meaningful forward/down arc without entering the cup.
+
+> Strict critique: the taller rebuild creates the necessary vertical separation between snout and cup, and the longer neck now gives the sniffing arc readable space. The final correction should retain this elevated profile while keeping the lower torso firmly seated and the new head motion visibly pointed toward the steam rather than the cup rim.
+
+> Final validation: mobile and desktop renders now show a taller upright long-necked seated dog with a clear steam-facing corridor above the cup. The chair still supports the lower torso, while the raised profile makes the forward sniff arc visible without crowding the cup rim. The ear twitch follows the sniff return, and reduced-motion continues to disable all mascot animation groups. Type checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
