@@ -43,11 +43,13 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
 	          <span className="brand-logo-crop" aria-hidden="true">
 	            <svg className="brand-logo" viewBox="0 0 1920 1920" preserveAspectRatio="xMidYMid meet">
 	              <defs>
-	                <filter id="owner-logo-white-knockout" colorInterpolationFilters="sRGB">
-	                  <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1.6 -1.6 -1.6 0 4.6" />
-	                </filter>
+	              <filter id="owner-logo-background-knockout" colorInterpolationFilters="sRGB">
+	                <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1.6 -1.6 -1.6 0 4.6" result="whiteKnockout" />
+	                <feColorMatrix in="whiteKnockout" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 1 1 1 0 -0.16" result="colorKeyed" />
+	                <feComposite in="colorKeyed" in2="whiteKnockout" operator="in" />
+	              </filter>
 	              </defs>
-	              <image href={ownerLogo} width="1920" height="1920" preserveAspectRatio="xMidYMid meet" filter="url(#owner-logo-white-knockout)" />
+	              <image href={ownerLogo} width="1920" height="1920" preserveAspectRatio="xMidYMid meet" filter="url(#owner-logo-background-knockout)" />
 	            </svg>
 	          </span>
 	          <span className="brand-text"><strong>Naatures Scuup</strong><small>#FREEZETHEHAPPINESS</small></span>

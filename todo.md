@@ -420,6 +420,14 @@
 
 > Validation result: the mobile and desktop headers now show the complete supplied logo within a full-wordmark frame, with its right edge no longer clipped. The separate Naatures Scuup text signature, slogan, top control, and menu control retain their existing hierarchy. Type checking, the production build, and whitespace validation passed.
 
+# Header Logo Complete Background Removal
+
+- [x] Remove every visible background artifact from the supplied logo while preserving its actual colored mark.
+- [x] Preserve the full wordmark, transparency, visual scale, and dark/light header compatibility.
+- [x] Validate desktop and mobile header states, then save a checkpoint.
+
+> Validation result: the two-stage alpha key removes the black rectangle on the dark Home header and retains a background-free colored mark on the light Full Menu header. The complete wordmark, separate text signature, and responsive layout remain intact. Type checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
