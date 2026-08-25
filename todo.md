@@ -335,6 +335,18 @@
 
 > Higgsfield constraint remains active for this pass: any optional background generation is useful only when the workspace permits it. The existing plan-level block means the category visual system must be crafted from original layout, texture, and compliant existing visual resources unless the feature becomes available.
 
+# Category Visual Relevance and Contrast Refinement
+
+- [x] Audit every Full Menu chapter plate against its category name, dietary fit, image quality, and the contrast of its heading and supporting copy.
+- [x] Replace mismatched category imagery with higher-quality, clearly relevant visual treatments while maintaining unique image use and authentic foreground food.
+- [x] Apply a per-category contrast system so headings, chapter labels, and descriptions remain distinct from the image and veil beneath them.
+- [x] Reassess Higgsfield for any compliant visual enrichment available in the current workspace; preserve an image-sourcing fallback if it remains unavailable.
+- [x] Run the staged adversarial critique loop, return to the brief if needed, validate desktop/mobile, and save a checkpoint.
+
+> Correction outcome: mismatched category images were replaced with distinct, real dishes that substantiate their headings—samosas, paneer curry and naan, biryani, dosa, Hakka noodles, vada pav, street snacks, kathi rolls, Maggi, raita and papad, mocktails, and paneer puffs. The title and support-copy system now uses fully opaque cream over a category-specific dark veil; freshness chapters use fennel, dessert and drink chapters use rose/mango, and savoury chapters retain deeper maroon warmth.
+
+> Review-loop outcome: the trusted reviewer identified pacing and index shortcomings. The work returned to the brief, converted category filters into a numbered menu index, added a visible “first plate” lead record to every chapter, and strengthened appetite-specific veil cues. The live index selection, desktop/mobile visual checks, browser console, type check, and production build passed. Higgsfield remains unavailable for image generation on the current plan, so no artificial foreground food was introduced.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
