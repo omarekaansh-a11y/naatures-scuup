@@ -816,3 +816,8 @@
 - [x] Recover and verify the 300 numbered user-supplied image frames in numeric order.
 - [x] Replace the video orbit with a GSAP ScrollTrigger canvas image sequence and preloading fallback.
 - [x] Validate sharp, centered desktop/mobile scroll scrubbing and publish the completed replacement.
+
+# Full-Screen Frame Sequence Refinement
+- [x] Remove all text, loading copy, framing, and decorative overlays from the 300-frame canvas section.
+- [x] Pin the canvas at full viewport size and prevent access to Drag It until frame 300 is reached.
+- [x] Validate the full-screen desktop/mobile sequence and publish the text-free refinement.

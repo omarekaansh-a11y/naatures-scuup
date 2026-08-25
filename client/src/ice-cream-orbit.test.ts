@@ -6,33 +6,36 @@ const orbit = readFileSync(resolve(process.cwd(), "client/src/components/IceCrea
 const manifest = readFileSync(resolve(process.cwd(), "client/src/lib/mango-scroll-frames.ts"), "utf8");
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 
-describe("GSAP scroll-driven ice-cream canvas sequence", () => {
+describe("full-screen GSAP canvas frame sequence", () => {
   it("provides all 300 frames in ordered numeric storage paths", () => {
     expect(manifest).toContain("MANGO_SCROLL_FRAMES");
     expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(300);
     expect(manifest).toContain("/manus-storage/ezgif-frame-001_");
     expect(manifest).toContain("/manus-storage/ezgif-frame-300_");
-    expect(manifest).toContain("MANGO_SCROLL_FRAME_COUNT = MANGO_SCROLL_FRAMES.length");
   });
 
-  it("uses GSAP ScrollTrigger to scrub the canvas frame playhead", () => {
+  it("uses GSAP ScrollTrigger to pin and scrub the canvas until the final frame", () => {
     expect(orbit).toContain('from "gsap"');
     expect(orbit).toContain('from "gsap/ScrollTrigger"');
     expect(orbit).toContain("gsap.registerPlugin(ScrollTrigger)");
     expect(orbit).toContain("scrub: 0.35");
-    expect(orbit).not.toContain("<video");
+    expect(orbit).toContain("pin: \".ice-orbit__stage\"");
+    expect(orbit).toContain("pinSpacing: true");
+    expect(orbit).toContain("frame: MANGO_SCROLL_FRAME_COUNT - 1");
     expect(orbit).toContain("<canvas");
-    expect(orbit).not.toContain("video.currentTime");
   });
 
-  it("preloads frames with progress and retains mobile plus reduced-motion safeguards", () => {
+  it("preloads the image sequence with a text-free fallback and full-screen canvas framing", () => {
     expect(orbit).toContain("Promise.all(MANGO_SCROLL_FRAMES.map(preloadFrame))");
-    expect(orbit).toContain("Loading {loadedCount} of {MANGO_SCROLL_FRAME_COUNT} frames");
-    expect(orbit).toContain("@media(max-width:760px)");
-    expect(orbit).toContain("prefers-reduced-motion:reduce");
+    expect(orbit).toContain("height:100svh");
+    expect(orbit).toContain("drawCoverFrame");
+    expect(orbit).toContain('className="ice-orbit__loading"');
+    expect(orbit).not.toContain("Come for the craving.");
+    expect(orbit).not.toContain("Stay for the scoop.");
+    expect(orbit).not.toContain("One table. Many moods.");
   });
 
-  it("keeps the new canvas sequence in the Home pre-Drag It position", () => {
+  it("keeps the full-screen canvas sequence in the Home pre-Drag It position", () => {
     expect(home).toContain("<IceCreamOrbit />");
     expect(home).not.toContain('className="story-section section-pad"');
   });
