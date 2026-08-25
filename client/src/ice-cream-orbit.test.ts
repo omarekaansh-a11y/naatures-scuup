@@ -7,13 +7,13 @@ const manifest = readFileSync(resolve(process.cwd(), "client/src/lib/mango-scrol
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 
 describe("full-screen GSAP canvas frame sequence", () => {
-  it("provides all 300 cleaned frames in exact numeric storage order", () => {
+  it("provides all 300 native lossless frames in exact numeric storage order", () => {
     expect(manifest).toContain("MANGO_SCROLL_FRAMES");
-    expect(manifest).toContain("Ordered 001–300 high-detail AI dessert sequence");
+    expect(manifest).toContain("Ordered 001–300 native-resolution lossless PNG sequence");
     expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(300);
-    expect(manifest).toContain("/manus-storage/ai-mango-frame-001_d0a0ec01.jpg");
-    expect(manifest).toContain("/manus-storage/ai-mango-frame-300_1a4471f4.jpg");
-    const actualFrameNumbers = [...manifest.matchAll(/ai-mango-frame-(\d{3})_/g)].map((match) => Number(match[1]));
+    expect(manifest).toContain("/manus-storage/ezgif-frame-001_4affcda2.png");
+    expect(manifest).toContain("/manus-storage/ezgif-frame-300_95c488ed.png");
+    const actualFrameNumbers = [...manifest.matchAll(/ezgif-frame-(\d{3})_/g)].map((match) => Number(match[1]));
     expect(actualFrameNumbers).toEqual(Array.from({ length: 300 }, (_, index) => index + 1));
   });
 

@@ -856,3 +856,13 @@
 - [x] Generate 300 high-detail AI dessert frames in exact 001–300 orbit order, reusing the existing clean anchor frames.
 - [x] Replace the active canvas manifest with all 300 regenerated AI frame assets.
 - [x] Validate natural frame-to-frame coherence, no visible pixelation, and full-screen scroll playback.
+
+# 300 Distinct AI Frame Correction
+- [x] Superseded by the user-approved native lossless cleanup route after image generation reached its daily limit.
+- [x] Superseded by the completed ordered native lossless PNG manifest.
+- [x] Superseded by the completed native full-screen sequence validation.
+
+# Native Lossless Corner Cleanup
+- [x] Create 300 lossless PNG frames from the original native-resolution sources with only the watermark corner treated.
+- [x] Replace the active manifest with the ordered lossless native PNG set.
+- [x] Verify native dimensions, mark-free frames, and full-screen scroll playback before publishing.
