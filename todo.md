@@ -257,6 +257,20 @@
 
 > Final validation: at mobile and desktop scales, the beret now sits above the head and ear with a visible contour gap. The softened ear and neck return lines preserve a readable long-necked profile, while the cup, steam, and chair remain separate from the body silhouette. Reduced-motion disables the revised animation groups; type checking, the production build, and whitespace validation passed.
 
+# Continuing Five-Stage Café-Dog Body-Length and Posture Loop
+
+- [x] Interpret the supplied live mobile rendering and lock the taller, less-stubby body-proportion target.
+- [x] Lengthen the torso and rebalance the seated silhouette around the reference posture.
+- [x] Refine legs, tail, chair relationship, and idle sniff geometry around the longer body.
+- [x] Conduct a strict mobile critique focused on body length, posture, and reference fidelity.
+- [x] Apply final proportion corrections, validate desktop/mobile and reduced-motion behavior, then save a checkpoint.
+
+> Proportion target: the taller silhouette should read as a graceful seated S-curve—small head and level snout, a long tapering neck, an elongated torso resting toward the chair seat, then two legs touching down without compressing into the bench line. The tail remains a secondary curl behind the body.
+
+> Strict critique: the extended torso now removes the stubby proportion reported in the supplied live view and gives the dog a more elegant seated posture. The remaining final refinement is small: maintain the longer torso while slightly reducing the tail’s prominence so the body—not the rear curl—remains the dominant vertical form.
+
+> Final validation: mobile and desktop renders now read as a taller seated S-curve, with the torso carrying the main vertical rhythm and the subdued tail serving as a secondary rear accent. The long-necked profile, chair, cup, steam, and sniff relationship retain clear separation; reduced-motion disables the animation groups. Type checking, the production build, and whitespace validation passed.
+
 # Motion, Hours, and Menu-Color Refinement Checklist
 
 - [x] Tune the drag distance, velocity projection, exit timing, and snap-back curve for a slightly heavier card feel.
