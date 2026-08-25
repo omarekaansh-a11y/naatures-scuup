@@ -16,7 +16,7 @@ const sequenceStyles = `
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 type LoadedFrame = HTMLImageElement | null;
 
-function drawCoverFrame(canvas: HTMLCanvasElement, image: HTMLImageElement) {
+function drawCoverFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, opacity = 1, clear = true) {
   const context = canvas.getContext("2d");
   if (!context || !image.naturalWidth || !image.naturalHeight) return;
 
@@ -32,10 +32,13 @@ function drawCoverFrame(canvas: HTMLCanvasElement, image: HTMLImageElement) {
   const scale = Math.max(targetWidth / image.naturalWidth, targetHeight / image.naturalHeight);
   const drawWidth = image.naturalWidth * scale;
   const drawHeight = image.naturalHeight * scale;
-  context.clearRect(0, 0, targetWidth, targetHeight);
+  if (clear) context.clearRect(0, 0, targetWidth, targetHeight);
   context.imageSmoothingEnabled = true;
   context.imageSmoothingQuality = "high";
+  context.save();
+  context.globalAlpha = opacity;
   context.drawImage(image, (targetWidth - drawWidth) / 2, (targetHeight - drawHeight) / 2, drawWidth, drawHeight);
+  context.restore();
 }
 
 export function IceCreamOrbit() {
@@ -49,16 +52,23 @@ export function IceCreamOrbit() {
   const renderFrame = (frameIndex: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const safeIndex = Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAME_COUNT - 1));
-    const image = framesRef.current[safeIndex] ?? framesRef.current.find((frame) => frame !== null);
-    if (!image) return;
-    currentFrameRef.current = safeIndex;
-    drawCoverFrame(canvas, image);
+    const safeFrame = clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAMES.length - 1);
+    const leadingIndex = Math.floor(safeFrame);
+    const trailingIndex = Math.min(MANGO_SCROLL_FRAMES.length - 1, leadingIndex + 1);
+    const blend = safeFrame - leadingIndex;
+    const leadingFrame = framesRef.current[leadingIndex] ?? framesRef.current.find((frame) => frame !== null);
+    const trailingFrame = framesRef.current[trailingIndex];
+    if (!leadingFrame) return;
+    currentFrameRef.current = clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAME_COUNT - 1);
+    drawCoverFrame(canvas, leadingFrame);
+    if (trailingFrame && trailingIndex !== leadingIndex && blend > 0) {
+      drawCoverFrame(canvas, trailingFrame, blend, false);
+    }
   };
 
   useEffect(() => {
     let cancelled = false;
-    const frames: LoadedFrame[] = Array.from({ length: MANGO_SCROLL_FRAME_COUNT }, () => null);
+    const frames: LoadedFrame[] = Array.from({ length: MANGO_SCROLL_FRAMES.length }, () => null);
     framesRef.current = frames;
 
     const preloadFrame = (source: string, index: number) => new Promise<void>((resolve) => {

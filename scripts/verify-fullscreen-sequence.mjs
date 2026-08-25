@@ -23,6 +23,7 @@ const inspect = async (scrollOffset) => {
 
 const start = await inspect(100);
 const middle = await inspect(1000);
+await page.screenshot({ path: "/home/ubuntu/ai-still-sequence-mid.png" });
 if (Math.abs(start.top) > 2 || Math.abs(middle.top) > 2) throw new Error(`Sequence was not pinned: start=${start.top}, middle=${middle.top}`);
 if (start.height !== start.viewportHeight || start.canvasWidth < 1200 || start.canvasHeight < 850) throw new Error(`Canvas is not full viewport or sharp: ${JSON.stringify(start)}`);
 
