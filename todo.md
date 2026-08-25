@@ -215,6 +215,20 @@
 
 > Validation result: the refactored mascot remains inside the existing Greet the Naatures Scuup café dog control, alongside the unchanged Drag It food-card navigation and accessibility labels. At desktop and mobile scales, the seated long-neck dog, curled tail, beret, chair, round table, cup, and steam face each other as in the supplied reference. The idle cycle now leans the dog toward the coffee, pauses to sniff, then settles back; reduced-motion disables the motion groups. Type checking, the production build, and whitespace validation passed.
 
+# Five-Stage Café-Dog Perfection Loop
+
+- [x] Interpret the new mobile reference and lock the target proportions, posture, chair geometry, cup relationship, and motion beat.
+- [x] Complete a first construction pass for the long-neck profile, arched back, curled tail, chair, table, and cup.
+- [x] Complete a second construction pass for refined line weight, negative space, coffee proximity, and the idle sniff cycle.
+- [x] Conduct a strict rendered critique against the supplied mobile reference and identify remaining differences.
+- [x] Apply final corrections, validate desktop/mobile and reduced-motion behavior, then save a checkpoint.
+
+> Reference target: a tall, tapering neck rises from a compact seated body; the profile has a level closed-eye expression, a narrow upward-tipped snout, a small tilted beret, and a single curled tail framing the chair back. The shallow cup sits directly inside the snout’s scent path on a petite round table. Idle motion should be one unhurried inhale—forward/down toward the steam, a brief scent pause, then a soft return—rather than a repeated head wag.
+
+> Strict critique: the second pass established the intended silhouette and cup relationship, but the chair and tail still compete visually at mobile scale, the cup is more block-like than the shallow reference cup, and the snout-to-steam gap could read more deliberately. The final pass must simplify the chair’s interior lines, reduce the tail’s visual conflict, lower and soften the cup shape, and draw the sniff endpoint closer to the steam without turning the movement into a nod.
+
+> Final validation: the mobile and desktop renders now show a clearer seated profile with one readable curled tail, a lighter chair frame, a shallow cup and saucer, and a distinct snout-to-steam corridor. The mascot retains separation from the food stack and copy at both breakpoints; reduced-motion disables the full motion groups. Type checking, the production build, and whitespace validation passed.
+
 # Motion, Hours, and Menu-Color Refinement Checklist
 
 - [x] Tune the drag distance, velocity projection, exit timing, and snap-back curve for a slightly heavier card feel.
