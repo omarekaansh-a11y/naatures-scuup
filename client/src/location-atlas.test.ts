@@ -13,10 +13,14 @@ describe("interactive visit map", () => {
     expect(atlas).toContain("+91 78608 80088");
   });
 
-  it("preserves pan, zoom, recenter, and a road-grid fallback when live Maps cannot load", () => {
-    expect(atlas).toContain("changeZoom");
-    expect(atlas).toContain("startFallbackPan");
-    expect(atlas).toContain("recenter");
+  it("preserves gesture-first pan and zoom with a road-grid fallback when live Maps cannot load", () => {
+    expect(atlas).toContain("startFallbackGesture");
+    expect(atlas).toContain("wheelFallback");
+    expect(atlas).toContain("gestureHandling");
+    expect(atlas).toContain("The Mall");
+    expect(atlas).toContain('initialZoom={14}');
+    expect(atlas).toContain("Use two fingers to explore");
+    expect(atlas).not.toContain('aria-label="Zoom in"');
     expect(map).toContain("data-map-fallback");
     expect(styles).toContain("visit-map__fallback");
   });

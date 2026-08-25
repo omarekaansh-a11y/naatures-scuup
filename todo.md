@@ -707,3 +707,12 @@
 > Implementation note: the existing illustrative map has been replaced with a Google Maps location panel that supports native map pan/zoom when available, a branded advanced marker, directions, and recenter controls. If Maps fails to load, an accessible interaction model remains available through an original pan-and-zoom road-grid fallback, external directions link, and the complete factual visit card.
 
 > Validation result: the desktop location panel presents the reference-inspired vertical hierarchy—title, road map, central restaurant pin, compact zoom/recenter/directions controls, and visit card—without copying any reference branding or content. The mobile layout retains readable details and protected controls. Four focused regression assertions, TypeScript checking, the production build, and whitespace validation passed.
+
+# Gesture-First Visit Map Refinement
+
+- [x] Remove visible zoom and recenter controls from the visit map.
+- [x] Support two-finger map gestures on mobile and mouse-wheel interaction on desktop, with a significantly wider default map view.
+- [x] Add The Mall as a visible nearby landmark without obscuring Naatures Scuup.
+- [x] Validate desktop/mobile map behavior and landmark hierarchy, then save a checkpoint.
+
+> Validation result: desktop scroll-wheel and mobile two-finger interaction now control the map without visible zoom or recenter buttons. The default live-map zoom is reduced from 16 to 14 to show a materially wider area, while the fallback begins at a complementary wider scale. A labelled The Mall landmark remains separate from the Naatures Scuup pin. Desktop/mobile visual checks, four regression assertions, TypeScript checking, production build, and whitespace validation passed.
