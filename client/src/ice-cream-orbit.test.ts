@@ -3,52 +3,37 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const orbit = readFileSync(resolve(process.cwd(), "client/src/components/IceCreamOrbit.tsx"), "utf8");
-const manifest = readFileSync(resolve(process.cwd(), "client/src/lib/mango-scroll-frames.ts"), "utf8");
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 
-describe("full-screen GSAP canvas frame sequence", () => {
-	  it("provides all 240 lossless 1440p frames in exact numeric storage order", () => {
-	    expect(manifest).toContain("MANGO_SCROLL_FRAMES");
-	    expect(manifest).toContain("Ordered 001–240 2560×1440 lossless PNG sequence");
-	    expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(240);
-	    expect(manifest).toContain("/manus-storage/ezgif-frame-001_c0bf1371.png");
-	    expect(manifest).toContain("/manus-storage/ezgif-frame-240_3c3fbbbf.png");
-	    const actualFrameNumbers = [...manifest.matchAll(/ezgif-frame-(\d{3})_/g)].map((match) => Number(match[1]));
-	    expect(actualFrameNumbers).toEqual(Array.from({ length: 240 }, (_, index) => index + 1));
-	  });
+describe("full-screen GSAP ice-cream sequence", () => {
+  it("uses the cleaned 1440p video built from the approved 240-frame source", () => {
+    expect(orbit).toContain("mango-ice-cream-1440p-clean-scrub_59b5e815.mp4");
+    expect(orbit).toContain("ezgif-frame-001_c0bf1371.png");
+    expect(orbit).toContain("<video");
+    expect(orbit).toContain('preload="auto"');
+    expect(orbit).not.toContain("MANGO_SCROLL_FRAMES");
+  });
 
-  it("uses GSAP ScrollTrigger to pin and scrub the canvas until the final frame", () => {
+  it("uses GSAP ScrollTrigger with restrained momentum and animation-frame video seeking", () => {
     expect(orbit).toContain('from "gsap"');
     expect(orbit).toContain('from "gsap/ScrollTrigger"');
     expect(orbit).toContain("gsap.registerPlugin(ScrollTrigger)");
-    expect(orbit).toContain("scrub: 0.35");
+    expect(orbit).toContain("scrub: 0.7");
     expect(orbit).toContain("window.innerHeight * 3.75");
-    expect(orbit).toContain("pin: \".ice-orbit__stage\"");
-    expect(orbit).toContain("pinSpacing: true");
-    expect(orbit).toContain("frame: MANGO_SCROLL_FRAME_COUNT - 1");
-    expect(orbit).toContain("<canvas");
+    expect(orbit).toContain('pin: ".ice-orbit__stage"');
+    expect(orbit).toContain("const scheduleSeek");
+    expect(orbit).toContain("window.requestAnimationFrame");
   });
 
-  it("progressively preloads the image sequence with a text-free fallback and full-screen canvas framing", () => {
-    expect(orbit).toContain("MAX_PRELOAD_CONCURRENCY = 3");
-    expect(orbit).toContain("PRELOAD_RADIUS = 6");
-    expect(orbit).toContain("MAX_FRAME_CACHE = 14");
-    expect(orbit).toContain("MAX_CANVAS_DPR = 2");
-    expect(orbit).toContain("const queueFramesAround");
-    expect(orbit).toContain("const scheduleRenderFrame");
-    expect(orbit).toContain("lastQueuedFrameRef.current = 0");
-    expect(orbit).toContain("if (index === 0) setIsReady(true)");
-    expect(orbit).toContain("Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1))");
-    expect(orbit).toContain("framesRef.current[safeFrame]");
-    expect(orbit).toContain("height:100svh");
-    expect(orbit).toContain("drawCoverFrame");
+  it("keeps the playback text-free and preserves safe loading and reduced-motion behavior", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
+    expect(orbit).toContain("prefers-reduced-motion");
     expect(orbit).not.toContain("Come for the craving.");
     expect(orbit).not.toContain("Stay for the scoop.");
     expect(orbit).not.toContain("One table. Many moods.");
   });
 
-  it("keeps the full-screen canvas sequence in the Home pre-Drag It position", () => {
+  it("keeps the full-screen sequence in the Home pre-Drag It position", () => {
     expect(home).toContain("<IceCreamOrbit />");
     expect(home).not.toContain('className="story-section section-pad"');
   });

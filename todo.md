@@ -915,3 +915,8 @@
 - [x] Measure frame advancement and asset decode behavior while scrolling through the 1440p sequence.
 - [x] Replace the cache-churn playback path with a stable high-resolution rendering strategy that does not freeze the page.
 - [x] Validate continuous full-screen playback under repeated scroll input, then publish the repair.
+
+# Momentum Easing and Choppiness Repair
+- [x] Profile rendered-frame cadence and image presentation work during scroll to locate the remaining choppiness.
+- [x] Apply restrained momentum and eased settling while reducing high-resolution canvas presentation churn.
+- [x] Validate continuous frame progression, smooth stopping, and responsive repeated scrolling before publishing.
