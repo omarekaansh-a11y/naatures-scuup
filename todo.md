@@ -478,6 +478,24 @@
 
 > Narrow-screen verification: Home and Full Menu at 320×700 retain the same 108×84 supplied-logo frame and show no overlap or clipping. The accessible Top arrow and Menu control remain within a protected right-side action area.
 
+# Mobile Top-Arrow Touch Feedback
+
+- [x] Add a compact press feedback effect to the arrow-only mobile Top control.
+- [x] Preserve the protected header layout, accessibility labeling, and reduced-motion behavior.
+- [x] Validate the feedback presentation on Home and Full Menu mobile headers, then save a checkpoint.
+
+> Visual review: the compact Top arrow remains clear of the enlarged logo and Menu control at 375×812 on both routes. Its active state now applies a restrained 12%-opacity circular halo and an 88% press scale; the unchanged `aria-label` preserves its accessible name, and reduced-motion users receive no transition.
+
+# Mobile Hamburger Label Removal
+
+- [x] Hide the visible Menu label at mobile widths while retaining the hamburger icon.
+- [x] Preserve the menu button’s accessible label, tap target, and non-overlapping header layout.
+- [x] Validate the mobile Home and Full Menu headers, then save a checkpoint.
+
+> Standard mobile verification: at 375×812, Home and Full Menu retain a clearly visible hamburger icon with no Menu text. The icon remains separate from the Top arrow and enlarged brand lockup; the button retains its `aria-label` and 36×40 compact touch target.
+
+> Narrow-screen verification: at 320×700, the icon-only Menu control, arrow-only Top control, and unchanged enlarged logo remain visibly separate on both routes. No header overlap or clipping is present.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
