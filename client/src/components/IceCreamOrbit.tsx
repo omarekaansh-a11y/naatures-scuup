@@ -52,18 +52,11 @@ export function IceCreamOrbit() {
   const renderFrame = (frameIndex: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const safeFrame = clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAMES.length - 1);
-    const leadingIndex = Math.floor(safeFrame);
-    const trailingIndex = Math.min(MANGO_SCROLL_FRAMES.length - 1, leadingIndex + 1);
-    const blend = safeFrame - leadingIndex;
-    const leadingFrame = framesRef.current[leadingIndex] ?? framesRef.current.find((frame) => frame !== null);
-    const trailingFrame = framesRef.current[trailingIndex];
-    if (!leadingFrame) return;
-    currentFrameRef.current = clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAME_COUNT - 1);
-    drawCoverFrame(canvas, leadingFrame);
-    if (trailingFrame && trailingIndex !== leadingIndex && blend > 0) {
-      drawCoverFrame(canvas, trailingFrame, blend, false);
-    }
+    const safeFrame = Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAME_COUNT - 1));
+    const image = framesRef.current[safeFrame] ?? framesRef.current.find((frame) => frame !== null);
+    if (!image) return;
+    currentFrameRef.current = safeFrame;
+    drawCoverFrame(canvas, image);
   };
 
   useEffect(() => {

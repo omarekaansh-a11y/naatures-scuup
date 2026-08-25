@@ -7,13 +7,14 @@ const manifest = readFileSync(resolve(process.cwd(), "client/src/lib/mango-scrol
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 
 describe("full-screen GSAP canvas frame sequence", () => {
-  it("provides a clean ordered AI-rendered still-frame orbit", () => {
+  it("provides all 300 cleaned frames in exact numeric storage order", () => {
     expect(manifest).toContain("MANGO_SCROLL_FRAMES");
-    expect(manifest).toContain("Clean high-detail AI-rendered still-frame orbit sequence");
-    expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(9);
-    expect(manifest).toContain("export const MANGO_SCROLL_FRAME_COUNT = 300");
-    expect(manifest).toContain("/manus-storage/ai-mango-orbit-keyframe-001_d41ca58e.png");
-    expect(manifest).toContain("/manus-storage/ai-mango-orbit-keyframe-300_9fb2452f.png");
+    expect(manifest).toContain("Ordered numeric 4K sequence with the visible bottom-right corner mark removed");
+    expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(300);
+    expect(manifest).toContain("/manus-storage/ezgif-frame-001_19bd2069.jpg");
+    expect(manifest).toContain("/manus-storage/ezgif-frame-300_71b84707.jpg");
+    const actualFrameNumbers = [...manifest.matchAll(/ezgif-frame-(\d{3})_/g)].map((match) => Number(match[1]));
+    expect(actualFrameNumbers).toEqual(Array.from({ length: 300 }, (_, index) => index + 1));
   });
 
   it("uses GSAP ScrollTrigger to pin and scrub the canvas until the final frame", () => {
@@ -29,9 +30,8 @@ describe("full-screen GSAP canvas frame sequence", () => {
 
   it("preloads the image sequence with a text-free fallback and full-screen canvas framing", () => {
     expect(orbit).toContain("Promise.all(MANGO_SCROLL_FRAMES.map(preloadFrame))");
-    expect(orbit).toContain("const blend = safeFrame - leadingIndex");
-    expect(orbit).toContain("drawCoverFrame(canvas, trailingFrame, blend, false)");
-    expect(orbit).toContain("MANGO_SCROLL_FRAMES.length - 1");
+    expect(orbit).toContain("Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1))");
+    expect(orbit).toContain("framesRef.current[safeFrame]");
     expect(orbit).toContain("height:100svh");
     expect(orbit).toContain("drawCoverFrame");
     expect(orbit).toContain('className="ice-orbit__loading"');

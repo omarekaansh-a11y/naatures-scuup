@@ -846,3 +846,8 @@
 - [x] Generate a consistent set of clean high-detail mango ice-cream still frames for the scroll sequence.
 - [x] Build the ordered canvas manifest from the regenerated still-frame set.
 - [x] Validate the sharp frame-by-frame full-screen sequence and publish.
+
+# Full 300-Frame Restoration
+- [x] Restore all 300 individually numbered image frames to the active canvas manifest.
+- [x] Verify scroll progress maps one-to-one from frame 001 through frame 300 without skipped frames.
+- [x] Validate the restored full-screen sequence on desktop/mobile and publish.
