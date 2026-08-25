@@ -757,3 +757,12 @@
 - [x] Verify the remote repository URL and default branch, then report the handoff.
 
 > Export result: the complete project source is pushed to the private repository `omarekaansh-a11y/naatures-scuup`, with `main` set as the default branch and the local `github` remote tracking it.
+
+# 404 Page and Social Metadata
+
+- [x] Review the existing route fallback, document head, and available brand assets.
+- [x] Build a branded custom 404 page with clear Home and Full Menu recovery paths.
+- [x] Add a factual meta description, Open Graph image metadata, and Naatures Scuup favicon.
+- [x] Validate document metadata and the unknown-route experience, then save a checkpoint.
+
+> Final validation: the custom 404 page renders as a distinct maroon recovery route at 1280×900 and 375×812, with a readable large-format message, Full Menu and Mall Road recovery paths, and a compact location reminder. The favicon and complete metadata tags are source-covered by a dedicated regression test. Six regression assertions, TypeScript checking, the production build, and whitespace validation passed.

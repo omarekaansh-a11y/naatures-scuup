@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Naatures Scuup</title>
+  <rect width="64" height="64" rx="18" fill="#35101a"/>
+  <path d="M15 37c0-11 8-20 18-20 7 0 13 4 16 10-4-3-8-4-12-4-8 0-14 6-14 14 0 5 2 9 5 12-8-1-13-5-13-12Z" fill="#edbd68"/>
+  <circle cx="38" cy="31" r="13" fill="#c46a75" opacity=".92"/>
+  <path d="M30 42c4 3 10 3 15 0" fill="none" stroke="#f4f0e8" stroke-linecap="round" stroke-width="3"/>
+  <circle cx="34" cy="29" r="2" fill="#35101a"/><circle cx="42" cy="29" r="2" fill="#35101a"/>
+</svg>
