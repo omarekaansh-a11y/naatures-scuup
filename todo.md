@@ -413,6 +413,14 @@
 
 > Validation result: at 375px wide, the scaled ledger now finishes above the metadata, eyebrow, headline, and supporting copy; the standard desktop composition remains unchanged. Type checking, the production build, and whitespace validation passed.
 
+# Standard-Mobile Hero Table-Guide Removal
+
+- [x] Hide the table-guide ledger on standard mobile widths to remove the crowded hero treatment.
+- [x] Preserve the mobile hero copy, food backdrop, scroll cue, actions, and dock without reflow regressions.
+- [x] Confirm desktop and Chrome Desktop Site layouts retain their table-guide treatment, then save a checkpoint.
+
+> Validation result: the 375px standard phone hero now shows only the editorial message and imagery, with no ledger. The 980px portrait Chrome Desktop Site override still includes its original table-guide treatment. Type checking, the production build, and whitespace validation passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
