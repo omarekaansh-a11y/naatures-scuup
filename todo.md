@@ -347,6 +347,15 @@
 
 > Review-loop outcome: the trusted reviewer identified pacing and index shortcomings. The work returned to the brief, converted category filters into a numbered menu index, added a visible “first plate” lead record to every chapter, and strengthened appetite-specific veil cues. The live index selection, desktop/mobile visual checks, browser console, type check, and production build passed. Higgsfield remains unavailable for image generation on the current plan, so no artificial foreground food was introduced.
 
+# Targeted Pizza, Dessert, Burger, and Chinese Chapter Image Pass
+
+- [x] Upgrade the rendered quality of the Pizza & Pasta and Desserts & Ice Creams chapter images without reusing them elsewhere.
+- [x] Replace the Burgers & Sandwiches category visual with a high-quality vegetarian burger image.
+- [x] Replace the Chinese category visual with a scene containing Chinese noodles being lifted by chopsticks and Manchurian.
+- [x] Validate the revised image quality and heading contrast at desktop/mobile widths, then save a checkpoint.
+
+> Update note: the Pizza & Pasta and Desserts & Ice Creams plates now use 2176 × 1632 high-resolution restorations of their existing restaurant images. The Vada Pav scene was replaced with a 3000 × 1997 vegetarian burger photograph. The Chinese chapter now uses a high-resolution editorial image specifically composed around noodles lifted with chopsticks and a visible Manchurian bowl. All four retain the established text-safe colour veils.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
