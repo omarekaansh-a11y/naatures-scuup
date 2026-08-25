@@ -350,6 +350,14 @@
 
 > Validation result: the idle head cycle now uses two distinct forward lean-and-hold sniff beats toward the cup before returning. Direct greeting adds a visible seated body bounce, pose shift, head response, and tail wag; committed card drags remain tail-led, and hover remains a gentle continuous wag. Reduced motion now also disables the whole-mascot greeting animation. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
 
+# Café-Dog Quiet Greeting and Bubble Removal Pass
+
+- [x] Soften the greeting body bounce into a smaller, more natural seated weight shift.
+- [x] Remove all visible mascot speech-bubble and greeting-copy cues.
+- [x] Preserve tail-wag, sniff, hover, drag, and reduced-motion behavior; validate responsive presentation, then save a checkpoint.
+
+> Validation result: direct greeting now uses a smaller seated compression-and-return, gentler pose and head response, plus the existing tail wag. The greeting tooltip markup, its responsive styles, lifecycle code, and bubble keyframes are removed. The mascot remains a labelled button with no visible speech bubble. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
