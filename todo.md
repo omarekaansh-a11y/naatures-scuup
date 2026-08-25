@@ -811,3 +811,8 @@
 - [x] Replace the current pre-Drag It bridge with the scroll-scrubbed editorial orbit sequence.
 - [x] Add mobile and reduced-motion fallbacks, plus regression coverage for the video scroll behavior.
 - [x] Validate desktop/mobile scroll behavior and publish the completed sequence.
+
+# 300-Frame Scroll Canvas Sequence
+- [x] Recover and verify the 300 numbered user-supplied image frames in numeric order.
+- [x] Replace the video orbit with a GSAP ScrollTrigger canvas image sequence and preloading fallback.
+- [x] Validate sharp, centered desktop/mobile scroll scrubbing and publish the completed replacement.
