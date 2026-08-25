@@ -826,3 +826,8 @@
 - [x] Confirm the exact 300-frame source list and 4K target requirements: 300 ordered 1280×720 sources targeting 3840×2160.
 - [x] Upscale every canvas frame to 4K while preserving frame content and numeric order.
 - [x] Replace the sequence manifest, test responsive performance, and publish the 4K assets.
+
+# Active Sequence Quality & Visible Mark Correction
+- [x] Diagnose why the live sequence still appears low-resolution and verify the 4K manifest is active.
+- [x] Remove the visible bottom-right Gemini mark with a consistent frame-safe treatment.
+- [x] Validate sharp, mark-free desktop/mobile playback and publish the correction.

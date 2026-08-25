@@ -21,7 +21,7 @@ function drawCoverFrame(canvas: HTMLCanvasElement, image: HTMLImageElement) {
   if (!context || !image.naturalWidth || !image.naturalHeight) return;
 
   const bounds = canvas.getBoundingClientRect();
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
   const targetWidth = Math.max(1, Math.round(bounds.width * dpr));
   const targetHeight = Math.max(1, Math.round(bounds.height * dpr));
   if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
