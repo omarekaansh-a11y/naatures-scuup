@@ -364,6 +364,14 @@
 
 > Mobile result: the hero now uses a tall, layered scenic field with the food visible behind the composition, a partially off-canvas table guide at the upper right, editorial copy over the maroon terrain, a low mango route line, and a compact trust row. The mobile dock now reads `Home` and `Directions`; desktop treatment remains unchanged. Type/build and 375px/desktop visual checks passed.
 
+# Responsive Home Hero Typography Scale
+
+- [x] Increase the main Home hero display type and rebalance nearby copy/actions across mobile and intermediate widths.
+- [x] Preserve the existing desktop frontispiece composition and prevent overlaps with the table guide, route line, and mobile dock.
+- [x] Validate the adjusted hierarchy at mobile and desktop widths, then save a checkpoint.
+
+> Scale result: the mobile display promise now fluidly scales from 60px to 74px, up from 51px to 62px, with slightly larger supporting copy and a wider but safely bounded content block. Intermediate tablet sizing now scales from 74px to 84px. The approved desktop art direction remains unchanged; the 375px and 1280px checks retained clear spacing around the table guide, route line, and dock.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
