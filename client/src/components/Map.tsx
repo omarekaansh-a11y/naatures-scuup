@@ -83,6 +83,7 @@ import { cn } from "@/lib/utils";
 declare global {
   interface Window {
     google?: typeof google;
+    __naaturesMapsReady?: () => void;
   }
 }
 
@@ -95,17 +96,18 @@ const MAPS_PROXY_URL = `${FORGE_BASE_URL}/v1/maps/proxy`;
 let mapScriptPromise: Promise<void> | null = null;
 
 function loadMapScript() {
-  if (window.google?.maps) return Promise.resolve();
+  const runtimeMaps = window.google?.maps as (typeof google.maps & { importLibrary?: unknown }) | undefined;
+  if (typeof runtimeMaps?.importLibrary === "function") return Promise.resolve();
   if (mapScriptPromise) return mapScriptPromise;
 
   mapScriptPromise = new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&loading=async&libraries=marker,places,geocoding,geometry`;
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    script.onload = () => {
+    window.__naaturesMapsReady = () => {
       resolve();
     };
+    script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&libraries=marker,places,geocoding,geometry&callback=__naaturesMapsReady`;
+    script.async = true;
+    script.crossOrigin = "anonymous";
     script.onerror = () => {
       console.error("Failed to load Google Maps script");
       mapScriptPromise = null;
@@ -122,6 +124,7 @@ interface MapViewProps {
   initialCenter?: google.maps.LatLngLiteral;
   initialZoom?: number;
   onMapReady?: (map: google.maps.Map) => void;
+  onMapError?: () => void;
 }
 
 export function MapView({
@@ -129,6 +132,7 @@ export function MapView({
   initialCenter = { lat: 37.7749, lng: -122.4194 },
   initialZoom = 12,
   onMapReady,
+  onMapError,
 }: MapViewProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<google.maps.Map | null>(null);
@@ -137,25 +141,26 @@ export function MapView({
   const init = usePersistFn(async () => {
     try {
       await loadMapScript();
+      if (!window.google?.maps?.importLibrary) throw new Error("Google Maps library was not initialized");
+      const { Map: GoogleMap } = await window.google.maps.importLibrary("maps") as { Map: typeof google.maps.Map };
+      if (!GoogleMap) throw new Error("Google Maps constructor is unavailable");
+      if (!mapContainer.current) {
+        console.error("Map container not found");
+        return;
+      }
+      map.current = new GoogleMap(mapContainer.current, {
+        zoom: initialZoom,
+        center: initialCenter,
+        mapTypeControl: false,
+        fullscreenControl: false,
+        zoomControl: false,
+        streetViewControl: false,
+      });
+      onMapReady?.(map.current);
     } catch {
       setHasLoadError(true);
+      onMapError?.();
       return;
-    }
-    if (!mapContainer.current) {
-      console.error("Map container not found");
-      return;
-    }
-    map.current = new window.google.maps.Map(mapContainer.current, {
-      zoom: initialZoom,
-      center: initialCenter,
-      mapTypeControl: true,
-      fullscreenControl: true,
-      zoomControl: true,
-      streetViewControl: true,
-      mapId: "DEMO_MAP_ID",
-    });
-    if (onMapReady) {
-      onMapReady(map.current);
     }
   });
 

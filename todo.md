@@ -724,3 +724,14 @@
 - [x] Validate the repaired pinch behavior and save a checkpoint.
 
 > Repair result: the first implementation bound pinch handlers only to the fallback layer, which lives beneath the live map and therefore could not receive touch events when Maps loaded. A dedicated coarse-pointer gesture-capture layer now sits above the live map, takes two-pointer input, calculates pinch scale, and updates the live map zoom directly while retaining the fallback transform. The live mobile map disables native gesture interception, leaving the overlay as the single reliable pinch path.
+
+# Live Google Maps Replacement
+
+- [x] Remove the fabricated road-grid fallback from the visitor map.
+- [x] Diagnose and fix the Google Maps loading path so a real, wide-context map of Mall Road is rendered.
+- [x] Apply compliant runtime map styling and preserve real The Mall plus Naatures Scuup landmarks.
+- [x] Validate live-map loading and interaction on desktop and mobile, then save a checkpoint.
+
+> Live-map diagnostic: browser inspection confirmed a real Google Maps canvas (`.gm-style`) with completed 256px map tiles from `maps.googleapis.com/maps/vt`, together with the Naatures Scuup and The Mall markers. The pale initial appearance was a rendering/style issue rather than a fabricated map source; the live map now uses stronger compliant road, geometry, and runtime color treatment for clearer visual distinction.
+
+> Validation result: the fabricated road-grid markup is removed. The updated map uses the Google Maps JavaScript API callback flow, a real tile-based canvas, and true location markers for both Naatures Scuup and The Mall at zoom 14. Browser DOM inspection confirmed completed live map tiles. The visual verification, four regression assertions, TypeScript checking, production build, and whitespace validation passed.

@@ -7,23 +7,19 @@ const map = readFileSync(resolve(process.cwd(), "client/src/components/Map.tsx")
 const styles = readFileSync(resolve(process.cwd(), "client/src/components/StructuralStyles.tsx"), "utf8");
 
 describe("interactive visit map", () => {
-  it("keeps the location discoverable through a live marker and directions link", () => {
-    expect(atlas).toContain("AdvancedMarkerElement");
+  it("keeps the location discoverable through a real interactive Google Map and directions link", () => {
+    expect(atlas).toContain("MapView");
+    expect(atlas).toContain("window.google.maps.Marker");
     expect(atlas).toContain("google.com/maps/search/?api=1");
     expect(atlas).toContain("+91 78608 80088");
   });
 
-  it("preserves gesture-first pan and zoom with a road-grid fallback when live Maps cannot load", () => {
-    expect(atlas).toContain("startFallbackGesture");
-    expect(atlas).toContain("wheelFallback");
-    expect(atlas).toContain("gestureHandling");
-    expect(atlas).toContain("visit-map__gesture-capture");
-    expect(atlas).toContain("mapRef.current?.setZoom");
+  it("uses a wider real-world map view with native gestures and nearby landmark context", () => {
     expect(atlas).toContain("The Mall");
     expect(atlas).toContain('initialZoom={14}');
     expect(atlas).toContain("Use two fingers to explore");
     expect(atlas).not.toContain('aria-label="Zoom in"');
-    expect(map).toContain("data-map-fallback");
-    expect(styles).toContain("visit-map__fallback");
+    expect(atlas).not.toContain("visit-map__fallback");
+    expect(map).toContain("__naaturesMapsReady");
   });
 });
