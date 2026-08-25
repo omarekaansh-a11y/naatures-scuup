@@ -372,6 +372,15 @@
 
 > Scale result: the mobile display promise now fluidly scales from 60px to 74px, up from 51px to 62px, with slightly larger supporting copy and a wider but safely bounded content block. Intermediate tablet sizing now scales from 74px to 84px. The approved desktop art direction remains unchanged; the 375px and 1280px checks retained clear spacing around the table guide, route line, and dock.
 
+# Menu Category Hover and Hero Message Entrance Motion
+
+- [x] Add a subtle, GPU-friendly zoom interaction to every image-backed Full Menu category plate.
+- [x] Apply a smooth fade-and-rise entrance to the enlarged Home hero message on initial page load.
+- [x] Respect reduced-motion preferences and preserve existing card/hero layout at mobile and desktop widths.
+- [x] Validate the complete motion treatment and save a checkpoint.
+
+> Motion result: each category plate now eases its image from 1.02 to 1.075 on hover or keyboard focus, with a light saturation lift that keeps the text-safe veils unchanged. The enlarged Home message uses a one-time 820ms fade-and-rise entrance with a deliberate 150ms delay. Both effects are disabled under reduced-motion preference; type/build and 1280px/375px visual checks passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
