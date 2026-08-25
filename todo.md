@@ -696,3 +696,14 @@
 > Asset selection: use the custom elevated background-only image generated through the built-in fallback after Higgsfield confirmed that its required plan was unavailable. It contains no food, people, logos, signage, or text, and it reserves the visual detail for the right side of the hero.
 
 > Visual validation: at 1280×720, the architectural amber-and-brass scene fills the right half while the left title field remains clean and near-black merlot. At 375×812, the image still reads as an atmospheric backdrop, with all hero copy legible and the mobile header plus route dock unobstructed.
+
+# Interactive Visit Map Refinement
+
+- [x] Review the existing Naatures Scuup map and visit-information implementation.
+- [x] Rebuild it as an interactive, maroon editorial map panel inspired by the supplied reference without copying its branding or layout verbatim.
+- [x] Preserve factual address, operating hours, directions, phone, and social links in an accessible responsive visit card.
+- [x] Validate desktop and mobile map interaction, controls, and visual hierarchy, then save a checkpoint.
+
+> Implementation note: the existing illustrative map has been replaced with a Google Maps location panel that supports native map pan/zoom when available, a branded advanced marker, directions, and recenter controls. If Maps fails to load, an accessible interaction model remains available through an original pan-and-zoom road-grid fallback, external directions link, and the complete factual visit card.
+
+> Validation result: the desktop location panel presents the reference-inspired vertical hierarchy—title, road map, central restaurant pin, compact zoom/recenter/directions controls, and visit card—without copying any reference branding or content. The mobile layout retains readable details and protected controls. Four focused regression assertions, TypeScript checking, the production build, and whitespace validation passed.
