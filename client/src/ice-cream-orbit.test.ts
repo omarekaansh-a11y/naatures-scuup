@@ -22,6 +22,7 @@ describe("full-screen GSAP canvas frame sequence", () => {
     expect(orbit).toContain('from "gsap/ScrollTrigger"');
     expect(orbit).toContain("gsap.registerPlugin(ScrollTrigger)");
     expect(orbit).toContain("scrub: 0.35");
+    expect(orbit).toContain("window.innerHeight * 3.75");
     expect(orbit).toContain("pin: \".ice-orbit__stage\"");
     expect(orbit).toContain("pinSpacing: true");
     expect(orbit).toContain("frame: MANGO_SCROLL_FRAME_COUNT - 1");
@@ -32,7 +33,9 @@ describe("full-screen GSAP canvas frame sequence", () => {
     expect(orbit).toContain("MAX_PRELOAD_CONCURRENCY = 3");
     expect(orbit).toContain("PRELOAD_RADIUS = 6");
     expect(orbit).toContain("MAX_FRAME_CACHE = 14");
+    expect(orbit).toContain("MAX_CANVAS_DPR = 2");
     expect(orbit).toContain("const queueFramesAround");
+    expect(orbit).toContain("const scheduleRenderFrame");
     expect(orbit).toContain("if (index === 0) setIsReady(true)");
     expect(orbit).toContain("Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1))");
     expect(orbit).toContain("framesRef.current[safeFrame]");

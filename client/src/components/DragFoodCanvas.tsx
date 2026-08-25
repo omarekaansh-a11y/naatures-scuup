@@ -75,6 +75,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const dragVectorRef = useRef<DragVector>(ZERO_VECTOR);
   const velocityRef = useRef<DragVector>(ZERO_VECTOR);
   const dragStartedRef = useRef(false);
+  const activePointerIdRef = useRef<number | null>(null);
   const exitTimerRef = useRef<number | null>(null);
   const arrivalTimerRef = useRef<number | null>(null);
   const dogTimerRef = useRef<number | null>(null);
@@ -201,6 +202,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     if (isAnimating || (event.pointerType === "mouse" && event.button !== 0)) return;
+    activePointerIdRef.current = event.pointerId;
     pointerStartRef.current = { x: event.clientX, y: event.clientY };
     lastMoveRef.current = { x: event.clientX, y: event.clientY, time: event.timeStamp };
     velocityRef.current = ZERO_VECTOR;
@@ -214,7 +216,14 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    if (isAnimating) return;
+    if (isAnimating || activePointerIdRef.current !== event.pointerId) return;
+    if (event.pointerType === "mouse" && (event.buttons & 1) === 0) {
+      activePointerIdRef.current = null;
+      dragStartedRef.current = false;
+      setIsDragging(false);
+      renderDragVector(ZERO_VECTOR);
+      return;
+    }
     const horizontalTravel = event.clientX - pointerStartRef.current.x;
     const verticalTravel = event.clientY - pointerStartRef.current.y;
     if (!dragStartedRef.current) {
@@ -241,6 +250,8 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   };
 
   const endPointer = (event: PointerEvent<HTMLDivElement>, cancelled = false) => {
+    if (activePointerIdRef.current !== event.pointerId) return;
+    activePointerIdRef.current = null;
     try {
       if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
     } catch {
@@ -309,6 +320,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
               onPointerMove={handlePointerMove}
               onPointerUp={endPointer}
               onPointerCancel={(event) => endPointer(event, true)}
+              onLostPointerCapture={(event) => endPointer(event, true)}
               onKeyDown={handleKeyDown}
             >
               {visibleCards.slice().reverse().map((item, reverseIndex) => {

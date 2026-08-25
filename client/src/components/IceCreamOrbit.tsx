@@ -18,13 +18,14 @@ type LoadedFrame = HTMLImageElement | null;
 const MAX_PRELOAD_CONCURRENCY = 3;
 const PRELOAD_RADIUS = 6;
 const MAX_FRAME_CACHE = 14;
+const MAX_CANVAS_DPR = 2;
 
 function drawCoverFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, opacity = 1, clear = true) {
   const context = canvas.getContext("2d");
   if (!context || !image.naturalWidth || !image.naturalHeight) return;
 
   const bounds = canvas.getBoundingClientRect();
-  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  const dpr = Math.min(window.devicePixelRatio || 1, MAX_CANVAS_DPR);
   const targetWidth = Math.max(1, Math.round(bounds.width * dpr));
   const targetHeight = Math.max(1, Math.round(bounds.height * dpr));
   if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
@@ -50,6 +51,10 @@ export function IceCreamOrbit() {
   const framesRef = useRef<LoadedFrame[]>([]);
   const currentFrameRef = useRef(0);
   const queueFramesRef = useRef<(center: number) => void>(() => {});
+  const renderAnimationRef = useRef<number | null>(null);
+  const pendingFrameRef = useRef(0);
+  const lastQueuedFrameRef = useRef(-1);
+  const lastDrawnImageRef = useRef<HTMLImageElement | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -57,7 +62,10 @@ export function IceCreamOrbit() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const safeFrame = Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAME_COUNT - 1));
-    queueFramesRef.current(safeFrame);
+    if (lastQueuedFrameRef.current < 0 || Math.abs(safeFrame - lastQueuedFrameRef.current) >= 3) {
+      lastQueuedFrameRef.current = safeFrame;
+      queueFramesRef.current(safeFrame);
+    }
     const image = framesRef.current[safeFrame] ?? (() => {
       for (let distance = 1; distance < MANGO_SCROLL_FRAME_COUNT; distance += 1) {
         const previous = framesRef.current[safeFrame - distance];
@@ -69,7 +77,18 @@ export function IceCreamOrbit() {
     })();
     if (!image) return;
     currentFrameRef.current = safeFrame;
+    if (image === lastDrawnImageRef.current) return;
+    lastDrawnImageRef.current = image;
     drawCoverFrame(canvas, image);
+  };
+
+  const scheduleRenderFrame = (frameIndex: number) => {
+    pendingFrameRef.current = frameIndex;
+    if (renderAnimationRef.current !== null) return;
+    renderAnimationRef.current = window.requestAnimationFrame(() => {
+      renderAnimationRef.current = null;
+      renderFrame(pendingFrameRef.current);
+    });
   };
 
   useEffect(() => {
@@ -96,7 +115,7 @@ export function IceCreamOrbit() {
           frames[index] = image;
           if (index === 0) setIsReady(true);
           pruneCache(currentFrameRef.current);
-          window.requestAnimationFrame(() => renderFrame(currentFrameRef.current));
+          scheduleRenderFrame(currentFrameRef.current);
         }
         resolve();
       };
@@ -120,6 +139,7 @@ export function IceCreamOrbit() {
 
     const queueFramesAround = (center: number) => {
       currentFrameRef.current = center;
+      if (lastQueuedFrameRef.current >= 0 && Math.abs(center - lastQueuedFrameRef.current) < 3) return;
       pruneCache(center);
       queue.length = 0;
       queued.clear();
@@ -140,6 +160,7 @@ export function IceCreamOrbit() {
     return () => {
       cancelled = true;
       queueFramesRef.current = () => {};
+      if (renderAnimationRef.current !== null) window.cancelAnimationFrame(renderAnimationRef.current);
     };
   }, []);
 
@@ -156,10 +177,13 @@ export function IceCreamOrbit() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const resizeCanvas = () => renderFrame(currentFrameRef.current);
+    const resizeCanvas = () => {
+      lastDrawnImageRef.current = null;
+      scheduleRenderFrame(currentFrameRef.current);
+    };
     window.addEventListener("resize", resizeCanvas);
     if (reduceMotion) {
-      renderFrame(0);
+      scheduleRenderFrame(0);
       return () => window.removeEventListener("resize", resizeCanvas);
     }
 
@@ -171,13 +195,13 @@ export function IceCreamOrbit() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: () => `+=${Math.max(window.innerHeight * 3.4, 2600)}`,
+          end: () => `+=${Math.max(window.innerHeight * 3.75, 2800)}`,
           scrub: 0.35,
           pin: ".ice-orbit__stage",
           pinSpacing: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          onUpdate: () => renderFrame(playhead.frame),
+          onUpdate: () => scheduleRenderFrame(playhead.frame),
         },
       });
     }, section);

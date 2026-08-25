@@ -900,3 +900,13 @@
 - [x] Measure the loading failure caused by preloading the 240 high-resolution frame assets.
 - [x] Implement a progressive, bounded-concurrency loading strategy that preserves the 1440p frame assets and avoids blocking the page.
 - [x] Validate reliable canvas readiness and scroll playback at desktop and mobile viewports, then publish the repair.
+
+# Scroll Pace and Drag It Pointer-Control Repair
+- [x] Slightly extend the scroll distance of the full-screen frame sequence so its animation pace feels smoother.
+- [x] Inspect and repair the Drag It card pointer flow so a card follows only an intentional pressed drag gesture.
+- [x] Validate controlled desktop pointer interaction and full-screen playback, then publish the refinements.
+
+# High-Resolution Scroll Performance Repair
+- [x] Profile canvas frame drawing and background loading during scroll to identify the current lag source.
+- [x] Bound render work to animation frames and reduce canvas backing-store cost without lowering the 1440p source asset quality.
+- [x] Validate smooth scroll performance together with the Drag It pointer repair, then publish the result.
