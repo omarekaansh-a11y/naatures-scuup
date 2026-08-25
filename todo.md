@@ -412,6 +412,14 @@
 
 > Validation result: the head silhouette now carries a maroon fill that masks underlying body strokes during its motion, preserving a clean closed-eye profile while the sniff uses a slightly softer safe arc toward the steam. Cup clearance, the post-sniff ear twitch, tail wag, and reduced-motion support remain intact. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
 
+# Header Logo Full-Wordmark Crop Correction
+
+- [x] Adjust the non-destructive header crop so the final letters in Naatures and Scuup are fully visible.
+- [x] Preserve the supplied logo artwork, visual scale, responsive header hierarchy, and white-background treatment.
+- [x] Validate desktop and mobile branding presentation, then save a checkpoint.
+
+> Validation result: the mobile and desktop headers now show the complete supplied logo within a full-wordmark frame, with its right edge no longer clipped. The separate Naatures Scuup text signature, slogan, top control, and menu control retain their existing hierarchy. Type checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
