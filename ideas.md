@@ -79,3 +79,13 @@ Headline outlines remain concentrated in the hero and one or two short, high-emo
 The Home hero evolves into an **editorial frontispiece**: a richly shaded landscape of the existing restaurant photograph sits behind a large left-anchored promise, while a partially cropped **table card** enters from the right like an open restaurant ledger. A deep-maroon foreground contour rises through the lower third and a restrained mango route-line creates a sense of movement from Kanpur to the table. The effect takes inspiration from the supplied reference’s immersive depth, oversized hierarchy, and decisive foreground geometry, but keeps the Naatures Scuup photography, Mall Road Maroon, dining facts, language, and display-only links entirely original.
 
 The hero must keep a dark text-safe field on the left, preserve clear contrast for the existing header and copy, use no repeated or newly generated food imagery, and collapse the right-side table card beneath the main message on narrow screens. The desired response is immediate appetite and place recognition rather than a software-dashboard metaphor.
+
+### Visual Menu Chapters and Scroll Guidance
+
+Every Full Menu category begins with a **single visual chapter plate**: a unique, real editorial food photograph sits behind a deep maroon veil, while the category name, sequence index, short mood, and display-only context remain readable in cream. These plates are chapter openers rather than dish cards; they should make a long menu feel like a sequence of visual stops without inventing food photos as restaurant evidence. The only existing restaurant imagery retained in category contexts remains reserved for the matching Pizza & Pasta and Desserts & Ice Creams chapters.
+
+The frontispiece receives a small, text-led **scroll cue** near its lower edge. It uses one looping transform-and-opacity motion on a directional arrow, disappears under reduced-motion preferences, and scrolls visitors to the first story block when activated. It is a quiet invitation rather than a competing CTA.
+
+### Full Menu Critique Amendments
+
+The Full Menu must never read as a neutral product catalogue. Its arrival becomes a second frontispiece with a decisive maroon field and a concise “many cravings, one table” promise. Category plates remain photographic, but their crops and accent signals are intentionally varied: fennel marks vegetarian freshness, mango marks playfulness and dessert moments, while maroon stays structural. Long runs of dish cards are framed by numbered course signals, appetite notes, and visual chapter pauses so the browsing utility supports the editorial journey rather than replacing it.

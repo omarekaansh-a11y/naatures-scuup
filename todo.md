@@ -321,6 +321,20 @@
 
 > Higgsfield result: the connector is enabled and an environment-generation model is suitable in principle, but the one compliant background generation request was rejected because the current workspace requires a Basic plan or higher. The hero therefore keeps the newly refined visual system without artificial foreground food or extra asset churn.
 
+# Hero Guidance and Visual Menu Chapters
+
+- [x] Add a subtle, reduced-motion-safe scroll-down cue to the new Home hero that guides visitors toward the next block.
+- [x] Create an image-backed display treatment for every Full Menu category heading without reusing existing imagery or introducing artificial foreground food.
+- [x] Replace “and” with “&” in visible food-category and chapter headings where that is grammatically appropriate.
+- [x] Run the requested brief → two-pass implementation → adversarial critique loop, returning to the brief stage if the critique finds a material failure.
+- [x] Validate the complete result at desktop and mobile widths, then save a checkpoint.
+
+> Loop outcome: the first adversarial review found the category-plate idea worthwhile but the Full Menu still too catalogue-like. The work returned to the brief stage, then rebuilt the menu as a maroon second frontispiece with varied chapter moods, a separated browse reading block, and lighter editorial dish records. The final self-review found no material hierarchy, contrast, interaction, or responsive failures.
+
+> Asset note: every category plate uses a distinct stable managed image path; the Pizza & Pasta and Desserts & Ice Creams plates use their reserved unique public restaurant images. The Home cue reaches the story block, hides its animation under reduced-motion preference, and remains visibly placed at desktop and mobile widths.
+
+> Higgsfield constraint remains active for this pass: any optional background generation is useful only when the workspace permits it. The existing plan-level block means the category visual system must be crafted from original layout, texture, and compliant existing visual resources unless the feature becomes available.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.

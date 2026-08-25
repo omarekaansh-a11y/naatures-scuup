@@ -1,11 +1,11 @@
 /**
- * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality with a dark, immersive frontispiece hero, left-aligned display type, a factual Mall Road table card, and an angled maroon foreground contour.
+ * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality with a dark, immersive frontispiece hero, left-aligned display type, a factual Mall Road table card, an angled maroon foreground contour, and a quiet lower-edge scroll guide.
  * The only foreground food photography lives in the tactile table, where all seven owner-supplied images appear once each.
  * Background-only generative visuals create atmosphere behind HTML copy; no generated food image is presented as a foreground menu item.
  * #FREEZETHEHAPPINESS is a restrained signature; the experience is display-only and never a copy of another restaurant’s layout.
  * Home-route visual updates use a document refresh in development to keep icon DOM reconciliation stable.
  */
-import { ArrowDownRight, ArrowRight, ChevronRight, Clock3, MapPin, Sparkles, Star } from "lucide-react";
+import { ArrowDown, ArrowDownRight, ArrowRight, ChevronRight, Clock3, MapPin, Sparkles, Star } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "wouter";
 import { DragFoodCanvas } from "@/components/DragFoodCanvas";
@@ -68,6 +68,7 @@ export default function Home() {
             </aside>
           </div>
           <div className="hero-trust reveal-up delay-4" aria-label="Restaurant information"><span><Star size={14} fill="currentColor" /> 4.0</span><span>819 Google reviews</span><span>₹200–₹400 per person</span><span className="hero-hours"><Clock3 size={13} /> Open daily · 12:00 PM–10:30 PM</span></div>
+          <button className="hero-scroll-cue reveal-up delay-4" type="button" onClick={() => scrollToId("#story")} aria-label="Scroll to the Naatures Scuup story"><span>Scroll to discover</span><i><ArrowDown size={16} strokeWidth={1.8} /></i></button>
         </section>
 
         <div className="craving-ribbon" aria-hidden="true"><div><span>Dosa</span><b>•</b><span>Paneer</span><b>•</b><span>Pizza</span><b>•</b><span>Chinese</span><b>•</b><span>Shakes</span><b>•</b><span>Ice cream</span><b>•</b><span>Dosa</span><b>•</b><span>Paneer</span><b>•</b><span>Pizza</span><b>•</b><span>Chinese</span><b>•</b><span>Shakes</span><b>•</b><span>Ice cream</span><b>•</b></div></div>

@@ -1,5 +1,5 @@
 /**
- * Style reminder — Mall Road Monograph: the Full Menu remains a calm, display-only reading room.
+ * Style reminder — Mall Road Monograph: the Full Menu remains a calm, display-only reading room where every category opens as a unique, image-backed editorial chapter.
  * Dish notes are concise adaptations of the public Zomato listing; the two editorial images are unique restaurant-specific public Swiggy listing images.
  */
 import { ArrowDownRight, ChevronDown, Leaf, MapPin, Search } from "lucide-react";
@@ -30,6 +30,30 @@ const swiggyImages: Record<string, { src: string; alt: string; caption: string }
   "pizza-pasta": { src: "/manus-storage/naatures-scuup-swiggy-pizza_69c970f1.jpg", alt: "Naatures Scuup pizza and cold drink from its public Swiggy listing", caption: "Pizza & Pasta / image surfaced from the public Swiggy listing" },
   "ice-creams": { src: "/manus-storage/naatures-scuup-swiggy-ice-cream_ed5a9479.jpg", alt: "Naatures Scuup ice-cream dessert from its public Swiggy listing", caption: "Ice Creams / image surfaced from the public Swiggy listing" },
 };
+
+const chapterArtwork: Record<string, { src: string; alt: string; position: string }> = {
+  "starters": { src: "/manus-storage/starters_3e478634.jpg", alt: "Vegetarian starter ingredients in a warm editorial food scene", position: "center 52%" },
+  "soups-salads": { src: "/manus-storage/soups-salads_54760609.jpg", alt: "Fresh salad and soup ingredients in a textured restaurant setting", position: "center" },
+  "main-course": { src: "/manus-storage/main-course_901e020f.jpg", alt: "Warm vegetarian curry scene", position: "center 55%" },
+  "breads": { src: "/manus-storage/breads_ae880cbd.jpg", alt: "Freshly prepared bread in warm light", position: "center" },
+  "rice-biryani": { src: "/manus-storage/rice-biryani_b3aa238d.jpg", alt: "A rice-centred vegetarian food spread", position: "center 56%" },
+  "south-indian": { src: "/manus-storage/south-indian_af2be355.jpg", alt: "South Indian-inspired vegetarian dining scene", position: "center" },
+  "chinese": { src: "/manus-storage/chinese_4ffd547e.jpg", alt: "Wok-style noodle and vegetable dish", position: "center" },
+  "fried-rice-noodles": { src: "/manus-storage/fried-rice-noodles_8b56e672.jpg", alt: "Noodles and rice in an editorial food composition", position: "center" },
+  "pizza-pasta": { src: swiggyImages["pizza-pasta"].src, alt: swiggyImages["pizza-pasta"].alt, position: "center" },
+  "burgers-sandwiches": { src: "/manus-storage/burgers-sandwiches_510be7f7.jpg", alt: "A stacked vegetarian burger scene", position: "center" },
+  "snacks": { src: "/manus-storage/snacks_944744f3.jpg", alt: "Snack plates in moody restaurant light", position: "center" },
+  "rolls": { src: "/manus-storage/rolls_9449fcf1.jpg", alt: "Handheld vegetarian roll-style food scene", position: "center" },
+  "maggi": { src: "/manus-storage/maggi_7fa7dbb5.jpg", alt: "Comfort-food noodle scene", position: "center" },
+  "accompaniments": { src: "/manus-storage/accompaniments_bee07863.jpg", alt: "Fresh accompaniments and condiments in a food spread", position: "center" },
+  "ice-creams": { src: swiggyImages["ice-creams"].src, alt: swiggyImages["ice-creams"].alt, position: "center" },
+  "drinks": { src: "/manus-storage/drinks_b702994f.jpg", alt: "Chilled drinks in a softly lit café setting", position: "center" },
+  "bakery-specials": { src: "/manus-storage/bakery-specials_11340c15.jpg", alt: "A bakery counter detail in warm light", position: "center" },
+};
+
+function formatHeading(value: string) {
+  return value.replace(/\band\b/gi, "&");
+}
 
 function noteForDish(dish: string, chapterDetail: string) {
   const withoutSize = dish.replace(/ \[[^\]]+\]/, "");
@@ -93,7 +117,7 @@ export default function MenuPage() {
     }, 440);
     return () => window.clearTimeout(destinationTimer);
   }, [reduceMotion]);
-  const menuGroups = [{ slug: "all", title: `All items (${menuItemCount})` }, ...menuChapters.map((chapter) => ({ slug: chapter.slug, title: chapter.title }))];
+  const menuGroups = [{ slug: "all", title: `All items (${menuItemCount})` }, ...menuChapters.map((chapter) => ({ slug: chapter.slug, title: formatHeading(chapter.title) }))];
   const normalizedQuery = query.trim().toLowerCase();
   const visibleItems = useMemo(() => {
     const chapters = menuChapters
@@ -117,7 +141,9 @@ export default function MenuPage() {
       <section className="menu-page-hero section-pad" aria-labelledby="full-menu-title">
         <Breadcrumbs current="Full menu" />
         <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p><p className="menu-brand-signature">#FREEZETHEHAPPINESS <span>·</span> Mall Road craving atlas</p>
-        <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title"><span className="title-outline">Full digital</span><br /><i>menu.</i></h1><div><p>Browse every dish by craving, then find the table mood that fits. This guide is made for reading, sharing and planning your Mall Road visit—not for ordering online.</p><span className="menu-page-hours">Open daily · 12:00 PM–10:30 PM</span></div></div>
+        <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title"><span className="title-outline">Many cravings.</span><br /><i>One table.</i></h1><div><p>From a hot dosa to a chilled scoop, move through every Mall Road mood in one display-only craving atlas—made for reading, sharing and planning the next table.</p><span className="menu-page-hours">17 chapters · 204 dishes · Open daily 12:00 PM–10:30 PM</span></div></div>
+      </section>
+      <section className="menu-browser-block section-pad" aria-label="Browse Full Menu chapters">
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
           <div className="menu-conveyor" role="group" aria-label="Menu groups — hover or focus to pause the moving categories">
             <div className="menu-conveyor__track">
@@ -125,14 +151,14 @@ export default function MenuPage() {
             </div>
           </div>
           <div className="menu-browser__tools"><label className="menu-search"><Search size={19} strokeWidth={1.6} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search dosa, pizza, ice cream, shakes…" aria-label="Search dishes" /></label><label className="menu-sort">Sort by <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort menu items"><option value="recommended">Recommended</option><option value="az">A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select><ChevronDown size={14} /></label></div>
-          <div className="menu-browser__result"><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : menuChapters.find((chapter) => chapter.slug === activeGroup)?.title}</span></div>
+          <div className="menu-browser__result"><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
         </div>
       </section>
       <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">
         {visibleItems.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">No craving found</p><h2>Try another<br /><i>table mood.</i></h2><p>Search by a dish name, flavour or menu group. Your menu is still here—just waiting for a different word.</p></div>}
-        <div className="menu-card-grid">{visibleItems.map(({ dish, chapter }, index) => { const price = zomatoDishPrices[dish]; const previousItem = visibleItems[index - 1]; const showChapterBreak = activeGroup === "all" && sort === "recommended" && (!previousItem || previousItem.chapter.slug !== chapter.slug); const chapterNumber = `${menuChapters.findIndex((menuChapter) => menuChapter.slug === chapter.slug) + 1}`.padStart(2, "0"); return <Fragment key={`${chapter.slug}-${dish}`}>
-          {showChapterBreak && <div className="menu-chapter-break"><div><p className="menu-chapter-break__index">{chapterNumber} / Craving chapter</p><h2>{chapter.title}</h2></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
-          <motion.article className={`menu-dish-card${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}><p className="menu-dish-card__meta">100% pure veg · {chapter.title}</p><div><h2>{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>Zomato menu price</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? "Price not listed" : "Display only"}</span></footer></motion.article>
+        <div className="menu-card-grid">{visibleItems.map(({ dish, chapter }, index) => { const price = zomatoDishPrices[dish]; const previousItem = visibleItems[index - 1]; const showChapterBreak = sort === "recommended" && (!previousItem || previousItem.chapter.slug !== chapter.slug); const chapterNumber = `${menuChapters.findIndex((menuChapter) => menuChapter.slug === chapter.slug) + 1}`.padStart(2, "0"); const artwork = chapterArtwork[chapter.slug]; return <Fragment key={`${chapter.slug}-${dish}`}>
+          {showChapterBreak && <div className="menu-chapter-break" data-chapter={chapter.slug}><img className="menu-chapter-break__image" src={artwork.src} alt="" style={{ objectPosition: artwork.position }} /><span className="menu-chapter-break__veil" aria-hidden="true" /><div className="menu-chapter-break__body"><p className="menu-chapter-break__index">{chapterNumber} / Craving chapter</p><h2>{formatHeading(chapter.title)}</h2><small className="menu-chapter-break__art-note">Naatures Scuup / {formatHeading(chapter.note)}</small></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
+          <motion.article className={`menu-dish-card${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}><p className="menu-dish-card__meta">100% pure veg · {formatHeading(chapter.title)}</p><div><h2>{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>Zomato menu price</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? "Price not listed" : "Display only"}</span></footer></motion.article>
         </Fragment>; })}</div>
       </section>
       <section className="menu-page-closing section-pad"><div><p className="eyebrow menu-page-closing__eyebrow">Freeze the happiness</p><h2>Find your<br /><i>table mood.</i></h2></div><div className="menu-page-closing__actions"><a className="button button--cream" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><Link className="text-action text-action--cream" href="/">Back to home <ArrowDownRight size={16} /></Link></div></section>
