@@ -396,6 +396,14 @@
 
 > Validation result: the current mobile and desktop renders show one clear body loop, separated short leg strokes and paws, a distinct tail curl, and a lighter chair-back contour. The redundant inner neck stroke has been removed, leaving a clean steam-facing profile above the cup. The sniff, ear twitch, tail wag, and reduced-motion support remain intact. Type checking, the production build, and whitespace validation passed.
 
+# Café-Dog Final Head-Stroke Cleanup
+
+- [x] Remove the last line that enters the dog’s head in the supplied mobile rendering.
+- [x] Preserve the cap gap, closed-eye profile, ear, steam-facing sniff, and mascot motion.
+- [x] Validate the clean mobile head profile and production build, then save a checkpoint.
+
+> Validation result: the dog-head path now ends at the lower profile rather than closing back to its start, removing the diagonal return segment that previously crossed the head interior. The beret gap, closed-eye expression, ear, steam-facing sniff, ear twitch, tail wag, and reduced-motion support remain intact. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.

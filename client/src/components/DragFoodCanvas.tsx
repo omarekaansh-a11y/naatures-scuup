@@ -47,7 +47,7 @@ function DogMascot() {
           <path className="dog-front-leg" d="M100 112c-1 14 0 23 6 30M118 120c-1 10 0 16 6 22" />
           <path className="dog-paw" d="M102 142c5 2 9 2 13-1M123 142c4 2 8 2 11-1" />
           <g className="dog-head-group">
-            <path className="dog-head" d="M84 48c8-9 23-10 35-4 8 5 14 10 22 11 10 1 17 4 21 9-6 6-16 9-28 9-12 0-23-4-32-10-7-5-13-9-18-15Z" />
+            <path className="dog-head" d="M84 48c8-9 23-10 35-4 8 5 14 10 22 11 10 1 17 4 21 9-6 6-16 9-28 9-12 0-23-4-32-10" />
             <path className="dog-ear" d="M84 50c-11-4-18 4-15 16 3 10 9 16 17 19" />
             <path className="dog-eye" d="M108 52q5 4 10 0" />
             <path className="dog-smile" d="M149 62q4 3 8 0" />
