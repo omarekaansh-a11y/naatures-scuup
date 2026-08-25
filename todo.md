@@ -749,3 +749,9 @@
 > Fresh-session check: the new browser session loaded at the page top and had not yet mounted the lower, lazy-loaded visit map, so no map tiles were present in its DOM. The next validation step will bring the location panel into view, then verify the live tile zoom in that newly initialized map instance.
 
 > Final live-tile confirmation: after the location panel entered the fresh browser viewport, the real Google Maps canvas requested tile `!1i17`, confirming the substantially closer zoom level. The same active tile URL carries the updated maroon geometry and road style values, and the DOM retains both the Naatures Scuup and The Mall markers.
+
+# GitHub Repository Export
+
+- [ ] Review the local Git state and confirm the project is ready for export.
+- [ ] Create a private GitHub repository and push the Naatures Scuup source.
+- [ ] Verify the remote repository URL and default branch, then report the handoff.
