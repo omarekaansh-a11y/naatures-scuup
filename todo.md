@@ -271,6 +271,14 @@
 
 > Final validation: mobile and desktop renders now read as a taller seated S-curve, with the torso carrying the main vertical rhythm and the subdued tail serving as a secondary rear accent. The long-necked profile, chair, cup, steam, and sniff relationship retain clear separation; reduced-motion disables the animation groups. Type checking, the production build, and whitespace validation passed.
 
+# Café-Dog Chair-Seat Contact Correction
+
+- [x] Reposition the rear body, hind leg cue, and tail base so the dog’s weight visibly lands on the chair seat.
+- [x] Preserve the elongated torso, clear cap gap, coffee-facing profile, and scent behavior.
+- [x] Validate the seated posture at mobile and desktop widths, then save a checkpoint.
+
+> Validation result: the widened seat now continues beneath the lowered rear torso and front paws, making the dog read as seated rather than floating beyond the chair at both mobile and desktop scales. Type checking, the production build, and whitespace validation passed.
+
 # Motion, Hours, and Menu-Color Refinement Checklist
 
 - [x] Tune the drag distance, velocity projection, exit timing, and snap-back curve for a slightly heavier card feel.
