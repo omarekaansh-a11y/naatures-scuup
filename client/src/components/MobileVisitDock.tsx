@@ -5,5 +5,5 @@ import { Link } from "wouter";
 const mapUrl = "https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur";
 
 export function MobileVisitDock() {
-  return <nav className="mobile-visit-dock" aria-label="Visit Naatures Scuup"><Link href="/">Home</Link><a href={mapUrl} target="_blank" rel="noreferrer">Directions <MapPin size={14} /></a></nav>;
+  return <nav className="mobile-visit-dock" aria-label="Visit Naatures Scuup"><Link className="mobile-visit-dock__home--active" href="/" aria-current="page">Home</Link><a href={mapUrl} target="_blank" rel="noreferrer">Directions <MapPin size={14} /></a></nav>;
 }

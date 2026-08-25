@@ -397,6 +397,14 @@
 
 > Overlap result: the standard-phone table guide now sits as a compact top-right accent at 86% of its prior rendered scale, beginning at 26% from the left and 142px from the top. Its bottom edge clears the meta line, 60–74px headline, supporting copy, actions, route line, and lower trust row. The 375px standard mobile and 1280px desktop views passed alongside the production build.
 
+# Mobile Home Dock Active-State Refinement
+
+- [x] Add a restrained active treatment to the Home action in the mobile visit dock.
+- [x] Preserve the existing Directions action hierarchy and mobile dock behavior.
+- [x] Validate at the mobile breakpoint and save a checkpoint.
+
+> Active-state result: the Home link now exposes `aria-current="page"`, a narrow mango underline, and a small mango current-location dot. Directions retains its existing maroon action treatment. The 375px mobile check confirmed both actions remain clear and touch-friendly.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
