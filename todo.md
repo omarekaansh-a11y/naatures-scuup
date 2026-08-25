@@ -1,10 +1,10 @@
 # Home and Full Menu Restructure Checklist
 
-- [ ] Audit the current page and components for repeated images, the “The real cravings” gallery, and the embedded home-page menu.
-- [ ] Create a dedicated Full Menu route containing the provided categories, dishes, and descriptions.
-- [ ] Remove the home-page menu and “The real cravings” gallery, then ensure no remaining image URL appears more than once in the site.
-- [ ] Replace the current navigation with an accessible hamburger menu that offers Home and Full Menu.
-- [ ] Validate both pages at desktop and mobile widths, then save the restructured checkpoint.
+- [x] Audit the current page and components for repeated images, the “The real cravings” gallery, and the embedded home-page menu.
+- [x] Create a dedicated Full Menu route containing the provided categories, dishes, and descriptions.
+- [x] Remove the home-page menu and “The real cravings” gallery, then ensure no remaining image URL appears more than once in the site.
+- [x] Replace the current navigation with an accessible hamburger menu that offers Home and Full Menu.
+- [x] Validate both pages at desktop and mobile widths, then save the restructured checkpoint.
 
 # Zomato and Swiggy Content Update Checklist
 
@@ -20,7 +20,7 @@
 - [x] Add All Items and category-group filtering that does not enable ordering.
 - [x] Add client-side dish search and a display-only sort selector.
 - [x] Validate desktop and mobile states, including empty search results and category switching.
-- [ ] Save the verified interactive menu revision.
+- [x] Save the verified interactive menu revision.
 
 # Confirmed 204-Item Menu Expansion Checklist
 
@@ -28,7 +28,7 @@
 - [x] Replace the 75-item menu data with the complete 204-item display-only data set.
 - [x] Add or extend concise source-backed dish notes without inventing unavailable details.
 - [x] Verify all-item count, group counts, search, sort, and responsive presentation.
-- [ ] Save the validated 204-item menu revision.
+- [x] Save the validated 204-item menu revision.
 
 # Verified Price Sorting Checklist
 
@@ -41,7 +41,7 @@
 
 - [x] Identify and override the hero and list padding responsible for the two empty gaps.
 - [x] Verify the compact controls-to-ribbon-to-first-category flow on mobile and desktop.
-- [ ] Save the corrected layout revision.
+- [x] Save the corrected layout revision.
 
 # Display-Only Trust, SEO, and Mobile Enhancement Checklist
 
@@ -66,7 +66,7 @@
 - [x] Remove the remaining controls-to-ribbon whitespace on the Full Menu at desktop and mobile widths.
 - [x] Add a vertical page-switch animation and reset each destination route to its top position.
 - [x] Add an accessible header back-to-top control with appropriate scroll-state behavior.
-- [ ] Validate the route transition, top reset, control behavior, and compact menu flow; then save a checkpoint.
+- [x] Validate the route transition, top reset, control behavior, and compact menu flow; then save a checkpoint.
 
 # Motion, Conveyor, and Title Refinement Checklist
 
@@ -104,10 +104,10 @@
 
 # Home Ice-Cream Destination Section Checklist
 
-- [ ] Confirm the Full Menu Ice Creams chapter anchor and Home-page insertion point.
-- [ ] Create a unique background-only visual and build the display-only ice-cream destination section.
-- [ ] Link the section directly to the Ice Creams chapter in the Full Menu without adding ordering controls.
-- [ ] Validate desktop/mobile presentation and destination navigation, then save a checkpoint.
+- [x] Confirm the Full Menu Ice Creams chapter anchor and Home-page insertion point.
+- [x] Create a unique background-only visual and build the display-only ice-cream destination section.
+- [x] Link the section directly to the Ice Creams chapter in the Full Menu without adding ordering controls.
+- [x] Validate desktop/mobile presentation and destination navigation, then save a checkpoint.
 
 # Home Experience Copy and Link Relocation Checklist
 
@@ -131,25 +131,25 @@
 
 # Food Image Gutter and Title Color Correction Checklist
 
-- [ ] Inspect the food-card image framing that produces visible image-to-image gutters.
-- [ ] Remove the visual gutters while preserving distinct images, drag behavior, and image accessibility.
-- [ ] Correct the specified Home italic title color for reliable contrast.
-- [ ] Validate desktop and mobile presentation, then save a checkpoint.
+- [x] Inspect the food-card image framing that produces visible image-to-image gutters.
+- [x] Remove the visual gutters while preserving distinct images, drag behavior, and image accessibility.
+- [x] Correct the specified Home italic title color for reliable contrast.
+- [x] Validate desktop and mobile presentation, then save a checkpoint.
 
 # Header Logo Crop and Slogan Stack Checklist
 
-- [ ] Inspect the supplied logo presentation and current name-and-slogan positioning.
-- [ ] Remove the logo background visually through non-destructive crop and fit styling.
-- [ ] Place #FREEZETHEHAPPINESS directly below Naatures Scuup in the header lockup.
-- [ ] Validate Home and Full Menu headers at desktop and mobile widths, then save a checkpoint.
+- [x] Inspect the supplied logo presentation and current name-and-slogan positioning.
+- [x] Remove the logo background visually through non-destructive crop and fit styling.
+- [x] Place #FREEZETHEHAPPINESS directly below Naatures Scuup in the header lockup.
+- [x] Validate Home and Full Menu headers at desktop and mobile widths, then save a checkpoint.
 
 # Reference-Aligned Food Conveyor Checklist
 
 - [x] Analyze the supplied conveyor-belt reference for motion speed, image rhythm, and direct-manipulation cues.
 - [x] Refine the food-strip framing and repeated-motion behavior to match the reference’s continuous visual rhythm.
-- [ ] Preserve accessible drag, touch, and keyboard use while removing any residual transition artifacts.
+- [x] Preserve accessible drag, touch, and keyboard use while removing any residual transition artifacts.
 - [x] Correct the shared header logo crop and placement directly from the current rendered treatment.
-- [ ] Validate desktop/mobile presentation against the reference, then save a checkpoint.
+- [x] Validate desktop/mobile presentation against the reference, then save a checkpoint.
 
 > Desktop verification note: the header owner mark now renders without the prior white rectangular field, and the Home rail uses centered 2:3 food cards, a 20px visual cadence, image-overlay captions, and side chevrons.
 
@@ -681,9 +681,9 @@
 
 # Implementation Handoff Specification Checklist
 
-- [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
-- [ ] Create an implementation-ready reconstruction brief for another AI.
-- [ ] Deliver the detailed technical specification as a Markdown attachment.
+- [x] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
+- [x] Create an implementation-ready reconstruction brief for another AI.
+- [x] Deliver the detailed technical specification as a Markdown attachment.
 
 # Elevated Full Menu Hero Background
 
