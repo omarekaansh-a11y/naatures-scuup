@@ -821,3 +821,8 @@
 - [x] Remove all text, loading copy, framing, and decorative overlays from the 300-frame canvas section.
 - [x] Pin the canvas at full viewport size and prevent access to Drag It until frame 300 is reached.
 - [x] Validate the full-screen desktop/mobile sequence and publish the text-free refinement.
+
+# 4K Frame-Sequence Enhancement
+- [x] Confirm the exact 300-frame source list and 4K target requirements: 300 ordered 1280×720 sources targeting 3840×2160.
+- [x] Upscale every canvas frame to 4K while preserving frame content and numeric order.
+- [x] Replace the sequence manifest, test responsive performance, and publish the 4K assets.

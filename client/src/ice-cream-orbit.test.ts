@@ -9,9 +9,10 @@ const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "
 describe("full-screen GSAP canvas frame sequence", () => {
   it("provides all 300 frames in ordered numeric storage paths", () => {
     expect(manifest).toContain("MANGO_SCROLL_FRAMES");
+    expect(manifest).toContain("Ordered numeric 4K sequence");
     expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(300);
-    expect(manifest).toContain("/manus-storage/ezgif-frame-001_");
-    expect(manifest).toContain("/manus-storage/ezgif-frame-300_");
+    expect(manifest).toContain("/manus-storage/ezgif-frame-001_d86aaa63.jpg");
+    expect(manifest).toContain("/manus-storage/ezgif-frame-300_1a0d7268.jpg");
   });
 
   it("uses GSAP ScrollTrigger to pin and scrub the canvas until the final frame", () => {
