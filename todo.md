@@ -366,6 +366,14 @@
 
 > Validation result: the sniff endpoint is now reduced to a shorter forward rotation and translation, preserving an evident pause toward the steam while keeping a visible air gap between the snout and cup. The existing reduced-motion rule disables the head motion. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
 
+# Café-Dog Post-Sniff Ear Twitch and Expanded Cup Clearance
+
+- [x] Increase the snout-to-cup clearance slightly while retaining a readable steam-facing sniff.
+- [x] Add a small ear twitch immediately after the sniff returns.
+- [x] Validate timing, responsive presentation, and reduced-motion behavior, then save a checkpoint.
+
+> Validation result: the two sniff pauses now stop slightly farther from the cup, retaining a visible steam-facing scent gesture. A restrained ear twitch occurs immediately after the head returns from the second sniff. The existing reduced-motion selector disables both the head and ear animation groups. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
