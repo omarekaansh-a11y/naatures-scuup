@@ -37,21 +37,18 @@ function DogMascot() {
         <path d="M180 89h8c8 0 8 12 0 12h-6" />
         <path d="M153 101h30" />
 
-        <path className="chair-back" d="M34 132C22 112 22 83 37 68c15-15 38-8 44 13" />
+        <path className="chair-back" d="M39 132C27 111 30 85 44 73c13-11 29-5 36 9" />
         <path d="M29 140c19-9 51-9 78 1" />
         <path d="M32 140v28M84 140v28M23 168h72" />
-        <path d="M39 140c4 8 5 17 3 28M77 140c-3 9-3 18-1 28" />
 
         <g className="dog-pose">
-          <path className="dog-tail" d="M90 121c-15-3-24-13-24-27 0-11 5-19 12-19 8 0 11 10 8 20-3 9-9 15-14 19-3 3-1 9 5 12" />
-          <path className="dog-body" d="M85 70c-5 18-3 38 6 52 8 13 22 19 34 13 10-5 12-17 6-28-5-9-14-14-20-22-7-10-7-23-2-35" />
-          <path className="dog-chest" d="M106 81c-3 13 0 25 8 35" />
-          <path className="dog-hind-leg" d="M96 126c-4 10-1 18 8 22M117 130c-1 8 1 14 7 18" />
-          <path className="dog-front-leg" d="M92 102c-1 13 1 24 8 33M113 107c-1 11 1 19 7 27" />
-          <path className="dog-paw" d="M95 134c7 4 13 4 19-1M118 132c7 4 12 4 17 0" />
+          <path className="dog-tail" d="M89 120C72 118 61 108 62 94c1-11 7-18 14-17 8 1 10 11 6 21-3 8-8 14-13 18-3 4-1 9 5 12" />
+          <path className="dog-body" d="M88 71c-7 17-5 36 4 50 8 12 22 17 33 10 9-6 9-18 2-28-6-8-15-14-19-24-4-9-3-20 1-30" />
+          <path className="dog-front-leg" d="M95 103c-2 13 0 24 7 33M113 108c-1 11 1 19 7 27" />
+          <path className="dog-paw" d="M99 136c6 3 11 3 16-1M120 135c5 3 10 3 14 0" />
           <g className="dog-head-group">
             <path className="dog-head" d="M77 49c7-13 27-17 42-9 8 5 13 12 21 14 10 1 17 4 21 9-6 7-16 10-28 10-12 0-23-4-32-11-8-6-15-10-23-13Z" />
-            <path className="dog-neck" d="M102 67c-5 16-2 31 6 44" />
+            <path className="dog-neck" d="M102 67c-5 16-2 30 6 42" />
             <path className="dog-ear" d="M80 50c-14-8-23 2-18 17 3 11 10 18 19 21" />
             <path className="dog-eye" d="M106 53q5 4 10 0" />
             <path className="dog-smile" d="M148 63q4 3 8 0" />

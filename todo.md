@@ -229,6 +229,20 @@
 
 > Final validation: the mobile and desktop renders now show a clearer seated profile with one readable curled tail, a lighter chair frame, a shallow cup and saucer, and a distinct snout-to-steam corridor. The mascot retains separation from the food stack and copy at both breakpoints; reduced-motion disables the full motion groups. Type checking, the production build, and whitespace validation passed.
 
+# Second Five-Stage Café-Dog Contour Cleanup Loop
+
+- [x] Interpret the supplied live mobile rendering and lock the contour-cleanup target.
+- [x] Rebuild the mascot with a primary outer contour and only essential interior detail lines.
+- [x] Refine the chair, cup, steam, and coffee-sniff geometry without reintroducing overlap.
+- [x] Conduct a strict mobile critique focused on tangled contours, readable posture, and reference fidelity.
+- [x] Apply final corrections, validate desktop/mobile and reduced-motion behavior, then save a checkpoint.
+
+> Contour target: the dog must read in this order at a glance—beret and long closed-eye profile, one neck/body loop, one tail curl, two front legs, then a separate low-contrast chair frame. The cup and steam must remain in clear negative space ahead of the snout.
+
+> Strict critique: the mobile rebuild now eliminates the prior tangled interior mass and reads as a seated dog first. Remaining refinement is deliberately narrow: lighten the tail and neck accents another step, keep the chair subordinate, and give the nose a slightly cleaner approach toward the steam so the sniff reads as scent-seeking rather than generic head motion.
+
+> Final validation: the current mobile and desktop renders keep the dog readable as one seated contour before chair detail. The low-contrast chair, softened neck and tail accents, shallow cup, and isolated steam preserve a clean coffee-facing silhouette without the prior tangle; reduced-motion still disables the full animation groups. Type checking, the production build, and whitespace validation passed.
+
 # Motion, Hours, and Menu-Color Refinement Checklist
 
 - [x] Tune the drag distance, velocity projection, exit timing, and snap-back curve for a slightly heavier card feel.
