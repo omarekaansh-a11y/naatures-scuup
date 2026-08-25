@@ -458,6 +458,16 @@
 
 > Final responsive validation: desktop (1280×720) and mobile (375×812) Home and Full Menu headers show the complete colored artwork with no visible square, clipping, or header overlap. The source image remains unaltered; the SVG applies only an in-browser chroma alpha mask.
 
+# Double Header Logo Scale
+
+- [x] Double the displayed supplied-logo frame at desktop and mobile widths.
+- [x] Rebalance the header lockup spacing so the text signature and navigation controls remain clear and un-clipped.
+- [x] Validate the enlarged transparent logo on dark Home and light Full Menu headers, then save a checkpoint.
+
+> Desktop verification: the supplied mark now renders at exactly twice its prior 64×50 display frame (128×100) on both dark Home and light Full Menu headers. The logo remains background-free, the full artwork stays visible, and the adjacent signature plus header controls retain clear separation.
+
+> Responsive verification: at 375×812 the supplied mark uses the corresponding doubled 108×84 frame. Home and Full Menu retain a background-free logo, complete visible artwork, non-overlapping wordmark stack, and unobstructed menu controls.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
