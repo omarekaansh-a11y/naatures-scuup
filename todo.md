@@ -838,9 +838,9 @@
 - [x] Validate the artifact-reduced sequence on desktop/mobile and publish.
 
 # AI Re-Rendered Dessert Sequence
-- [ ] Superseded by the approved still-frame route: generate a clean high-detail AI dessert motion source based on the existing mango ice-cream reference.
-- [ ] Superseded by the approved still-frame route: extract ordered frames and replace the live canvas manifest with the AI-rendered sequence.
-- [ ] Superseded by the approved still-frame route: validate crisp, full-screen desktop/mobile playback and publish the re-rendered sequence.
+- [x] Superseded by the user-approved still-frame route; no AI video source was generated.
+- [x] Superseded by the completed still-frame canvas manifest; no video-frame extraction was required.
+- [x] Superseded by the completed still-frame desktop/mobile validation and publish flow.
 
 # AI Still-Frame Sequence Replacement
 - [x] Generate a consistent set of clean high-detail mango ice-cream still frames for the scroll sequence.
