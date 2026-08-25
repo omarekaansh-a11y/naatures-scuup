@@ -798,3 +798,6 @@
 > Ownership verified: Google Search Console confirmed ownership of `https://naaturescuup-8bm7xaig.manus.space/` through the deployed HTML tag. The verification tag must remain in the document head to retain ownership.
 # Regular Google Maps Hours Correction
 - [x] Show only the regular weekly Google Maps hours everywhere; exclude temporary holiday-specific wording.
+
+# Brand Logo Favicon
+- [x] Replace the generic favicon artwork with the supplied Naatures Scuup logo using transparent rendering.
