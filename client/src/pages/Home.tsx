@@ -1,5 +1,5 @@
 /**
- * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality.
+ * Style reminder — Mall Road Monograph: original contemporary Indian editorial hospitality with a dark, immersive frontispiece hero, left-aligned display type, a factual Mall Road table card, and an angled maroon foreground contour.
  * The only foreground food photography lives in the tactile table, where all seven owner-supplied images appear once each.
  * Background-only generative visuals create atmosphere behind HTML copy; no generated food image is presented as a foreground menu item.
  * #FREEZETHEHAPPINESS is a restrained signature; the experience is display-only and never a copy of another restaurant’s layout.
@@ -44,18 +44,28 @@ export default function Home() {
     <div className="site-shell">
       <RouteMeta title="Naatures Scuup | Vegetarian Restaurant on Mall Road, Kanpur" description="Explore the display-only digital menu for Naatures Scuup, a vegetarian multi-cuisine restaurant at 126, The Mall Road, Kanpur." />
       <main id="top">
-        <section className="hero" aria-labelledby="hero-title">
+        <section className="hero hero--frontispiece" aria-labelledby="hero-title">
           <div className="hero-image" role="img" aria-label="Original multi-cuisine vegetarian food background" />
           <div className="hero-tint" />
-          <div className="hero-content">
+          <div className="hero-horizon" aria-hidden="true" />
+          <svg className="hero-flavour-trail" viewBox="0 0 520 250" aria-hidden="true"><path d="M 0 72 C 76 67, 91 181, 184 176 S 228 88, 310 112 S 360 222, 520 183" /></svg>
+          <div className="hero-frontispiece__stage">
+          <div className="hero-content hero-content--frontispiece">
             <div className="hero-meta reveal-up"><span className="verified-dot" /><span>Vegetarian multi-cuisine restaurant</span><span className="meta-divider" /><span>Mall Road, Kanpur</span><span className="hero-slogan">#FREEZETHEHAPPINESS</span></div>
             <p className="eyebrow reveal-up delay-1">The all-day craving table</p>
-            <h1 id="hero-title" className="editorial-title editorial-title--light reveal-up delay-2"><span className="title-outline">ONE PLACE.</span><br /><i>every craving.</i></h1>
+              <h1 id="hero-title" className="editorial-title editorial-title--light reveal-up delay-2"><span className="title-outline">ONE PLACE.</span><br /><i>every craving.</i></h1>
             <p className="hero-copy reveal-up delay-3">South Indian favourites, pizza, Chinese, comfort snacks, shakes, desserts and ice cream—right in the heart of Kanpur.</p>
             <div className="hero-actions reveal-up delay-4">
               <Link className="button button--cream" href="/menu">FIND YOUR FAVOURITE <ArrowDownRight size={17} /></Link>
               <button className="text-action" type="button" onClick={() => scrollToId("#location")}>Directions to Mall Road <ArrowRight size={17} /></button>
             </div>
+          </div>
+            <aside className="hero-table-card reveal-up delay-3" aria-label="Naatures Scuup table guide">
+              <div className="hero-table-card__topline"><span><i /> Mall Road table guide</span><small>Open daily · 12–10:30</small></div>
+              <div className="hero-table-card__facts"><span><b>100%</b><small>vegetarian</small></span><span><b>204</b><small>dishes to explore</small></span><span><b>17</b><small>craving chapters</small></span></div>
+              <div className="hero-table-card__route"><span>South Indian</span><span>Pizza &amp; Pasta</span><span>Chinese</span><span>Shakes &amp; Scoops</span></div>
+              <div className="hero-table-card__footer"><span>One table / many moods</span><Link href="/menu">Browse the menu <ArrowRight size={15} /></Link></div>
+            </aside>
           </div>
           <div className="hero-trust reveal-up delay-4" aria-label="Restaurant information"><span><Star size={14} fill="currentColor" /> 4.0</span><span>819 Google reviews</span><span>₹200–₹400 per person</span><span className="hero-hours"><Clock3 size={13} /> Open daily · 12:00 PM–10:30 PM</span></div>
         </section>

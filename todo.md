@@ -292,6 +292,35 @@
 
 > Validation: production type/build checks passed; Home and Full Menu held their layouts at desktop and 375px mobile widths; a live Home → Full Menu → Home overlay interaction completed without browser-console errors.
 
+# High-Impact Hero Redesign and Five-Stage Review Loop
+
+- [x] Interpret the supplied hero reference as an original Naatures Scuup composition, preserving the restaurant’s own brand, content, and supplied photography.
+- [x] Study Solidroad’s publicly rendered hero for transferable hierarchy, depth, and polish principles without copying protected visual assets or content.
+- [x] Define the richer scenic depth, editorial message placement, foreground geometry, and mobile behavior for the revised hero.
+- [x] Complete two professional implementation passes for the hero structure and visual detail.
+- [x] Conduct an intentionally adversarial visual critique, then implement all accepted corrections in one focused revision.
+- [x] Validate the finalized hero at desktop and mobile widths, then save a checkpoint.
+
+> Working loop for this pass and future refinements: a detailed creative brief informs two implementation passes; an adversarial review challenges visual impact, hierarchy, contrast, and fidelity to the brief; a final validation pass confirms the accepted result before delivery.
+
+# Higgsfield Background-Only Hero Assessment
+
+- [x] Inspect available Higgsfield media capabilities and define a single compliant atmospheric-background brief.
+- [x] Attempt one optional hero-background candidate with no foreground food, restaurant branding, text, or customer-facing claims; generation was unavailable because the current workspace requires a Basic plan or higher.
+- [x] Retain the stronger existing frontispiece background rather than displacing it with an unavailable candidate.
+- [x] Validate the retained decision at desktop and mobile widths, then save a checkpoint.
+
+> Guardrail: all seven owner-supplied food photographs remain the site’s only foreground food imagery. Any generated visual is restricted to a background atmosphere behind HTML content.
+
+# Higgsfield Site-Wide Visual Enrichment Assessment
+
+- [x] Identify high-value, background-only visual opportunities across the Home and Full Menu pages.
+- [x] Attempt only Higgsfield capabilities available on the current plan and evaluate the result against the owner-supplied imagery guardrail.
+- [x] Retain the existing visual treatment because no current-plan generation candidate is available and none should displace authentic food imagery.
+- [x] Validate the selected fallback and preserve a clear no-generation route if the feature remains unavailable.
+
+> Higgsfield result: the connector is enabled and an environment-generation model is suitable in principle, but the one compliant background generation request was rejected because the current workspace requires a Basic plan or higher. The hero therefore keeps the newly refined visual system without artificial foreground food or extra asset churn.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.

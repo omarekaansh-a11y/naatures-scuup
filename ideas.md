@@ -73,3 +73,9 @@ The Full Menu will maintain fast all-item browsing while restoring an editorial 
 Outlined display type is a selective emotional accent rather than the default hierarchy. Filled Cormorant Garamond remains the primary reading voice; outline-and-italic pairings are reserved for short, memorable phrases and introduced words in the homepage and menu experience.
 
 Headline outlines remain concentrated in the hero and one or two short, high-emotion turns; section and chapter headings default to filled Cormorant Garamond. Food photography is treated as a single warm editorial sequence through tighter frames, a consistent tonal veil, and a deliberate savoury-to-sweet order. Customer feedback stays verifiable but appears as a concise selected-proof rail rather than a large dashboard-like grid.
+
+### High-Impact Hero Art Direction
+
+The Home hero evolves into an **editorial frontispiece**: a richly shaded landscape of the existing restaurant photograph sits behind a large left-anchored promise, while a partially cropped **table card** enters from the right like an open restaurant ledger. A deep-maroon foreground contour rises through the lower third and a restrained mango route-line creates a sense of movement from Kanpur to the table. The effect takes inspiration from the supplied reference’s immersive depth, oversized hierarchy, and decisive foreground geometry, but keeps the Naatures Scuup photography, Mall Road Maroon, dining facts, language, and display-only links entirely original.
+
+The hero must keep a dark text-safe field on the left, preserve clear contrast for the existing header and copy, use no repeated or newly generated food imagery, and collapse the right-side table card beneath the main message on narrow screens. The desired response is immediate appetite and place recognition rather than a software-dashboard metaphor.
