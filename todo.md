@@ -910,3 +910,8 @@
 - [x] Profile canvas frame drawing and background loading during scroll to identify the current lag source.
 - [x] Bound render work to animation frames and reduce canvas backing-store cost without lowering the 1440p source asset quality.
 - [x] Validate smooth scroll performance together with the Drag It pointer repair, then publish the result.
+
+# Full-Screen Sequence Freeze Repair
+- [x] Measure frame advancement and asset decode behavior while scrolling through the 1440p sequence.
+- [x] Replace the cache-churn playback path with a stable high-resolution rendering strategy that does not freeze the page.
+- [x] Validate continuous full-screen playback under repeated scroll input, then publish the repair.

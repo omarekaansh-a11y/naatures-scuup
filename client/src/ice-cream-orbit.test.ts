@@ -36,6 +36,7 @@ describe("full-screen GSAP canvas frame sequence", () => {
     expect(orbit).toContain("MAX_CANVAS_DPR = 2");
     expect(orbit).toContain("const queueFramesAround");
     expect(orbit).toContain("const scheduleRenderFrame");
+    expect(orbit).toContain("lastQueuedFrameRef.current = 0");
     expect(orbit).toContain("if (index === 0) setIsReady(true)");
     expect(orbit).toContain("Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1))");
     expect(orbit).toContain("framesRef.current[safeFrame]");

@@ -139,7 +139,6 @@ export function IceCreamOrbit() {
 
     const queueFramesAround = (center: number) => {
       currentFrameRef.current = center;
-      if (lastQueuedFrameRef.current >= 0 && Math.abs(center - lastQueuedFrameRef.current) < 3) return;
       pruneCache(center);
       queue.length = 0;
       queued.clear();
@@ -155,6 +154,7 @@ export function IceCreamOrbit() {
     };
 
     queueFramesRef.current = queueFramesAround;
+    lastQueuedFrameRef.current = 0;
     queueFramesAround(0);
 
     return () => {
