@@ -7,15 +7,15 @@ const manifest = readFileSync(resolve(process.cwd(), "client/src/lib/mango-scrol
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 
 describe("full-screen GSAP canvas frame sequence", () => {
-  it("provides all 300 native lossless frames in exact numeric storage order", () => {
-    expect(manifest).toContain("MANGO_SCROLL_FRAMES");
-    expect(manifest).toContain("Ordered 001–300 native-resolution lossless PNG sequence");
-    expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(300);
-    expect(manifest).toContain("/manus-storage/ezgif-frame-001_4affcda2.png");
-    expect(manifest).toContain("/manus-storage/ezgif-frame-300_95c488ed.png");
-    const actualFrameNumbers = [...manifest.matchAll(/ezgif-frame-(\d{3})_/g)].map((match) => Number(match[1]));
-    expect(actualFrameNumbers).toEqual(Array.from({ length: 300 }, (_, index) => index + 1));
-  });
+	  it("provides all 240 lossless 1440p frames in exact numeric storage order", () => {
+	    expect(manifest).toContain("MANGO_SCROLL_FRAMES");
+	    expect(manifest).toContain("Ordered 001–240 2560×1440 lossless PNG sequence");
+	    expect((manifest.match(/\/manus-storage\//g) ?? [])).toHaveLength(240);
+	    expect(manifest).toContain("/manus-storage/ezgif-frame-001_c0bf1371.png");
+	    expect(manifest).toContain("/manus-storage/ezgif-frame-240_3c3fbbbf.png");
+	    const actualFrameNumbers = [...manifest.matchAll(/ezgif-frame-(\d{3})_/g)].map((match) => Number(match[1]));
+	    expect(actualFrameNumbers).toEqual(Array.from({ length: 240 }, (_, index) => index + 1));
+	  });
 
   it("uses GSAP ScrollTrigger to pin and scrub the canvas until the final frame", () => {
     expect(orbit).toContain('from "gsap"');

@@ -866,3 +866,32 @@
 - [x] Create 300 lossless PNG frames from the original native-resolution sources with only the watermark corner treated.
 - [x] Replace the active manifest with the ordered lossless native PNG set.
 - [x] Verify native dimensions, mark-free frames, and full-screen scroll playback before publishing.
+
+# Native Canvas Fidelity Follow-up
+- [x] Audit the image delivery and high-DPI canvas path; no avoidable softness was found in the original 720p route.
+- [x] Superseded by the user-approved 1440p video route, which provides a visibly higher-resolution source.
+
+# High-Resolution Frame Subset Trial
+- [x] Inspect the uploaded frame subset; it was 1280×720, omitted frame 065, and retained the watermark.
+- [x] Superseded because the subset did not provide a higher-resolution source.
+- [x] Superseded by the approved 240-frame 1440p sequence.
+
+# Original 300-Frame Archive Replacement
+- [x] Inspect the newly supplied ZIP archive; it contains ordered frames 001–300 at 1280×720.
+- [x] Confirm the archive is byte-for-byte identical to the previously used 720p source, so it offered no fidelity upgrade.
+- [x] Superseded by the approved 240-frame 1440p source-video route.
+
+# Original Video Quality Trial
+- [x] Inspect the supplied source video; it is 1280×720 at 24 fps with 240 frames.
+- [x] Confirm it does not contain higher-resolution detail and is not a suitable replacement for the earlier 300-frame route.
+- [x] Superseded by the user-approved 1440p upscaled-video source.
+
+# Upscaled Video Trial
+- [x] Inspect the supplied upscaled video; it is 2560×1440 at 24 fps with 240 genuine frames.
+- [x] Confirm representative 1440p frames visibly improve full-screen detail over the active 720p source.
+- [x] Rebuilt and validated the user-approved 240-frame sequence rather than inventing a non-genuine 300-frame replacement.
+
+# Approved 240-Frame 1440p Replacement
+- [x] Extract every genuine 2560×1440 frame from the user-approved 240-frame video source in numeric order.
+- [x] Clean only the bottom-right watermark region and preserve native 1440p dimensions through lossless PNG output.
+- [x] Upload the 240 cleaned high-resolution assets, activate the new manifest, and validate the full-screen playback.
