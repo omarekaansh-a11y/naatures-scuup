@@ -16,7 +16,8 @@ describe("interactive visit map", () => {
 
   it("uses a wider real-world map view with native gestures and nearby landmark context", () => {
     expect(atlas).toContain("The Mall");
-    expect(atlas).toContain('initialZoom={14}');
+    expect(atlas).toContain('initialZoom={17}');
+    expect(atlas).toContain("map.setZoom(17)");
     expect(atlas).toContain("Use two fingers to explore");
     expect(atlas).not.toContain('aria-label="Zoom in"');
     expect(atlas).not.toContain("visit-map__fallback");

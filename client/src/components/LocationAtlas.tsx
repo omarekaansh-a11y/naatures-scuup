@@ -16,6 +16,7 @@ export function LocationAtlas() {
   const [hasMapError, setHasMapError] = useState(false);
   const onMapReady = useCallback((map: google.maps.Map) => {
     setHasMapError(false);
+    map.setZoom(17);
     map.setOptions({
       gestureHandling: window.matchMedia("(pointer: fine)").matches ? "greedy" : "cooperative",
       scrollwheel: window.matchMedia("(pointer: fine)").matches,
@@ -47,7 +48,7 @@ export function LocationAtlas() {
         </header>
 
         <div className="visit-map" aria-label="Interactive map centered on Naatures Scuup">
-          <MapView className="visit-map__canvas" initialCenter={naaturesScuup} initialZoom={14} onMapReady={onMapReady} onMapError={() => setHasMapError(true)} />
+          <MapView className="visit-map__canvas" initialCenter={naaturesScuup} initialZoom={17} onMapReady={onMapReady} onMapError={() => setHasMapError(true)} />
           <span className="visit-map__tint" aria-hidden="true" />
           <span className="visit-map__gesture-hint" aria-hidden="true" />
           {hasMapError && <span className="visit-map__status"><span><strong>Live map unavailable</strong>Open directions to view Naatures Scuup on Google Maps.</span></span>}

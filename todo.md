@@ -735,3 +735,17 @@
 > Live-map diagnostic: browser inspection confirmed a real Google Maps canvas (`.gm-style`) with completed 256px map tiles from `maps.googleapis.com/maps/vt`, together with the Naatures Scuup and The Mall markers. The pale initial appearance was a rendering/style issue rather than a fabricated map source; the live map now uses stronger compliant road, geometry, and runtime color treatment for clearer visual distinction.
 
 > Validation result: the fabricated road-grid markup is removed. The updated map uses the Google Maps JavaScript API callback flow, a real tile-based canvas, and true location markers for both Naatures Scuup and The Mall at zoom 14. Browser DOM inspection confirmed completed live map tiles. The visual verification, four regression assertions, TypeScript checking, production build, and whitespace validation passed.
+
+# Closer Live Map Framing
+
+- [x] Increase the default real Google Maps zoom substantially while retaining both Naatures Scuup and The Mall context.
+- [x] Preserve native mobile pinch and desktop wheel interactions without visible map controls.
+- [x] Validate the closer view at desktop and mobile sizes, then save a checkpoint.
+
+> Closer-view implementation: the live map now initializes and is reinforced at zoom 16 (four times the ground-resolution detail of zoom 14) while retaining the real Naatures Scuup marker, The Mall landmark lookup, and existing native gesture configuration. Desktop and mobile page layouts remain intact; live tile-state confirmation is pending.
+
+> Live-state check: the active browser page retained pre-update zoom-14 tiles after hot reload, so a fresh navigation is required to mount the updated zoom-17 component. The new source-level map configuration and regression expectation both enforce zoom 17 before the final responsive verification.
+
+> Fresh-session check: the new browser session loaded at the page top and had not yet mounted the lower, lazy-loaded visit map, so no map tiles were present in its DOM. The next validation step will bring the location panel into view, then verify the live tile zoom in that newly initialized map instance.
+
+> Final live-tile confirmation: after the location panel entered the fresh browser viewport, the real Google Maps canvas requested tile `!1i17`, confirming the substantially closer zoom level. The same active tile URL carries the updated maroon geometry and road style values, and the DOM retains both the Naatures Scuup and The Mall markers.
