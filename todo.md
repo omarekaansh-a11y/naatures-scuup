@@ -405,6 +405,14 @@
 
 > Active-state result: the Home link now exposes `aria-current="page"`, a narrow mango underline, and a small mango current-location dot. Directions retains its existing maroon action treatment. The 375px mobile check confirmed both actions remain clear and touch-friendly.
 
+# Remaining Mobile Hero Table-Guide Clearance Fix
+
+- [x] Move and reduce the mobile table guide further so it cannot overlap the hero eyebrow, headline, or supporting copy in the reported Chrome rendering.
+- [x] Preserve the food backdrop, scroll cue, mobile dock, and visual hierarchy.
+- [x] Validate the fixed mobile view against the reported layout and save a checkpoint.
+
+> Validation result: at 375px wide, the scaled ledger now finishes above the metadata, eyebrow, headline, and supporting copy; the standard desktop composition remains unchanged. Type checking, the production build, and whitespace validation passed.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
