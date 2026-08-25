@@ -28,8 +28,12 @@ describe("full-screen GSAP canvas frame sequence", () => {
     expect(orbit).toContain("<canvas");
   });
 
-  it("preloads the image sequence with a text-free fallback and full-screen canvas framing", () => {
-    expect(orbit).toContain("Promise.all(MANGO_SCROLL_FRAMES.map(preloadFrame))");
+  it("progressively preloads the image sequence with a text-free fallback and full-screen canvas framing", () => {
+    expect(orbit).toContain("MAX_PRELOAD_CONCURRENCY = 3");
+    expect(orbit).toContain("PRELOAD_RADIUS = 6");
+    expect(orbit).toContain("MAX_FRAME_CACHE = 14");
+    expect(orbit).toContain("const queueFramesAround");
+    expect(orbit).toContain("if (index === 0) setIsReady(true)");
     expect(orbit).toContain("Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1))");
     expect(orbit).toContain("framesRef.current[safeFrame]");
     expect(orbit).toContain("height:100svh");

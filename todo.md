@@ -895,3 +895,8 @@
 - [x] Extract every genuine 2560×1440 frame from the user-approved 240-frame video source in numeric order.
 - [x] Clean only the bottom-right watermark region and preserve native 1440p dimensions through lossless PNG output.
 - [x] Upload the 240 cleaned high-resolution assets, activate the new manifest, and validate the full-screen playback.
+
+# High-Resolution Sequence Loading Repair
+- [x] Measure the loading failure caused by preloading the 240 high-resolution frame assets.
+- [x] Implement a progressive, bounded-concurrency loading strategy that preserves the 1440p frame assets and avoids blocking the page.
+- [x] Validate reliable canvas readiness and scroll playback at desktop and mobile viewports, then publish the repair.

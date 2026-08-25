@@ -15,6 +15,9 @@ const sequenceStyles = `
 
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 type LoadedFrame = HTMLImageElement | null;
+const MAX_PRELOAD_CONCURRENCY = 3;
+const PRELOAD_RADIUS = 6;
+const MAX_FRAME_CACHE = 14;
 
 function drawCoverFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, opacity = 1, clear = true) {
   const context = canvas.getContext("2d");
@@ -46,6 +49,7 @@ export function IceCreamOrbit() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<LoadedFrame[]>([]);
   const currentFrameRef = useRef(0);
+  const queueFramesRef = useRef<(center: number) => void>(() => {});
   const [isReady, setIsReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -53,7 +57,16 @@ export function IceCreamOrbit() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const safeFrame = Math.round(clamp(frameIndex / (MANGO_SCROLL_FRAME_COUNT - 1)) * (MANGO_SCROLL_FRAME_COUNT - 1));
-    const image = framesRef.current[safeFrame] ?? framesRef.current.find((frame) => frame !== null);
+    queueFramesRef.current(safeFrame);
+    const image = framesRef.current[safeFrame] ?? (() => {
+      for (let distance = 1; distance < MANGO_SCROLL_FRAME_COUNT; distance += 1) {
+        const previous = framesRef.current[safeFrame - distance];
+        const next = framesRef.current[safeFrame + distance];
+        if (previous) return previous;
+        if (next) return next;
+      }
+      return null;
+    })();
     if (!image) return;
     currentFrameRef.current = safeFrame;
     drawCoverFrame(canvas, image);
@@ -63,24 +76,71 @@ export function IceCreamOrbit() {
     let cancelled = false;
     const frames: LoadedFrame[] = Array.from({ length: MANGO_SCROLL_FRAMES.length }, () => null);
     framesRef.current = frames;
+    const queued = new Set<number>();
+    const inFlight = new Set<number>();
+    const queue: number[] = [];
+
+    const pruneCache = (center: number) => {
+      for (let index = 0; index < frames.length; index += 1) {
+        if (frames[index] && Math.abs(index - center) > Math.floor(MAX_FRAME_CACHE / 2)) {
+          frames[index] = null;
+        }
+      }
+    };
 
     const preloadFrame = (source: string, index: number) => new Promise<void>((resolve) => {
       const image = new Image();
       image.decoding = "async";
-      image.onload = () => { frames[index] = image; resolve(); };
+      image.onload = () => {
+        if (!cancelled) {
+          frames[index] = image;
+          if (index === 0) setIsReady(true);
+          pruneCache(currentFrameRef.current);
+          window.requestAnimationFrame(() => renderFrame(currentFrameRef.current));
+        }
+        resolve();
+      };
       image.onerror = () => resolve();
       image.src = source;
     });
 
-    Promise.all(MANGO_SCROLL_FRAMES.map(preloadFrame)).then(() => {
-      if (cancelled) return;
-      if (frames.some((frame) => frame !== null)) {
-        setIsReady(true);
-        window.requestAnimationFrame(() => renderFrame(0));
+    const drainQueue = () => {
+      while (!cancelled && inFlight.size < MAX_PRELOAD_CONCURRENCY && queue.length > 0) {
+        const index = queue.shift();
+        if (index === undefined) return;
+        queued.delete(index);
+        if (frames[index] || inFlight.has(index)) continue;
+        inFlight.add(index);
+        void preloadFrame(MANGO_SCROLL_FRAMES[index], index).finally(() => {
+          inFlight.delete(index);
+          drainQueue();
+        });
       }
-    });
+    };
 
-    return () => { cancelled = true; };
+    const queueFramesAround = (center: number) => {
+      currentFrameRef.current = center;
+      pruneCache(center);
+      queue.length = 0;
+      queued.clear();
+      for (let distance = 0; distance <= PRELOAD_RADIUS; distance += 1) {
+        const candidates = distance === 0 ? [center] : [center - distance, center + distance];
+        candidates.forEach((index) => {
+          if (index < 0 || index >= MANGO_SCROLL_FRAME_COUNT || frames[index] || inFlight.has(index) || queued.has(index)) return;
+          queue.push(index);
+          queued.add(index);
+        });
+      }
+      drainQueue();
+    };
+
+    queueFramesRef.current = queueFramesAround;
+    queueFramesAround(0);
+
+    return () => {
+      cancelled = true;
+      queueFramesRef.current = () => {};
+    };
   }, []);
 
   useEffect(() => {
