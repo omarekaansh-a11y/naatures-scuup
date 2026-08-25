@@ -766,3 +766,23 @@
 - [x] Validate document metadata and the unknown-route experience, then save a checkpoint.
 
 > Final validation: the custom 404 page renders as a distinct maroon recovery route at 1280×900 and 375×812, with a readable large-format message, Full Menu and Mall Road recovery paths, and a compact location reminder. The favicon and complete metadata tags are source-covered by a dedicated regression test. Six regression assertions, TypeScript checking, the production build, and whitespace validation passed.
+
+# Opening Hours and Google Search Console
+
+- [x] Review the existing published opening-hours facts and site metadata.
+- [x] Add consistent visitor-facing hours plus LocalBusiness structured data.
+- [x] Add the Google Search Console verification meta tag after receiving an owner verification token or method.
+- [x] Validate the new hours, structured data, and verification metadata then save a checkpoint.
+- [ ] Complete the Google Search Console Verify action after the verification tag is live on the published domain.
+
+> Hours source: the existing visitor card and site copy establish daily service from 12:00 PM to 10:30 PM. The same hours are now represented with semantic `time` elements and Restaurant/LocalBusiness-compatible JSON-LD for search engines.
+
+> Search Console setup: the owner’s connected Google account is signed in, and the URL-prefix property `https://naaturescuup-8bm7xaig.manus.space/` has been submitted in Google Search Console. Google is currently checking the available verification methods.
+
+> Verification selection: Google Search Console created the URL-prefix property and offered an HTML-file upload as the default method (`google4fea3fe54ef5ac16.html`). Because this static deployment should keep verification in the document head, the setup will use Google’s HTML-tag method instead; the modal needs its alternative-method section expanded.
+
+> Dialog navigation note: Search Console keeps the alternative verification choices below the active viewport inside its ownership dialog. The HTML-tag method is present in the dialog’s accessible content but not yet exposed as a clickable element; keyboard navigation will be used to focus and open that method.
+
+> Verification token: Google supplied the HTML-tag content token for the existing URL-prefix property. It is now present in the document head, ready to be deployed before the Search Console Verify action is submitted.
+
+> Pre-publish validation: the Restaurant structured data declares daily 12:00–22:30 hours, the visitor card retains matching semantic time values, and the Google verification tag is present in the static document head. Six regression assertions, TypeScript checking, the production build, and whitespace validation passed. Ownership confirmation remains pending until the newly published page exposes the tag to Google.
