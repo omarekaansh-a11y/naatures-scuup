@@ -199,6 +199,14 @@
 
 > Arrival-transition inspection: the live next control was used after preserving stable card keys across stack reordering; an in-flight transform sample was scheduled to confirm that the previously staggered card rises into front position rather than remounting there.
 
+# Café-Dog Silhouette and Motion Refinement
+
+- [x] Refine the café-dog into a sleeker, more unified seated silhouette.
+- [x] Replace isolated line motion with restrained body-led breathing, weight shift, head/ear response, and tail movement.
+- [x] Validate the interaction reaction and responsive Drag It presentation, then save a checkpoint.
+
+> Validation result: the refined seated dog retains a single, slimmer connected profile at desktop and mobile scales, with the new pose and head groups providing body-led breathing, a weight shift, attention movement, blink, and controlled tail response. The greeting and swipe reaction classes map to the revised motion groups. Type checking, the production build, and whitespace validation passed.
+
 # Motion, Hours, and Menu-Color Refinement Checklist
 
 - [x] Tune the drag distance, velocity projection, exit timing, and snap-back curve for a slightly heavier card feel.
