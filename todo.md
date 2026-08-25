@@ -207,6 +207,14 @@
 
 > Validation result: the refined seated dog retains a single, slimmer connected profile at desktop and mobile scales, with the new pose and head groups providing body-led breathing, a weight shift, attention movement, blink, and controlled tail response. The greeting and swipe reaction classes map to the revised motion groups. Type checking, the production build, and whitespace validation passed.
 
+# Reference-Matched Café-Dog and Idle Coffee Sniff
+
+- [x] Redraw the dog, beret, chair, round table, cup, and steam to the supplied reference silhouette.
+- [x] Add a restrained idle lean-in and return so the dog appears to sniff the coffee.
+- [x] Validate the reference match, responsive presentation, reduced-motion behavior, and production build, then save a checkpoint.
+
+> Validation result: the refactored mascot remains inside the existing Greet the Naatures Scuup café dog control, alongside the unchanged Drag It food-card navigation and accessibility labels. At desktop and mobile scales, the seated long-neck dog, curled tail, beret, chair, round table, cup, and steam face each other as in the supplied reference. The idle cycle now leans the dog toward the coffee, pauses to sniff, then settles back; reduced-motion disables the motion groups. Type checking, the production build, and whitespace validation passed.
+
 # Motion, Hours, and Menu-Color Refinement Checklist
 
 - [x] Tune the drag distance, velocity projection, exit timing, and snap-back curve for a slightly heavier card feel.
