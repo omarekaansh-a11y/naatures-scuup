@@ -389,6 +389,14 @@
 
 > Desktop Site result: a 641–1100px portrait media rule now detects the wide CSS viewport Chrome can expose on a phone. It converts the hero from the compressed two-column desktop grid into a tall, layered frontispiece with an 84–124px promise, off-canvas upper-right table guide, visible food field, maroon terrain, route line, and compact bottom trust row. The 980 × 1800 portrait simulation, standard 1280px desktop, and normal 375px mobile view passed.
 
+# Standard Mobile Hero Table-Guide Overlap Correction
+
+- [x] Resize and reposition the standard mobile table guide so it remains legible without obscuring the hero message.
+- [x] Preserve clear separation between the guide, headline, supporting copy, calls to action, route line, and trust row.
+- [x] Validate standard mobile and desktop behavior, then save a checkpoint.
+
+> Overlap result: the standard-phone table guide now sits as a compact top-right accent at 86% of its prior rendered scale, beginning at 26% from the left and 142px from the top. Its bottom edge clears the meta line, 60–74px headline, supporting copy, actions, route line, and lower trust row. The 375px standard mobile and 1280px desktop views passed alongside the production build.
+
 # Implementation Handoff Specification Checklist
 
 - [ ] Inspect the completed site’s structure, components, tokens, content, assets, and behaviors.
