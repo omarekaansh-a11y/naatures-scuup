@@ -851,3 +851,8 @@
 - [x] Restore all 300 individually numbered image frames to the active canvas manifest.
 - [x] Verify scroll progress maps one-to-one from frame 001 through frame 300 without skipped frames.
 - [x] Validate the restored full-screen sequence on desktop/mobile and publish.
+
+# Full 300-Frame AI Regeneration
+- [x] Generate 300 high-detail AI dessert frames in exact 001–300 orbit order, reusing the existing clean anchor frames.
+- [x] Replace the active canvas manifest with all 300 regenerated AI frame assets.
+- [x] Validate natural frame-to-frame coherence, no visible pixelation, and full-screen scroll playback.
