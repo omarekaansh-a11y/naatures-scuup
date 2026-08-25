@@ -358,6 +358,14 @@
 
 > Validation result: direct greeting now uses a smaller seated compression-and-return, gentler pose and head response, plus the existing tail wag. The greeting tooltip markup, its responsive styles, lifecycle code, and bubble keyframes are removed. The mascot remains a labelled button with no visible speech bubble. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
 
+# Café-Dog Coffee-Sniff Cup-Clearance Correction
+
+- [x] Reduce the forward sniff endpoint so the snout remains visibly clear of the cup.
+- [x] Preserve the steam-facing scent gesture and readable inhale–pause–return cadence.
+- [x] Validate the corrected sniff and reduced-motion behavior, then save a checkpoint.
+
+> Validation result: the sniff endpoint is now reduced to a shorter forward rotation and translation, preserving an evident pause toward the steam while keeping a visible air gap between the snout and cup. The existing reduced-motion rule disables the head motion. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
