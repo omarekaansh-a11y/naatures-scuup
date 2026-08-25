@@ -109,7 +109,8 @@
 .dog-pose { transform-box: view-box; transform-origin: 104px 132px; animation: dog-breathe 7.2s cubic-bezier(.45, 0, .55, 1) infinite; }
 .dog-head-group { transform-box: view-box; transform-origin: 100px 69px; animation: dog-idle-sniff 6.4s cubic-bezier(.45, 0, .55, 1) infinite; }
 .dog-head, .dog-ear, .dog-body { animation: none; }
-.dog-neck { opacity: .64; }
+.dog-neck { opacity: .54; }
+.dog-ear { opacity: .86; }
 .dog-tail { opacity: .9; transform-box: view-box; transform-origin: 85px 121px; animation: dog-tail-idle 7.4s cubic-bezier(.45, 0, .55, 1) infinite; }
 .dog-steam { animation: dog-steam 3.2s ease-in-out infinite; }
 .dog-steam--two { animation-delay: -1.15s; }
