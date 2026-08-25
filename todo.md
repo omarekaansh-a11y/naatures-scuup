@@ -388,6 +388,14 @@
 
 > Final validation: mobile and desktop renders now show a taller upright long-necked seated dog with a clear steam-facing corridor above the cup. The chair still supports the lower torso, while the raised profile makes the forward sniff arc visible without crowding the cup rim. The ear twitch follows the sniff return, and reduced-motion continues to disable all mascot animation groups. Type checking, the production build, and whitespace validation passed.
 
+# Taller Café-Dog Final Line-Overlap Cleanup
+
+- [x] Simplify the neck, torso, leg, tail, and chair contours to eliminate remaining overlapping strokes.
+- [x] Preserve the taller upright seated posture, visible sniff corridor, and coffee relationship.
+- [x] Validate the cleaned desktop/mobile silhouette and motion safety, then save a checkpoint.
+
+> Validation result: the current mobile and desktop renders show one clear body loop, separated short leg strokes and paws, a distinct tail curl, and a lighter chair-back contour. The redundant inner neck stroke has been removed, leaving a clean steam-facing profile above the cup. The sniff, ear twitch, tail wag, and reduced-motion support remain intact. Type checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.
