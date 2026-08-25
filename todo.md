@@ -334,6 +334,14 @@
 
 > Mobile visual check: the compact Home layout retains its intended visual hierarchy after the invitation lifecycle change, without leaving persistent dog-tooltip chrome in the viewport.
 
+# Café-Dog Hover and Interaction Tail-Wag Pass
+
+- [x] Replace the current greeting and food-card reaction with a clear natural tail-wag response.
+- [x] Add a continuous gentle tail wag while the pointer hovers over the dog.
+- [x] Preserve reduced-motion behavior and validate interaction styling at desktop and mobile widths, then save a checkpoint.
+
+> Validation result: the dog’s greeting and committed food-card swipe states now map to one tail-led wag sequence, while hover-capable pointers receive a continuous gentle wag only while they remain over the dog. The existing reduced-motion rule disables the tail animation groups. Mobile visual review, TypeScript checking, the production build, and whitespace validation passed.
+
 # Right-Swipe Happy Dog Reaction Pass
 
 - [x] Detect a committed rightward food-card swipe without changing left-swipe behavior.

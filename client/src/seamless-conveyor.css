@@ -87,23 +87,11 @@
 
 .drag-it-mascot-button:focus-visible { outline: 2px solid var(--mango); outline-offset: 7px; border-radius: 6px; }
 .drag-it-mascot-button:hover .dog-head-group { animation: dog-curious-look .72s cubic-bezier(.18, .86, .24, 1) both; }
-.drag-it-mascot-button:hover .dog-tail { animation: dog-curious-tail .72s cubic-bezier(.18, .86, .24, 1) both; }
-.drag-it-mascot-button--reacting .drag-it-mascot { animation: dog-greet-mascot 1.42s cubic-bezier(.18, .86, .24, 1) both; transform-origin: 44% 73%; }
-.drag-it-mascot-button--reacting .dog-pose { animation: dog-greet-pose 1.42s cubic-bezier(.18, .86, .24, 1) both; }
-.drag-it-mascot-button--reacting .dog-head-group { animation: dog-greet-head 1.42s cubic-bezier(.18, .86, .24, 1) both; }
-.drag-it-mascot-button--reacting .dog-ear { animation: dog-greet-ear 1.42s cubic-bezier(.18, .86, .24, 1) both; }
-.drag-it-mascot-button--reacting .dog-eye { animation: dog-greet-eye 1.42s cubic-bezier(.18, .86, .24, 1) both; transform-box: fill-box; transform-origin: center; }
-.drag-it-mascot-button--reacting .dog-smile { animation: dog-greet-smile 1.42s cubic-bezier(.18, .86, .24, 1) both; transform-box: fill-box; transform-origin: center; }
-.drag-it-mascot-button--reacting .dog-tail { animation: dog-greet-tail 1.42s cubic-bezier(.18, .86, .24, 1) both; }
-.drag-it-mascot-button--reacting .dog-steam { animation: dog-greet-steam 1.42s cubic-bezier(.18, .86, .24, 1) both; }
-.drag-it-mascot-button--reacting .dog-steam--two { animation-delay: 55ms; }
-.drag-it-mascot-button--happy .dog-pose { animation: dog-happy-pose .94s cubic-bezier(.18, .86, .25, 1) both; }
-.drag-it-mascot-button--happy .dog-head-group { animation: dog-happy-head .94s cubic-bezier(.18, .86, .25, 1) both; }
-.drag-it-mascot-button--happy .dog-ear { animation: dog-happy-ear .94s cubic-bezier(.18, .86, .25, 1) both; }
-.drag-it-mascot-button--happy .dog-eye { animation: dog-happy-eye .94s cubic-bezier(.18, .86, .25, 1) both; transform-box: fill-box; transform-origin: center; }
-.drag-it-mascot-button--happy .dog-smile { animation: dog-happy-smile .94s cubic-bezier(.18, .86, .25, 1) both; transform-box: fill-box; transform-origin: center; }
-.drag-it-mascot-button--happy .dog-tail { animation: dog-happy-tail .94s cubic-bezier(.18, .86, .25, 1) both; }
-.drag-it-mascot-button--happy .dog-steam { animation: dog-happy-steam .94s cubic-bezier(.18, .86, .25, 1) both; }
+.drag-it-mascot-button--reacting .dog-tail { animation: dog-interaction-tail-wag 1.42s cubic-bezier(.18, .86, .24, 1) both; }
+.drag-it-mascot-button--happy .dog-tail { animation: dog-interaction-tail-wag .94s cubic-bezier(.18, .86, .25, 1) both; }
+@media (hover:hover) {
+  .drag-it-mascot-button:hover .dog-tail { animation: dog-hover-tail-wag 680ms cubic-bezier(.34, .03, .42, 1) infinite alternate; }
+}
 
 .chair-back { opacity: .62; }
 .dog-pose { transform-box: view-box; transform-origin: 107px 140px; animation: dog-breathe 7.2s cubic-bezier(.45, 0, .55, 1) infinite; }
@@ -118,6 +106,8 @@
 @keyframes dog-breathe { 0%, 100% { transform: translateY(0) scale(1); } 42% { transform: translateY(1px) scale(.994, 1.012); } 58% { transform: translateY(-.5px) scale(1.004, .994); } }
 @keyframes dog-idle-sniff { 0%, 31%, 100% { transform: rotate(0) translate(0, 0); } 43% { transform: rotate(2.7deg) translate(4px, 3px); } 54% { transform: rotate(4.6deg) translate(8px, 7px); } 62% { transform: rotate(4.4deg) translate(8px, 7px); } 72% { transform: rotate(2deg) translate(3px, 2px); } 83% { transform: rotate(0) translate(0, 0); } }
 @keyframes dog-tail-idle { 0%, 58%, 100% { transform: rotate(0); } 66% { transform: rotate(3.2deg); } 74% { transform: rotate(-1.8deg); } 82% { transform: rotate(1.2deg); } }
+@keyframes dog-hover-tail-wag { from { transform: rotate(-7deg); } to { transform: rotate(9deg); } }
+@keyframes dog-interaction-tail-wag { 0%, 100% { transform: rotate(0); } 10% { transform: rotate(16deg); } 20% { transform: rotate(-14deg); } 30% { transform: rotate(15deg); } 40% { transform: rotate(-13deg); } 50% { transform: rotate(13deg); } 60% { transform: rotate(-11deg); } 70% { transform: rotate(9deg); } 80% { transform: rotate(-6deg); } 90% { transform: rotate(4deg); } }
 @keyframes dog-steam { 0%, 100% { opacity: .38; transform: translateY(4px) rotate(-2deg); } 46% { opacity: .86; transform: translateY(-1px) rotate(1deg); } 57% { opacity: 1; transform: translateY(-4px) rotate(2deg); } 68% { opacity: .7; transform: translateY(-2px) rotate(0); } }
 @keyframes dog-greet-mascot { 0%, 100% { transform: translateY(0) scale(1); } 16% { transform: translateY(-5px) scale(1.055); } 37% { transform: translateY(2px) scale(.988); } 58% { transform: translateY(-3px) scale(1.028); } 78% { transform: translateY(1px) scale(1.006); } }
 @keyframes dog-greet-pose { 0%, 100% { transform: translateY(0) scale(1); } 18% { transform: translateY(2px) scale(1.018, .976); } 38% { transform: translateY(-4px) scale(.992, 1.026); } 62% { transform: translateY(1px) scale(1.006, .992); } }
