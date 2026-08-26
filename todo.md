@@ -1318,3 +1318,7 @@
 # Drag It Background Chapter Marker
 - [x] Add a background “01” marker to the Drag It section behind its editorial content and card interaction.
 - [x] Verify the marker’s responsive layering, readability, and interaction safety before publishing.
+
+# Drag It Chapter-Marker Alignment
+- [x] Move the Drag It background “01” to the top-right, matching the established “02” chapter-marker placement.
+- [x] Verify responsive alignment, visual layering, and interaction safety before publishing.
