@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_SOURCE = "/manus-storage/mango-ice-cream-1440p-clean-scrub_59b5e815.mp4";
+const DESKTOP_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-1440p-clean-scrub_59b5e815.mp4";
+const MOBILE_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-720p-clean-mobile_a6f262f8.mp4";
 const VIDEO_POSTER = "/manus-storage/ezgif-frame-001_c0bf1371.png";
 
 const sequenceStyles = `
@@ -23,29 +24,51 @@ const sequenceStyles = `
 export function IceCreamOrbit() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const seekAnimationRef = useRef<number | null>(null);
-  const pendingTimeRef = useRef(0);
+  const targetTimeRef = useRef(0);
+  const settleAnimationRef = useRef<number | null>(null);
+  const releaseCompletionLockRef = useRef<(() => void) | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
-  const scheduleSeek = (time: number) => {
+  const advanceToTarget = () => {
     const video = videoRef.current;
     if (!video || !Number.isFinite(video.duration) || video.duration <= 0) return;
-    pendingTimeRef.current = Math.max(0, Math.min(video.duration, time));
-    if (seekAnimationRef.current !== null) return;
-    seekAnimationRef.current = window.requestAnimationFrame(() => {
-      seekAnimationRef.current = null;
-      const targetTime = pendingTimeRef.current;
-      if (Math.abs(video.currentTime - targetTime) > 1 / 60) video.currentTime = targetTime;
-    });
+    if (settleAnimationRef.current !== null) return;
+
+    const settle = () => {
+      const targetTime = targetTimeRef.current;
+      const delta = targetTime - video.currentTime;
+
+      if (delta < -0.08) {
+        video.pause();
+        video.currentTime = targetTime;
+        settleAnimationRef.current = null;
+        return;
+      }
+
+      if (delta <= 0.04) {
+        video.pause();
+        video.playbackRate = 1;
+        settleAnimationRef.current = null;
+        if (targetTime >= video.duration - 0.04) releaseCompletionLockRef.current?.();
+        return;
+      }
+
+      video.playbackRate = delta > 3 ? 2 : delta > 1 ? 1.45 : 1.08;
+      if (video.paused) void video.play().catch(() => undefined);
+      settleAnimationRef.current = window.requestAnimationFrame(settle);
+    };
+
+    settleAnimationRef.current = window.requestAnimationFrame(settle);
   };
 
   const handleVideoReady = () => {
     const video = videoRef.current;
     if (!video) return;
     video.pause();
+    video.currentTime = 0;
+    targetTimeRef.current = 0;
     setIsReady(true);
-    scheduleSeek(0);
   };
 
   useEffect(() => {
@@ -63,35 +86,46 @@ export function IceCreamOrbit() {
     if (!section || !video || !Number.isFinite(video.duration)) return;
 
     if (reduceMotion) {
-      scheduleSeek(0);
+      video.pause();
+      video.currentTime = 0;
       return;
     }
 
-    const playhead = { time: 0 };
-    const context = gsap.context(() => {
-      gsap.to(playhead, {
-        time: video.duration,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${Math.max(window.innerHeight * 3.75, 2800)}`,
-          scrub: 0.65,
-          pin: ".ice-orbit__stage",
-          pinSpacing: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: () => scheduleSeek(playhead.time),
-        },
-      });
-    }, section);
+    let waitingForCompletion = false;
+    const trigger = ScrollTrigger.create({
+      trigger: section,
+      start: "top top",
+      end: () => `+=${Math.max(window.innerHeight * 3.75, 2800)}`,
+      pin: ".ice-orbit__stage",
+      pinSpacing: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        targetTimeRef.current = self.progress * video.duration;
+        advanceToTarget();
+      },
+      onLeave: (self) => {
+        if (video.currentTime >= video.duration - 0.04) return;
+        waitingForCompletion = true;
+        window.requestAnimationFrame(() => self.scroll(self.end - 2));
+      },
+    });
+
+    releaseCompletionLockRef.current = () => {
+      if (!waitingForCompletion) return;
+      waitingForCompletion = false;
+      window.requestAnimationFrame(() => trigger.scroll(trigger.end + 2));
+    };
 
     ScrollTrigger.refresh();
-    return () => context.revert();
+    return () => {
+      releaseCompletionLockRef.current = null;
+      trigger.kill();
+    };
   }, [isReady, reduceMotion]);
 
   useEffect(() => () => {
-    if (seekAnimationRef.current !== null) window.cancelAnimationFrame(seekAnimationRef.current);
+    if (settleAnimationRef.current !== null) window.cancelAnimationFrame(settleAnimationRef.current);
   }, []);
 
   return (
@@ -101,14 +135,16 @@ export function IceCreamOrbit() {
         <video
           ref={videoRef}
           className="ice-orbit__video"
-          src={VIDEO_SOURCE}
           poster={VIDEO_POSTER}
           muted
           playsInline
           preload="auto"
           onLoadedData={handleVideoReady}
           aria-label="Mango ice-cream sequence"
-        />
+        >
+          <source media="(max-width: 767px)" src={MOBILE_VIDEO_SOURCE} type="video/mp4" />
+          <source src={DESKTOP_VIDEO_SOURCE} type="video/mp4" />
+        </video>
         {!isReady && <div className="ice-orbit__loading" role="status" aria-label="Preparing the image sequence" />}
       </div>
     </section>

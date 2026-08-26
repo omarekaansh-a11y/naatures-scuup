@@ -925,3 +925,8 @@
 - [x] Inspect the active 1440p video crop at mobile and compact viewport sizes.
 - [x] Reduce excessive small-screen zoom while preserving the desktop full-screen treatment.
 - [x] Validate the responsive framing at mobile, compact desktop, and standard desktop sizes before publishing.
+
+# Fast Scroll and Mobile Playback Repair
+- [x] Sync the shared project preview and inspect the latest deployed sequence implementation.
+- [x] Prevent fast-scroll frame skipping and reduce mobile playback cost without reintroducing the earlier loading freeze.
+- [x] Validate rapid desktop and mobile scrolling for continuous, responsive playback before publishing.
