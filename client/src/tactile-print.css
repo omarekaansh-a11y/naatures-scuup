@@ -84,3 +84,6 @@
 
 /* Drag It has no decorative box geometry: only its food cards remain framed for interaction. */
 .drag-it-section.print-edge-boil:before,.drag-it-section.print-edge-boil--rough:after{display:none}.drag-it-mobile-guide{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;text-shadow:none!important}
+
+/* The lime striped-film trajectory is intentionally removed; the interaction now reads through the cards themselves. */
+.drag-it-section.maximalist-drag .drag-it-playground:before{display:none}

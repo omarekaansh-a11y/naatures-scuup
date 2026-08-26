@@ -1309,3 +1309,8 @@
 - [x] Remove all remaining decorative geometric box treatments from the Drag It section.
 - [x] Preserve the food-card stack, dog, editorial copy, line/ring accents, and non-boxed texture treatment.
 - [x] Validate the box-free Drag It composition at desktop/mobile widths and publish the refinement.
+
+# Drag It Green Film Removal
+- [x] Remove the remaining green decorative film from the Drag It section.
+- [x] Preserve the food-card interaction, dog, editorial copy, and essential controls without the green layer.
+- [x] Verify desktop/mobile composition and publish the cleaned Drag It treatment.
