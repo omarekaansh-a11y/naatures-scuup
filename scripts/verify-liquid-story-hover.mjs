@@ -21,20 +21,20 @@ const after = await card.evaluate((element) => {
   const plane = getComputedStyle(element, "::before");
   const glow = getComputedStyle(element, "::after");
   return {
-    opacity: Number.parseFloat(plane.opacity),
-    clipPath: plane.clipPath,
-    glowOpacity: Number.parseFloat(glow.opacity),
     interacting: element.dataset.interacting,
-    wakeX: element.style.getPropertyValue("--wake-x"),
-    wakeY: element.style.getPropertyValue("--wake-y"),
-    wakes: [...element.querySelectorAll(".ice-orbit__liquid-wake")].map((wake) => Number.parseFloat(getComputedStyle(wake).opacity)),
+    glyphs: [...element.querySelectorAll("[data-story-glyph]")].map((glyph) => ({
+      x: glyph.style.getPropertyValue("--glyph-x"),
+      y: glyph.style.getPropertyValue("--glyph-y"),
+      z: glyph.style.getPropertyValue("--glyph-z"),
+      transform: getComputedStyle(glyph).transform,
+    })),
   };
 });
 
-if (before.opacity > 0.05 || after.opacity < 0.95 || after.clipPath === before.clipPath || after.glowOpacity < 0.95 || after.interacting !== "true" || after.wakeX === "" || after.wakeY === "" || after.wakes.length !== 2 || after.wakes[0] < 0.7 || after.wakes[1] < 0.4) {
-  throw new Error(`Liquid hover plane did not uncover correctly: ${JSON.stringify({ before, after })}`);
+if (after.interacting !== "true" || after.glyphs.length < 4 || !after.glyphs.some((glyph) => glyph.x !== "0.00px" && glyph.x !== "") || !after.glyphs.some((glyph) => glyph.z !== "0.00px" && glyph.z !== "")) {
+  throw new Error(`Magnetic text warp did not activate correctly: ${JSON.stringify({ before, after })}`);
 }
 
 await page.screenshot({ path: "/home/ubuntu/liquid-story-hover-desktop.png" });
-console.log(`Liquid story hover verified: ${JSON.stringify({ before, after })}`);
+console.log(`Magnetic story hover verified: ${JSON.stringify({ before, after })}`);
 await browser.close();

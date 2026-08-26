@@ -22,18 +22,18 @@ function getStoryCheckpoint(progress: number) {
   return 3;
 }
 
+function MagneticTitle({ text }: { text: string }) {
+  return <span className="ice-orbit__magnetic-word">{Array.from(text).map((character, index) => <span key={`${character}-${index}`} className="ice-orbit__story-glyph" data-story-glyph>{character === " " ? "\u00a0" : character}</span>)}</span>;
+}
+
 const sequenceStyles = `
   .ice-orbit{position:relative;width:100%;background:#d6d4d0;isolation:isolate}
   .ice-orbit__stage{position:relative;width:100%;height:100svh;overflow:hidden;background:#d6d4d0;perspective:1150px;perspective-origin:50% 50%}
   .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#d6d4d0}
   .ice-orbit__loading{position:absolute;inset:0;z-index:4;background:#d6d4d0}
   .ice-orbit__story{position:absolute;inset:0;z-index:3;pointer-events:none;color:rgb(54 43 38 / 90%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:-.018em}
-  .ice-orbit__story-card{position:absolute;width:min(23rem,27vw);text-wrap:balance;transform-style:preserve-3d;transform-origin:center center;will-change:transform;--pointer-x:50%;--pointer-y:50%;--wake-x:50%;--wake-y:50%;--wake-angle:0deg;--wake-stretch:1}
-  .ice-orbit__story-card>:not(.ice-orbit__liquid-wake){position:relative;z-index:2;transform:translateZ(14px)}
-  .ice-orbit__story-card::before{position:absolute;z-index:-1;inset:-1rem;content:"";border:1px solid rgb(255 193 91 / 54%);border-radius:45% 55% 52% 48% / 47% 50% 50% 53%;background:rgb(255 235 191 / 25%);opacity:0;pointer-events:none;transform:translateZ(-26px) scale(.86);clip-path:ellipse(0% 0% at 50% 52%);transition:clip-path 480ms cubic-bezier(.16,1,.3,1),opacity 120ms var(--ease-out),transform 480ms cubic-bezier(.16,1,.3,1)}
-  .ice-orbit__story-card::after{position:absolute;z-index:0;left:var(--pointer-x);top:var(--pointer-y);width:8rem;height:8rem;content:"";border-radius:50%;pointer-events:none;opacity:0;background:rgb(255 222 155 / 32%);box-shadow:0 0 2.7rem 1.05rem rgb(255 187 68 / 25%);transform:translate(-50%,-50%) translateZ(-12px);transition:opacity 160ms var(--ease-out)}
-  .ice-orbit__liquid-wake{position:absolute;z-index:1;left:var(--wake-x);top:var(--wake-y);width:clamp(5.25rem,42%,11rem);height:2.1rem;border:1px solid rgb(255 232 181 / 56%);border-radius:68% 32% 62% 38% / 54% 46% 54% 46%;pointer-events:none;opacity:0;background:rgb(255 207 111 / 15%);box-shadow:0 0 1.4rem rgb(255 175 47 / 18%);transform:translate3d(-58%,-50%,28px) rotate(var(--wake-angle)) scaleX(var(--wake-stretch));transform-origin:68% 50%;will-change:left,top,transform;transition:left 105ms cubic-bezier(.16,1,.3,1),top 105ms cubic-bezier(.16,1,.3,1),transform 130ms cubic-bezier(.16,1,.3,1),opacity 160ms var(--ease-out)}
-  .ice-orbit__liquid-wake--tail{width:clamp(7rem,56%,14rem);height:1.1rem;border-color:rgb(255 246 220 / 38%);background:rgb(255 214 126 / 9%);box-shadow:none;transform:translate3d(-80%,-50%,20px) rotate(var(--wake-angle)) scaleX(calc(var(--wake-stretch) * .94));transition-duration:190ms,190ms,220ms,180ms}
+  .ice-orbit__story-card{position:absolute;width:min(23rem,27vw);text-wrap:balance;transform-style:preserve-3d;transform-origin:center center;will-change:transform}
+  .ice-orbit__story-card>*{position:relative;z-index:2;transform:translateZ(14px)}
   .ice-orbit__story-card--origin{top:18%;left:clamp(1.25rem,5vw,5.25rem);text-align:left}
   .ice-orbit__story-card--left{top:29%;left:clamp(1.25rem,5vw,5.25rem)}
   .ice-orbit__story-card--right{top:24%;right:clamp(1.25rem,5vw,5.25rem);bottom:auto;text-align:right}
@@ -42,6 +42,8 @@ const sequenceStyles = `
   .ice-orbit__story-card--right .ice-orbit__story-kicker{justify-content:flex-end}
   .ice-orbit__story-kicker::before{content:"";display:block;width:1.8rem;height:1px;background:currentColor}
   .ice-orbit__story-title{margin:0;color:rgb(47 38 34)!important;font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.3rem,5.6vw,5.8rem);font-weight:700;line-height:.86;letter-spacing:-.075em;text-transform:uppercase}
+  .ice-orbit__magnetic-word{display:inline-block;white-space:nowrap}
+  .ice-orbit__story-glyph{display:inline-block;will-change:transform;transform:translate3d(var(--glyph-x,0px),var(--glyph-y,0px),var(--glyph-z,0px)) scale(var(--glyph-scale-x,1),var(--glyph-scale-y,1)) skewX(var(--glyph-skew,0deg));transition:transform 360ms cubic-bezier(.16,1,.3,1)}
   .ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(2.75rem,5.9vw,6.05rem)}
   .ice-orbit__story-title em{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:700;letter-spacing:-.085em;text-transform:none}
   .ice-orbit__story-copy{max-width:29rem;margin:1.2rem 0 0;color:rgb(84 74 68 / 88%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:clamp(.76rem,1.2vw,1rem);font-weight:400;line-height:1.6;letter-spacing:.06em}
@@ -49,7 +51,7 @@ const sequenceStyles = `
   .ice-orbit__story-card--right .ice-orbit__story-copy{margin-left:auto}
   .ice-orbit__story-facts{display:flex;gap:.65rem;flex-wrap:wrap;margin:1.25rem 0 0;padding-top:.75rem;border-top:1px solid rgb(74 63 57 / 26%);color:rgb(74 63 57 / 76%);font:400 .54rem/1.3 Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase}.ice-orbit__story-facts span+span::before{content:"/";margin-right:.65rem;color:rgb(74 63 57 / 44%)}
   .ice-orbit__checkpoint-rail{position:absolute;z-index:4;left:clamp(1.25rem,5vw,5.25rem);bottom:clamp(1.5rem,4vw,3rem);display:flex;align-items:center;gap:.55rem;color:rgb(58 49 44 / 56%);font:400 .55rem/1 Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:.12em}.ice-orbit__checkpoint{display:block;width:.46rem;height:.46rem;border:1px solid currentColor;border-radius:999px;transition:background 180ms var(--ease-out),transform 180ms var(--ease-out)}.ice-orbit__checkpoint[data-active="true"]{background:currentColor;transform:scale(1.25)}.ice-orbit__checkpoint-label{margin-left:.25rem;text-transform:uppercase}.ice-orbit__checkpoint-prompt{margin-right:.3rem;font-size:.5rem;letter-spacing:.17em;text-transform:uppercase}
-  @media(hover:hover) and (pointer:fine){.ice-orbit__story-card[data-active="true"]{pointer-events:auto}.ice-orbit__story-card[data-active="true"]:hover::before{opacity:1;transform:translateZ(-26px) scale(1.06);clip-path:ellipse(140% 130% at var(--pointer-x) var(--pointer-y))}.ice-orbit__story-card[data-active="true"][data-interacting="true"]::after{opacity:1}.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__liquid-wake{opacity:.76}.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__liquid-wake--tail{opacity:.43}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-title{letter-spacing:-.086em;transition:letter-spacing 420ms cubic-bezier(.16,1,.3,1)}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-kicker{transform:translateZ(32px) translateY(-2px);transition:transform 420ms cubic-bezier(.16,1,.3,1)}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-copy,.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-facts{transform:translateZ(25px) translateY(2px);transition:transform 460ms cubic-bezier(.16,1,.3,1)}}
+  @media(hover:hover) and (pointer:fine){.ice-orbit__story-card[data-active="true"]{pointer-events:auto}.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__story-glyph{transition-duration:75ms}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-title{letter-spacing:-.086em;transition:letter-spacing 420ms cubic-bezier(.16,1,.3,1)}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-kicker{transform:translateZ(32px) translateY(-2px);transition:transform 420ms cubic-bezier(.16,1,.3,1)}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-copy,.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-facts{transform:translateZ(25px) translateY(2px);transition:transform 460ms cubic-bezier(.16,1,.3,1)}}
   @media(max-width:767px){.ice-orbit__stage{perspective:850px}.ice-orbit__video{object-fit:cover}.ice-orbit__story{--portrait-content-top:35svh;--portrait-content-bottom:66svh;padding-inline:max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-right))}.ice-orbit__story-card{box-sizing:border-box;width:clamp(6.25rem,31vw,9.5rem);max-width:calc(38vw - 1rem);text-wrap:pretty}.ice-orbit__story-card--origin{top:clamp(8.5rem,var(--portrait-content-top),17.5rem);left:max(1rem,env(safe-area-inset-left));text-align:left}.ice-orbit__story-card--left{top:clamp(10rem,38svh,19rem);left:max(1rem,env(safe-area-inset-left));text-align:left}.ice-orbit__story-card--right{top:clamp(9.5rem,37svh,18.5rem);right:max(1rem,env(safe-area-inset-right));text-align:right}.ice-orbit__story-card--end{top:clamp(11rem,42svh,20.5rem);right:max(1rem,env(safe-area-inset-right));bottom:auto;left:auto;text-align:right}.ice-orbit__story-title{font-size:clamp(1rem,5.4vw,1.55rem);line-height:.9;letter-spacing:-.06em}.ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(1.15rem,6vw,1.7rem)}.ice-orbit__story-card--end .ice-orbit__story-title{font-size:clamp(1.05rem,5.6vw,1.6rem)}.ice-orbit__story-kicker{gap:.38rem;margin-bottom:.5rem;font-size:clamp(.38rem,1.55vw,.48rem);letter-spacing:.13em}.ice-orbit__story-kicker::before{width:.9rem}.ice-orbit__story-copy{max-width:100%;margin-top:.6rem;font-size:clamp(.54rem,1.9vw,.62rem);line-height:1.4;letter-spacing:.02em}.ice-orbit__story-facts{display:none}.ice-orbit__checkpoint-rail{left:max(1rem,env(safe-area-inset-left));bottom:max(1rem,env(safe-area-inset-bottom));gap:.4rem;font-size:.42rem}.ice-orbit__checkpoint{width:.36rem;height:.36rem}.ice-orbit__checkpoint-prompt{display:none}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
@@ -61,7 +63,6 @@ export function IceCreamOrbit() {
   const settleAnimationRef = useRef<number | null>(null);
   const releaseCompletionLockRef = useRef<(() => void) | null>(null);
   const checkpointRef = useRef(0);
-  const lastPointerRef = useRef({ x: 50, y: 50, at: 0 });
   const storyProgress = useMotionValue(0);
   const openingOpacity = useTransform(storyProgress, [0, 0.02, 0.19, 0.22], [1, 1, 1, 0]);
   const openingY = useTransform(storyProgress, [0, 0.19, 0.22], [0, 0, -18]);
@@ -86,31 +87,33 @@ export function IceCreamOrbit() {
   const [isReady, setIsReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [activeCheckpoint, setActiveCheckpoint] = useState(0);
-  const handleStoryPointerMove = (event: ReactPointerEvent<HTMLDivElement>, checkpoint: number) => {
+  const handleStoryPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const card = event.currentTarget;
-    const bounds = card.getBoundingClientRect();
-    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
-    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
-    card.style.setProperty("--pointer-x", `${x}%`);
-    card.style.setProperty("--pointer-y", `${y}%`);
-    const now = performance.now();
-    const pause = now - lastPointerRef.current.at;
-    const deltaX = pause > 220 ? 0 : x - lastPointerRef.current.x;
-    const deltaY = pause > 220 ? 0 : y - lastPointerRef.current.y;
-    const speed = Math.hypot(deltaX, deltaY);
-    const angle = speed > 0.25 ? Math.atan2(deltaY, deltaX) * (180 / Math.PI) : 0;
-    card.style.setProperty("--wake-x", `${x}%`);
-    card.style.setProperty("--wake-y", `${y}%`);
-    card.style.setProperty("--wake-angle", `${angle}deg`);
-    card.style.setProperty("--wake-stretch", `${Math.min(1.52, 1 + speed / 18)}`);
     card.dataset.interacting = "true";
-    lastPointerRef.current = { x, y, at: now };
+    card.querySelectorAll<HTMLElement>("[data-story-glyph]").forEach((glyph) => {
+      const bounds = glyph.getBoundingClientRect();
+      const deltaX = event.clientX - (bounds.left + bounds.width / 2);
+      const deltaY = event.clientY - (bounds.top + bounds.height / 2);
+      const distance = Math.hypot(deltaX, deltaY);
+      const influence = Math.max(0, 1 - distance / 168);
+      const safeDistance = Math.max(distance, 1);
+      const directionX = deltaX / safeDistance;
+      const directionY = deltaY / safeDistance;
+      glyph.style.setProperty("--glyph-x", `${(directionX * influence * 15).toFixed(2)}px`);
+      glyph.style.setProperty("--glyph-y", `${(directionY * influence * 10).toFixed(2)}px`);
+      glyph.style.setProperty("--glyph-z", `${(influence * 18).toFixed(2)}px`);
+      glyph.style.setProperty("--glyph-scale-x", `${(1 + influence * 0.15).toFixed(3)}`);
+      glyph.style.setProperty("--glyph-scale-y", `${(1 - influence * 0.08).toFixed(3)}`);
+      glyph.style.setProperty("--glyph-skew", `${(directionX * influence * 7).toFixed(2)}deg`);
+    });
   };
 
   const handleStoryPointerLeave = (event: ReactPointerEvent<HTMLDivElement>) => {
     delete event.currentTarget.dataset.interacting;
-    event.currentTarget.style.setProperty("--wake-stretch", "1");
+    event.currentTarget.querySelectorAll<HTMLElement>("[data-story-glyph]").forEach((glyph) => {
+      ["--glyph-x", "--glyph-y", "--glyph-z", "--glyph-scale-x", "--glyph-scale-y", "--glyph-skew"].forEach((property) => glyph.style.removeProperty(property));
+    });
   };
 
   const advanceToTarget = () => {
@@ -253,29 +256,25 @@ export function IceCreamOrbit() {
           <source src={DESKTOP_VIDEO_SOURCE} type="video/mp4" />
         </video>
         <div className="ice-orbit__story" aria-hidden="true">
-          <motion.div className="ice-orbit__story-card ice-orbit__story-card--origin" data-active={activeCheckpoint === 0} onPointerMove={(event) => handleStoryPointerMove(event, 0)} onPointerLeave={handleStoryPointerLeave} style={{ opacity: openingOpacity, y: openingY, rotateY: openingRotateY, rotateX: openingRotateX, z: openingZ }}>
-            <span className="ice-orbit__liquid-wake" aria-hidden="true" /><span className="ice-orbit__liquid-wake ice-orbit__liquid-wake--tail" aria-hidden="true" />
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--origin" data-active={activeCheckpoint === 0} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: openingOpacity, y: openingY, rotateY: openingRotateY, rotateX: openingRotateX, z: openingZ }}>
             <p className="ice-orbit__story-kicker">The Mall · Kanpur</p>
-            <h2 className="ice-orbit__story-title">Naatures<br /><em>Scuup</em></h2>
+            <h2 className="ice-orbit__story-title"><MagneticTitle text="Naatures" /><br /><em><MagneticTitle text="Scuup" /></em></h2>
             <p className="ice-orbit__story-copy">Kanpur&apos;s first live ice-cream parlour—one fresh scoop at a time.</p>
             <div className="ice-orbit__story-facts"><span>Live ice cream</span><span>Vegetarian dining</span></div>
           </motion.div>
-          <motion.div className="ice-orbit__story-card ice-orbit__story-card--left" data-active={activeCheckpoint === 1} onPointerMove={(event) => handleStoryPointerMove(event, 1)} onPointerLeave={handleStoryPointerLeave} style={{ opacity: parlourOpacity, y: parlourY, rotateY: parlourRotateY, rotateX: parlourRotateX, z: parlourZ }}>
-            <span className="ice-orbit__liquid-wake" aria-hidden="true" /><span className="ice-orbit__liquid-wake ice-orbit__liquid-wake--tail" aria-hidden="true" />
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--left" data-active={activeCheckpoint === 1} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: parlourOpacity, y: parlourY, rotateY: parlourRotateY, rotateX: parlourRotateX, z: parlourZ }}>
             <p className="ice-orbit__story-kicker">Mall Road, Kanpur</p>
-            <h2 className="ice-orbit__story-title">Kanpur&apos;s first<br /><em>live ice-cream</em><br />parlour</h2>
+            <h2 className="ice-orbit__story-title"><MagneticTitle text="Kanpur&apos;s first" /><br /><em><MagneticTitle text="live ice-cream" /></em><br /><MagneticTitle text="parlour" /></h2>
             <p className="ice-orbit__story-copy">Watch the cold come alive, one slow turn at a time.</p>
           </motion.div>
-          <motion.div className="ice-orbit__story-card ice-orbit__story-card--right" data-active={activeCheckpoint === 2} onPointerMove={(event) => handleStoryPointerMove(event, 2)} onPointerLeave={handleStoryPointerLeave} style={{ opacity: cravingOpacity, y: cravingY, rotateY: cravingRotateY, rotateX: cravingRotateX, z: cravingZ }}>
-            <span className="ice-orbit__liquid-wake" aria-hidden="true" /><span className="ice-orbit__liquid-wake ice-orbit__liquid-wake--tail" aria-hidden="true" />
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--right" data-active={activeCheckpoint === 2} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: cravingOpacity, y: cravingY, rotateY: cravingRotateY, rotateX: cravingRotateX, z: cravingZ }}>
             <p className="ice-orbit__story-kicker">Made for the table</p>
-            <h2 className="ice-orbit__story-title">One place.<br /><em>Every craving.</em></h2>
+            <h2 className="ice-orbit__story-title"><MagneticTitle text="One place." /><br /><em><MagneticTitle text="Every craving." /></em></h2>
             <p className="ice-orbit__story-copy">From the first bite to the final frozen spoonful.</p>
           </motion.div>
-          <motion.div className="ice-orbit__story-card ice-orbit__story-card--end" data-active={activeCheckpoint === 3} onPointerMove={(event) => handleStoryPointerMove(event, 3)} onPointerLeave={handleStoryPointerLeave} style={{ opacity: endOpacity, y: endY, rotateY: endRotateY, rotateX: endRotateX, z: endZ }}>
-            <span className="ice-orbit__liquid-wake" aria-hidden="true" /><span className="ice-orbit__liquid-wake ice-orbit__liquid-wake--tail" aria-hidden="true" />
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--end" data-active={activeCheckpoint === 3} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: endOpacity, y: endY, rotateY: endRotateY, rotateX: endRotateX, z: endZ }}>
             <p className="ice-orbit__story-kicker">Keep it cold</p>
-            <h2 className="ice-orbit__story-title"><em>#Freeze the</em><br />happiness</h2>
+            <h2 className="ice-orbit__story-title"><em><MagneticTitle text="#Freeze the" /></em><br /><MagneticTitle text="happiness" /></h2>
           </motion.div>
         </div>
         <div className="ice-orbit__checkpoint-rail" aria-hidden="true"><span className="ice-orbit__checkpoint-prompt">Scroll to unfreeze</span>{["01", "02", "03", "04"].map((label, index) => <span key={label} className="ice-orbit__checkpoint" data-active={index === activeCheckpoint} />)}<span className="ice-orbit__checkpoint-label">{String(activeCheckpoint + 1).padStart(2, "0")} / 04</span></div>

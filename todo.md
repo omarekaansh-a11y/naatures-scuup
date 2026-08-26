@@ -1038,3 +1038,8 @@
 - [x] Replace discrete cursor ripple rings with one continuous wake that follows the pointer across active text.
 - [x] Preserve the pointer-following glow and faster liquid-uncover treatment without adding interaction to mobile touch devices.
 - [x] Verify wake continuity, checkpoint behavior, mobile fallback, and sequence performance before publishing.
+
+# Reference-Inspired Pointer Interaction
+- [x] Analyze the supplied interaction reference and identify its visible cursor-motion behavior.
+- [x] Replace the current wake with a reference-inspired desktop text effect that preserves the central cup and mobile fallback.
+- [x] Verify visual behavior, checkpoint integrity, and performance before publishing.
