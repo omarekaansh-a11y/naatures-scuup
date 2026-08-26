@@ -8,6 +8,7 @@ const app = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
 const enhancer = readFileSync(resolve(process.cwd(), "client/src/components/MobileExperienceEnhancer.tsx"), "utf8");
 const menu = readFileSync(resolve(process.cwd(), "client/src/pages/MenuPage.tsx"), "utf8");
 const dragCanvas = readFileSync(resolve(process.cwd(), "client/src/components/DragFoodCanvas.tsx"), "utf8");
+const header = readFileSync(resolve(process.cwd(), "client/src/components/SiteHeader.tsx"), "utf8");
 
 describe("mobile-first optimization safeguards", () => {
   it("keeps navigation usable through the mobile opening sequence and reserves safe areas", () => {
@@ -19,8 +20,9 @@ describe("mobile-first optimization safeguards", () => {
   });
 
   it("preserves the focused mobile opening and a direct scroll affordance", () => {
-    expect(orbit).toContain("transform:scale(3.1)");
-    expect(orbit).toContain(".ice-orbit__story,.ice-orbit__checkpoint-rail{display:none}");
+    expect(orbit).toContain("transform:scale(2.9)");
+    expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
+    expect(orbit).toContain(".ice-orbit__checkpoint-rail{display:none}");
     expect(orbit).toContain('aria-label="Scroll down to continue"');
   });
 
@@ -42,5 +44,15 @@ describe("mobile-first optimization safeguards", () => {
     expect(menu).toContain('aria-live="polite"');
     expect(dragCanvas).toContain("naatures-scuup-mobile-drag-guide");
     expect(dragCanvas).toContain("Swipe a card in any direction");
+  });
+
+  it("keeps the header free of a duplicate mobile top action while adding mobile network and category-navigation safeguards", () => {
+    expect(header).not.toContain("site-top-control");
+    expect(menu).toContain("selectMobileGroup");
+    expect(menu).toContain('id="menu-results"');
+    expect(menu).toContain('tabIndex={-1}');
+    expect(mobileStyles).toContain("data-mobile-network");
+    expect(mobileStyles).toContain("scroll-snap-type: x proximity");
+    expect(mobileStyles).toContain("prefers-contrast: more");
   });
 });

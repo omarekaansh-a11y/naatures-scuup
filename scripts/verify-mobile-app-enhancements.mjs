@@ -16,9 +16,9 @@ const initial = await page.evaluate(() => {
   const progress = document.querySelector(".mobile-scroll-progress span");
   const skip = document.querySelector(".mobile-skip-link");
   if (!(header instanceof HTMLElement) || !(quickTop instanceof HTMLButtonElement) || !(progress instanceof HTMLElement) || !(skip instanceof HTMLAnchorElement)) throw new Error("Mobile app enhancements are missing.");
-  return { headerTop: Math.round(header.getBoundingClientRect().top), quickTopVisible: quickTop.classList.contains("mobile-quick-top--visible"), progressTransform: getComputedStyle(progress).transform, skipHref: skip.getAttribute("href") };
+  return { headerTop: Math.round(header.getBoundingClientRect().top), quickTopVisible: quickTop.classList.contains("mobile-quick-top--visible"), progressTransform: getComputedStyle(progress).transform, skipHref: skip.getAttribute("href"), headerReturnControl: document.querySelector(".site-top-control") !== null };
 });
-if (initial.headerTop !== 0 || initial.quickTopVisible || initial.skipHref !== "#main-content") {
+if (initial.headerTop !== 0 || initial.quickTopVisible || initial.skipHref !== "#main-content" || initial.headerReturnControl) {
   throw new Error(`Initial mobile enhancement state is incorrect: ${JSON.stringify(initial)}`);
 }
 
@@ -51,5 +51,12 @@ if (menuState.inputMode !== "search" || menuState.enterKeyHint !== "search" || m
   throw new Error(`Mobile menu input ergonomics are incorrect: ${JSON.stringify(menuState)}`);
 }
 
-console.log(`Mobile app enhancements verified: ${JSON.stringify({ initial, scrolled, afterQuickTop, menuState })}`);
+await page.locator('.menu-filter[aria-pressed="false"]').first().click();
+await page.waitForTimeout(350);
+const categoryNavigation = await page.evaluate(() => ({ focusedId: document.activeElement?.id ?? null, resultTop: Math.round(document.getElementById("menu-results")?.getBoundingClientRect().top ?? -1) }));
+if (categoryNavigation.focusedId !== "menu-results") {
+  throw new Error(`Mobile category selection should focus the refreshed results: ${JSON.stringify(categoryNavigation)}`);
+}
+
+console.log(`Mobile app enhancements verified: ${JSON.stringify({ initial, scrolled, afterQuickTop, menuState, categoryNavigation })}`);
 await browser.close();

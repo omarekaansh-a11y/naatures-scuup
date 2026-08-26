@@ -59,13 +59,21 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).not.toContain("text-shadow:");
     expect(orbit).toContain('font-family:"Playfair Display",Georgia,serif');
     expect(orbit).toContain("font-family:Montserrat,ui-sans-serif,system-ui,sans-serif");
-    expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;transform:scale(3.1)");
-    expect(orbit).toContain(".ice-orbit__story,.ice-orbit__checkpoint-rail{display:none}");
+    expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;transform:scale(2.9)");
+    expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
+    expect(orbit).toContain('.ice-orbit__story-card[data-active="true"]{display:block!important;opacity:1!important');
+    expect(orbit).toContain("Live<br /><em>ice cream.</em>");
+    expect(orbit).toContain("Mall Road<br /><em>Kanpur.</em>");
+    expect(orbit).toContain("One table.<br /><em>Every craving.</em>");
+    expect(orbit).toContain("Freeze the<br /><em>happiness.</em>");
     expect(orbit).toContain("ice-orbit__scroll-button");
     expect(orbit).toContain("4.35rem");
     expect(orbit).toContain('aria-label="Scroll down to continue"');
     expect(orbit).toContain("const handleScrollAdvance");
     expect(orbit).toContain("window.scrollBy");
+    expect(orbit).toContain("ice-orbit__scroll-prompt");
+    expect(orbit).toContain('aria-label="Scroll to the next part of the story"');
+    expect(orbit).toContain(">Scroll!</button>");
   });
 
   it("keeps the sequence before Drag It on Home", () => {

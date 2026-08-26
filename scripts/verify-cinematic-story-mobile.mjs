@@ -18,7 +18,8 @@ for (const viewport of viewportCases) {
   });
   await page.waitForFunction(() => {
     const button = document.querySelector(".ice-orbit__scroll-button");
-    return button instanceof HTMLButtonElement && !button.disabled;
+    const prompt = document.querySelector(".ice-orbit__scroll-prompt");
+    return button instanceof HTMLButtonElement && prompt instanceof HTMLButtonElement && !button.disabled && !prompt.disabled;
   });
 
   const before = await page.evaluate(() => {
@@ -27,35 +28,80 @@ for (const viewport of viewportCases) {
     const story = document.querySelector(".ice-orbit__story");
     const rail = document.querySelector(".ice-orbit__checkpoint-rail");
     const button = document.querySelector(".ice-orbit__scroll-button");
+    const prompt = document.querySelector(".ice-orbit__scroll-prompt");
     const dock = document.querySelector(".mobile-dock");
-    if (!(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || !(story instanceof HTMLElement) || !(rail instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) throw new Error("Mobile hero controls are missing.");
+    const activeStory = document.querySelector('.ice-orbit__story-card[data-active="true"]');
+    if (!(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || !(story instanceof HTMLElement) || !(rail instanceof HTMLElement) || !(button instanceof HTMLButtonElement) || !(prompt instanceof HTMLButtonElement) || !(activeStory instanceof HTMLElement)) throw new Error("Mobile hero controls are missing.");
     const stageRect = stage.getBoundingClientRect();
     const buttonRect = button.getBoundingClientRect();
+    const promptRect = prompt.getBoundingClientRect();
     const dockRect = dock instanceof HTMLElement ? dock.getBoundingClientRect() : null;
+    const storyRect = activeStory.getBoundingClientRect();
     return {
       storyDisplay: getComputedStyle(story).display,
       railDisplay: getComputedStyle(rail).display,
+      activeStoryDisplay: getComputedStyle(activeStory).display,
+      activeStoryText: activeStory.innerText.replace(/\s+/g, " ").trim(),
+      activeStoryUpperSafe: storyRect.bottom <= stageRect.top + stageRect.height * 0.3 && storyRect.left >= stageRect.left,
       videoTransform: getComputedStyle(video).transform,
       buttonLabel: button.getAttribute("aria-label"),
       buttonVisible: buttonRect.width > 0 && buttonRect.height > 0 && buttonRect.bottom <= stageRect.bottom + 1,
       buttonAboveDock: !dockRect || buttonRect.bottom <= dockRect.top + 1,
+      promptText: prompt.innerText.trim(),
+      promptLabel: prompt.getAttribute("aria-label"),
+      promptUpperSafe: promptRect.top >= stageRect.top && promptRect.bottom <= stageRect.top + stageRect.height * 0.18,
       scrollY: window.scrollY,
     };
   });
 
-  if (before.storyDisplay !== "none" || before.railDisplay !== "none" || !before.videoTransform.includes("3.1") || before.buttonLabel !== "Scroll down to continue" || !before.buttonVisible || !before.buttonAboveDock) {
+  if (before.storyDisplay !== "block" || before.railDisplay !== "none" || before.activeStoryDisplay !== "block" || before.activeStoryText !== "LIVE ice cream." || !before.activeStoryUpperSafe || !before.videoTransform.includes("2.9") || before.buttonLabel !== "Scroll down to continue" || !before.buttonVisible || !before.buttonAboveDock || before.promptText !== "SCROLL!" || before.promptLabel !== "Scroll to the next part of the story" || !before.promptUpperSafe) {
     throw new Error(`Focused mobile opening state failed at ${viewport.width}x${viewport.height}: ${JSON.stringify(before)}`);
   }
 
-  await page.locator(".ice-orbit__scroll-button").click();
+  const chapters = [
+    { progress: 0.08, expectedIndex: 0, expectedText: "ice cream." },
+    { progress: 0.32, expectedIndex: 1, expectedText: "kanpur." },
+    { progress: 0.63, expectedIndex: 2, expectedText: "every craving." },
+    { progress: 0.92, expectedIndex: 3, expectedText: "happiness." },
+  ];
+  const mobileChapters = [];
+  for (const chapter of chapters) {
+    await page.evaluate((progress) => {
+      const section = document.querySelector(".ice-orbit");
+      if (!(section instanceof HTMLElement)) throw new Error("Sequence section is missing.");
+      const top = section.getBoundingClientRect().top + window.scrollY;
+      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
+      window.scrollTo(0, top + travel * progress);
+    }, chapter.progress);
+    await page.waitForTimeout(760);
+    const chapterResult = await page.evaluate(() => {
+      const stage = document.querySelector(".ice-orbit__stage");
+      const cards = [...document.querySelectorAll(".ice-orbit__story-card")];
+      const active = document.querySelector('.ice-orbit__story-card[data-active="true"]');
+      if (!(stage instanceof HTMLElement) || !(active instanceof HTMLElement)) throw new Error("Active mobile story card is missing.");
+      return {
+        top: Math.round(stage.getBoundingClientRect().top),
+        activeIndex: cards.indexOf(active),
+        activeText: active.innerText.replace(/\s+/g, " ").trim().toLowerCase(),
+        visibleCount: cards.filter((card) => getComputedStyle(card).display !== "none").length,
+      };
+    });
+    if (Math.abs(chapterResult.top) > 2 || chapterResult.activeIndex !== chapter.expectedIndex || chapterResult.visibleCount !== 1 || !chapterResult.activeText.includes(chapter.expectedText)) {
+      throw new Error(`Mobile story checkpoint is not resolved at ${viewport.width}x${viewport.height}: ${JSON.stringify({ chapter, chapterResult })}`);
+    }
+    mobileChapters.push(chapterResult);
+  }
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.locator(".ice-orbit__scroll-prompt").click();
   await page.waitForTimeout(700);
   const afterScrollY = await page.evaluate(() => window.scrollY);
   if (afterScrollY <= before.scrollY + viewport.height * 0.25) {
-    throw new Error(`Mobile scroll arrow did not advance the opening sequence at ${viewport.width}x${viewport.height}: ${JSON.stringify({ beforeScrollY: before.scrollY, afterScrollY })}`);
+    throw new Error(`Mobile scroll prompt did not advance the opening sequence at ${viewport.width}x${viewport.height}: ${JSON.stringify({ beforeScrollY: before.scrollY, afterScrollY })}`);
   }
 
   await page.screenshot({ path: `/home/ubuntu/focused-ice-cream-mobile-${viewport.width}x${viewport.height}.png` });
-  allResults.push({ viewport, ...before, afterScrollY });
+  allResults.push({ viewport, ...before, mobileChapters, afterScrollY });
   await page.close();
 }
 

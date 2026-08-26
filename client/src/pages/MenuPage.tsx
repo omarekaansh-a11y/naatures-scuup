@@ -102,6 +102,15 @@ export default function MenuPage() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("recommended");
   const reduceMotion = useReducedMotion();
+  const selectMobileGroup = (slug: string) => {
+    setActiveGroup(slug);
+    if (!window.matchMedia("(max-width: 640px)").matches) return;
+    window.requestAnimationFrame(() => {
+      const results = document.getElementById("menu-results");
+      results?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      results?.focus({ preventScroll: true });
+    });
+  };
   useEffect(() => {
     if (window.location.hash !== "#ice-creams") return;
     const destinationTimer = window.setTimeout(() => {
@@ -135,18 +144,18 @@ export default function MenuPage() {
       <style>{calmMenuTextStyles}</style>
       <section className="menu-page-hero section-pad" aria-labelledby="full-menu-title">
         <Breadcrumbs current="Full menu" />
-        <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p><p className="menu-brand-signature">#FREEZETHEHAPPINESS <span>·</span> Mall Road craving atlas</p>
+        <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p>
         <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title"><span className="title-outline">Many cravings.</span><br /><i>One table.</i></h1><div><p>From a hot dosa to a chilled scoop, move through every Mall Road mood in one craving atlas—made for reading, sharing and planning the next table.</p><span className="menu-page-hours">17 chapters · 204 dishes · Mon, Tue, Thu–Sun 11 AM–11 PM · Wed 10 AM–11 PM</span></div></div>
       </section>
       <section className="menu-browser-block section-pad" aria-label="Browse Full Menu chapters">
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
           <div className="menu-conveyor" role="group" aria-label="Menu groups — hover or focus to pause the moving categories">
             <div className="menu-conveyor__track">
-              {[false, true].map((isDuplicate) => <div className="menu-conveyor__set" key={isDuplicate ? "duplicate" : "primary"} aria-hidden={isDuplicate ? "true" : undefined}>{menuGroups.map((group, groupIndex) => <button key={`${isDuplicate ? "duplicate" : "primary"}-${group.slug}`} className="menu-filter menu-filter--indexed" data-active={activeGroup === group.slug} onClick={() => setActiveGroup(group.slug)} aria-pressed={activeGroup === group.slug} tabIndex={isDuplicate ? -1 : undefined}><span>{String(groupIndex).padStart(2, "0")}</span><b>{group.title}</b></button>)}</div>)}
+              {[false, true].map((isDuplicate) => <div className="menu-conveyor__set" key={isDuplicate ? "duplicate" : "primary"} aria-hidden={isDuplicate ? "true" : undefined}>{menuGroups.map((group, groupIndex) => <button key={`${isDuplicate ? "duplicate" : "primary"}-${group.slug}`} className="menu-filter menu-filter--indexed" data-active={activeGroup === group.slug} onClick={() => selectMobileGroup(group.slug)} aria-pressed={activeGroup === group.slug} tabIndex={isDuplicate ? -1 : undefined}><span>{String(groupIndex).padStart(2, "0")}</span><b>{group.title}</b></button>)}</div>)}
             </div>
           </div>
           <div className="menu-browser__tools"><label className="menu-search"><Search size={19} strokeWidth={1.6} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search dosa, pizza, ice cream, shakes…" aria-label="Search dishes" inputMode="search" enterKeyHint="search" autoComplete="off" spellCheck={false} /></label><label className="menu-sort">Sort by <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort menu items"><option value="recommended">Recommended</option><option value="az">A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select><ChevronDown size={14} /></label></div>
-          <div className="menu-browser__result" aria-live="polite" aria-atomic="true"><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
+          <div id="menu-results" className="menu-browser__result" aria-live="polite" aria-atomic="true" tabIndex={-1}><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
         </div>
       </section>
       <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">

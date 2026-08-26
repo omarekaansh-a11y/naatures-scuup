@@ -6,6 +6,7 @@ const heroStyles = readFileSync(
   resolve(process.cwd(), "client/src/menu-chapter-visuals.css"),
   "utf8",
 );
+const menuPage = readFileSync(resolve(process.cwd(), "client/src/pages/MenuPage.tsx"), "utf8");
 
 describe("Full Menu hero background", () => {
   it("uses the generated background with a desktop text-safe overlay", () => {
@@ -21,5 +22,9 @@ describe("Full Menu hero background", () => {
     expect(heroStyles).toContain(
       "@media(max-width:640px){.menu-page .menu-page-hero{background:linear-gradient(180deg",
     );
+  });
+
+  it("keeps the Full Menu hero free of the removed craving-atlas tagline", () => {
+    expect(menuPage).not.toContain("Mall Road craving atlas");
   });
 });

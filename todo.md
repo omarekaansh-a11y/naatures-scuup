@@ -1074,3 +1074,29 @@
 - [x] Add low-data and reduced-motion presentation safeguards.
 - [x] Improve long-page discoverability and return-to-top behavior on mobile.
 - [x] Validate all added mobile improvements across compact and standard phone widths.
+
+# Extended Mobile-App Optimization Pass
+- [x] Remove the redundant go-to-top control from the mobile header while preserving the floating mobile return control.
+- [x] Add resilient mobile network and loading-state behavior for media-heavy sections.
+- [x] Improve mobile menu browsing with an efficient compact category control and result navigation.
+- [x] Improve one-handed operation, thumb-zone spacing, and mobile form/control ergonomics.
+- [x] Add additional mobile accessibility and readability protections for long content.
+- [x] Verify the extended mobile behavior on compact and standard phone widths without changing desktop controls.
+
+# Mobile Ice-Cream Crop Refinement
+- [x] Reduce the mobile ice-cream video scale slightly to reveal more of the cup while keeping the dessert dominant.
+- [x] Verify the refined crop and scroll-arrow clearance across common mobile viewport sizes.
+
+# Full Menu Heading Cleanup
+- [x] Remove “#FREEZETHEHAPPINESS · Mall Road craving atlas” from the Full Menu page.
+- [x] Verify the Full Menu hero hierarchy remains balanced without the removed tagline.
+
+# Mobile Scroll-Story Narrative
+- [x] Define concise mobile copy and safe text zones around the ice-cream cup.
+- [x] Reintroduce mobile story beats with clear one-card checkpoint isolation.
+- [x] Preserve cup clearance, arrow access, header visibility, and smooth mobile video playback.
+- [x] Verify mobile narrative readability and desktop story preservation before publishing.
+
+# Universal Scroll Guidance
+- [x] Add a clear “SCROLL!” prompt above the ice cream in a header-safe, cup-safe position.
+- [x] Verify the prompt remains legible and does not collide with mobile story text, desktop copy, or the down-arrow control.
