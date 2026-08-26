@@ -954,3 +954,8 @@
 - [x] Load Playfair Display Bold for large scrollytelling titles and Montserrat Regular for billing blocks and subtitles.
 - [x] Apply the requested display-versus-billing hierarchy with generous subtitle tracking across the cinematic story chapter.
 - [x] Validate typography contrast, responsive fit, and sequence performance before publishing.
+
+# Zero-Overlap Story Placement
+- [x] Define fixed left and right narrative safe zones that leave the central ice-cream cup completely unobstructed.
+- [x] Reposition every cinematic story block into a safe side zone and remove the cup-overlap mask treatment.
+- [x] Validate clear central composition, responsive legibility, and playback before publishing.
