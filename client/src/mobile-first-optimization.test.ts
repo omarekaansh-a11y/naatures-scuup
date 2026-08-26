@@ -34,6 +34,7 @@ describe("mobile-first optimization safeguards", () => {
     expect(mobileStyles).toContain("content-visibility: auto");
     expect(mobileStyles).toContain("prefers-reduced-data");
     expect(mobileStyles).toContain("mobile-skip-link");
+    expect(mobileStyles).toContain(".mobile-skip-link { display: none; }");
     expect(mobileStyles).toContain("-webkit-overflow-scrolling: touch");
     expect(mobileStyles).toContain("drag-it-mobile-guide--visible");
     expect(menu).toContain('inputMode="search"');

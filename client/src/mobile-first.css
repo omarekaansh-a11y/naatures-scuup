@@ -1,4 +1,6 @@
 /* Mobile-first ergonomics: persistent, legible navigation and comfortable touch interactions on compact phones. */
+.mobile-skip-link { display: none; }
+
 @media (max-width: 900px) {
   body .site-header,
   html:root[data-ice-hero-active="true"] body .site-header {
@@ -65,7 +67,7 @@
   body .menu-sort select:active { filter: brightness(.96); transform: scale(.975); }
   body .menu-search:focus-within { border-color: var(--maroon); box-shadow: 0 0 0 3px rgb(101 27 43 / 10%); }
   body :focus-visible { outline: 2px solid var(--mango); outline-offset: 3px; }
-  .mobile-skip-link { position: fixed; z-index: 120; top: calc(10px + env(safe-area-inset-top)); left: 12px; padding: 12px 14px; background: var(--maroon-deep); color: var(--cream); font: 800 10px/1 Manrope, sans-serif; letter-spacing: .08em; text-transform: uppercase; transform: translateY(-140%); transition: transform 160ms var(--ease-out); }
+  .mobile-skip-link { position: fixed; z-index: 120; top: calc(10px + env(safe-area-inset-top)); left: 12px; display: inline-flex; padding: 12px 14px; background: var(--maroon-deep); color: var(--cream); font: 800 10px/1 Manrope, sans-serif; letter-spacing: .08em; text-transform: uppercase; transform: translateY(-140%); transition: transform 160ms var(--ease-out); }
   .mobile-skip-link:focus { transform: translateY(0); }
   .mobile-scroll-progress { position: fixed; z-index: 101; top: calc(64px + env(safe-area-inset-top)); right: 0; left: 0; height: 2px; background: rgb(101 27 43 / 10%); pointer-events: none; }
   .mobile-scroll-progress span { display:block; width:100%; height:100%; background:var(--mango); transform:scaleX(var(--mobile-scroll-progress,0)); transform-origin:left center; }
