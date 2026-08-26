@@ -53,12 +53,12 @@ export default function Home() {
         <DragFoodCanvas items={foodCanvasItems} />
         <section className="food-menu-bridge" aria-label="Explore the full menu"><Link className="button button--cream" href="/menu">Explore the full menu <ArrowRight size={17} /></Link></section>
 
-        <section id="ice-cream-destination" className="ice-cream-destination" aria-labelledby="ice-cream-destination-title">
+        <section id="ice-cream-destination" className="ice-cream-destination print-surface print-surface--dark print-halftone" aria-labelledby="ice-cream-destination-title">
           <div className="ice-cream-destination__image" role="img" aria-label="Editorial background showing a frozen dessert table" />
           <div className="ice-cream-destination__veil" />
           <motion.div className="ice-cream-destination__inner section-pad" initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.48, ease: [0.23, 1, 0.32, 1] }}>
             <p className="eyebrow eyebrow--mango">04 / The Mall table · #FREEZETHEHAPPINESS</p>
-            <h2 id="ice-cream-destination-title" className="editorial-title editorial-title--light"><span className="title-outline">Save room.</span><br /><i>For the scoop.</i></h2>
+            <h2 id="ice-cream-destination-title" className="editorial-title editorial-title--light print-ink"><span className="title-outline">Save room.</span><br /><i>For the scoop.</i></h2>
             <p className="ice-cream-destination__copy">From South Indian favourites and shareable pizza to Chinese, comfort snacks, shakes and dessert—Naatures Scuup keeps every vegetarian craving at one Mall Road table.</p>
             <div className="ice-cream-destination__facts" aria-label="Naatures Scuup table guide"><span><b>100%</b><small>Vegetarian multi-cuisine</small></span><span><b>204 DISHES</b><small>17 craving chapters</small></span><span><b>MALL ROAD</b><small>Kanpur · 11 AM–11 PM</small></span></div>
             <div className="ice-cream-destination__actions"><Link className="ice-cream-destination__cta" href="/menu#ice-creams">Explore ice creams <ArrowRight size={17} /></Link><button className="ice-cream-destination__secondary-action" type="button" onClick={() => scrollToId("#location")}>Directions to Mall Road <ArrowRight size={16} /></button></div>

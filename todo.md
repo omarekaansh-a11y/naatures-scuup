@@ -1133,3 +1133,16 @@
 - [x] Move the unified mobile story lockup noticeably lower toward the glass foot.
 - [x] Restore and visibly present the full mobile kicker, title, supporting copy, and facts hierarchy at every story beat.
 - [x] Verify lower-base positioning, detail visibility, and clearance from the scroll arrow and mobile dock.
+
+# Tactile Print Texture System
+- [x] Audit existing Home, Full Menu, review, and scoop-section surfaces for texture-safe layers.
+- [x] Create reusable low-cost grain, overprint registration, halftone, paper, and edge-boil primitives.
+- [x] Apply restrained textures to Home, Full Menu, diner reviews, and Save room for the scoop without obscuring content.
+- [x] Add motion-reduced and constrained-network safeguards for all decorative texture treatments.
+- [x] Verify visual contrast, responsive quality, and production performance before publishing.
+
+# Desktop Sequence Restoration
+- [x] Restore the desktop ice-cream video to its approved original framing with no mobile zoom treatment.
+- [x] Restore desktop story-card placement and keep mobile base positioning explicitly isolated to mobile media queries.
+- [x] Add regression coverage verifying desktop framing and text layout cannot inherit mobile-only rules.
+- [x] Verify restored desktop and retained mobile compositions before publishing.

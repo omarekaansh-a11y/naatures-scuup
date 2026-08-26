@@ -15,3 +15,5 @@ The universal “SCROLL!” prompt has been visually verified in both hero compo
 The repaired mobile opening now keeps the swipe coach within the Drag It section and presents the poster/video instead of a blank field. The enlarged mobile story title, kicker, supporting copy, and facts are visibly centered on the dessert with a restrained three-dimensional treatment.
 
 The follow-on hero has been removed. On mobile, the Save room for the scoop section now carries the preserved hospitality context in a readable sequence: vegetarian multi-cuisine, the 204-dish/17-chapter menu, Mall Road hours, an ice-cream menu route, and directions.
+
+The print-texture layer on the scoop section reads as a restrained dotted halftone and paper grain over the dark editorial image. The headline, body copy, facts, and action hierarchy remain readable at the mobile viewport while the surface now carries a more tangible printed character.

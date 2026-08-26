@@ -1,0 +1,13 @@
+/* Tactile print system: deliberately imperfect, low-contrast material layers for an editorial restaurant experience. */
+.print-paper,.print-surface,.print-edge-boil{position:relative;isolation:isolate}
+.print-paper:after,.print-surface:after{position:absolute;z-index:3;inset:0;content:"";pointer-events:none;opacity:.4;background-image:radial-gradient(circle at 19% 22%,rgb(53 16 26 / .24) 0 .6px,transparent .75px),radial-gradient(circle at 73% 67%,rgb(53 16 26 / .16) 0 .55px,transparent .72px),repeating-linear-gradient(96deg,transparent 0 9px,rgb(53 16 26 / .032) 10px 11px);background-size:7px 7px,11px 11px,100% 100%}
+.print-surface--dark:after{opacity:.34;background-image:radial-gradient(circle at 22% 30%,rgb(255 247 226 / .2) 0 .55px,transparent .74px),radial-gradient(circle at 76% 64%,rgb(244 240 232 / .13) 0 .5px,transparent .7px),repeating-linear-gradient(97deg,transparent 0 10px,rgb(255 247 226 / .05) 11px 12px)}
+.print-halftone:before{position:absolute;z-index:2;inset:0;content:"";pointer-events:none;opacity:.16;background-image:radial-gradient(rgb(237 189 104 / .8) .7px,transparent .9px);background-size:5px 5px;mix-blend-mode:soft-light}
+.print-edge-boil:before{position:absolute;z-index:4;inset:2px;content:"";pointer-events:none;border:1px solid rgb(101 27 43 / .3);border-radius:13px 15px 12px 14px;opacity:.65;animation:printEdgeBoil 5.5s steps(2,end) infinite alternate}
+.print-edge-boil--light:before{border-color:rgb(244 240 232 / .35)}
+.print-ink{position:relative;text-shadow:-.55px .15px 0 rgb(237 189 104 / .22),.7px -.25px 0 rgb(101 27 43 / .13)}
+.print-registration{position:relative;display:inline-block}.print-registration:after{position:absolute;inset:0;content:attr(data-print);color:rgb(237 189 104 / .28);pointer-events:none;transform:translate(1px,-1px)}
+@keyframes printEdgeBoil{0%{border-radius:13px 15px 12px 14px;transform:translate(0,0)}50%{border-radius:15px 12px 16px 11px;transform:translate(.4px,-.25px)}100%{border-radius:11px 16px 13px 15px;transform:translate(-.35px,.25px)}}
+@media(max-width:640px){.print-paper:after,.print-surface:after{opacity:.28}.print-halftone:before{opacity:.1}.print-edge-boil:before{animation-duration:7s}.print-ink{text-shadow:-.4px .1px 0 rgb(237 189 104 / .2),.45px -.18px 0 rgb(101 27 43 / .12)}}
+@media(prefers-reduced-motion:reduce){.print-edge-boil:before{animation:none}}
+@media(max-width:640px){html[data-mobile-network="constrained"] .print-edge-boil:before{animation:none}html[data-mobile-network="constrained"] .print-halftone:before{display:none}}
