@@ -70,7 +70,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("transform:translate3d(-50%,0,44px) rotateX(5deg) rotateY(-4deg)!important");
     expect(orbit).toContain("perspective:980px!important");
     expect(orbit).toContain("The Naatures Scuup way.");
-    expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right,.ice-orbit__story-card--end{top:49%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right,.ice-orbit__story-card--end{top:54%!important");
+    expect(orbit).toContain(".ice-orbit__story-copy{font-size:.68rem!important");
     expect(orbit).toContain("ice-orbit__scroll-button");
     expect(orbit).toContain("4.35rem");
     expect(orbit).toContain('aria-label="Scroll down to continue"');

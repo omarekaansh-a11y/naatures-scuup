@@ -1128,3 +1128,8 @@
 - [x] Move its strongest hospitality, Mall Road, and dining-context details into the “Save room for the scoop.” section.
 - [x] Preserve a clear narrative transition from the opening sequence to the enriched scoop section and onward to Drag It.
 - [x] Verify responsive homepage hierarchy, section navigation, and desktop/mobile continuity before publishing.
+
+# Lower-Base Mobile Narrative Refinement
+- [x] Move the unified mobile story lockup noticeably lower toward the glass foot.
+- [x] Restore and visibly present the full mobile kicker, title, supporting copy, and facts hierarchy at every story beat.
+- [x] Verify lower-base positioning, detail visibility, and clearance from the scroll arrow and mobile dock.

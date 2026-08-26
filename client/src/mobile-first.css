@@ -44,7 +44,7 @@
   body .site-header { padding-inline: 12px; }
   body .site-header .brand-logo-link { width: 64px; min-width: 64px; height: 46px; }
   body .site-header .site-header-actions { gap: 2px; margin-left: 3px; }
-  body .ice-orbit__scroll-button { bottom: calc(max(1.2rem, env(safe-area-inset-bottom)) + 4.75rem); }
+  body .ice-orbit__scroll-button { bottom: calc(max(1.2rem, env(safe-area-inset-bottom)) + 3rem); }
   body .menu-browser__tools { gap: 14px; }
   body .menu-sort { gap: 10px; }
   body .menu-dish-card footer { min-height: 44px; }
