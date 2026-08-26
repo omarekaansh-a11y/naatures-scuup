@@ -52,8 +52,8 @@ describe("tactile print visual system", () => {
     expect(printStyles).toContain(".drag-it-section.maximalist-drag .drag-it-playground:before{display:none}");
     expect(printStyles).toContain("Chapter 01 stays beneath the interactive deck");
     expect(printStyles).toContain('content:"01"');
-    expect(printStyles).toContain("Align chapter 01 with the top-right placement");
-    expect(printStyles).toContain("top:-.16em;right:3%;bottom:auto;left:auto");
+    expect(printStyles).toContain("Align chapter 01 at the proportional top-left chapter position");
+    expect(printStyles).toContain("top:-.12em;right:auto;bottom:auto;left:clamp(.6rem,2.5vw,3.5rem)");
     expect(printStyles).not.toContain(".drag-it-section.maximalist-drag .drag-it-layout:before{position:absolute;z-index:-1;inset:7% 0 4%");
   });
 });

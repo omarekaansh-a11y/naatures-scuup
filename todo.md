@@ -1322,3 +1322,8 @@
 # Drag It Chapter-Marker Alignment
 - [x] Move the Drag It background “01” to the top-right, matching the established “02” chapter-marker placement.
 - [x] Verify responsive alignment, visual layering, and interaction safety before publishing.
+
+# Drag It Marker and Cinematic Completion Lock
+- [x] Reposition and resize the Drag It “01” background marker for a top-left chapter placement.
+- [x] Keep visitors pinned to the cinematic sequence until adaptive video playback is fully complete, not merely until its scroll checkpoint is reached.
+- [x] Verify responsive marker balance, cinematic completion behavior, and production quality before publishing.

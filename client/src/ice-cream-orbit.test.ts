@@ -24,9 +24,13 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("void video.play()");
     expect(orbit).toContain("window.requestAnimationFrame");
     expect(orbit).toContain("const releaseCompletionLockRef");
+    expect(orbit).toContain("const completionLockedRef");
     expect(orbit).toContain("onLeave: (self)");
     expect(orbit).toContain("self.scroll(self.end - 2)");
     expect(orbit).toContain("trigger.scroll(trigger.end + 2)");
+    expect(orbit).toContain("completionLockedRef.current ? video.duration");
+    expect(orbit).toContain("video.ended || video.currentTime >= video.duration - 0.01");
+    expect(orbit).toContain("onEnded={() => releaseCompletionLockRef.current?.()}");
     expect(orbit).toContain("window.innerHeight * 3.75");
     expect(orbit).toContain('pin: ".ice-orbit__stage"');
   });

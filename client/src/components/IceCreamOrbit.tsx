@@ -72,6 +72,7 @@ export function IceCreamOrbit() {
   const targetTimeRef = useRef(0);
   const settleAnimationRef = useRef<number | null>(null);
   const releaseCompletionLockRef = useRef<(() => void) | null>(null);
+  const completionLockedRef = useRef(false);
   const checkpointRef = useRef(0);
   const storyProgress = useMotionValue(0);
   const openingOpacity = useTransform(storyProgress, [0, 0.02, 0.19, 0.22], [1, 1, 1, 0]);
@@ -150,11 +151,19 @@ export function IceCreamOrbit() {
         return;
       }
 
+      const finalTarget = targetTime >= video.duration - 0.04;
+      if (finalTarget && !(video.ended || video.currentTime >= video.duration - 0.01)) {
+        video.playbackRate = delta > 3 ? 2 : delta > 1 ? 1.45 : 1.08;
+        if (video.paused) void video.play().catch(() => undefined);
+        settleAnimationRef.current = window.requestAnimationFrame(settle);
+        return;
+      }
+
       if (delta <= 0.04) {
         video.pause();
         video.playbackRate = 1;
         settleAnimationRef.current = null;
-        if (targetTime >= video.duration - 0.04) releaseCompletionLockRef.current?.();
+        if (finalTarget) releaseCompletionLockRef.current?.();
         return;
       }
 
@@ -172,6 +181,7 @@ export function IceCreamOrbit() {
     video.pause();
     video.currentTime = 0;
     targetTimeRef.current = 0;
+    completionLockedRef.current = false;
     storyProgress.set(0);
     checkpointRef.current = 0;
     setActiveCheckpoint(0);
@@ -215,7 +225,8 @@ export function IceCreamOrbit() {
       anticipatePin: 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        targetTimeRef.current = self.progress * video.duration;
+        if (self.progress < 0.995) completionLockedRef.current = false;
+        targetTimeRef.current = completionLockedRef.current ? video.duration : self.progress * video.duration;
         storyProgress.set(self.progress);
         const nextCheckpoint = getStoryCheckpoint(self.progress);
         if (checkpointRef.current !== nextCheckpoint) {
@@ -228,10 +239,11 @@ export function IceCreamOrbit() {
       onEnterBack: () => setOpeningHeaderHidden(true),
       snap: reduceMotion ? undefined : { snapTo: STORY_SNAP_POINTS, delay: 0.08, duration: { min: 0.14, max: 0.32 }, ease: "power2.out", inertia: false },
       onLeave: (self) => {
-        if (video.currentTime >= video.duration - 0.04) {
+        if (video.ended || video.currentTime >= video.duration - 0.01) {
           setOpeningHeaderHidden(false);
           return;
         }
+        completionLockedRef.current = true;
         waitingForCompletion = true;
         window.requestAnimationFrame(() => self.scroll(self.end - 2));
       },
@@ -239,7 +251,9 @@ export function IceCreamOrbit() {
 
     releaseCompletionLockRef.current = () => {
       if (!waitingForCompletion) return;
+      if (!(video.ended || video.currentTime >= video.duration - 0.01)) return;
       waitingForCompletion = false;
+      completionLockedRef.current = false;
       setOpeningHeaderHidden(false);
       window.requestAnimationFrame(() => trigger.scroll(trigger.end + 2));
     };
@@ -247,6 +261,7 @@ export function IceCreamOrbit() {
     ScrollTrigger.refresh();
     return () => {
       releaseCompletionLockRef.current = null;
+      completionLockedRef.current = false;
       setOpeningHeaderHidden(false);
       trigger.kill();
     };
@@ -268,6 +283,7 @@ export function IceCreamOrbit() {
           playsInline
           preload="auto"
           onLoadedData={handleVideoReady}
+          onEnded={() => releaseCompletionLockRef.current?.()}
           aria-label="Mango ice-cream sequence"
         >
           <source media="(max-width: 767px)" src={MOBILE_VIDEO_SOURCE} type="video/mp4" />
