@@ -1027,3 +1027,9 @@
 - [x] Add a flowing liquid-uncover hover response for pointer devices without affecting scroll behavior or mobile touch.
 - [x] Rewrite the follow-on editorial hero title so it continues naturally from the opening ice-cream story.
 - [x] Verify desktop hover behavior, mobile fallback, narrative flow, and sequence performance before publishing.
+
+# Cursor-Reactive Dimensional Story Text
+- [x] Add a subtle cursor-following glow to active story cards on desktop pointer devices.
+- [x] Create true mouse-trail ripples that travel across active story text without affecting checkpoint behavior.
+- [x] Make the liquid-uncover response faster and more vibrant while retaining the uncluttered central cup composition.
+- [x] Verify desktop interactions, mobile fallback, and sequence performance before publishing.

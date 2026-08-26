@@ -11,13 +11,25 @@ const before = await card.evaluate((element) => {
   return { opacity: Number.parseFloat(plane.opacity), clipPath: plane.clipPath };
 });
 await card.hover();
-await page.waitForTimeout(850);
+const bounds = await card.boundingBox();
+if (!bounds) throw new Error("Active story card has no bounding box.");
+await page.mouse.move(bounds.x + bounds.width * 0.28, bounds.y + bounds.height * 0.38);
+await page.waitForTimeout(90);
+await page.mouse.move(bounds.x + bounds.width * 0.7, bounds.y + bounds.height * 0.62);
+await page.waitForTimeout(110);
 const after = await card.evaluate((element) => {
   const plane = getComputedStyle(element, "::before");
-  return { opacity: Number.parseFloat(plane.opacity), clipPath: plane.clipPath };
+  const glow = getComputedStyle(element, "::after");
+  return {
+    opacity: Number.parseFloat(plane.opacity),
+    clipPath: plane.clipPath,
+    glowOpacity: Number.parseFloat(glow.opacity),
+    interacting: element.dataset.interacting,
+    ripples: element.querySelectorAll(".ice-orbit__text-ripple").length,
+  };
 });
 
-if (before.opacity > 0.05 || after.opacity < 0.95 || after.clipPath === before.clipPath) {
+if (before.opacity > 0.05 || after.opacity < 0.95 || after.clipPath === before.clipPath || after.glowOpacity < 0.95 || after.interacting !== "true" || after.ripples < 2) {
   throw new Error(`Liquid hover plane did not uncover correctly: ${JSON.stringify({ before, after })}`);
 }
 
