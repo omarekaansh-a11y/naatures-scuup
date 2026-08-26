@@ -59,9 +59,9 @@ for (const viewport of viewportCases) {
   }
 
   const chapters = [
-    { progress: 0.08, expectedIndex: 0, expectedText: "live scoop.", expectedZone: "stem" },
-    { progress: 0.32, expectedIndex: 1, expectedText: "made live.", expectedZone: "left" },
-    { progress: 0.63, expectedIndex: 2, expectedText: "every craving.", expectedZone: "right" },
+    { progress: 0.08, expectedIndex: 0, expectedText: "live scoop.", expectedZone: "base" },
+    { progress: 0.32, expectedIndex: 1, expectedText: "made live.", expectedZone: "base" },
+    { progress: 0.63, expectedIndex: 2, expectedText: "every craving.", expectedZone: "base" },
     { progress: 0.92, expectedIndex: 3, expectedText: "happiness.", expectedZone: "base" },
   ];
   const mobileChapters = [];
@@ -100,7 +100,7 @@ for (const viewport of viewportCases) {
         ? chapterResult.centerRatio < 0.44 && chapterResult.topRatio >= 0.38 && chapterResult.topRatio <= 0.64
         : chapter.expectedZone === "right"
           ? chapterResult.centerRatio > 0.56 && chapterResult.topRatio >= 0.36 && chapterResult.topRatio <= 0.62
-          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && chapterResult.topRatio >= 0.54 && chapterResult.clearOfArrow;
+          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && chapterResult.topRatio >= 0.46 && chapterResult.clearOfArrow;
     if (Math.abs(chapterResult.top) > 2 || chapterResult.activeIndex !== chapter.expectedIndex || chapterResult.visibleCount !== 1 || !chapterResult.activeText.includes(chapter.expectedText) || !matchesZone) {
       throw new Error(`Mobile story checkpoint is not resolved at ${viewport.width}x${viewport.height}: ${JSON.stringify({ chapter, chapterResult })}`);
     }

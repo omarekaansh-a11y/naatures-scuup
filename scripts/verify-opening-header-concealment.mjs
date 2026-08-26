@@ -24,15 +24,15 @@ await page.evaluate(() => {
 });
 await page.waitForTimeout(5_600);
 await page.evaluate(() => {
-  const followOnHero = document.querySelector(".hero--after-story");
-  if (!(followOnHero instanceof HTMLElement)) throw new Error("Follow-on hero is missing.");
-  const top = followOnHero.getBoundingClientRect().top + window.scrollY;
+  const postSequenceRibbon = document.querySelector(".craving-ribbon");
+  if (!(postSequenceRibbon instanceof HTMLElement)) throw new Error("Post-sequence craving ribbon is missing.");
+  const top = postSequenceRibbon.getBoundingClientRect().top + window.scrollY;
   window.scrollTo(0, top + window.innerHeight * 0.2);
 });
 console.log(`Header transition probe: ${JSON.stringify(await page.evaluate(() => {
-  const followOnHero = document.querySelector(".hero--after-story");
+  const postSequenceRibbon = document.querySelector(".craving-ribbon");
   const header = document.querySelector(".site-header");
-  return { scrollY: window.scrollY, followOnHeroTop: followOnHero instanceof HTMLElement ? followOnHero.getBoundingClientRect().top : null, headerClass: header?.className, headerOpacity: header instanceof HTMLElement ? getComputedStyle(header).opacity : null };
+  return { scrollY: window.scrollY, postSequenceRibbonTop: postSequenceRibbon instanceof HTMLElement ? postSequenceRibbon.getBoundingClientRect().top : null, headerClass: header?.className, headerOpacity: header instanceof HTMLElement ? getComputedStyle(header).opacity : null };
 }))}`);
 await page.waitForFunction(() => {
   const header = document.querySelector(".site-header");

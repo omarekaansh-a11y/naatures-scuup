@@ -1117,3 +1117,14 @@
 - [x] Position story beat 2 in the left stem-safe zone and beat 3 in the right stem-safe zone.
 - [x] Place the final story beat near the base while avoiding the scroll arrow and mobile dock.
 - [x] Verify each position across common phone sizes and preserve desktop story placement.
+
+# Unified Base-Positioned Mobile Story
+- [x] Move every mobile story beat to the glass-base narrative zone.
+- [x] Retain distinct three-dimensional orientations while keeping all base cards clear of the scroll arrow and dock.
+- [x] Verify base placement across common phone sizes and preserve the desktop story layout.
+
+# Homepage Hero Consolidation
+- [x] Remove the redundant second homepage hero section that follows the opening ice-cream sequence.
+- [x] Move its strongest hospitality, Mall Road, and dining-context details into the “Save room for the scoop.” section.
+- [x] Preserve a clear narrative transition from the opening sequence to the enriched scoop section and onward to Drag It.
+- [x] Verify responsive homepage hierarchy, section navigation, and desktop/mobile continuity before publishing.

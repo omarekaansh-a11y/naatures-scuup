@@ -13,3 +13,5 @@ The Full Menu hero now begins directly with its vegetarian marker and headline, 
 The universal “SCROLL!” prompt has been visually verified in both hero compositions: it sits in the upper clear field above the dessert, remains distinct from the mobile story title, and stays clear of the central cup and lower arrow control.
 
 The repaired mobile opening now keeps the swipe coach within the Drag It section and presents the poster/video instead of a blank field. The enlarged mobile story title, kicker, supporting copy, and facts are visibly centered on the dessert with a restrained three-dimensional treatment.
+
+The follow-on hero has been removed. On mobile, the Save room for the scoop section now carries the preserved hospitality context in a readable sequence: vegetarian multi-cuisine, the 204-dish/17-chapter menu, Mall Road hours, an ice-cream menu route, and directions.

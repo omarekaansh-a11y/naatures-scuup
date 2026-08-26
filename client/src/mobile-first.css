@@ -1,5 +1,9 @@
 /* Mobile-first ergonomics: persistent, legible navigation and comfortable touch interactions on compact phones. */
 .mobile-skip-link { display: none; }
+.ice-cream-destination__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.ice-cream-destination__secondary-action { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; border: 0; background: transparent; color: var(--cream); font: 800 10px/1 Manrope, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+.ice-cream-destination__secondary-action:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+.ice-cream-destination__secondary-action:active { transform: scale(.97); }
 
 @media (max-width: 900px) {
   body .site-header,
@@ -45,6 +49,9 @@
   body .menu-sort { gap: 10px; }
   body .menu-dish-card footer { min-height: 44px; }
   body .site-header .site-menu-toggle { margin-left: auto; }
+  .ice-cream-destination__actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .ice-cream-destination__actions .ice-cream-destination__cta { justify-content: center; }
+  .ice-cream-destination__secondary-action { justify-content: center; width: 100%; }
 }
 
 @media (max-width: 640px) {

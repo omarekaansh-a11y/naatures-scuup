@@ -4,10 +4,13 @@ import { resolve } from "node:path";
 
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 
-describe("follow-on home hero story", () => {
-  it("continues the opening ice-cream story rather than restarting the page narrative", () => {
-    expect(home).toContain("The story continues at the table");
-    expect(home).toContain("THE SCOOP IS JUST");
-    expect(home).toContain("the beginning.");
+describe("consolidated home story", () => {
+  it("removes the redundant follow-on hero and carries its hospitality details into the scoop destination", () => {
+    expect(home).not.toContain('className="hero hero--frontispiece hero--after-story"');
+    expect(home).toContain("Save room.");
+    expect(home).toContain("From South Indian favourites and shareable pizza");
+    expect(home).toContain("100%");
+    expect(home).toContain("204 DISHES");
+    expect(home).toContain("Directions to Mall Road");
   });
 });
