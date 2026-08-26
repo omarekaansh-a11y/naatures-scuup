@@ -76,6 +76,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("@media(min-width:768px){.ice-orbit__stage{perspective:1150px!important");
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover!important;object-position:center!important;transform:none!important}");
     expect(orbit).toContain(".ice-orbit__story-card--origin{top:18%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--left{top:25%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--left .ice-orbit__story-title--label{padding:.42rem .54rem .48rem!important;font-size:clamp(1.9rem,3.55vw,3.8rem)!important");
     expect(orbit).toContain(".ice-orbit__story-card--end{top:auto!important");
     expect(orbit).toContain("ice-orbit__scroll-button");
     expect(orbit).toContain("4.35rem");

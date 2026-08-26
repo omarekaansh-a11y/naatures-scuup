@@ -1288,3 +1288,9 @@
 - [x] Replace the current sparse halftone fragments with abundant, flowing wave-pattern halftone fields across key printed surfaces.
 - [x] Preserve readable copy, usable controls, and clean cinematic-sequence framing while scaling the halftone presence.
 - [x] Validate the expanded wave texture at desktop and mobile widths, update regression coverage, and publish the revision.
+
+# Continuous Print Waves and Cinematic Clearance
+- [x] Refine the Drag It ring-and-line geometry so it reads more deliberately inside the rectangular section.
+- [x] Continue halftone-wave fields into the adjacent upper and lower bands so cropped arcs do not leave visually empty seams.
+- [x] Reduce and reposition the second cinematic story label so it remains safely clear of the central ice-cream cup.
+- [x] Validate responsive composition, cinematic safeguards, and production behavior before publishing.
