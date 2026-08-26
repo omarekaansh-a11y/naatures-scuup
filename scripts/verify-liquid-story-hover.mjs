@@ -25,11 +25,13 @@ const after = await card.evaluate((element) => {
     clipPath: plane.clipPath,
     glowOpacity: Number.parseFloat(glow.opacity),
     interacting: element.dataset.interacting,
-    ripples: element.querySelectorAll(".ice-orbit__text-ripple").length,
+    wakeX: element.style.getPropertyValue("--wake-x"),
+    wakeY: element.style.getPropertyValue("--wake-y"),
+    wakes: [...element.querySelectorAll(".ice-orbit__liquid-wake")].map((wake) => Number.parseFloat(getComputedStyle(wake).opacity)),
   };
 });
 
-if (before.opacity > 0.05 || after.opacity < 0.95 || after.clipPath === before.clipPath || after.glowOpacity < 0.95 || after.interacting !== "true" || after.ripples < 2) {
+if (before.opacity > 0.05 || after.opacity < 0.95 || after.clipPath === before.clipPath || after.glowOpacity < 0.95 || after.interacting !== "true" || after.wakeX === "" || after.wakeY === "" || after.wakes.length !== 2 || after.wakes[0] < 0.7 || after.wakes[1] < 0.4) {
   throw new Error(`Liquid hover plane did not uncover correctly: ${JSON.stringify({ before, after })}`);
 }
 

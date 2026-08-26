@@ -91,8 +91,9 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain('data-active={activeCheckpoint === 0}');
     expect(orbit).toContain('.ice-orbit__story-card[data-active="true"]:hover::before');
     expect(orbit).toContain("handleStoryPointerMove");
-    expect(orbit).toContain("ice-orbit__text-ripple");
-    expect(orbit).toContain("ice-orbit-text-ripple");
+    expect(orbit).toContain("ice-orbit__liquid-wake");
+    expect(orbit).toContain("ice-orbit__liquid-wake--tail");
+    expect(orbit).not.toContain("ice-orbit__text-ripple");
     expect(orbit).toContain("clip-path 480ms");
     expect(orbit).toContain("clip-path:ellipse(140% 130% at var(--pointer-x) var(--pointer-y))");
     expect(orbit).toContain("[40, 76, 104, 14]");

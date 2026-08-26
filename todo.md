@@ -1033,3 +1033,8 @@
 - [x] Create true mouse-trail ripples that travel across active story text without affecting checkpoint behavior.
 - [x] Make the liquid-uncover response faster and more vibrant while retaining the uncluttered central cup composition.
 - [x] Verify desktop interactions, mobile fallback, and sequence performance before publishing.
+
+# Continuous Liquid-Wake Story Text
+- [x] Replace discrete cursor ripple rings with one continuous wake that follows the pointer across active text.
+- [x] Preserve the pointer-following glow and faster liquid-uncover treatment without adding interaction to mobile touch devices.
+- [x] Verify wake continuity, checkpoint behavior, mobile fallback, and sequence performance before publishing.
