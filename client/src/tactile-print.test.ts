@@ -44,6 +44,8 @@ describe("tactile print visual system", () => {
     expect(printStyles).toContain("mask-repeat:no-repeat");
     expect(printStyles).toContain("every ornament resolves inside the panel");
     expect(printStyles).toContain(".drag-it-section.maximalist-drag .drag-it-layout:before,.drag-it-section.maximalist-drag .drag-it-layout:after{inset:8% 4%}");
+    expect(printStyles).toContain("Hierarchy reset: the dog, editorial copy, and real food stack lead");
+    expect(printStyles).toContain(".drag-it-section.maximalist-drag:before{display:none}");
     expect(printStyles).not.toContain(".drag-it-section.maximalist-drag .drag-it-layout:before{position:absolute;z-index:-1;inset:7% 0 4%");
   });
 });
