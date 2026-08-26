@@ -56,6 +56,7 @@ button:not(:disabled), a[href] { cursor: pointer; }
 }
 :root[data-ice-hero-active="true"] .site-header { opacity: 0; pointer-events: none; transform: translateY(-18px); }
 .site-header { opacity: 1; transform: translateY(0); }
+@media (max-width: 900px) { :root[data-ice-hero-active="true"] .site-header { opacity: 1; pointer-events: auto; transform: translateY(0); color: var(--maroon-deep); } }
 .site-header--scrolled { background: rgb(244 240 232 / 93%); color: var(--maroon-deep); backdrop-filter: blur(15px); box-shadow: 0 1px 0 rgb(53 16 26 / 11%); }
 .brand-text { display: grid; grid-template-columns: auto auto; grid-template-rows: 22px 10px; align-items: end; column-gap: 5px; min-width: 130px; line-height: .75; }
 .brand-text span, .brand-text strong { font-family: "Cormorant Garamond", Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -.065em; }

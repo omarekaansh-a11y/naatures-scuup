@@ -31,11 +31,11 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain('pin: ".ice-orbit__stage"');
   });
 
-  it("adds a clean video-integrated four-part story system while retaining dedicated portrait playback and safe loading behavior", () => {
+  it("adds a clean desktop narrative while creating a distraction-free, tightly focused mobile hero", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
     expect(orbit).toContain("prefers-reduced-motion");
-    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__stage{perspective:850px}");
-    expect(orbit).toContain(".ice-orbit__video{object-fit:cover}");
+    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__stage{perspective:none}");
+    expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%");
     expect(orbit).toContain('from "framer-motion"');
     expect(orbit).toContain("const storyProgress = useMotionValue(0)");
     expect(orbit).toContain("The Mall · Kanpur");
@@ -59,14 +59,13 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).not.toContain("text-shadow:");
     expect(orbit).toContain('font-family:"Playfair Display",Georgia,serif');
     expect(orbit).toContain("font-family:Montserrat,ui-sans-serif,system-ui,sans-serif");
-    expect(orbit).toContain("--portrait-content-top:35svh");
-    expect(orbit).toContain("width:clamp(6.25rem,31vw,9.5rem)");
-    expect(orbit).toContain("max-width:calc(38vw - 1rem)");
-    expect(orbit).toContain("env(safe-area-inset-left)");
-    expect(orbit).toContain("env(safe-area-inset-right)");
-    expect(orbit).toContain("top:clamp(8.5rem,var(--portrait-content-top),17.5rem)");
-    expect(orbit).toContain("top:clamp(11rem,42svh,20.5rem)");
-    expect(orbit).toContain("text-wrap:pretty");
+    expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;transform:scale(3.1)");
+    expect(orbit).toContain(".ice-orbit__story,.ice-orbit__checkpoint-rail{display:none}");
+    expect(orbit).toContain("ice-orbit__scroll-button");
+    expect(orbit).toContain("4.35rem");
+    expect(orbit).toContain('aria-label="Scroll down to continue"');
+    expect(orbit).toContain("const handleScrollAdvance");
+    expect(orbit).toContain("window.scrollBy");
   });
 
   it("keeps the sequence before Drag It on Home", () => {

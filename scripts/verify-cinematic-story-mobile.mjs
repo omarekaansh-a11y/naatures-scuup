@@ -16,39 +16,48 @@ for (const viewport of viewportCases) {
     const video = document.querySelector(".ice-orbit__video");
     return video instanceof HTMLVideoElement && video.readyState >= 2;
   });
-  await page.waitForTimeout(600);
+  await page.waitForFunction(() => {
+    const button = document.querySelector(".ice-orbit__scroll-button");
+    return button instanceof HTMLButtonElement && !button.disabled;
+  });
 
-  async function inspect(label, progress, cardIndex, side) {
-    await page.evaluate((storyProgress) => {
-      const section = document.querySelector(".ice-orbit");
-      if (!(section instanceof HTMLElement)) throw new Error("Sequence section is missing.");
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-      window.scrollTo(0, sectionTop + travel * storyProgress);
-    }, progress);
-    await page.waitForTimeout(700);
-    const metrics = await page.evaluate((index) => {
-      const section = document.querySelector(".ice-orbit");
-      const stage = document.querySelector(".ice-orbit__stage");
-      const card = document.querySelectorAll(".ice-orbit__story-card")[index];
-      if (!(section instanceof HTMLElement) || !(stage instanceof HTMLElement) || !(card instanceof HTMLElement)) throw new Error("Story card is missing.");
-      const rect = card.getBoundingClientRect();
-      const cards = [...document.querySelectorAll(".ice-orbit__story-card")];
-      return { top: Math.round(stage.getBoundingClientRect().top), opacity: Number.parseFloat(getComputedStyle(card).opacity), activeCards: cards.filter((storyCard) => Number.parseFloat(getComputedStyle(storyCard).opacity) > 0.15).length, left: rect.left, right: rect.right, cardTop: rect.top, cardBottom: rect.bottom, viewportWidth: window.innerWidth, viewportHeight: window.innerHeight, scrollY: window.scrollY, sectionTop: section.getBoundingClientRect().top + window.scrollY, sectionHeight: section.offsetHeight };
-    }, cardIndex);
-    const fitsViewport = metrics.left >= -1 && metrics.right <= metrics.viewportWidth + 1 && metrics.cardTop >= -1 && metrics.cardBottom <= metrics.viewportHeight + 1;
-    const staysInSideZone = side === "left" ? metrics.right <= metrics.viewportWidth * 0.54 : metrics.left >= metrics.viewportWidth * 0.46;
-    if (Math.abs(metrics.top) > 2 || metrics.opacity < 0.45 || metrics.activeCards !== 1 || !fitsViewport || !staysInSideZone) {
-      throw new Error(`${label} ${viewport.width}x${viewport.height} mobile story chapter does not fit: ${JSON.stringify(metrics)}`);
-    }
-    await page.screenshot({ path: `/home/ubuntu/cinematic-story-mobile-${label}-${viewport.width}x${viewport.height}.png` });
-    return { label, viewport, ...metrics };
+  const before = await page.evaluate(() => {
+    const stage = document.querySelector(".ice-orbit__stage");
+    const video = document.querySelector(".ice-orbit__video");
+    const story = document.querySelector(".ice-orbit__story");
+    const rail = document.querySelector(".ice-orbit__checkpoint-rail");
+    const button = document.querySelector(".ice-orbit__scroll-button");
+    const dock = document.querySelector(".mobile-dock");
+    if (!(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || !(story instanceof HTMLElement) || !(rail instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) throw new Error("Mobile hero controls are missing.");
+    const stageRect = stage.getBoundingClientRect();
+    const buttonRect = button.getBoundingClientRect();
+    const dockRect = dock instanceof HTMLElement ? dock.getBoundingClientRect() : null;
+    return {
+      storyDisplay: getComputedStyle(story).display,
+      railDisplay: getComputedStyle(rail).display,
+      videoTransform: getComputedStyle(video).transform,
+      buttonLabel: button.getAttribute("aria-label"),
+      buttonVisible: buttonRect.width > 0 && buttonRect.height > 0 && buttonRect.bottom <= stageRect.bottom + 1,
+      buttonAboveDock: !dockRect || buttonRect.bottom <= dockRect.top + 1,
+      scrollY: window.scrollY,
+    };
+  });
+
+  if (before.storyDisplay !== "none" || before.railDisplay !== "none" || !before.videoTransform.includes("3.1") || before.buttonLabel !== "Scroll down to continue" || !before.buttonVisible || !before.buttonAboveDock) {
+    throw new Error(`Focused mobile opening state failed at ${viewport.width}x${viewport.height}: ${JSON.stringify(before)}`);
   }
 
-  allResults.push(await inspect("parlour", 0.32, 1, "left"));
-  allResults.push(await inspect("happiness", 0.92, 3, "right"));
+  await page.locator(".ice-orbit__scroll-button").click();
+  await page.waitForTimeout(700);
+  const afterScrollY = await page.evaluate(() => window.scrollY);
+  if (afterScrollY <= before.scrollY + viewport.height * 0.25) {
+    throw new Error(`Mobile scroll arrow did not advance the opening sequence at ${viewport.width}x${viewport.height}: ${JSON.stringify({ beforeScrollY: before.scrollY, afterScrollY })}`);
+  }
+
+  await page.screenshot({ path: `/home/ubuntu/focused-ice-cream-mobile-${viewport.width}x${viewport.height}.png` });
+  allResults.push({ viewport, ...before, afterScrollY });
   await page.close();
 }
 
-console.log(`Mobile cinematic story verified across devices: ${JSON.stringify(allResults)}`);
+console.log(`Focused mobile ice-cream hero verified across devices: ${JSON.stringify(allResults)}`);
 await browser.close();

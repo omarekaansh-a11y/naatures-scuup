@@ -1048,3 +1048,10 @@
 - [x] Reduce per-letter displacement, scaling, depth, and skew to remove the glitch-like effect.
 - [x] Tune the motion response and settling timing into a gentle gravitation toward the desktop cursor.
 - [x] Verify text integrity, mobile fallback, and sequence performance before publishing.
+
+# Mobile-First Opening Hero Focus
+- [x] Remove opening-story copy and checkpoint UI from mobile while retaining the desktop narrative.
+- [x] Crop the mobile video composition tightly around the mango ice cream without introducing visual artifacts.
+- [x] Add an accessible universal scroll-arrow control that advances the page from the opening hero.
+- [x] Keep the global header available on mobile throughout the opening sequence while retaining the desktop concealment behavior.
+- [x] Verify mobile interaction, desktop preservation, and production readiness before publishing.

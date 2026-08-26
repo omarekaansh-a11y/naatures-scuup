@@ -44,5 +44,18 @@ if (afterSequence.opacity < 0.95 || afterSequence.pointerEvents === "none" || af
   throw new Error(`Header should return after the opening sequence: ${JSON.stringify(afterSequence)}`);
 }
 
-console.log(`Opening header concealment verified: ${JSON.stringify({ duringSequence, afterSequence })}`);
+const mobilePage = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+await mobilePage.goto("http://localhost:3000/", { waitUntil: "domcontentloaded" });
+await mobilePage.waitForFunction(() => document.querySelector(".ice-orbit__video") instanceof HTMLVideoElement);
+const mobileDuringSequence = await mobilePage.evaluate(() => {
+  const header = document.querySelector(".site-header");
+  if (!(header instanceof HTMLElement)) throw new Error("Mobile site header is missing.");
+  return { opacity: Number.parseFloat(getComputedStyle(header).opacity), pointerEvents: getComputedStyle(header).pointerEvents, heroActive: document.documentElement.dataset.iceHeroActive ?? "" };
+});
+if (mobileDuringSequence.opacity < 0.95 || mobileDuringSequence.pointerEvents === "none" || mobileDuringSequence.heroActive !== "true") {
+  throw new Error(`Header should remain accessible during the mobile opening sequence: ${JSON.stringify(mobileDuringSequence)}`);
+}
+await mobilePage.close();
+
+console.log(`Opening header behavior verified: ${JSON.stringify({ duringSequence, afterSequence, mobileDuringSequence })}`);
 await browser.close();

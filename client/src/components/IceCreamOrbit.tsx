@@ -51,8 +51,9 @@ const sequenceStyles = `
   .ice-orbit__story-card--right .ice-orbit__story-copy{margin-left:auto}
   .ice-orbit__story-facts{display:flex;gap:.65rem;flex-wrap:wrap;margin:1.25rem 0 0;padding-top:.75rem;border-top:1px solid rgb(74 63 57 / 26%);color:rgb(74 63 57 / 76%);font:400 .54rem/1.3 Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase}.ice-orbit__story-facts span+span::before{content:"/";margin-right:.65rem;color:rgb(74 63 57 / 44%)}
   .ice-orbit__checkpoint-rail{position:absolute;z-index:4;left:clamp(1.25rem,5vw,5.25rem);bottom:clamp(1.5rem,4vw,3rem);display:flex;align-items:center;gap:.55rem;color:rgb(58 49 44 / 56%);font:400 .55rem/1 Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:.12em}.ice-orbit__checkpoint{display:block;width:.46rem;height:.46rem;border:1px solid currentColor;border-radius:999px;transition:background 180ms var(--ease-out),transform 180ms var(--ease-out)}.ice-orbit__checkpoint[data-active="true"]{background:currentColor;transform:scale(1.25)}.ice-orbit__checkpoint-label{margin-left:.25rem;text-transform:uppercase}.ice-orbit__checkpoint-prompt{margin-right:.3rem;font-size:.5rem;letter-spacing:.17em;text-transform:uppercase}
+  .ice-orbit__scroll-button{position:absolute;z-index:5;left:50%;bottom:clamp(1.15rem,3vw,2.25rem);display:grid;width:3rem;height:3rem;place-items:center;padding:0;border:1px solid rgb(58 49 44 / 52%);border-radius:999px;background:rgb(214 212 208 / 80%);color:rgb(47 38 34);font:400 1.45rem/1 Montserrat,ui-sans-serif,system-ui,sans-serif;transform:translateX(-50%);transition:transform 180ms var(--ease-out),background 180ms var(--ease-out),border-color 180ms var(--ease-out);cursor:pointer}.ice-orbit__scroll-button:hover{background:rgb(214 212 208);border-color:rgb(58 49 44 / 78%)}.ice-orbit__scroll-button:focus-visible{outline:2px solid rgb(47 38 34);outline-offset:4px}.ice-orbit__scroll-button:active{transform:translateX(-50%) scale(.94)}.ice-orbit__scroll-button:disabled{opacity:0;pointer-events:none}
   @media(hover:hover) and (pointer:fine){.ice-orbit__story-card[data-active="true"]{pointer-events:auto}.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__story-glyph{transition-duration:150ms}}
-  @media(max-width:767px){.ice-orbit__stage{perspective:850px}.ice-orbit__video{object-fit:cover}.ice-orbit__story{--portrait-content-top:35svh;--portrait-content-bottom:66svh;padding-inline:max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-right))}.ice-orbit__story-card{box-sizing:border-box;width:clamp(6.25rem,31vw,9.5rem);max-width:calc(38vw - 1rem);text-wrap:pretty}.ice-orbit__story-card--origin{top:clamp(8.5rem,var(--portrait-content-top),17.5rem);left:max(1rem,env(safe-area-inset-left));text-align:left}.ice-orbit__story-card--left{top:clamp(10rem,38svh,19rem);left:max(1rem,env(safe-area-inset-left));text-align:left}.ice-orbit__story-card--right{top:clamp(9.5rem,37svh,18.5rem);right:max(1rem,env(safe-area-inset-right));text-align:right}.ice-orbit__story-card--end{top:clamp(11rem,42svh,20.5rem);right:max(1rem,env(safe-area-inset-right));bottom:auto;left:auto;text-align:right}.ice-orbit__story-title{font-size:clamp(1rem,5.4vw,1.55rem);line-height:.9;letter-spacing:-.06em}.ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(1.15rem,6vw,1.7rem)}.ice-orbit__story-card--end .ice-orbit__story-title{font-size:clamp(1.05rem,5.6vw,1.6rem)}.ice-orbit__story-kicker{gap:.38rem;margin-bottom:.5rem;font-size:clamp(.38rem,1.55vw,.48rem);letter-spacing:.13em}.ice-orbit__story-kicker::before{width:.9rem}.ice-orbit__story-copy{max-width:100%;margin-top:.6rem;font-size:clamp(.54rem,1.9vw,.62rem);line-height:1.4;letter-spacing:.02em}.ice-orbit__story-facts{display:none}.ice-orbit__checkpoint-rail{left:max(1rem,env(safe-area-inset-left));bottom:max(1rem,env(safe-area-inset-bottom));gap:.4rem;font-size:.42rem}.ice-orbit__checkpoint{width:.36rem;height:.36rem}.ice-orbit__checkpoint-prompt{display:none}}
+  @media(max-width:767px){.ice-orbit__stage{perspective:none}.ice-orbit__video{object-fit:cover;object-position:50% 50%;transform:scale(3.1);transform-origin:50% 50%}.ice-orbit__story,.ice-orbit__checkpoint-rail{display:none}.ice-orbit__scroll-button{bottom:calc(max(1.2rem,env(safe-area-inset-bottom)) + 4.35rem);width:3.25rem;height:3.25rem;background:rgb(214 212 208 / 88%)}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
 
@@ -114,6 +115,10 @@ export function IceCreamOrbit() {
     event.currentTarget.querySelectorAll<HTMLElement>("[data-story-glyph]").forEach((glyph) => {
       ["--glyph-x", "--glyph-y", "--glyph-z", "--glyph-scale-x", "--glyph-scale-y", "--glyph-skew"].forEach((property) => glyph.style.removeProperty(property));
     });
+  };
+
+  const handleScrollAdvance = () => {
+    window.scrollBy({ top: Math.round(window.innerHeight * 0.82), behavior: reduceMotion ? "auto" : "smooth" });
   };
 
   const advanceToTarget = () => {
@@ -278,6 +283,7 @@ export function IceCreamOrbit() {
           </motion.div>
         </div>
         <div className="ice-orbit__checkpoint-rail" aria-hidden="true"><span className="ice-orbit__checkpoint-prompt">Scroll to unfreeze</span>{["01", "02", "03", "04"].map((label, index) => <span key={label} className="ice-orbit__checkpoint" data-active={index === activeCheckpoint} />)}<span className="ice-orbit__checkpoint-label">{String(activeCheckpoint + 1).padStart(2, "0")} / 04</span></div>
+        <button type="button" className="ice-orbit__scroll-button" onClick={handleScrollAdvance} disabled={!isReady} aria-label="Scroll down to continue"><span aria-hidden="true">↓</span></button>
         {!isReady && <div className="ice-orbit__loading" role="status" aria-label="Preparing the image sequence" />}
       </div>
     </section>
