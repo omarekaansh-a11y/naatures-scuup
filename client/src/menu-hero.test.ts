@@ -9,18 +9,18 @@ const heroStyles = readFileSync(
 const menuPage = readFileSync(resolve(process.cwd(), "client/src/pages/MenuPage.tsx"), "utf8");
 
 describe("Full Menu hero background", () => {
-  it("uses the generated background with a desktop text-safe overlay", () => {
+  it("uses the generated background without a gradient and keeps the heading in a high-contrast green label", () => {
     expect(heroStyles).toContain(
       "/manus-storage/naatures-scuup-menu-hero-elevated_ccd4e633.png",
     );
     expect(heroStyles).toContain(
-      ".menu-page .menu-page-hero{background:linear-gradient(90deg",
+      ".menu-page .menu-page-hero{background:url('/manus-storage/naatures-scuup-menu-hero-elevated_ccd4e633.png')",
     );
   });
 
-  it("retains a dedicated mobile treatment for readable hero copy", () => {
+  it("retains an unfiltered dedicated mobile image treatment for readable hero labels", () => {
     expect(heroStyles).toContain(
-      "@media(max-width:640px){.menu-page .menu-page-hero{background:linear-gradient(180deg",
+      "@media(max-width:640px){.menu-page .menu-page-hero{background:url('/manus-storage/naatures-scuup-menu-hero-elevated_ccd4e633.png')",
     );
   });
 

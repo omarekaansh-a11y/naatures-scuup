@@ -24,15 +24,15 @@ await page.evaluate(() => {
 });
 await page.waitForTimeout(5_600);
 await page.evaluate(() => {
-  const postSequenceRibbon = document.querySelector(".craving-ribbon");
-  if (!(postSequenceRibbon instanceof HTMLElement)) throw new Error("Post-sequence craving ribbon is missing.");
-  const top = postSequenceRibbon.getBoundingClientRect().top + window.scrollY;
+  const postSequenceBorder = document.querySelector(".flowing-sentence-divider");
+  if (!(postSequenceBorder instanceof HTMLElement)) throw new Error("Post-sequence live-text border is missing.");
+  const top = postSequenceBorder.getBoundingClientRect().top + window.scrollY;
   window.scrollTo(0, top + window.innerHeight * 0.2);
 });
 console.log(`Header transition probe: ${JSON.stringify(await page.evaluate(() => {
-  const postSequenceRibbon = document.querySelector(".craving-ribbon");
+  const postSequenceBorder = document.querySelector(".flowing-sentence-divider");
   const header = document.querySelector(".site-header");
-  return { scrollY: window.scrollY, postSequenceRibbonTop: postSequenceRibbon instanceof HTMLElement ? postSequenceRibbon.getBoundingClientRect().top : null, headerClass: header?.className, headerOpacity: header instanceof HTMLElement ? getComputedStyle(header).opacity : null };
+  return { scrollY: window.scrollY, postSequenceBorderTop: postSequenceBorder instanceof HTMLElement ? postSequenceBorder.getBoundingClientRect().top : null, headerClass: header?.className, headerOpacity: header instanceof HTMLElement ? getComputedStyle(header).opacity : null };
 }))}`);
 await page.waitForFunction(() => {
   const header = document.querySelector(".site-header");

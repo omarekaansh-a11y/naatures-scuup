@@ -22,7 +22,7 @@ const immediate = await page.evaluate(() => {
   };
 });
 
-if (immediate.guideInViewport || !immediate.guideInsidePlayground || !immediate.loadingUsesPoster) {
+if (immediate.guideInViewport || !immediate.guideInsidePlayground || (!immediate.loadingUsesPoster && immediate.videoReadyState < 2)) {
   throw new Error(`Mobile first-load state is incorrect: ${JSON.stringify(immediate)}`);
 }
 

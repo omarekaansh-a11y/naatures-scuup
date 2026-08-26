@@ -70,7 +70,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("transform:translate3d(-50%,0,44px) rotateX(5deg) rotateY(-4deg)!important");
     expect(orbit).toContain("perspective:980px!important");
     expect(orbit).toContain("The Naatures Scuup way.");
-    expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right,.ice-orbit__story-card--end{top:54%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:60%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--end{top:56%!important");
     expect(orbit).toContain(".ice-orbit__story-copy{font-size:.68rem!important");
     expect(orbit).toContain("@media(min-width:768px){.ice-orbit__stage{perspective:1150px!important");
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover!important;object-position:center!important;transform:none!important}");
@@ -88,7 +89,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
 
   it("keeps the sequence before Drag It on Home", () => {
     expect(home).toContain("<IceCreamOrbit />");
-    expect(home.indexOf("<IceCreamOrbit />")).toBeLessThan(home.indexOf('className="craving-ribbon"'));
+    expect(home.indexOf("<IceCreamOrbit />")).toBeLessThan(home.indexOf("<FlowingSentenceDivider />"));
+    expect(home.indexOf("<FlowingSentenceDivider />")).toBeLessThan(home.indexOf("<DragFoodCanvas"));
     expect(home).toContain('scrollToId("#location")');
     expect(home).not.toContain('className="story-section section-pad"');
   });
@@ -101,20 +103,27 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("perspective:1150px");
     expect(orbit).toContain("transform-style:preserve-3d");
     expect(orbit).toContain("const openingRotateY");
+    expect(orbit).toContain("const openingRotateZ");
     expect(orbit).toContain("const parlourRotateY");
+    expect(orbit).toContain("const parlourRotateZ");
     expect(orbit).toContain("const cravingRotateY");
+    expect(orbit).toContain("const cravingRotateZ");
     expect(orbit).toContain("const endRotateY");
+    expect(orbit).toContain("const endRotateZ");
     expect(orbit).toContain("@media(hover:hover) and (pointer:fine)");
     expect(orbit).toContain('data-active={activeCheckpoint === 0}');
     expect(orbit).toContain('.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__story-glyph');
     expect(orbit).toContain("handleStoryPointerMove");
     expect(orbit).toContain("MagneticTitle");
+    expect(orbit).toContain("ice-orbit__story-title--label");
+    expect(orbit).toContain("ice-orbit__story-copy--label");
+    expect(orbit).toContain("Keep the happiness cold");
     expect(orbit).toContain("data-story-glyph");
     expect(orbit).toContain("--glyph-x");
     expect(orbit).not.toContain("ice-orbit__liquid-wake");
-    expect(orbit).toContain("transform 440ms");
-    expect(orbit).toContain("distance / 210");
-    expect(orbit).toContain("influence * 3.2");
+    expect(orbit).toContain("transform 560ms");
+    expect(orbit).toContain("distance / 260");
+    expect(orbit).toContain("influence * 1.05");
     expect(orbit).toContain("[40, 76, 104, 14]");
     expect(orbit).toContain("[20, 82, 118, 10]");
     expect(orbit).toContain("0.19, 0.22");

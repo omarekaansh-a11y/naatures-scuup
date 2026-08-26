@@ -1171,3 +1171,93 @@
 - [x] Remove all gradient overlays from menu chapter food images and preserve the underlying photography without CSS image filters.
 - [x] Rebuild chapter text as high-contrast, printed label blocks that remain legible over photography without blending into the image.
 - [x] Verify desktop/mobile chapter composition, image integrity, search/filter behavior, and production build.
+
+# Film-Print Motion & Layered Image Depth
+- [x] Audit selected titles and content surfaces for subtle gate weave, film flicker, and expanded edge-boil without visual overload.
+- [x] Create reusable low-amplitude motion primitives with reduced-motion and constrained-network safeguards.
+- [x] Add low-opacity real food and venue image layers beneath chosen existing sections to create thematic physical depth.
+- [x] Apply motion and layered imagery without modifying the approved ice-cream sequence, obscuring text, or blocking interactions.
+- [x] Verify desktop/mobile contrast, motion subtlety, existing animation behavior, and production performance.
+
+# FAQ & Footer Maximalist Extension
+- [x] Apply controlled halftone, print-material, and low-opacity thematic image layers to the FAQ and footer surfaces.
+- [x] Preserve high-contrast, easily scannable FAQ questions and accessible footer contact, social, and directions links.
+- [x] Verify FAQ/footer mobile spacing, reduced-motion and constrained-network fallbacks, and production quality.
+
+# Menu Name Stamps & Header Accent
+- [x] Apply compact lime maximalist label treatment to every displayed dish name without reducing readable title hierarchy.
+- [x] Increase card and label internal spacing so dish text, notes, prices, and edge treatments never touch borders.
+- [x] Add a restrained printed/maximalist accent to the persistent header while preserving logo clarity and touch-friendly navigation.
+- [x] Verify dish-name labels, menu controls, header behavior, and phone-sized layouts before publishing.
+
+# Map Depth & Stronger Stitched Waves
+- [x] Extend controlled halftone, print materials, and thematic depth into the interactive map without blocking map gestures or directions access.
+- [x] Strengthen section transitions into two or three broad, visibly expressive stitched wave arcs while preserving smooth continuity.
+- [x] Verify map gestures, directions link, divider geometry, mobile spacing, and motion/performance safeguards before publishing.
+
+# Home Numbering, Map Simplification & Footer Elevation
+- [x] Correct Home section numbering into one consistent chronological sequence.
+- [x] Replace the header’s prior printed accent with one or two restrained green ring marks.
+- [x] Move the real-image depth out of Drag It and enlarge its placement beneath the interactive map only.
+- [x] Remove duplicated address, hours, phone, and social detail boxes from the map section while retaining the interactive map and directions action.
+- [x] Elevate the footer’s existing address, hours, phone, social, and directions information into a prominent structured contact block without deleting content.
+- [x] Verify desktop/mobile hierarchy, map gestures, footer links, and production behavior.
+
+# Image-Led Menu Frontispiece
+- [x] Remove the menu frontispiece gradient treatment while preserving the real menu image at full fidelity.
+- [x] Rebuild the menu heading, eyebrow, and supporting copy as high-contrast green printed labels with restrained maximalist marks.
+- [x] Verify desktop/mobile menu-frontispiece readability, image integrity, and navigation behavior.
+
+# Pasta Image Deduplication
+- [x] Remove the pasta image card from Drag It so it does not overlap with another site surface.
+- [x] Use that same pasta image only as the enlarged, low-opacity material layer inside the interactive map.
+- [x] Verify the reordered Drag It loop, image uniqueness, map layer placement, and responsive behavior.
+
+# Sculptural Conveyor Replacement
+- [x] Inspect the supplied video reference and document the transferable motion, composition, and interaction principles.
+- [x] Replace the rectangular conveyor between Drag It and the cinematic sequence with an original Naatures Scuup sculptural motion composition.
+- [x] Preserve mobile touch behavior, reduced-motion safeguards, and the surrounding Drag It and cinematic-sequence spacing.
+- [x] Verify desktop/mobile visual continuity, animation performance, and keyboard/touch access.
+
+# Transition Placement Correction
+- [x] Remove the misplaced standalone “One table. Every craving.” section.
+- [x] Restrict the reference-informed circular/live-motion treatment to the separator between Drag It and the scrolling ice-cream sequence only.
+- [x] Verify that the ice-cream sequence, Drag It content, and mobile spacing remain unchanged outside the transition boundary.
+
+# Live-Text Border Correction
+- [x] Remove the circular separator entirely.
+- [x] Build a thin, reference-inspired composing-text border with sentence fragments, micro-status copy, and a subtle baseline at the sequence-to-Drag It boundary.
+- [x] Preserve reduced-motion and constrained-network behavior without adding a large standalone content block.
+
+# Reference-Faithful Live-Text Behavior
+- [x] Re-analyze the supplied reference for its exact writing, correction, status-feedback, and cursor cadence.
+- [x] Rebuild the boundary interaction around a raw line, a polished replacement line, and compact status feedback that cycle like the reference.
+- [x] Match the reference’s calm centered rhythm and restrained motion while keeping Naatures Scuup-specific text and brand treatment.
+- [x] Verify desktop/mobile fidelity, reduced-motion behavior, and transition-only placement.
+
+# Flowing Sentence Divider Correction
+- [x] Remove the pill, waveform, and status-feedback treatment entirely.
+- [x] Recreate the background-free flowing sentence line from the reference as a narrow divider between the sequence and Drag It.
+- [x] Preserve reduced-motion and constrained-network behavior without adding any container background or voice-control metaphor.
+
+# Reference-Style Flow Geometry & Speed
+- [x] Match the supplied reference’s flowing-line geometry, spacing, and visual rhythm as closely as practical while retaining Naatures Scuup wording.
+- [x] Increase the divider’s continuous movement to the faster, purposeful cadence requested by the user.
+- [x] Verify desktop/mobile animation quality and reduced-motion/constrained-network fallbacks.
+
+# Text-As-Seam Correction
+- [x] Remove all independent top and bottom divider rules around the flowing sentence.
+- [x] Position the curved sentence path on the exact shared boundary between the scrolling sequence and Drag It so the text itself is the seam.
+- [x] Verify that the seam remains continuous and readable on desktop and mobile without adding a rectangular container.
+
+# Four-Beat Story Interaction & Cup-Safe Refinement
+- [x] Further soften desktop cursor response on scrolling-story text.
+- [x] Apply the restrained post-scroll rotational settle to all four story beats.
+- [x] Tighten story-card cup-safe zones while allowing the intended fourth-beat zoom exception only.
+- [x] Verify desktop/mobile story fit, video framing, pointer behavior, and reduced-motion fallbacks.
+
+# Maximalist Cinematic Story Labels
+- [x] Render “Kanpur’s first live ice-cream parlour” as a cup-safe lime printed label.
+- [x] Render “From the first bite to the final frozen spoonful” as a cup-safe lime printed label.
+- [x] Add a compact, complementary lime closing stamp to the fourth story beat without covering the zoomed dessert.
+- [x] Verify label contrast, desktop/mobile placement, reduced-motion behavior, and cinematic sequence integrity.

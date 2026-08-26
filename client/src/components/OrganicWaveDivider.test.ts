@@ -11,5 +11,6 @@ describe("organic section divider", () => {
     expect(divider).toContain("cream-to-maroon");
     expect(divider).toContain("maroon-to-night");
     expect(divider).toContain("night-to-cream");
+    expect(divider).toContain("organic-wave__stitch--echo");
   });
 });

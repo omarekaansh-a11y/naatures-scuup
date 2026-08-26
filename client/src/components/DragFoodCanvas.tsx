@@ -305,7 +305,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   };
 
   return (
-    <section id="food-canvas" className="drag-it-section" aria-labelledby="drag-it-title">
+    <section id="food-canvas" className="drag-it-section print-edge-boil print-edge-boil--light print-edge-boil--rough" aria-labelledby="drag-it-title">
       <div className="drag-it-layout section-pad">
         <div className="drag-it-copy">
           <div className="drag-it-mascot-wrap">
@@ -318,8 +318,8 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
               <DogMascot />
             </button>
           </div>
-          <p className="drag-it-eyebrow">04 / The food edit</p>
-          <h2 id="drag-it-title">Drag into<br /><i>the good bits.</i></h2>
+          <p className="drag-it-eyebrow">01 / The food edit</p>
+          <h2 id="drag-it-title" className="film-print-text">Drag into<br /><i>the good bits.</i></h2>
           <p className="drag-it-body">A small stack of real table moments from Naatures Scuup. Pull a card aside to find the next craving.</p>
           <p className="drag-it-signature">#FREEZETHEHAPPINESS</p>
         </div>

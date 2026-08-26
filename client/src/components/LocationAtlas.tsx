@@ -1,4 +1,4 @@
-import { ArrowUpRight, Facebook, Instagram, Phone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useCallback, useState } from "react";
 import { MapView } from "@/components/Map";
 
@@ -38,41 +38,17 @@ export function LocationAtlas() {
   }, []);
 
   return (
-    <><style>{gestureMapStyles}</style><section id="location" className="location-atlas" aria-labelledby="location-title">
+    <><style>{gestureMapStyles}</style><section id="location" className="location-atlas maximalist-map print-surface print-surface--dark" aria-labelledby="location-title">
       <div className="location-atlas__inner section-pad">
-        <header className="location-atlas__head">
-          <p className="eyebrow eyebrow--mango">03 / Come on over</p>
-          <h2 id="location-title" className="editorial-title editorial-title--light">
-            <span className="title-outline">Find us on</span><br /><i>Mall Road.</i>
-          </h2>
-        </header>
-
-        <div className="visit-map" aria-label="Interactive map centered on Naatures Scuup">
+        <div className="visit-map print-edge-boil print-edge-boil--light print-edge-boil--rough layered-image-depth layered-image-depth--map" aria-label="Interactive map centered on Naatures Scuup">
           <MapView className="visit-map__canvas" initialCenter={naaturesScuup} initialZoom={17} onMapReady={onMapReady} onMapError={() => setHasMapError(true)} />
+          <span className="visit-map__material-image" aria-hidden="true" />
           <span className="visit-map__tint" aria-hidden="true" />
           <span className="visit-map__gesture-hint" aria-hidden="true" />
           {hasMapError && <span className="visit-map__status"><span><strong>Live map unavailable</strong>Open directions to view Naatures Scuup on Google Maps.</span></span>}
           <a className="visit-map__directions" href={mapsUrl} target="_blank" rel="noreferrer">Directions <ArrowUpRight size={14} /></a>
         </div>
 
-        <div className="visit-card">
-          <div className="visit-card__column">
-            <p>Address</p>
-            <strong>The Mall, 126, The Mall Road<br />Mirpur, Kanpur, Uttar Pradesh 208004</strong>
-          </div>
-          <div className="visit-card__column">
-            <p>Hours</p>
-            <strong>Mon, Tue, Thu–Sun<br /><time dateTime="11:00">11:00 AM</time>–<time dateTime="23:00">11:00 PM</time><br /><small>Wed: <time dateTime="10:00">10:00 AM</time>–<time dateTime="23:00">11:00 PM</time></small></strong>
-          </div>
-          <div className="visit-card__column">
-            <p>Phone</p>
-            <a href="tel:+917860880088"><Phone size={14} /> +91 78608 80088</a>
-          </div>
-          <div className="visit-card__column visit-card__column--follow">
-            <p>Follow</p>
-            <span><a href="https://www.instagram.com/naatures_scuup/" target="_blank" rel="noreferrer" aria-label="Naatures Scuup on Instagram"><Instagram size={18} /></a><a href="https://www.facebook.com/naaturesscuup/" target="_blank" rel="noreferrer" aria-label="Naatures Scuup on Facebook"><Facebook size={18} /></a></span>
-          </div>
-        </div>
       </div>
     </section></>
   );

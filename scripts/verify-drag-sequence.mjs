@@ -15,16 +15,16 @@ await stack.scrollIntoViewIfNeeded();
 await page.waitForTimeout(350);
 
 const observed = [];
-for (let step = 0; step < 8; step += 1) {
+for (let step = 0; step < 7; step += 1) {
   observed.push(Number(await stack.getAttribute("data-card-index")));
-  if (step === 7) break;
+  if (step === 6) break;
   await next.click();
   await page.waitForTimeout(780);
 }
 
-const expected = [1, 2, 3, 4, 5, 6, 7, 1];
+const expected = [1, 2, 3, 4, 5, 6, 1];
 if (observed.join(",") !== expected.join(",")) {
-  throw new Error(`Drag It order is not a stable seven-card loop: expected ${expected.join(" → ")}, received ${observed.join(" → ")}`);
+  throw new Error(`Drag It order is not a stable six-card loop: expected ${expected.join(" → ")}, received ${observed.join(" → ")}`);
 }
 
 console.log(`Drag It ordered loop verified: ${observed.join(" → ")}`);

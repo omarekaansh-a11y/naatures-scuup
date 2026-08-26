@@ -114,9 +114,8 @@ button:not(:disabled), a[href] { cursor: pointer; }
 .reveal-up { animation: reveal-up 720ms var(--ease-out) both; }
 .delay-1 { animation-delay: 80ms; }.delay-2 { animation-delay: 150ms; }.delay-3 { animation-delay: 220ms; }.delay-4 { animation-delay: 290ms; }
 
-.craving-ribbon { position: relative; overflow: hidden; height: 52px; display: flex; align-items: center; background: var(--mango); color: var(--maroon-deep); white-space: nowrap; }
-.craving-ribbon div { display: inline-flex; gap: 18px; align-items: center; min-width: max-content; padding-left: 18px; font-size: 12px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; animation: ribbon 36s linear infinite; }
-.craving-ribbon b { font-size: 15px; }
+.craving-ribbon { display: none; }
+.flowing-sentence-divider{position:relative;z-index:8;height:0;overflow:visible;background:transparent;color:var(--maroon-deep);pointer-events:none}.flowing-sentence-divider__svg{position:absolute;top:50%;left:0;width:100%;height:118px;overflow:visible;transform:translateY(-50%)}.flowing-sentence-divider__text{fill:var(--maroon-deep);font:500 25px/1 "Cormorant Garamond",Georgia,serif;letter-spacing:-.03em}.flowing-sentence-divider__edge{display:none}
 .section-pad { padding-left: 8.5vw; padding-right: 8.5vw; }
 .story-section { padding-top: clamp(96px, 13vw, 185px); padding-bottom: clamp(98px, 13vw, 180px); }
 .story-grid { position: relative; display: grid; align-items: end; grid-template-columns: minmax(260px, .86fr) minmax(280px, .7fr); gap: min(10vw, 145px); max-width: 1250px; margin: auto; }

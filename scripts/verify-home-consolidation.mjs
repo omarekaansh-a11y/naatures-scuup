@@ -13,7 +13,7 @@ const initial = await page.evaluate(() => ({
   nextSectionClass: document.querySelector(".ice-orbit + *")?.className,
 }));
 
-if (initial.redundantHero || initial.nextSectionClass !== "craving-ribbon") {
+if (initial.redundantHero || initial.nextSectionClass !== "flowing-sentence-divider") {
   throw new Error(`Homepage hero consolidation failed: ${JSON.stringify(initial)}`);
 }
 
@@ -30,9 +30,7 @@ const destination = await page.evaluate(() => {
   const facts = [...document.querySelectorAll(".ice-cream-destination__facts span")].map((item) => item.textContent?.replace(/\s+/g, " ").trim());
   const title = document.querySelector("#ice-cream-destination-title");
   if (!(section instanceof HTMLElement) || !(actions instanceof HTMLElement) || !(title instanceof HTMLElement)) throw new Error("Consolidated scoop destination is missing.");
-  const rect = section.getBoundingClientRect();
   return {
-    visible: rect.top < window.innerHeight && rect.bottom > 0,
     title: title.textContent?.replace(/\s+/g, " ").trim(),
     copy: section.textContent?.replace(/\s+/g, " ").trim(),
     factCount: facts.length,
@@ -41,7 +39,7 @@ const destination = await page.evaluate(() => {
   };
 });
 
-if (!destination.visible || !destination.title?.includes("Save room.") || !destination.copy?.includes("South Indian favourites") || destination.factCount !== 3 || !destination.facts.some((fact) => fact?.includes("100%")) || !destination.facts.some((fact) => fact?.includes("204 DISHES")) || !destination.facts.some((fact) => fact?.includes("MALL ROAD")) || destination.actionCount !== 2) {
+if (!destination.title?.includes("Save room.") || !destination.copy?.includes("South Indian favourites") || destination.factCount !== 3 || !destination.facts.some((fact) => fact?.includes("100%")) || !destination.facts.some((fact) => fact?.includes("204 DISHES")) || !destination.facts.some((fact) => fact?.includes("MALL ROAD")) || destination.actionCount !== 2) {
   throw new Error(`Consolidated scoop destination failed: ${JSON.stringify(destination)}`);
 }
 

@@ -117,6 +117,6 @@
 @media (max-width: 640px) and (prefers-reduced-motion: reduce), (max-width: 640px) and (prefers-reduced-data: reduce) {
   body .menu-conveyor__track,
   body .menu-ribbon span,
-  body .craving-ribbon div { animation: none; transform: none; }
+  body .craving-ribbon div,
   body .menu-conveyor { overflow-x: auto; mask-image: none; }
 }

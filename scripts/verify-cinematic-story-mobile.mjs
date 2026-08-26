@@ -42,7 +42,7 @@ for (const viewport of viewportCases) {
       railDisplay: getComputedStyle(rail).display,
       activeStoryDisplay: getComputedStyle(activeStory).display,
       activeStoryText: activeStory.innerText.replace(/\s+/g, " ").trim(),
-      activeStoryOnStem: storyRect.top >= stageRect.top + stageRect.height * 0.42 && storyRect.bottom <= stageRect.top + stageRect.height * 0.82 && Math.abs((storyRect.left + storyRect.width / 2) - (stageRect.left + stageRect.width / 2)) <= stageRect.width * 0.12,
+      activeStoryOnStem: storyRect.top >= stageRect.top + stageRect.height * 0.55 && storyRect.bottom <= stageRect.top + stageRect.height * 0.92 && Math.abs((storyRect.left + storyRect.width / 2) - (stageRect.left + stageRect.width / 2)) <= stageRect.width * 0.12,
       videoTransform: getComputedStyle(video).transform,
       buttonLabel: button.getAttribute("aria-label"),
       buttonVisible: buttonRect.width > 0 && buttonRect.height > 0 && buttonRect.bottom <= stageRect.bottom + 1,
@@ -100,7 +100,7 @@ for (const viewport of viewportCases) {
         ? chapterResult.centerRatio < 0.44 && chapterResult.topRatio >= 0.38 && chapterResult.topRatio <= 0.64
         : chapter.expectedZone === "right"
           ? chapterResult.centerRatio > 0.56 && chapterResult.topRatio >= 0.36 && chapterResult.topRatio <= 0.62
-          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && chapterResult.topRatio >= 0.51 && chapterResult.clearOfArrow;
+          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && (chapter.expectedIndex === 3 ? chapterResult.topRatio >= 0.53 : chapterResult.topRatio >= 0.58) && chapterResult.clearOfArrow;
     if (Math.abs(chapterResult.top) > 2 || chapterResult.activeIndex !== chapter.expectedIndex || chapterResult.visibleCount !== 1 || !chapterResult.activeText.includes(chapter.expectedText) || !matchesZone) {
       throw new Error(`Mobile story checkpoint is not resolved at ${viewport.width}x${viewport.height}: ${JSON.stringify({ chapter, chapterResult })}`);
     }

@@ -17,6 +17,10 @@ describe("tactile print visual system", () => {
     expect(printStyles).toContain(".maximalist-surface__label");
     expect(printStyles).toContain(".maximalist-card");
     expect(printStyles).toContain(".organic-wave");
+    expect(printStyles).toContain(".film-print-text");
+    expect(printStyles).toContain("@keyframes filmGateWeave");
+    expect(printStyles).toContain(".layered-image-depth");
+    expect(printStyles).toContain(".print-edge-boil--rough");
     expect(printStyles).toContain("@keyframes printEdgeBoil");
     expect(printStyles).toContain("prefers-reduced-motion");
     expect(printStyles).toContain('data-mobile-network="constrained"');
@@ -30,6 +34,6 @@ describe("tactile print visual system", () => {
     expect(menu).toContain("menu-dish-card print-edge-boil maximalist-card");
     expect(menu).toContain('tone="cream-to-sage"');
     expect(reviews).toContain("reviews-section section-pad print-paper maximalist-surface maximalist-surface--sage");
-    expect(reviews).toContain("review-card review-card--proof print-edge-boil maximalist-card");
+    expect(reviews).toContain("review-card review-card--proof print-edge-boil print-edge-boil--rough maximalist-card");
   });
 });

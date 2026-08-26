@@ -152,7 +152,7 @@ export default function MenuPage() {
         <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title print-ink"><span className="title-outline">Many cravings.</span><br /><i>One table.</i></h1><div><p>From a hot dosa to a chilled scoop, move through every Mall Road mood in one craving atlas—made for reading, sharing and planning the next table.</p><span className="menu-page-hours">17 chapters · 204 dishes · Mon, Tue, Thu–Sun 11 AM–11 PM · Wed 10 AM–11 PM</span></div></div>
       </section>
       <OrganicWaveDivider tone="cream-to-sage" />
-      <section className="menu-browser-block section-pad maximalist-surface maximalist-surface--sage" aria-label="Browse Full Menu chapters">
+      <section className="menu-browser-block section-pad maximalist-surface maximalist-surface--sage layered-image-depth layered-image-depth--menu" aria-label="Browse Full Menu chapters">
         <div className="maximalist-surface__forms" aria-hidden="true" />
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
           <div className="menu-conveyor" role="group" aria-label="Menu groups — hover or focus to pause the moving categories">
