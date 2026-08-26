@@ -290,7 +290,9 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
       const direction = horizontalDominant
         ? (projectedVector.x < 0 || (projectedVector.x === 0 && velocity.x < 0) ? 1 : -1)
         : (projectedVector.y < 0 || (projectedVector.y === 0 && velocity.y < 0) ? 1 : -1);
-      swipeCard(direction, velocity, vector, true);
+      // Every physical swipe advances the storytelling deck, regardless of the release direction.
+      // Dedicated keyboard/button controls retain their previous/next semantics.
+      swipeCard(1, velocity, vector, true);
       return;
     }
     velocityRef.current = ZERO_VECTOR;
@@ -331,6 +333,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
               tabIndex={0}
               role="region"
               aria-label="A stack of Naatures Scuup food photographs. Drag in any direction, or use the arrow keys to reveal another food moment."
+              data-card-index={activeIndex + 1}
               aria-busy={loadedSources.size < items.length}
               onPointerDown={(event) => { dismissMobileGestureGuide(); handlePointerDown(event); }}
               onPointerMove={handlePointerMove}

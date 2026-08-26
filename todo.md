@@ -1146,3 +1146,28 @@
 - [x] Restore desktop story-card placement and keep mobile base positioning explicitly isolated to mobile media queries.
 - [x] Add regression coverage verifying desktop framing and text layout cannot inherit mobile-only rules.
 - [x] Verify restored desktop and retained mobile compositions before publishing.
+
+# Layered Material System & Drag It Loop
+- [x] Audit texture coverage so the site uses layered, section-specific material treatments rather than repeated halftone alone.
+- [x] Add restrained paper fibres, ink drift, offset registration, surface wear, and layered backing planes without affecting the ice-cream sequence.
+- [x] Apply the richer material system across the Home, menu, reviews, and scoop surfaces with readable content and working controls.
+- [x] Repair Drag It card progression to repeat precisely 1 → 2 → 3 → 4 → 5 → 6 → 7 → 1 on every swipe.
+- [x] Add regression coverage and verify desktop/mobile texture quality, deck ordering, interactions, and production build.
+
+# Perfect-Maximalist Editorial Direction
+- [x] Translate the supplied reference into Naatures Scuup’s own visual grammar: oversized forms, paper planes, stacked label blocks, hard rules, and a restrained high-contrast accent.
+- [x] Build reusable maximalist components that layer safely with the existing print materials and preserve content contrast.
+- [x] Apply the new editorial system to Home, Full Menu, reviews, and scoop surfaces while excluding the approved ice-cream sequence.
+- [x] Verify readable mobile scaling, keyboard/touch interactions, desktop sequence isolation, and production performance.
+
+# Organic Section Transitions
+- [x] Replace abrupt editorial-section seams with reusable smooth, natural wave dividers that complement the print-material system.
+- [x] Apply wave transitions outside the approved ice-cream sequence, preserving section content, interaction layers, and mobile spacing.
+- [x] Verify divider geometry, responsive continuity, contrast, reduced-motion safety, and desktop/mobile composition.
+- [x] Simplify each transition to one or two broad wave arcs and standardize the Drag It → scoop stitched/perforated seam across the transition system.
+
+# Unified Image-Led Full Menu Panels
+- [x] Remove the unintended split between chapter image, gradient block, and heading so every menu chapter reads as one coherent editorial panel.
+- [x] Remove all gradient overlays from menu chapter food images and preserve the underlying photography without CSS image filters.
+- [x] Rebuild chapter text as high-contrast, printed label blocks that remain legible over photography without blending into the image.
+- [x] Verify desktop/mobile chapter composition, image integrity, search/filter behavior, and production build.

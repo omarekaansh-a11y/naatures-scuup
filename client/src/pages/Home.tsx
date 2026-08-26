@@ -13,6 +13,7 @@ import { GoogleReviews } from "@/components/GoogleReviews";
 import { IceCreamOrbit } from "@/components/IceCreamOrbit";
 import { LocationAtlas } from "@/components/LocationAtlas";
 import { MobileVisitDock } from "@/components/MobileVisitDock";
+import { OrganicWaveDivider } from "@/components/OrganicWaveDivider";
 import { RouteMeta } from "@/components/RouteMeta";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -52,11 +53,15 @@ export default function Home() {
 
         <DragFoodCanvas items={foodCanvasItems} />
         <section className="food-menu-bridge" aria-label="Explore the full menu"><Link className="button button--cream" href="/menu">Explore the full menu <ArrowRight size={17} /></Link></section>
+        <OrganicWaveDivider tone="maroon-to-night" />
 
-        <section id="ice-cream-destination" className="ice-cream-destination print-surface print-surface--dark print-halftone" aria-labelledby="ice-cream-destination-title">
+        <section id="ice-cream-destination" className="ice-cream-destination print-surface print-surface--dark print-halftone maximalist-surface maximalist-surface--night" aria-labelledby="ice-cream-destination-title">
           <div className="ice-cream-destination__image" role="img" aria-label="Editorial background showing a frozen dessert table" />
           <div className="ice-cream-destination__veil" />
+          <div className="maximalist-surface__forms" aria-hidden="true" />
+          <span className="maximalist-surface__figure" aria-hidden="true">04</span>
           <motion.div className="ice-cream-destination__inner section-pad" initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.48, ease: [0.23, 1, 0.32, 1] }}>
+            <span className="maximalist-surface__label">Mall Road’s late table</span>
             <p className="eyebrow eyebrow--mango">04 / The Mall table · #FREEZETHEHAPPINESS</p>
             <h2 id="ice-cream-destination-title" className="editorial-title editorial-title--light print-ink"><span className="title-outline">Save room.</span><br /><i>For the scoop.</i></h2>
             <p className="ice-cream-destination__copy">From South Indian favourites and shareable pizza to Chinese, comfort snacks, shakes and dessert—Naatures Scuup keeps every vegetarian craving at one Mall Road table.</p>
@@ -64,6 +69,7 @@ export default function Home() {
             <div className="ice-cream-destination__actions"><Link className="ice-cream-destination__cta" href="/menu#ice-creams">Explore ice creams <ArrowRight size={17} /></Link><button className="ice-cream-destination__secondary-action" type="button" onClick={() => scrollToId("#location")}>Directions to Mall Road <ArrowRight size={16} /></button></div>
           </motion.div>
         </section>
+        <OrganicWaveDivider tone="night-to-cream" />
 
         <GoogleReviews />
 

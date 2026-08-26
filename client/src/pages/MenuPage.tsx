@@ -9,6 +9,7 @@ import { Link } from "wouter";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MobileVisitDock } from "@/components/MobileVisitDock";
+import { OrganicWaveDivider } from "@/components/OrganicWaveDivider";
 import { RouteMeta } from "@/components/RouteMeta";
 import { menuChapters, menuItemCount } from "@/lib/menu-data";
 import { menuDishPrices } from "@/lib/menu-prices";
@@ -142,12 +143,17 @@ export default function MenuPage() {
       <style>{priceBrowserStyles}</style>
       <style>{cardMenuStyles}</style>
       <style>{calmMenuTextStyles}</style>
-      <section className="menu-page-hero section-pad print-surface" aria-labelledby="full-menu-title">
+      <section className="menu-page-hero section-pad print-surface maximalist-surface" aria-labelledby="full-menu-title">
+        <div className="maximalist-surface__forms" aria-hidden="true" />
+        <span className="maximalist-surface__figure" aria-hidden="true">17</span>
         <Breadcrumbs current="Full menu" />
+        <span className="maximalist-surface__label">A vegetarian craving atlas</span>
         <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p>
         <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title print-ink"><span className="title-outline">Many cravings.</span><br /><i>One table.</i></h1><div><p>From a hot dosa to a chilled scoop, move through every Mall Road mood in one craving atlas—made for reading, sharing and planning the next table.</p><span className="menu-page-hours">17 chapters · 204 dishes · Mon, Tue, Thu–Sun 11 AM–11 PM · Wed 10 AM–11 PM</span></div></div>
       </section>
-      <section className="menu-browser-block section-pad" aria-label="Browse Full Menu chapters">
+      <OrganicWaveDivider tone="cream-to-sage" />
+      <section className="menu-browser-block section-pad maximalist-surface maximalist-surface--sage" aria-label="Browse Full Menu chapters">
+        <div className="maximalist-surface__forms" aria-hidden="true" />
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
           <div className="menu-conveyor" role="group" aria-label="Menu groups — hover or focus to pause the moving categories">
             <div className="menu-conveyor__track">
@@ -158,11 +164,12 @@ export default function MenuPage() {
           <div id="menu-results" className="menu-browser__result" aria-live="polite" aria-atomic="true" tabIndex={-1}><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
         </div>
       </section>
+      <OrganicWaveDivider tone="sage-to-cream" />
       <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">
         {visibleItems.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">No craving found</p><h2>Try another<br /><i>table mood.</i></h2><p>Search by a dish name, flavour or menu group. Your menu is still here—just waiting for a different word.</p></div>}
         <div className="menu-card-grid">{visibleItems.map(({ dish, chapter }, index) => { const price = menuDishPrices[dish]; const previousItem = visibleItems[index - 1]; const showChapterBreak = sort === "recommended" && (!previousItem || previousItem.chapter.slug !== chapter.slug); const chapterNumber = `${menuChapters.findIndex((menuChapter) => menuChapter.slug === chapter.slug) + 1}`.padStart(2, "0"); const artwork = chapterArtwork[chapter.slug]; return <Fragment key={`${chapter.slug}-${dish}`}>
-          {showChapterBreak && <div className="menu-chapter-break print-surface print-halftone" data-chapter={chapter.slug}><img className="menu-chapter-break__image" src={artwork.src} alt="" style={{ objectPosition: artwork.position }} /><span className="menu-chapter-break__veil" aria-hidden="true" /><div className="menu-chapter-break__body"><p className="menu-chapter-break__index">{chapterNumber} / Craving chapter</p><h2 className="print-ink">{formatHeading(chapter.title)}</h2><small className="menu-chapter-break__art-note">Naatures Scuup / {formatHeading(chapter.note)}</small></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
-          <motion.article className={`menu-dish-card print-edge-boil${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}>{showChapterBreak && <p className="menu-dish-card__lead-label"><span>{chapterNumber}</span> The first plate</p>}<p className="menu-dish-card__meta">100% pure veg · {formatHeading(chapter.title)}</p><div><h2 className="print-ink">{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>Menu price</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? "Price not listed" : "Menu listing"}</span></footer></motion.article>
+          {showChapterBreak && <div className="menu-chapter-break print-surface print-halftone maximalist-chapter" data-chapter={chapter.slug}><img className="menu-chapter-break__image" src={artwork.src} alt="" style={{ objectPosition: artwork.position }} /><span className="menu-chapter-break__veil" aria-hidden="true" /><div className="menu-chapter-break__body"><span className="maximalist-index">{chapterNumber} / Chapter</span><p className="menu-chapter-break__index">{chapterNumber} / Craving chapter</p><h2 className="print-ink">{formatHeading(chapter.title)}</h2><small className="menu-chapter-break__art-note">Naatures Scuup / {formatHeading(chapter.note)}</small></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
+          <motion.article className={`menu-dish-card print-edge-boil maximalist-card${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}>{showChapterBreak && <p className="menu-dish-card__lead-label"><span>{chapterNumber}</span> The first plate</p>}<p className="menu-dish-card__meta">100% pure veg · {formatHeading(chapter.title)}</p><div><h2 className="print-ink">{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>Menu price</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? "Price not listed" : "Menu listing"}</span></footer></motion.article>
         </Fragment>; })}</div>
       </section>
       <section className="menu-page-closing section-pad"><div><p className="eyebrow menu-page-closing__eyebrow">Freeze the happiness</p><h2>Find your<br /><i>table mood.</i></h2></div><div className="menu-page-closing__actions"><a className="button button--cream" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><Link className="text-action text-action--cream" href="/">Back to home <ArrowDownRight size={16} /></Link></div></section>
