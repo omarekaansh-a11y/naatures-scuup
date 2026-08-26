@@ -964,3 +964,8 @@
 - [x] Remove every black gradient, vignette, and added cinematic darkening layer from the ice-cream chapter.
 - [x] Preserve only the natural grey video background, the ice-cream cup, and the side-safe narrative text.
 - [x] Verify the clean composition on desktop and mobile before publishing.
+
+# Device-Adaptive Mobile Story Layout
+- [x] Make every mobile story card scale fluidly to the available viewport width without overflowing the video.
+- [x] Position left and right story cards with viewport-safe margins and preserve the central cup exclusion zone.
+- [x] Validate multiple mobile aspect ratios and retain the desktop composition before publishing.
