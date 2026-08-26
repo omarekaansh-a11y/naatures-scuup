@@ -1314,3 +1314,7 @@
 - [x] Remove the remaining green decorative film from the Drag It section.
 - [x] Preserve the food-card interaction, dog, editorial copy, and essential controls without the green layer.
 - [x] Verify desktop/mobile composition and publish the cleaned Drag It treatment.
+
+# Drag It Background Chapter Marker
+- [x] Add a background “01” marker to the Drag It section behind its editorial content and card interaction.
+- [x] Verify the marker’s responsive layering, readability, and interaction safety before publishing.

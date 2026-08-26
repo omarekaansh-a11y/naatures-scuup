@@ -50,6 +50,8 @@ describe("tactile print visual system", () => {
     expect(printStyles).toContain(".drag-it-section.print-edge-boil:before,.drag-it-section.print-edge-boil--rough:after{display:none}");
     expect(printStyles).toContain("lime striped-film trajectory is intentionally removed");
     expect(printStyles).toContain(".drag-it-section.maximalist-drag .drag-it-playground:before{display:none}");
+    expect(printStyles).toContain("Chapter 01 stays beneath the interactive deck");
+    expect(printStyles).toContain('content:"01"');
     expect(printStyles).not.toContain(".drag-it-section.maximalist-drag .drag-it-layout:before{position:absolute;z-index:-1;inset:7% 0 4%");
   });
 });

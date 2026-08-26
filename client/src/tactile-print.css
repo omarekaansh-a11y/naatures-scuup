@@ -87,3 +87,6 @@
 
 /* The lime striped-film trajectory is intentionally removed; the interaction now reads through the cards themselves. */
 .drag-it-section.maximalist-drag .drag-it-playground:before{display:none}
+
+/* Chapter 01 stays beneath the interactive deck as a quiet editorial field mark. */
+.drag-it-section.maximalist-drag:before{display:block;z-index:1;width:auto;aspect-ratio:auto;left:clamp(1rem,5vw,5.5rem);bottom:-.18em;top:auto;border:0;color:rgb(212 244 90 / .12);content:"01";font-family:"Playfair Display",Georgia,serif;font-size:clamp(10rem,20vw,23rem);font-weight:700;letter-spacing:-.12em;line-height:.72;opacity:1;transform:none;pointer-events:none}@media(max-width:640px){.drag-it-section.maximalist-drag:before{left:1rem;bottom:-.04em;font-size:44vw;color:rgb(212 244 90 / .11)}}
