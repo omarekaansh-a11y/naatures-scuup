@@ -1111,3 +1111,9 @@
 - [x] Prevent the first-visit swipe coach from appearing outside the Drag It section or over the opening hero.
 - [x] Ensure the opening hero reveals the loaded mobile video cleanly rather than exposing a prolonged blank loading field.
 - [x] Verify first-load behavior on mobile with header, story, scroll prompt, and dock present.
+
+# Stem-Positioned Mobile Story Layout
+- [x] Position story beat 1 centrally around the glass stem.
+- [x] Position story beat 2 in the left stem-safe zone and beat 3 in the right stem-safe zone.
+- [x] Place the final story beat near the base while avoiding the scroll arrow and mobile dock.
+- [x] Verify each position across common phone sizes and preserve desktop story placement.
