@@ -1304,3 +1304,8 @@
 - [x] Remove the oversized lime frame that now competes with the dog, text, and card stack.
 - [x] Keep a single restrained ring-and-line gesture and rebalance halftones as supporting texture.
 - [x] Validate the simplified composition at desktop and mobile widths, then publish the revision.
+
+# Drag It Box-Geometry Removal
+- [x] Remove all remaining decorative geometric box treatments from the Drag It section.
+- [x] Preserve the food-card stack, dog, editorial copy, line/ring accents, and non-boxed texture treatment.
+- [x] Validate the box-free Drag It composition at desktop/mobile widths and publish the refinement.
