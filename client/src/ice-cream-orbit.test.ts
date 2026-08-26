@@ -33,6 +33,16 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).not.toContain("One table. Many moods.");
   });
 
+  it("uses a less-cropped compact-screen composition without changing desktop cover framing", () => {
+    expect(orbit).toContain("@media(max-width:767px)");
+    expect(orbit).toContain("object-fit:contain");
+    expect(orbit).toContain("transform:scale(1.12)");
+    expect(orbit).toContain(".ice-orbit__stage::before");
+    expect(orbit).toContain("filter:blur(30px)");
+    expect(orbit).toContain("background:transparent");
+    expect(orbit).toContain("object-fit:cover");
+  });
+
   it("keeps the sequence before Drag It on Home", () => {
     expect(home).toContain("<IceCreamOrbit />");
     expect(home).not.toContain('className="story-section section-pad"');

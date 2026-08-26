@@ -920,3 +920,8 @@
 - [x] Audit the restored high-resolution sequence for lightweight rendering and loading improvements.
 - [x] Add restrained easing and momentum while bounding rendering and asset work to avoid choppiness or freezing.
 - [x] Validate continuous desktop and mobile scroll playback before publishing the refinement.
+
+# Small-Screen Sequence Framing
+- [x] Inspect the active 1440p video crop at mobile and compact viewport sizes.
+- [x] Reduce excessive small-screen zoom while preserving the desktop full-screen treatment.
+- [x] Validate the responsive framing at mobile, compact desktop, and standard desktop sizes before publishing.

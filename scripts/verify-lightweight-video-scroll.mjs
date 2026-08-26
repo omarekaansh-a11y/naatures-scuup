@@ -41,6 +41,7 @@ async function verifyViewport(label, viewport, deviceScaleFactor) {
 
   const start = await scrollAndInspect(120);
   const middle = await scrollAndInspect(1500);
+  if (label === "mobile") await page.screenshot({ path: "/home/ubuntu/lightweight-video-mobile.png" });
   if (readyMs > 5000) throw new Error(`${label} video did not become ready promptly: ${readyMs}ms`);
   if (Math.abs(middle.top) > 2 || middle.stageHeight !== middle.viewportHeight) throw new Error(`${label} video sequence is not pinned: ${JSON.stringify({ start, middle })}`);
   if (start.width !== 2560 || start.height !== 1440 || middle.time <= start.time) throw new Error(`${label} video did not preserve 1440p scroll progression: ${JSON.stringify({ start, middle })}`);
