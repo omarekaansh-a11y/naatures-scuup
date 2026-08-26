@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const DESKTOP_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-1440p-clean-scrub_59b5e815.mp4";
-const MOBILE_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-720p-clean-mobile_a6f262f8.mp4";
+const MOBILE_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-portrait-mobile_4b0f7dd0.mp4";
 const VIDEO_POSTER = "/manus-storage/ezgif-frame-001_c0bf1371.png";
 
 const sequenceStyles = `
@@ -13,11 +13,7 @@ const sequenceStyles = `
   .ice-orbit__stage{position:relative;width:100%;height:100svh;overflow:hidden;background:#090306}
   .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#090306}
   .ice-orbit__loading{position:absolute;inset:0;background:#090306}
-  @media(max-width:767px){
-    .ice-orbit__stage::before{content:"";position:absolute;inset:-7%;z-index:0;background:url("/manus-storage/ezgif-frame-001_c0bf1371.png") center/cover no-repeat;filter:blur(30px) saturate(.86);transform:scale(1.12);opacity:.72}
-    .ice-orbit__stage::after{content:"";position:absolute;inset:0;z-index:0;background:rgb(9 3 6 / 18%)}
-    .ice-orbit__video{position:relative;z-index:1;object-fit:contain;background:transparent;transform:scale(1.12);transform-origin:center}
-  }
+  @media(max-width:767px){.ice-orbit__video{object-fit:cover}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
 

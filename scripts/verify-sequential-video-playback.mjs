@@ -35,8 +35,10 @@ async function inspect(label, viewport, deviceScaleFactor, expectedWidth) {
   const immediatelyAfterJump = await snapshot();
   await page.waitForTimeout(1200);
   const afterCatchUp = await snapshot();
+  if (label === "mobile") await page.screenshot({ path: "/home/ubuntu/dynamic-portrait-mobile-live.png" });
 
-  if (beforeJump.width !== expectedWidth || beforeJump.height !== (expectedWidth === 1280 ? 720 : 1440)) throw new Error(`${label} selected the wrong adaptive video source: ${JSON.stringify(beforeJump)}`);
+  const expectedHeight = expectedWidth === 720 ? 1280 : 1440;
+  if (beforeJump.width !== expectedWidth || beforeJump.height !== expectedHeight) throw new Error(`${label} selected the wrong adaptive video source: ${JSON.stringify(beforeJump)}`);
   if (Math.abs(afterCatchUp.top) > 2 || afterCatchUp.stageHeight !== afterCatchUp.viewportHeight) throw new Error(`${label} is not pinned after fast scroll: ${JSON.stringify(afterCatchUp)}`);
   if (immediatelyAfterJump.time < beforeJump.time || immediatelyAfterJump.rate < 1) throw new Error(`${label} did not enter forward catch-up playback after fast scroll: ${JSON.stringify({ beforeJump, immediatelyAfterJump })}`);
   if (afterCatchUp.time <= immediatelyAfterJump.time + 0.2) throw new Error(`${label} did not advance sequentially after fast scroll: ${JSON.stringify({ immediatelyAfterJump, afterCatchUp })}`);
@@ -47,7 +49,7 @@ async function inspect(label, viewport, deviceScaleFactor, expectedWidth) {
 
 const results = [
   await inspect("desktop", { width: 1280, height: 900 }, 1, 2560),
-  await inspect("mobile", { width: 375, height: 812 }, 2, 1280),
+  await inspect("mobile", { width: 375, height: 812 }, 2, 720),
 ];
 
 console.log(`Sequential adaptive video verified: ${JSON.stringify(results)}`);

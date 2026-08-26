@@ -8,7 +8,7 @@ const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "
 describe("full-screen GSAP ice-cream sequence", () => {
   it("uses cleaned desktop and mobile video sources derived from the approved frames", () => {
     expect(orbit).toContain("mango-ice-cream-1440p-clean-scrub_59b5e815.mp4");
-    expect(orbit).toContain("mango-ice-cream-720p-clean-mobile_a6f262f8.mp4");
+    expect(orbit).toContain("mango-ice-cream-portrait-mobile_4b0f7dd0.mp4");
     expect(orbit).toContain('media="(max-width: 767px)"');
     expect(orbit).toContain("ezgif-frame-001_c0bf1371.png");
     expect(orbit).toContain("<video");
@@ -31,11 +31,10 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain('pin: ".ice-orbit__stage"');
   });
 
-  it("keeps playback text-free with responsive framing and safe loading behavior", () => {
+  it("keeps playback text-free with the dedicated portrait mobile composition and safe loading behavior", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
     expect(orbit).toContain("prefers-reduced-motion");
-    expect(orbit).toContain("object-fit:contain");
-    expect(orbit).toContain("filter:blur(30px)");
+    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__video{object-fit:cover}}");
     expect(orbit).not.toContain("Come for the craving.");
     expect(orbit).not.toContain("Stay for the scoop.");
   });

@@ -930,3 +930,12 @@
 - [x] Sync the shared project preview and inspect the latest deployed sequence implementation.
 - [x] Prevent fast-scroll frame skipping and reduce mobile playback cost without reintroducing the earlier loading freeze.
 - [x] Validate rapid desktop and mobile scrolling for continuous, responsive playback before publishing.
+
+# Portrait Mobile Sequence Plan
+- [x] Select the approved dynamic portrait composition that replaces the static blurred letterbox treatment.
+- [x] Implement and validate the approved mobile composition without harming adaptive playback performance.
+
+# Approved Dynamic Portrait Composition
+- [x] Encode a synchronized 9:16 mobile video from the approved cleaned sequence, with a dynamic blurred extension behind the centred original frame.
+- [x] Upload and activate the portrait source for compact screens while retaining the desktop sequence and fast-scroll completion behavior.
+- [x] Validate the mobile composition, playback continuity, and performance before publishing.
