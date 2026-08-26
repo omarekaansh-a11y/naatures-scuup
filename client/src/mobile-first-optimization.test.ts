@@ -39,6 +39,7 @@ describe("mobile-first optimization safeguards", () => {
     expect(mobileStyles).toContain(".mobile-skip-link { display: none; }");
     expect(mobileStyles).toContain("-webkit-overflow-scrolling: touch");
     expect(mobileStyles).toContain("drag-it-mobile-guide--visible");
+    expect(mobileStyles).toContain(".drag-it-playground { position: relative; }");
     expect(menu).toContain('inputMode="search"');
     expect(menu).toContain('enterKeyHint="search"');
     expect(menu).toContain('aria-live="polite"');

@@ -33,6 +33,7 @@ describe("full-screen GSAP ice-cream sequence", () => {
 
   it("adds a clean desktop narrative while creating a distraction-free, tightly focused mobile hero", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
+    expect(orbit).toContain('background:#d6d4d0 url("/manus-storage/ezgif-frame-001_c0bf1371.png") center/cover no-repeat');
     expect(orbit).toContain("prefers-reduced-motion");
     expect(orbit).toContain("@media(max-width:767px){.ice-orbit__stage{perspective:none}");
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%");
@@ -62,10 +63,13 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;transform:scale(2.9)");
     expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
     expect(orbit).toContain('.ice-orbit__story-card[data-active="true"]{display:block!important;opacity:1!important');
-    expect(orbit).toContain("Live<br /><em>ice cream.</em>");
-    expect(orbit).toContain("Mall Road<br /><em>Kanpur.</em>");
+    expect(orbit).toContain("Kanpur&apos;s first<br /><em>live scoop.</em>");
+    expect(orbit).toContain("Made cold.<br /><em>Made live.</em>");
     expect(orbit).toContain("One table.<br /><em>Every craving.</em>");
     expect(orbit).toContain("Freeze the<br /><em>happiness.</em>");
+    expect(orbit).toContain("transform:translate3d(-50%,0,44px) rotateX(5deg) rotateY(-4deg)!important");
+    expect(orbit).toContain("perspective:980px!important");
+    expect(orbit).toContain("The Naatures Scuup way.");
     expect(orbit).toContain("ice-orbit__scroll-button");
     expect(orbit).toContain("4.35rem");
     expect(orbit).toContain('aria-label="Scroll down to continue"');

@@ -1100,3 +1100,14 @@
 # Universal Scroll Guidance
 - [x] Add a clear “SCROLL!” prompt above the ice cream in a header-safe, cup-safe position.
 - [x] Verify the prompt remains legible and does not collide with mobile story text, desktop copy, or the down-arrow control.
+
+# 3D On-Dessert Mobile Story Enhancement
+- [x] Replace the compact mobile phrases with four larger, Naatures Scuup-specific story beats.
+- [x] Position active mobile story text directly over the ice cream with restrained 3D depth and perspective.
+- [x] Restore mobile kicker, supporting copy, and relevant facts without cluttering the visual composition.
+- [x] Verify readability, three-dimensional placement, checkpoint isolation, controls, and desktop preservation before publishing.
+
+# Mobile First-Load Hero Fix
+- [x] Prevent the first-visit swipe coach from appearing outside the Drag It section or over the opening hero.
+- [x] Ensure the opening hero reveals the loaded mobile video cleanly rather than exposing a prolonged blank loading field.
+- [x] Verify first-load behavior on mobile with header, story, scroll prompt, and dock present.

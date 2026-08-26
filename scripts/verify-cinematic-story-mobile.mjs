@@ -42,7 +42,7 @@ for (const viewport of viewportCases) {
       railDisplay: getComputedStyle(rail).display,
       activeStoryDisplay: getComputedStyle(activeStory).display,
       activeStoryText: activeStory.innerText.replace(/\s+/g, " ").trim(),
-      activeStoryUpperSafe: storyRect.bottom <= stageRect.top + stageRect.height * 0.3 && storyRect.left >= stageRect.left,
+      activeStoryOnDessert: storyRect.top >= stageRect.top + stageRect.height * 0.18 && storyRect.bottom <= stageRect.top + stageRect.height * 0.68 && Math.abs((storyRect.left + storyRect.width / 2) - (stageRect.left + stageRect.width / 2)) <= stageRect.width * 0.15,
       videoTransform: getComputedStyle(video).transform,
       buttonLabel: button.getAttribute("aria-label"),
       buttonVisible: buttonRect.width > 0 && buttonRect.height > 0 && buttonRect.bottom <= stageRect.bottom + 1,
@@ -54,13 +54,13 @@ for (const viewport of viewportCases) {
     };
   });
 
-  if (before.storyDisplay !== "block" || before.railDisplay !== "none" || before.activeStoryDisplay !== "block" || before.activeStoryText !== "LIVE ice cream." || !before.activeStoryUpperSafe || !before.videoTransform.includes("2.9") || before.buttonLabel !== "Scroll down to continue" || !before.buttonVisible || !before.buttonAboveDock || before.promptText !== "SCROLL!" || before.promptLabel !== "Scroll to the next part of the story" || !before.promptUpperSafe) {
+  if (before.storyDisplay !== "block" || before.railDisplay !== "none" || before.activeStoryDisplay !== "block" || !before.activeStoryText.includes("KANPUR'S FIRST live scoop.") || !before.activeStoryOnDessert || !before.videoTransform.includes("2.9") || before.buttonLabel !== "Scroll down to continue" || !before.buttonVisible || !before.buttonAboveDock || before.promptText !== "SCROLL!" || before.promptLabel !== "Scroll to the next part of the story" || !before.promptUpperSafe) {
     throw new Error(`Focused mobile opening state failed at ${viewport.width}x${viewport.height}: ${JSON.stringify(before)}`);
   }
 
   const chapters = [
-    { progress: 0.08, expectedIndex: 0, expectedText: "ice cream." },
-    { progress: 0.32, expectedIndex: 1, expectedText: "kanpur." },
+    { progress: 0.08, expectedIndex: 0, expectedText: "live scoop." },
+    { progress: 0.32, expectedIndex: 1, expectedText: "made live." },
     { progress: 0.63, expectedIndex: 2, expectedText: "every craving." },
     { progress: 0.92, expectedIndex: 3, expectedText: "happiness." },
   ];

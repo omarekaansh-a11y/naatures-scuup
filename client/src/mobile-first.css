@@ -85,6 +85,7 @@
   .mobile-quick-top { position: fixed; z-index: 89; right: 16px; bottom: calc(max(12px, env(safe-area-inset-bottom)) + 68px); display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid rgb(101 27 43 / 26%); border-radius: 50%; background: rgb(244 240 232 / 95%); color: var(--maroon-deep); box-shadow: 0 9px 21px rgb(53 16 26 / 17%); opacity: 0; pointer-events: none; transform: translateY(10px) scale(.94); transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out); }
   .mobile-quick-top--visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
   .mobile-quick-top:active { transform: translateY(0) scale(.92); }
+  .drag-it-playground { position: relative; }
   .drag-it-mobile-guide { position:absolute; z-index:9; top:56px; left:50%; margin:0; padding:9px 12px; border:1px solid rgb(244 240 232 / 28%); background:rgb(53 16 26 / 88%); color:var(--cream); font:800 8px/1.2 Manrope,sans-serif; letter-spacing:.11em; text-transform:uppercase; opacity:0; pointer-events:none; transform:translate(-50%,-6px); transition:opacity 220ms var(--ease-out),transform 220ms var(--ease-out); white-space:nowrap; }
   .drag-it-mobile-guide--visible { opacity:1; transform:translate(-50%,0); }
 }
