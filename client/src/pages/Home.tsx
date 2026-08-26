@@ -56,9 +56,9 @@ export default function Home() {
           <div className="hero-frontispiece__stage">
           <div className="hero-content hero-content--frontispiece">
             <div className="hero-meta reveal-up"><span className="verified-dot" /><span>Vegetarian multi-cuisine restaurant</span><span className="meta-divider" /><span>Mall Road, Kanpur</span><span className="hero-slogan">#FREEZETHEHAPPINESS</span></div>
-            <p className="eyebrow reveal-up delay-1">The all-day craving table</p>
-              <h1 id="hero-title" className="editorial-title editorial-title--light reveal-up delay-2"><span className="title-outline">ONE PLACE.</span><br /><i>every craving.</i></h1>
-            <p className="hero-copy reveal-up delay-3">South Indian favourites, pizza, Chinese, comfort snacks, shakes, desserts and ice cream—right in the heart of Kanpur.</p>
+            <p className="eyebrow reveal-up delay-1">The story continues at the table</p>
+              <h1 id="hero-title" className="editorial-title editorial-title--light reveal-up delay-2"><span className="title-outline">THE SCOOP IS JUST</span><br /><i>the beginning.</i></h1>
+            <p className="hero-copy reveal-up delay-3">From the first frozen spoonful to a table full of favourites: South Indian, pizza, Chinese, comfort snacks, shakes and desserts—right in the heart of Kanpur.</p>
             <div className="hero-actions reveal-up delay-4">
               <Link className="button button--cream" href="/menu">FIND YOUR FAVOURITE <ArrowDownRight size={17} /></Link>
               <button className="text-action" type="button" onClick={() => scrollToId("#location")}>Directions to Mall Road <ArrowRight size={17} /></button>

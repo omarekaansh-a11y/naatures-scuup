@@ -87,6 +87,12 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("const parlourRotateY");
     expect(orbit).toContain("const cravingRotateY");
     expect(orbit).toContain("const endRotateY");
+    expect(orbit).toContain("@media(hover:hover) and (pointer:fine)");
+    expect(orbit).toContain('data-active={activeCheckpoint === 0}');
+    expect(orbit).toContain('.ice-orbit__story-card[data-active="true"]:hover::before');
+    expect(orbit).toContain("clip-path:ellipse(132% 122% at 50% 52%)");
+    expect(orbit).toContain("[40, 76, 104, 14]");
+    expect(orbit).toContain("[20, 82, 118, 10]");
     expect(orbit).toContain("0.19, 0.22");
     expect(orbit).toContain("0.25, 0.28");
     expect(orbit).toContain("0.45, 0.48");

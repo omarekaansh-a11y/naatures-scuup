@@ -1021,3 +1021,9 @@
 - [x] Add restrained perspective and depth to each active story card so it floats above the video scene.
 - [x] Preserve central cup clearance and all checkpoint timing during 3D card transitions.
 - [x] Verify the effect remains readable and performant on desktop and mobile.
+
+# Enhanced Dimensional Story Interaction
+- [x] Increase the active story cards’ 3D depth while preserving central cup clearance and checkpoint visibility.
+- [x] Add a flowing liquid-uncover hover response for pointer devices without affecting scroll behavior or mobile touch.
+- [x] Rewrite the follow-on editorial hero title so it continues naturally from the opening ice-cream story.
+- [x] Verify desktop hover behavior, mobile fallback, narrative flow, and sequence performance before publishing.
