@@ -1269,3 +1269,12 @@
 - [x] Add more large green circles across appropriate non-cinematic surfaces without reducing content legibility.
 - [x] Replace the Full Menu frontispiece gradient and current image with a stronger gradient-free, image-led composition.
 - [x] Verify desktop/mobile visual hierarchy, map/menu interactions, image integrity, and production performance.
+
+# Menu & Drag It Interaction Corrections
+- [x] Disable all chapter-photo hover movement and keep chapter imagery static beneath printed labels.
+- [x] Remove the oversized Drag It green box treatment, tighten empty space below its image indicator, and lower the reviews “03” placement.
+- [x] Add restrained halftone texture to selected additional surfaces, including Drag It and the header, without obscuring content.
+- [x] Restore the red pasta card to the six-image Drag It deck and reserve the green pasta image for the map circle only.
+- [x] Correct Drag It throw-direction behavior for right and downward swipes.
+- [x] Add accessible previous/next controls and pointer-drag scrolling to the Full Menu chapter conveyor.
+- [x] Verify desktop/mobile interaction, spacing, image uniqueness, texture contrast, ordered loop, and production build.

@@ -22,12 +22,14 @@ const authenticImages = {
   iceCreamCup: "/manus-storage/NS2_17e883c9.png",
   starterPlate: "/manus-storage/NS3_a099f388.png",
   kababs: "/manus-storage/Screenshot(107)_33b7f867.png",
+  pastaRed: "/manus-storage/Screenshot(109)_b4ce8442.png",
   iceCreamCounter: "/manus-storage/Screenshot(106)_f7d47076.png",
 } as const;
 
 const foodCanvasItems = [
   { src: authenticImages.pizza, tag: "PIZZA", label: "Pizza", note: "The share plate", alt: "Restaurant pizza with a chilled drink" },
   { src: authenticImages.kababs, tag: "STARTERS", label: "Kababs", note: "The first pass", alt: "Restaurant-made kababs with onion rings and garnish" },
+  { src: authenticImages.pastaRed, tag: "PASTA", label: "Pasta", note: "The comfort bowl", alt: "Restaurant red pasta topped with herbs and cream sauce" },
   { src: authenticImages.starterPlate, tag: "SNACKS", label: "Starters", note: "Crisp at the centre", alt: "Crisp restaurant starter served with garnish" },
   { src: authenticImages.iceCreamCup, tag: "ICE CREAM", label: "Scoops", note: "Make room", alt: "Scoops of ice cream in Naatures Scuup cups" },
   { src: authenticImages.iceCreamCounter, tag: "DESSERTS", label: "Counter", note: "The last stop", alt: "Two bright scoops of ice cream served at the restaurant counter" },

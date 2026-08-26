@@ -187,10 +187,11 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   };
 
   const swipeCard = (
-    direction: number,
+    exitDirection: number,
     velocity: DragVector = ZERO_VECTOR,
     currentVector: DragVector = dragVectorRef.current,
     shouldCelebrate = false,
+    advanceDirection = exitDirection,
   ) => {
     if (isAnimating || exitTimerRef.current !== null) return;
     const horizontalDominant = Math.abs(currentVector.x + velocity.x * PROJECTION_TIME) >= Math.abs(currentVector.y + velocity.y * PROJECTION_TIME);
@@ -200,9 +201,9 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     const exitDistance = Math.max(470, window.innerWidth * 0.7) + momentum;
     const exitY = horizontalDominant
       ? Math.max(-window.innerHeight * 0.25, Math.min(window.innerHeight * 0.25, currentVector.y + velocity.y * 68))
-      : direction === 1 ? -exitDistance * 0.72 : exitDistance * 0.72;
+      : exitDirection === 1 ? -exitDistance * 0.72 : exitDistance * 0.72;
     const exitX = horizontalDominant
-      ? direction === 1 ? -exitDistance : exitDistance
+      ? exitDirection === 1 ? -exitDistance : exitDistance
       : Math.max(-exitDistance * 0.24, Math.min(exitDistance * 0.24, currentVector.x + velocity.x * 68));
     setIsDragging(false);
     setIsArriving(false);
@@ -210,7 +211,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     setIsAnimating(true);
     renderDragVector({ x: exitX, y: exitY }, true);
     if (shouldCelebrate) celebrateSwipe();
-    finishExit(direction, duration);
+    finishExit(advanceDirection, duration);
   };
 
   const step = (direction: number) => swipeCard(direction);
@@ -292,7 +293,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
         : (projectedVector.y < 0 || (projectedVector.y === 0 && velocity.y < 0) ? 1 : -1);
       // Every physical swipe advances the storytelling deck, regardless of the release direction.
       // Dedicated keyboard/button controls retain their previous/next semantics.
-      swipeCard(1, velocity, vector, true);
+      swipeCard(direction, velocity, vector, true, 1);
       return;
     }
     velocityRef.current = ZERO_VECTOR;

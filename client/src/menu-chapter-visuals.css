@@ -22,8 +22,8 @@
 
 /* Unified photo chapter: one real image, no gradient or photographic filter, with printed labels on top. */
 .menu-page .menu-card-grid .menu-chapter-break{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.46fr);gap:clamp(20px,4vw,56px);align-items:end;min-height:clamp(375px,33vw,492px);padding:clamp(28px,4vw,58px);overflow:hidden;background:var(--maroon-deep);isolation:isolate}
-.menu-page .menu-chapter-break__image{position:absolute!important;z-index:0!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;filter:none!important;transform:none!important;transition:transform 620ms cubic-bezier(.19,.89,.32,1)!important}
-.menu-page .menu-chapter-break:hover .menu-chapter-break__image,.menu-page .menu-chapter-break:focus-within .menu-chapter-break__image{filter:none!important;transform:scale(1.035)!important}
+.menu-page .menu-chapter-break__image{position:absolute!important;z-index:0!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;filter:none!important;transform:none!important;transition:none!important}
+.menu-page .menu-chapter-break:hover .menu-chapter-break__image,.menu-page .menu-chapter-break:focus-within .menu-chapter-break__image{filter:none!important;transform:none!important}
 .menu-page .menu-chapter-break__veil{display:none!important}
 .menu-page .menu-chapter-break:after{display:none!important}
 .menu-page .menu-chapter-break__body,.menu-page .menu-chapter-break__aside{position:relative;z-index:2;align-self:end}

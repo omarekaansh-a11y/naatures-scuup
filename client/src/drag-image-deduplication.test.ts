@@ -8,11 +8,12 @@ const printStyles = readFileSync(resolve(process.cwd(), "client/src/tactile-prin
 const sequenceVerifier = readFileSync(resolve(process.cwd(), "scripts/verify-drag-sequence.mjs"), "utf8");
 
 describe("pasta image placement", () => {
-  it("reserves the pasta asset for the circular map layer and excludes it from Drag It", () => {
-    expect(home).not.toContain("Screenshot(109)_b4ce8442.png");
+  it("reserves green pasta for the circular map layer and keeps red pasta in Drag It", () => {
+    expect(home).toContain("Screenshot(109)_b4ce8442.png");
+    expect(home).not.toContain("Screenshot(108)_6acee474.png");
     expect(map).toContain("visit-map__material-image");
-    expect(printStyles).toContain("Screenshot(109)_b4ce8442.png");
+    expect(printStyles).toContain("Screenshot(108)_6acee474.png");
     expect(printStyles).toContain("border-radius:50%");
-    expect(sequenceVerifier).toContain("[1, 2, 3, 4, 5, 1]");
+    expect(sequenceVerifier).toContain("[1, 2, 3, 4, 5, 6, 1]");
   });
 });

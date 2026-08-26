@@ -2,9 +2,9 @@
  * Style reminder — Mall Road Monograph: the Full Menu remains a calm reading room where every category opens as a unique, image-backed editorial chapter.
  * Dish notes are concise menu descriptions and the editorial images are restaurant-specific food visuals.
  */
-import { ArrowDownRight, ChevronDown, Leaf, MapPin, Search } from "lucide-react";
+import { ArrowDownRight, ChevronDown, ChevronLeft, ChevronRight, Leaf, MapPin, Search } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { Link } from "wouter";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -83,7 +83,7 @@ const chapterStyles = `
 `;
 
 const browserStyles = `
-  .menu-browser{border-top:1px solid rgba(99,27,43,.18);padding-top:28px;margin-top:28px}.menu-conveyor{position:relative;overflow:hidden;margin:4px -8.5vw 0;padding:0 8.5vw 12px;mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%)}.menu-conveyor__track{display:flex;width:max-content;will-change:transform;animation:menuConveyor 44s linear infinite}.menu-conveyor__set{display:flex;flex:none;gap:9px;padding-right:9px}.menu-conveyor:hover .menu-conveyor__track,.menu-conveyor:focus-within .menu-conveyor__track{animation-play-state:paused}.menu-filter{border:1px solid rgba(99,27,43,.13);border-radius:999px;background:#f0eddf;color:var(--maroon-deep);padding:12px 17px;white-space:nowrap;font:800 10px/1 Manrope,sans-serif;letter-spacing:.03em;cursor:pointer;transition:transform .18s ease,background .18s ease,color .18s ease}.menu-filter:hover{transform:translateY(-1px)}.menu-filter:active{transform:scale(.97)}.menu-filter:focus-visible{outline:2px solid var(--mango);outline-offset:3px}.menu-filter[data-active="true"]{background:var(--maroon);color:var(--cream);box-shadow:0 8px 18px rgba(99,27,43,.16)}@keyframes menuConveyor{to{transform:translateX(-50%)}}.menu-browser__tools{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:9px;align-items:center}.menu-search{display:flex;align-items:center;gap:11px;border:1px solid rgba(99,27,43,.28);background:rgba(255,255,255,.25);padding:0 15px;min-height:50px}.menu-search input{width:100%;border:0;outline:0;background:transparent;color:var(--maroon-deep);font:500 13px/1.3 Manrope,sans-serif}.menu-search input::placeholder{color:rgba(45,31,34,.55)}.menu-sort{position:relative;display:flex;align-items:center;gap:8px;color:var(--maroon-deep);font:800 9px/1 Manrope,sans-serif;letter-spacing:.07em;text-transform:uppercase}.menu-sort select{appearance:none;border:1px solid rgba(99,27,43,.28);background:transparent;border-radius:0;padding:16px 34px 16px 14px;color:var(--maroon-deep);font:800 10px/1 Manrope,sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}.menu-sort svg{position:absolute;right:11px;pointer-events:none}.menu-browser__result{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(99,27,43,.16);padding:21px 0 16px;color:var(--maroon);font:800 9px/1 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase}.menu-empty{padding:58px 0 72px;border-bottom:1px solid rgba(99,27,43,.16);color:var(--maroon-deep)}.menu-empty h2{font:500 clamp(34px,5vw,72px)/.88 'Cormorant Garamond',serif;margin:0}.menu-empty p{font:500 13px/1.6 Manrope,sans-serif;max-width:380px;margin:14px 0 0}.menu-page-category--browser{scroll-margin-top:110px}.menu-page-category--browser[hidden]{display:none}@media(prefers-reduced-motion:reduce){.menu-conveyor{overflow-x:auto;mask-image:none}.menu-conveyor__track{animation:none}.menu-conveyor__set[aria-hidden="true"]{display:none}}@media(max-width:640px){.menu-browser{padding-top:20px}.menu-conveyor{margin-left:-25px;margin-right:-25px;padding-left:25px;padding-right:25px}.menu-filter{font-size:8px;padding:11px 14px}.menu-browser__tools{grid-template-columns:1fr}.menu-sort{justify-content:space-between}.menu-sort select{width:100%;min-height:48px}.menu-search{min-height:54px}.menu-browser__result{font-size:8px}.menu-page-category--browser ol{margin-top:18px}.menu-page-category--browser li p{font-size:9px!important}}
+  .menu-browser{border-top:1px solid rgba(99,27,43,.18);padding-top:28px;margin-top:28px}.menu-conveyor-shell{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:8px;align-items:center;margin:4px -8.5vw 0}.menu-conveyor{position:relative;overflow-x:auto;margin:0;padding:0 0 12px;cursor:grab;scrollbar-width:none;touch-action:pan-y;mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%)}.menu-conveyor::-webkit-scrollbar{display:none}.menu-conveyor[data-dragging="true"]{cursor:grabbing;user-select:none}.menu-conveyor[data-dragging="true"] .menu-conveyor__track{animation-play-state:paused}.menu-conveyor__track{display:flex;width:max-content;will-change:transform;animation:menuConveyor 44s linear infinite}.menu-conveyor__set{display:flex;flex:none;gap:9px;padding-right:9px}.menu-conveyor-nav{display:grid;place-items:center;width:38px;height:38px;padding:0;border:1px solid rgba(101,27,43,.36);border-radius:50%;background:var(--cream);color:var(--maroon);box-shadow:3px 3px 0 rgba(101,27,43,.18);cursor:pointer;transition:transform .16s var(--ease-out),background .16s var(--ease-out),color .16s var(--ease-out)}.menu-conveyor-nav:hover{background:var(--print-lime);color:var(--print-ink);transform:translateY(-2px)}.menu-conveyor-nav:active{transform:scale(.94)}.menu-conveyor-nav:focus-visible{outline:2px solid var(--maroon);outline-offset:3px}.menu-filter{border:1px solid rgba(99,27,43,.13);border-radius:999px;background:#f0eddf;color:var(--maroon-deep);padding:12px 17px;white-space:nowrap;font:800 10px/1 Manrope,sans-serif;letter-spacing:.03em;cursor:pointer;transition:transform .18s ease,background .18s ease,color .18s ease}.menu-filter:hover{transform:translateY(-1px)}.menu-filter:active{transform:scale(.97)}.menu-filter:focus-visible{outline:2px solid var(--mango);outline-offset:3px}.menu-filter[data-active="true"]{background:var(--maroon);color:var(--cream);box-shadow:0 8px 18px rgba(99,27,43,.16)}@keyframes menuConveyor{to{transform:translateX(-50%)}}.menu-browser__tools{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:9px;align-items:center}.menu-search{display:flex;align-items:center;gap:11px;border:1px solid rgba(99,27,43,.28);background:rgba(255,255,255,.25);padding:0 15px;min-height:50px}.menu-search input{width:100%;border:0;outline:0;background:transparent;color:var(--maroon-deep);font:500 13px/1.3 Manrope,sans-serif}.menu-search input::placeholder{color:rgba(45,31,34,.55)}.menu-sort{position:relative;display:flex;align-items:center;gap:8px;color:var(--maroon-deep);font:800 9px/1 Manrope,sans-serif;letter-spacing:.07em;text-transform:uppercase}.menu-sort select{appearance:none;border:1px solid rgba(99,27,43,.28);background:transparent;border-radius:0;padding:16px 34px 16px 14px;color:var(--maroon-deep);font:800 10px/1 Manrope,sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}.menu-sort svg{position:absolute;right:11px;pointer-events:none}.menu-browser__result{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(99,27,43,.16);padding:21px 0 16px;color:var(--maroon);font:800 9px/1 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase}.menu-empty{padding:58px 0 72px;border-bottom:1px solid rgba(99,27,43,.16);color:var(--maroon-deep)}.menu-empty h2{font:500 clamp(34px,5vw,72px)/.88 'Cormorant Garamond',serif;margin:0}.menu-empty p{font:500 13px/1.6 Manrope,sans-serif;max-width:380px;margin:14px 0 0}.menu-page-category--browser{scroll-margin-top:110px}.menu-page-category--browser[hidden]{display:none}@media(prefers-reduced-motion:reduce){.menu-conveyor{mask-image:none}.menu-conveyor__track{animation:none}.menu-conveyor__set[aria-hidden="true"]{display:none}}@media(max-width:640px){.menu-browser{padding-top:20px}.menu-conveyor-shell{grid-template-columns:34px minmax(0,1fr) 34px;gap:4px;margin-left:-25px;margin-right:-25px}.menu-conveyor{padding-left:0;padding-right:0;mask-image:none}.menu-conveyor-nav{width:31px;height:31px}.menu-filter{font-size:8px;padding:11px 14px}.menu-browser__tools{grid-template-columns:1fr}.menu-sort{justify-content:space-between}.menu-sort select{width:100%;min-height:48px}.menu-search{min-height:54px}.menu-browser__result{font-size:8px}.menu-page-category--browser ol{margin-top:18px}.menu-page-category--browser li p{font-size:9px!important}}
 `;
 
 const priceBrowserStyles = `
@@ -103,15 +103,24 @@ export default function MenuPage() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("recommended");
   const reduceMotion = useReducedMotion();
-  const selectMobileGroup = (slug: string) => {
-    setActiveGroup(slug);
-    if (!window.matchMedia("(max-width: 640px)").matches) return;
-    window.requestAnimationFrame(() => {
-      const results = document.getElementById("menu-results");
-      results?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-      results?.focus({ preventScroll: true });
-    });
+  const conveyorRef = useRef<HTMLDivElement>(null);
+  const conveyorDrag = useRef({ active: false, startX: 0, startScrollLeft: 0 });
+  const focusResultsAfterGroupChange = useRef(false);
+  const focusMenuResults = () => {
+    const results = document.getElementById("menu-results");
+    results?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    results?.focus({ preventScroll: true });
   };
+  const selectMobileGroup = (slug: string) => {
+    focusResultsAfterGroupChange.current = window.matchMedia("(max-width: 640px)").matches;
+    setActiveGroup(slug);
+    if (focusResultsAfterGroupChange.current) window.setTimeout(focusMenuResults, 80);
+  };
+  useEffect(() => {
+    if (!focusResultsAfterGroupChange.current) return;
+    focusResultsAfterGroupChange.current = false;
+    window.requestAnimationFrame(focusMenuResults);
+  }, [activeGroup, reduceMotion]);
   useEffect(() => {
     if (window.location.hash !== "#ice-creams") return;
     const destinationTimer = window.setTimeout(() => {
@@ -135,6 +144,24 @@ export default function MenuPage() {
     return [...flatItems].sort((a, b) => (order.get(a.dish) ?? 0) - (order.get(b.dish) ?? 0));
   }, [activeGroup, normalizedQuery, sort]);
   const visibleItemCount = visibleItems.length;
+  const nudgeConveyor = (direction: number) => conveyorRef.current?.scrollBy({ left: direction * Math.max(280, conveyorRef.current.clientWidth * 0.72), behavior: reduceMotion ? "auto" : "smooth" });
+  const startConveyorDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    if ((event.target as HTMLElement).closest("button")) return;
+    const conveyor = event.currentTarget;
+    conveyorDrag.current = { active: true, startX: event.clientX, startScrollLeft: conveyor.scrollLeft };
+    conveyor.dataset.dragging = "true";
+    conveyor.setPointerCapture(event.pointerId);
+  };
+  const moveConveyorDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!conveyorDrag.current.active) return;
+    event.currentTarget.scrollLeft = conveyorDrag.current.startScrollLeft - (event.clientX - conveyorDrag.current.startX);
+  };
+  const endConveyorDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    conveyorDrag.current.active = false;
+    delete event.currentTarget.dataset.dragging;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+  };
   return <div className="site-shell menu-page-shell">
     <RouteMeta title="Full Digital Menu | Naatures Scuup, Kanpur" description="Browse 204 vegetarian dishes, mango ice cream, desserts, shakes and vegan options at Naatures Scuup on Mall Road, Kanpur." />
     <main className="menu-page print-paper" id="main-content" data-page-top="true">
@@ -155,10 +182,14 @@ export default function MenuPage() {
       <section className="menu-browser-block section-pad maximalist-surface maximalist-surface--sage layered-image-depth layered-image-depth--menu" aria-label="Browse Full Menu chapters">
         <div className="maximalist-surface__forms" aria-hidden="true" />
         <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
-          <div className="menu-conveyor" role="group" aria-label="Menu groups — hover or focus to pause the moving categories">
-            <div className="menu-conveyor__track">
-              {[false, true].map((isDuplicate) => <div className="menu-conveyor__set" key={isDuplicate ? "duplicate" : "primary"} aria-hidden={isDuplicate ? "true" : undefined}>{menuGroups.map((group, groupIndex) => <button key={`${isDuplicate ? "duplicate" : "primary"}-${group.slug}`} className="menu-filter menu-filter--indexed" data-active={activeGroup === group.slug} onClick={() => selectMobileGroup(group.slug)} aria-pressed={activeGroup === group.slug} tabIndex={isDuplicate ? -1 : undefined}><span>{String(groupIndex).padStart(2, "0")}</span><b>{group.title}</b></button>)}</div>)}
+          <div className="menu-conveyor-shell" role="group" aria-label="Menu chapter navigation">
+            <button className="menu-conveyor-nav" type="button" onClick={() => nudgeConveyor(-1)} aria-label="Show previous menu chapters"><ChevronLeft size={17} /></button>
+            <div ref={conveyorRef} className="menu-conveyor" role="group" aria-label="Drag to browse menu chapters" onPointerDown={startConveyorDrag} onPointerMove={moveConveyorDrag} onPointerUp={endConveyorDrag} onPointerCancel={endConveyorDrag}>
+              <div className="menu-conveyor__track">
+                {[false, true].map((isDuplicate) => <div className="menu-conveyor__set" key={isDuplicate ? "duplicate" : "primary"} aria-hidden={isDuplicate ? "true" : undefined}>{menuGroups.map((group, groupIndex) => <button key={`${isDuplicate ? "duplicate" : "primary"}-${group.slug}`} className="menu-filter menu-filter--indexed" data-active={activeGroup === group.slug} onClick={() => selectMobileGroup(group.slug)} aria-pressed={activeGroup === group.slug} tabIndex={isDuplicate ? -1 : undefined}><span>{String(groupIndex).padStart(2, "0")}</span><b>{group.title}</b></button>)}</div>)}
+              </div>
             </div>
+            <button className="menu-conveyor-nav" type="button" onClick={() => nudgeConveyor(1)} aria-label="Show next menu chapters"><ChevronRight size={17} /></button>
           </div>
           <div className="menu-browser__tools"><label className="menu-search"><Search size={19} strokeWidth={1.6} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search dosa, pizza, ice cream, shakes…" aria-label="Search dishes" inputMode="search" enterKeyHint="search" autoComplete="off" spellCheck={false} /></label><label className="menu-sort">Sort by <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort menu items"><option value="recommended">Recommended</option><option value="az">A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select><ChevronDown size={14} /></label></div>
           <div id="menu-results" className="menu-browser__result" aria-live="polite" aria-atomic="true" tabIndex={-1}><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
