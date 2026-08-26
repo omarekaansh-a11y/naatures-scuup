@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <div className="site-shell">
       <RouteMeta title="Naatures Scuup | Vegetarian Restaurant on Mall Road, Kanpur" description="Visit Naatures Scuup on Mall Road, Kanpur for vegetarian food, mango ice cream, desserts, shakes and vegan options. Explore our digital menu." />
-      <main id="top">
+      <main id="main-content" data-page-top="true">
         <IceCreamOrbit />
 
         <section className="hero hero--frontispiece hero--after-story" aria-labelledby="hero-title">

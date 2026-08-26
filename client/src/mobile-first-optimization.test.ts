@@ -4,6 +4,10 @@ import { resolve } from "node:path";
 
 const mobileStyles = readFileSync(resolve(process.cwd(), "client/src/mobile-first.css"), "utf8");
 const orbit = readFileSync(resolve(process.cwd(), "client/src/components/IceCreamOrbit.tsx"), "utf8");
+const app = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
+const enhancer = readFileSync(resolve(process.cwd(), "client/src/components/MobileExperienceEnhancer.tsx"), "utf8");
+const menu = readFileSync(resolve(process.cwd(), "client/src/pages/MenuPage.tsx"), "utf8");
+const dragCanvas = readFileSync(resolve(process.cwd(), "client/src/components/DragFoodCanvas.tsx"), "utf8");
 
 describe("mobile-first optimization safeguards", () => {
   it("keeps navigation usable through the mobile opening sequence and reserves safe areas", () => {
@@ -18,5 +22,24 @@ describe("mobile-first optimization safeguards", () => {
     expect(orbit).toContain("transform:scale(3.1)");
     expect(orbit).toContain(".ice-orbit__story,.ice-orbit__checkpoint-rail{display:none}");
     expect(orbit).toContain('aria-label="Scroll down to continue"');
+  });
+
+  it("adds app-style progress, return navigation, touch resilience, low-motion fallbacks, and menu input guidance", () => {
+    expect(app).toContain("MobileExperienceEnhancer");
+    expect(app).toContain('href="#main-content"');
+    expect(enhancer).toContain("mobile-scroll-progress");
+    expect(enhancer).toContain("mobile-quick-top");
+    expect(enhancer).toContain("--mobile-scroll-progress");
+    expect(mobileStyles).toContain("touch-action: manipulation");
+    expect(mobileStyles).toContain("content-visibility: auto");
+    expect(mobileStyles).toContain("prefers-reduced-data");
+    expect(mobileStyles).toContain("mobile-skip-link");
+    expect(mobileStyles).toContain("-webkit-overflow-scrolling: touch");
+    expect(mobileStyles).toContain("drag-it-mobile-guide--visible");
+    expect(menu).toContain('inputMode="search"');
+    expect(menu).toContain('enterKeyHint="search"');
+    expect(menu).toContain('aria-live="polite"');
+    expect(dragCanvas).toContain("naatures-scuup-mobile-drag-guide");
+    expect(dragCanvas).toContain("Swipe a card in any direction");
   });
 });

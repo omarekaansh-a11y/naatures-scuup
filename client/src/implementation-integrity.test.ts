@@ -25,7 +25,7 @@ describe("implementation integrity", () => {
   });
 
   it("preserves direct drag, keyboard, touch, and accessible image behavior", () => {
-    expect(drag).toContain("onPointerDown={handlePointerDown}");
+    expect(drag).toContain("dismissMobileGestureGuide(); handlePointerDown(event);");
     expect(drag).toContain("onPointerMove={handlePointerMove}");
     expect(drag).toContain("onKeyDown={handleKeyDown}");
     expect(drag).toContain('tabIndex={0}');

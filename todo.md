@@ -1062,3 +1062,15 @@
 - [x] Improve high-priority mobile sizing, spacing, safe-area handling, and touch affordances without weakening desktop presentation.
 - [x] Replace browser favicon assets using the exact visual logo source shown in the header.
 - [x] Validate real-world phone breakpoints, navigation, favicon delivery, accessibility basics, and production build before publishing.
+
+# Expanded Mobile-App Optimization Pass
+- [x] Audit remaining mobile navigation, touch, loading, readability, and accessibility opportunities.
+- [x] Add a mobile scroll-progress indicator for long browsing sessions.
+- [x] Add first-visit tap guidance for horizontal mobile interactions.
+- [x] Improve touch feedback and interaction states on mobile controls.
+- [x] Improve menu filtering efficiency and clarity on mobile.
+- [x] Add mobile-friendly focus and text-selection safeguards.
+- [x] Tune mobile viewport, safe-area, and keyboard behavior.
+- [x] Add low-data and reduced-motion presentation safeguards.
+- [x] Improve long-page discoverability and return-to-top behavior on mobile.
+- [x] Validate all added mobile improvements across compact and standard phone widths.

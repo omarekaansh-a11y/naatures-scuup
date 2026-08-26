@@ -127,7 +127,7 @@ export default function MenuPage() {
   const visibleItemCount = visibleItems.length;
   return <div className="site-shell menu-page-shell">
     <RouteMeta title="Full Digital Menu | Naatures Scuup, Kanpur" description="Browse 204 vegetarian dishes, mango ice cream, desserts, shakes and vegan options at Naatures Scuup on Mall Road, Kanpur." />
-    <main className="menu-page" id="top">
+    <main className="menu-page" id="main-content" data-page-top="true">
       <style>{chapterStyles}</style>
       <style>{browserStyles}</style>
       <style>{priceBrowserStyles}</style>
@@ -145,8 +145,8 @@ export default function MenuPage() {
               {[false, true].map((isDuplicate) => <div className="menu-conveyor__set" key={isDuplicate ? "duplicate" : "primary"} aria-hidden={isDuplicate ? "true" : undefined}>{menuGroups.map((group, groupIndex) => <button key={`${isDuplicate ? "duplicate" : "primary"}-${group.slug}`} className="menu-filter menu-filter--indexed" data-active={activeGroup === group.slug} onClick={() => setActiveGroup(group.slug)} aria-pressed={activeGroup === group.slug} tabIndex={isDuplicate ? -1 : undefined}><span>{String(groupIndex).padStart(2, "0")}</span><b>{group.title}</b></button>)}</div>)}
             </div>
           </div>
-          <div className="menu-browser__tools"><label className="menu-search"><Search size={19} strokeWidth={1.6} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search dosa, pizza, ice cream, shakes…" aria-label="Search dishes" /></label><label className="menu-sort">Sort by <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort menu items"><option value="recommended">Recommended</option><option value="az">A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select><ChevronDown size={14} /></label></div>
-          <div className="menu-browser__result"><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
+          <div className="menu-browser__tools"><label className="menu-search"><Search size={19} strokeWidth={1.6} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search dosa, pizza, ice cream, shakes…" aria-label="Search dishes" inputMode="search" enterKeyHint="search" autoComplete="off" spellCheck={false} /></label><label className="menu-sort">Sort by <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort menu items"><option value="recommended">Recommended</option><option value="az">A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select><ChevronDown size={14} /></label></div>
+          <div className="menu-browser__result" aria-live="polite" aria-atomic="true"><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
         </div>
       </section>
       <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">

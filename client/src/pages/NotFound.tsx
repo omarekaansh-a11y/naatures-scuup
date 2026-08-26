@@ -5,7 +5,7 @@ import { RouteMeta } from "@/components/RouteMeta";
 
 export default function NotFound() {
   return (
-    <main className="not-found-page">
+    <main id="main-content" className="not-found-page">
       <RouteMeta title="Page Not Found | Naatures Scuup" description="This Naatures Scuup page could not be found. Browse the vegetarian menu or get directions to the Mall Road restaurant." noIndex />
       <span className="not-found-page__number" aria-hidden="true">404</span>
       <section className="not-found-page__content">

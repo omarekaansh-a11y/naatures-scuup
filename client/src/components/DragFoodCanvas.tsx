@@ -70,6 +70,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   const [dogHappy, setDogHappy] = useState(false);
   const [exitDuration, setExitDuration] = useState(280);
   const [loadedSources, setLoadedSources] = useState<Set<string>>(() => new Set());
+  const [showMobileGestureGuide, setShowMobileGestureGuide] = useState(false);
   const pointerStartRef = useRef<DragVector>(ZERO_VECTOR);
   const lastMoveRef = useRef({ x: 0, y: 0, time: 0 });
   const dragVectorRef = useRef<DragVector>(ZERO_VECTOR);
@@ -93,6 +94,20 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
     if (happyDogTimerRef.current !== null) window.clearTimeout(happyDogTimerRef.current);
     if (renderFrameRef.current !== null) window.cancelAnimationFrame(renderFrameRef.current);
   }, []);
+
+  useEffect(() => {
+    if (!window.matchMedia("(max-width: 640px) and (pointer: coarse)").matches) return;
+    if (window.sessionStorage.getItem("naatures-scuup-mobile-drag-guide") === "seen") return;
+    setShowMobileGestureGuide(true);
+    const timer = window.setTimeout(() => setShowMobileGestureGuide(false), 4600);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const dismissMobileGestureGuide = () => {
+    if (!showMobileGestureGuide) return;
+    window.sessionStorage.setItem("naatures-scuup-mobile-drag-guide", "seen");
+    setShowMobileGestureGuide(false);
+  };
 
   const greetDog = () => {
     setDogReacting(false);
@@ -309,6 +324,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
 
         <div className="drag-it-playground">
           <p className="drag-it-hint"><ArrowLeft size={14} /> Drag me <ArrowRight size={14} /></p>
+          <p className={`drag-it-mobile-guide${showMobileGestureGuide ? " drag-it-mobile-guide--visible" : ""}`} aria-live="polite">Swipe a card in any direction</p>
           <div className="drag-it-stack-shell">
             <div
               className={`drag-it-stack ${isDragging ? "drag-it-stack--dragging" : ""} ${isAnimating ? "drag-it-stack--animating" : ""} ${isArriving ? "drag-it-stack--arriving" : ""}`}
@@ -316,7 +332,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
               role="region"
               aria-label="A stack of Naatures Scuup food photographs. Drag in any direction, or use the arrow keys to reveal another food moment."
               aria-busy={loadedSources.size < items.length}
-              onPointerDown={handlePointerDown}
+              onPointerDown={(event) => { dismissMobileGestureGuide(); handlePointerDown(event); }}
               onPointerMove={handlePointerMove}
               onPointerUp={endPointer}
               onPointerCancel={(event) => endPointer(event, true)}

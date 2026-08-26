@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 /** Style reminder — Mall Road Monograph: Home and Full Menu remain still beneath a single deep-maroon diagonal navigation sweep. */
 import ErrorBoundary from "./components/ErrorBoundary";
+import { MobileExperienceEnhancer } from "./components/MobileExperienceEnhancer";
 import { SiteHeader } from "./components/SiteHeader";
 import { StructuralStyles } from "./components/StructuralStyles";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -21,6 +22,7 @@ function Router() {
 
   return (
     <>
+      <a className="mobile-skip-link" href="#main-content">Skip to page content</a>
       <SiteHeader paper={location === "/menu"} />
       <Switch location={location}>
         <Route path="/" component={Home} />
@@ -36,7 +38,7 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
-        <TooltipProvider><StructuralStyles /><Toaster /><Router /></TooltipProvider>
+        <TooltipProvider><StructuralStyles /><Toaster /><Router /><MobileExperienceEnhancer /></TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
