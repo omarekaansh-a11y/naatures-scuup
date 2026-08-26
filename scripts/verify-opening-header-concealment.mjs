@@ -55,7 +55,17 @@ const mobileDuringSequence = await mobilePage.evaluate(() => {
 if (mobileDuringSequence.opacity < 0.95 || mobileDuringSequence.pointerEvents === "none" || mobileDuringSequence.heroActive !== "true") {
   throw new Error(`Header should remain accessible during the mobile opening sequence: ${JSON.stringify(mobileDuringSequence)}`);
 }
+await mobilePage.evaluate(() => window.scrollTo({ top: Math.round(window.innerHeight * 1.3), behavior: "auto" }));
+await mobilePage.waitForTimeout(300);
+const mobileAfterAdvance = await mobilePage.evaluate(() => {
+  const header = document.querySelector(".site-header");
+  if (!(header instanceof HTMLElement)) throw new Error("Mobile site header is missing after scroll.");
+  return { opacity: Number.parseFloat(getComputedStyle(header).opacity), pointerEvents: getComputedStyle(header).pointerEvents, top: Math.round(header.getBoundingClientRect().top) };
+});
+if (mobileAfterAdvance.opacity < 0.95 || mobileAfterAdvance.pointerEvents === "none" || mobileAfterAdvance.top !== 0) {
+  throw new Error(`Header should remain fixed and usable after mobile scroll: ${JSON.stringify(mobileAfterAdvance)}`);
+}
 await mobilePage.close();
 
-console.log(`Opening header behavior verified: ${JSON.stringify({ duringSequence, afterSequence, mobileDuringSequence })}`);
+console.log(`Opening header behavior verified: ${JSON.stringify({ duringSequence, afterSequence, mobileDuringSequence, mobileAfterAdvance })}`);
 await browser.close();

@@ -21,9 +21,9 @@ describe("site recovery and social metadata", () => {
     expect(documentHead).toContain('rel="canonical"');
     expect(documentHead).toContain('property="og:image"');
     expect(documentHead).toContain('name="twitter:image"');
-    expect(documentHead).toContain('href="/favicon.png?v=2"');
-    expect(documentHead).toContain('href="/favicon.ico?v=2"');
-    expect(documentHead).toContain('href="/apple-touch-icon.png?v=2"');
+    expect(documentHead).toContain('href="/favicon.png?v=3"');
+    expect(documentHead).toContain('href="/favicon.ico?v=3"');
+    expect(documentHead).toContain('href="/apple-touch-icon.png?v=3"');
     expect(documentHead).toContain('"@type": "Restaurant"');
     expect(documentHead).toContain('"openingHoursSpecification"');
     expect(documentHead).toContain('"dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"]');

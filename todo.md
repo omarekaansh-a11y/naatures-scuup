@@ -1055,3 +1055,10 @@
 - [x] Add an accessible universal scroll-arrow control that advances the page from the opening hero.
 - [x] Keep the global header available on mobile throughout the opening sequence while retaining the desktop concealment behavior.
 - [x] Verify mobile interaction, desktop preservation, and production readiness before publishing.
+
+# Comprehensive Mobile-First Optimization
+- [x] Audit phone layouts, touch controls, navigation, and content density across the Home, Full Menu, and error page.
+- [x] Keep the mobile header consistently visible, reachable, and clear through all scrolling states and opening hero playback.
+- [x] Improve high-priority mobile sizing, spacing, safe-area handling, and touch affordances without weakening desktop presentation.
+- [x] Replace browser favicon assets using the exact visual logo source shown in the header.
+- [x] Validate real-world phone breakpoints, navigation, favicon delivery, accessibility basics, and production build before publishing.

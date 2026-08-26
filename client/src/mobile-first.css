@@ -1,0 +1,45 @@
+/* Mobile-first ergonomics: persistent, legible navigation and comfortable touch interactions on compact phones. */
+@media (max-width: 900px) {
+  body .site-header,
+  html:root[data-ice-hero-active="true"] body .site-header {
+    z-index: 100;
+    height: calc(64px + env(safe-area-inset-top));
+    min-height: 64px;
+    padding: env(safe-area-inset-top) 16px 0;
+    background: rgb(244 240 232 / 94%);
+    color: var(--maroon-deep);
+    box-shadow: 0 1px 0 rgb(53 16 26 / 10%);
+    backdrop-filter: blur(14px);
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  body .site-header .site-top-control,
+  body .site-header .site-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  body .site-header .site-menu-toggle { padding-inline: 0; }
+  body .site-drawer { z-index: 95 !important; padding-top: calc(85px + env(safe-area-inset-top)) !important; }
+  body .mobile-visit-dock { z-index: 90; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); }
+  body .site-footer { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  body .menu-filter { display: inline-flex; align-items: center; min-height: 44px; }
+  body .menu-search,
+  body .menu-sort select { min-height: 52px; }
+  body .menu-search input { font-size: 16px; }
+  body .faq-list summary,
+  body .drawer-link { min-height: 48px; }
+}
+
+@media (max-width: 640px) {
+  body .site-header { padding-inline: 12px; }
+  body .site-header .brand-logo-link { width: 64px; min-width: 64px; height: 46px; }
+  body .site-header .site-header-actions { gap: 2px; margin-left: 3px; }
+  body .ice-orbit__scroll-button { bottom: calc(max(1.2rem, env(safe-area-inset-bottom)) + 4.75rem); }
+  body .menu-browser__tools { gap: 14px; }
+  body .menu-sort { gap: 10px; }
+  body .menu-dish-card footer { min-height: 44px; }
+}
