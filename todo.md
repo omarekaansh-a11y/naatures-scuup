@@ -1283,3 +1283,8 @@
 - [x] Restore and improve the intended Drag It lime ring-and-line composition while removing the unintended square and top-left line treatment.
 - [x] Replace broad boxed halftone coverage with sparse, naturally placed print accents that support individual moments without obscuring content.
 - [x] Validate the rebalanced Drag It treatment at desktop and mobile widths, add regression coverage, and publish the revision.
+
+# Halftone Wave Expansion
+- [x] Replace the current sparse halftone fragments with abundant, flowing wave-pattern halftone fields across key printed surfaces.
+- [x] Preserve readable copy, usable controls, and clean cinematic-sequence framing while scaling the halftone presence.
+- [x] Validate the expanded wave texture at desktop and mobile widths, update regression coverage, and publish the revision.
