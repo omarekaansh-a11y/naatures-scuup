@@ -969,3 +969,8 @@
 - [x] Make every mobile story card scale fluidly to the available viewport width without overflowing the video.
 - [x] Position left and right story cards with viewport-safe margins and preserve the central cup exclusion zone.
 - [x] Validate multiple mobile aspect ratios and retain the desktop composition before publishing.
+
+# Active Portrait Video Region Correction
+- [x] Map the usable grey portrait-video region independently from the full pinned screen.
+- [x] Anchor every mobile story card inside that usable region with device-aware scale and offsets.
+- [x] Verify the actual device proportion, central cup clearance, and desktop preservation before publishing.

@@ -55,12 +55,13 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).not.toContain("text-shadow:");
     expect(orbit).toContain('font-family:"Playfair Display",Georgia,serif');
     expect(orbit).toContain("font-family:Montserrat,ui-sans-serif,system-ui,sans-serif");
-    expect(orbit).toContain("width:clamp(8.75rem,40vw,15rem)");
-    expect(orbit).toContain("max-width:calc(50vw - 1.5rem)");
+    expect(orbit).toContain("--portrait-content-top:35svh");
+    expect(orbit).toContain("width:clamp(6.25rem,31vw,9.5rem)");
+    expect(orbit).toContain("max-width:calc(38vw - 1rem)");
     expect(orbit).toContain("env(safe-area-inset-left)");
     expect(orbit).toContain("env(safe-area-inset-right)");
-    expect(orbit).toContain("top:clamp(4.5rem,16svh,8.5rem)");
-    expect(orbit).toContain("bottom:max(3.5rem,14svh,env(safe-area-inset-bottom))");
+    expect(orbit).toContain("top:clamp(8.5rem,var(--portrait-content-top),17.5rem)");
+    expect(orbit).toContain("top:clamp(11rem,42svh,20.5rem)");
     expect(orbit).toContain("text-wrap:pretty");
   });
 
