@@ -1,5 +1,6 @@
 /* Style reminder — Mall Road Monograph frontispiece: dark immersive food backdrop, left-aligned editorial type, cream table ledger, mango route-line, and maroon terrain contour. */
 .hero--frontispiece { min-height: max(760px, 100svh); display: block; padding: 0; overflow: hidden; }
+.hero--after-story,.hero--after-story .hero-frontispiece__stage{min-height:clamp(680px,88svh,900px)}.hero--after-story{border-top:1px solid rgb(244 240 232 / 10%)}
 .hero--frontispiece .hero-image { background-position: center 52%; transform: scale(1.045); }
 .hero--frontispiece .hero-tint { background: linear-gradient(90deg, rgb(22 7 12 / 92%) 0%, rgb(39 10 19 / 77%) 37%, rgb(32 13 19 / 31%) 69%, rgb(22 7 12 / 12%) 100%), linear-gradient(0deg, rgb(29 8 14 / 85%) 0%, rgb(29 8 14 / 28%) 35%, transparent 68%); }
 .hero-horizon { position: absolute; z-index: 0; left: 0; bottom: -1px; width: 79%; height: 43%; background: linear-gradient(118deg, rgb(42 10 20 / 96%), rgb(91 22 39 / 84%)); clip-path: polygon(0 29%, 21% 14%, 43% 34%, 58% 18%, 76% 50%, 100% 38%, 100% 100%, 0 100%); pointer-events: none; }

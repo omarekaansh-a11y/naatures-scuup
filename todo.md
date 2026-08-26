@@ -1000,3 +1000,9 @@
 - [x] Audit all public content and metadata for display-only wording.
 - [x] Replace every display-only reference with natural restaurant language.
 - [x] Verify no public display-only wording remains before publishing.
+
+# Hero-First Ice-Cream Scrollytelling
+- [x] Promote the mango ice-cream sequence to the first opening section and move the editorial restaurant introduction directly after it.
+- [x] Adapt the sequence opening state so it functions as a clear branded hero on first load.
+- [x] Add discrete narrative checkpoints that never leave two story cards partially visible at once.
+- [x] Validate desktop and mobile first-load hierarchy, checkpoint timing, and video playback before publishing.

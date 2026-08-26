@@ -22,6 +22,7 @@ const readStory = () => page.evaluate(() => {
   return {
     top: Math.round(stage.getBoundingClientRect().top),
     cards: cards.map((card) => Math.round(Number.parseFloat(getComputedStyle(card).opacity) * 100) / 100),
+    activeCheckpoint: [...document.querySelectorAll(".ice-orbit__checkpoint")].findIndex((checkpoint) => checkpoint.getAttribute("data-active") === "true"),
   };
 });
 
@@ -33,10 +34,12 @@ async function inspectChapter(label, progress, expectedVisible) {
     const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
     window.scrollTo(0, top + travel * chapterProgress);
   }, progress);
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(700);
   const result = await readStory();
   if (Math.abs(result.top) > 2) throw new Error(`${label} chapter is not pinned: ${JSON.stringify(result)}`);
   if (result.cards[expectedVisible] < 0.55) throw new Error(`${label} chapter does not reveal the intended overlay: ${JSON.stringify(result)}`);
+  if (result.cards.filter((opacity) => opacity > 0.15).length !== 1) throw new Error(`${label} checkpoint shows overlapping story cards: ${JSON.stringify(result)}`);
+  if (result.activeCheckpoint !== expectedVisible) throw new Error(`${label} checkpoint rail does not match the visible story card: ${JSON.stringify(result)}`);
   await page.screenshot({ path: `/home/ubuntu/cinematic-story-${label}.png` });
   return { label, ...result };
 }

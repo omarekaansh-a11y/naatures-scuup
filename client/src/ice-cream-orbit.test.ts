@@ -67,7 +67,21 @@ describe("full-screen GSAP ice-cream sequence", () => {
 
   it("keeps the sequence before Drag It on Home", () => {
     expect(home).toContain("<IceCreamOrbit />");
+    expect(home.indexOf("<IceCreamOrbit />")).toBeLessThan(home.indexOf('className="hero hero--frontispiece hero--after-story"'));
+    expect(home).toContain('scrollToId("#food-canvas")');
     expect(home).not.toContain('className="story-section section-pad"');
+  });
+
+  it("uses discrete narrative checkpoints and non-overlapping story windows", () => {
+    expect(orbit).toContain("STORY_SNAP_POINTS");
+    expect(orbit).toContain("snapTo: STORY_SNAP_POINTS");
+    expect(orbit).toContain("getStoryCheckpoint");
+    expect(orbit).toContain("ice-orbit__checkpoint-rail");
+    expect(orbit).toContain("0.19, 0.22");
+    expect(orbit).toContain("0.25, 0.28");
+    expect(orbit).toContain("0.45, 0.48");
+    expect(orbit).toContain("0.52, 0.55");
+    expect(orbit).toContain("0.72, 0.75");
   });
 });
 

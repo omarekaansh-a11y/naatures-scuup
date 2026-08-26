@@ -46,7 +46,9 @@ export default function Home() {
     <div className="site-shell">
       <RouteMeta title="Naatures Scuup | Vegetarian Restaurant on Mall Road, Kanpur" description="Visit Naatures Scuup on Mall Road, Kanpur for vegetarian food, mango ice cream, desserts, shakes and vegan options. Explore our digital menu." />
       <main id="top">
-        <section className="hero hero--frontispiece" aria-labelledby="hero-title">
+        <IceCreamOrbit />
+
+        <section className="hero hero--frontispiece hero--after-story" aria-labelledby="hero-title">
           <div className="hero-image" role="img" aria-label="Original multi-cuisine vegetarian food background" />
           <div className="hero-tint" />
           <div className="hero-horizon" aria-hidden="true" />
@@ -70,12 +72,10 @@ export default function Home() {
             </aside>
           </div>
           <div className="hero-trust reveal-up delay-4" aria-label="Restaurant information"><span><Star size={14} fill="currentColor" /> 4.0</span><span>819 Google reviews</span><span>₹200–₹400 per person</span><span className="hero-hours"><Clock3 size={13} /> Mon, Tue, Thu–Sun · 11 AM–11 PM · Wed 10 AM–11 PM</span></div>
-          <button className="hero-scroll-cue reveal-up delay-4" type="button" onClick={() => scrollToId("#story")} aria-label="Scroll to the Naatures Scuup story"><span>Scroll to discover</span><i><ArrowDown size={16} strokeWidth={1.8} /></i></button>
+          <button className="hero-scroll-cue reveal-up delay-4" type="button" onClick={() => scrollToId("#food-canvas")} aria-label="Scroll to the Naatures Scuup food edit"><span>Continue to discover</span><i><ArrowDown size={16} strokeWidth={1.8} /></i></button>
         </section>
 
         <div className="craving-ribbon" aria-hidden="true"><div><span>Dosa</span><b>•</b><span>Paneer</span><b>•</b><span>Pizza</span><b>•</b><span>Chinese</span><b>•</b><span>Shakes</span><b>•</b><span>Ice cream</span><b>•</b><span>Dosa</span><b>•</b><span>Paneer</span><b>•</b><span>Pizza</span><b>•</b><span>Chinese</span><b>•</b><span>Shakes</span><b>•</b><span>Ice cream</span><b>•</b></div></div>
-
-        <IceCreamOrbit />
 
         <DragFoodCanvas items={foodCanvasItems} />
         <section className="food-menu-bridge" aria-label="Explore the full menu"><Link className="button button--cream" href="/menu">Explore the full menu <ArrowRight size={17} /></Link></section>
