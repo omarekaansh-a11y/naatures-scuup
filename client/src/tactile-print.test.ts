@@ -36,4 +36,11 @@ describe("tactile print visual system", () => {
     expect(reviews).toContain("reviews-section section-pad print-paper maximalist-surface maximalist-surface--sage");
     expect(reviews).toContain("review-card review-card--proof print-edge-boil print-edge-boil--rough maximalist-card");
   });
+
+  it("keeps Drag It’s restored ring-and-line gesture and uses clipped, local halftones instead of full-surface dot coverage", () => {
+    expect(printStyles).toContain(".drag-it-section.maximalist-drag .drag-it-playground:before");
+    expect(printStyles).toContain(".drag-it-section.maximalist-drag .drag-it-copy:after{display:none}");
+    expect(printStyles).toContain("clip-path:polygon");
+    expect(printStyles).not.toContain(".drag-it-section.maximalist-drag .drag-it-layout:before{position:absolute;z-index:-1;inset:7% 0 4%");
+  });
 });

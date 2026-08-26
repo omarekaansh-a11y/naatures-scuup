@@ -1278,3 +1278,8 @@
 - [x] Correct Drag It throw-direction behavior for right and downward swipes.
 - [x] Add accessible previous/next controls and pointer-drag scrolling to the Full Menu chapter conveyor.
 - [x] Verify desktop/mobile interaction, spacing, image uniqueness, texture contrast, ordered loop, and production build.
+
+# Drag It Composition and Halftone Rebalance
+- [x] Restore and improve the intended Drag It lime ring-and-line composition while removing the unintended square and top-left line treatment.
+- [x] Replace broad boxed halftone coverage with sparse, naturally placed print accents that support individual moments without obscuring content.
+- [x] Validate the rebalanced Drag It treatment at desktop and mobile widths, add regression coverage, and publish the revision.
