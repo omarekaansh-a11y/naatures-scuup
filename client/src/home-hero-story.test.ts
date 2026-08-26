@@ -12,9 +12,9 @@ describe("consolidated home story", () => {
     expect(home).toContain("100%");
     expect(home).toContain("204 DISHES");
     expect(home).toContain("Directions to Mall Road");
-    expect(home).toContain("FlowingSentenceDivider");
+    expect(home).toContain('<OrganicWaveDivider tone="cream-to-maroon" />');
     expect(home).not.toContain('className="craving-ribbon"');
     expect(home).not.toContain("One table.<br /><i>Every craving.</i>");
-    expect(home).toContain("Every table begins a little hungry.");
+    expect(home).not.toContain("Every table begins a little hungry.");
   });
 });

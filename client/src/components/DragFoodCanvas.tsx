@@ -305,7 +305,7 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
   };
 
   return (
-    <section id="food-canvas" className="drag-it-section print-edge-boil print-edge-boil--light print-edge-boil--rough" aria-labelledby="drag-it-title">
+    <section id="food-canvas" className="drag-it-section maximalist-drag print-edge-boil print-edge-boil--light print-edge-boil--rough" aria-labelledby="drag-it-title">
       <div className="drag-it-layout section-pad">
         <div className="drag-it-copy">
           <div className="drag-it-mascot-wrap">

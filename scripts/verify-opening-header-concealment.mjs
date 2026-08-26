@@ -24,13 +24,13 @@ await page.evaluate(() => {
 });
 await page.waitForTimeout(5_600);
 await page.evaluate(() => {
-  const postSequenceBorder = document.querySelector(".flowing-sentence-divider");
-  if (!(postSequenceBorder instanceof HTMLElement)) throw new Error("Post-sequence live-text border is missing.");
+  const postSequenceBorder = document.querySelector(".organic-wave--cream-to-maroon");
+  if (!(postSequenceBorder instanceof HTMLElement)) throw new Error("Post-sequence stitched-wave boundary is missing.");
   const top = postSequenceBorder.getBoundingClientRect().top + window.scrollY;
   window.scrollTo(0, top + window.innerHeight * 0.2);
 });
 console.log(`Header transition probe: ${JSON.stringify(await page.evaluate(() => {
-  const postSequenceBorder = document.querySelector(".flowing-sentence-divider");
+  const postSequenceBorder = document.querySelector(".organic-wave--cream-to-maroon");
   const header = document.querySelector(".site-header");
   return { scrollY: window.scrollY, postSequenceBorderTop: postSequenceBorder instanceof HTMLElement ? postSequenceBorder.getBoundingClientRect().top : null, headerClass: header?.className, headerOpacity: header instanceof HTMLElement ? getComputedStyle(header).opacity : null };
 }))}`);

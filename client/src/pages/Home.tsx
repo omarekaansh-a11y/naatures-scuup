@@ -22,24 +22,16 @@ const authenticImages = {
   iceCreamCup: "/manus-storage/NS2_17e883c9.png",
   starterPlate: "/manus-storage/NS3_a099f388.png",
   kababs: "/manus-storage/Screenshot(107)_33b7f867.png",
-  pastaRed: "/manus-storage/Screenshot(109)_b4ce8442.png",
   iceCreamCounter: "/manus-storage/Screenshot(106)_f7d47076.png",
 } as const;
 
 const foodCanvasItems = [
   { src: authenticImages.pizza, tag: "PIZZA", label: "Pizza", note: "The share plate", alt: "Restaurant pizza with a chilled drink" },
   { src: authenticImages.kababs, tag: "STARTERS", label: "Kababs", note: "The first pass", alt: "Restaurant-made kababs with onion rings and garnish" },
-  { src: authenticImages.pastaRed, tag: "PASTA", label: "Pasta", note: "The comfort bowl", alt: "Restaurant pasta topped with herbs and cream sauce" },
   { src: authenticImages.starterPlate, tag: "SNACKS", label: "Starters", note: "Crisp at the centre", alt: "Crisp restaurant starter served with garnish" },
   { src: authenticImages.iceCreamCup, tag: "ICE CREAM", label: "Scoops", note: "Make room", alt: "Scoops of ice cream in Naatures Scuup cups" },
   { src: authenticImages.iceCreamCounter, tag: "DESSERTS", label: "Counter", note: "The last stop", alt: "Two bright scoops of ice cream served at the restaurant counter" },
 ] as const;
-
-function FlowingSentenceDivider() {
-  const reduceMotion = useReducedMotion();
-  const phrase = "Every table begins a little hungry. The next craving is already on its way. ";
-  return <div className="flowing-sentence-divider" aria-hidden="true"><svg viewBox="0 0 1440 116" preserveAspectRatio="none" className="flowing-sentence-divider__svg"><defs><path id="flowing-sentence-divider-path" d="M-180 58 C 112 6, 334 111, 610 58 S 1110 6, 1620 58" /></defs><text className="flowing-sentence-divider__text"><textPath href="#flowing-sentence-divider-path" startOffset="0%">{phrase.repeat(5)}{!reduceMotion && <animate attributeName="startOffset" from="0%" to="-40%" dur="10s" repeatCount="indefinite" />}</textPath></text></svg></div>;
-}
 
 function scrollToId(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -53,7 +45,7 @@ export default function Home() {
       <main id="main-content" data-page-top="true">
         <IceCreamOrbit />
 
-        <FlowingSentenceDivider />
+        <OrganicWaveDivider tone="cream-to-maroon" />
 
         <DragFoodCanvas items={foodCanvasItems} />
         <section className="food-menu-bridge" aria-label="Explore the full menu"><Link className="button button--cream" href="/menu">Explore the full menu <ArrowRight size={17} /></Link></section>

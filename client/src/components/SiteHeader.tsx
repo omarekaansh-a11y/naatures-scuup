@@ -41,6 +41,8 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
 	  return (
 	    <>
 		  <header className={`site-header site-header--hamburger ${(paper || isScrolled) ? "site-header--scrolled" : ""} ${isOpen ? "site-header--menu-open" : ""}`}>
+			<span className="site-header__ring-field" aria-hidden="true"><i /><i /><i /></span>
+			<span className="site-header__edition" aria-hidden="true">NS / 126 / MALL ROAD</span>
 	        <Link className="brand-logo-link" href="/" aria-label="Naatures Scuup home" onClick={closeMenu}>
 	          <span className="brand-logo-crop" aria-hidden="true">
 	            <svg className="brand-logo" viewBox="0 0 1920 1920" preserveAspectRatio="xMidYMid meet">

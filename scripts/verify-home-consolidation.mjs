@@ -13,7 +13,7 @@ const initial = await page.evaluate(() => ({
   nextSectionClass: document.querySelector(".ice-orbit + *")?.className,
 }));
 
-if (initial.redundantHero || initial.nextSectionClass !== "flowing-sentence-divider") {
+if (initial.redundantHero || !String(initial.nextSectionClass).includes("organic-wave--cream-to-maroon")) {
   throw new Error(`Homepage hero consolidation failed: ${JSON.stringify(initial)}`);
 }
 

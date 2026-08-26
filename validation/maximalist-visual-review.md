@@ -27,3 +27,13 @@ The temporary pill and waveform treatment has been removed. The divider is now a
 ## Text-As-Seam Pass
 
 The independent rule lines have been removed. The faster curved sentence path now sits directly on the shared edge between the cinematic opening and Drag It, making the text itself the only visible seam. Desktop and mobile inspection confirm that the transition no longer reads as a rectangular container, while the surrounding content remains continuous.
+
+## Frontispiece Asset Selection
+
+The existing pizza photograph is not suitable for the full-width menu frontispiece because its low resolution and close crop do not support a large editorial composition. The 2560×1440 restaurant interior image provides a cleaner, gradient-free background with generous dark-wall space for a high-contrast printed title treatment; it will replace the existing hero asset without introducing generated foreground food imagery.
+
+## Expanded Maximalist Correction
+
+The failed flowing-text seam is removed and the established stitched/wave separator restores a clear transition into Drag It. Drag It now carries oversized lime ring forms and striped print geometry without repeating the reserved pasta image. The map contains the pasta visual only as a circular, non-interactive layer. Large lime rings are also visible across utility surfaces, while the refreshed Full Menu frontispiece uses the selected high-resolution restaurant interior with no CSS gradient treatment.
+
+Desktop and mobile checks confirm that the new masthead retains readable branding and menu access while carrying large lime rings and a compact Mall Road edition label. The revised menu hero maintains high contrast with its lime title panel and cream details over the unfiltered restaurant interior image; its mobile version retains the same composition without a gradient overlay.

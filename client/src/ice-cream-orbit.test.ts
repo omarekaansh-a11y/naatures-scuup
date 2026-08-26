@@ -89,8 +89,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
 
   it("keeps the sequence before Drag It on Home", () => {
     expect(home).toContain("<IceCreamOrbit />");
-    expect(home.indexOf("<IceCreamOrbit />")).toBeLessThan(home.indexOf("<FlowingSentenceDivider />"));
-    expect(home.indexOf("<FlowingSentenceDivider />")).toBeLessThan(home.indexOf("<DragFoodCanvas"));
+    expect(home.indexOf("<IceCreamOrbit />")).toBeLessThan(home.indexOf('<OrganicWaveDivider tone="cream-to-maroon" />'));
+    expect(home.indexOf('<OrganicWaveDivider tone="cream-to-maroon" />')).toBeLessThan(home.indexOf("<DragFoodCanvas"));
     expect(home).toContain('scrollToId("#location")');
     expect(home).not.toContain('className="story-section section-pad"');
   });

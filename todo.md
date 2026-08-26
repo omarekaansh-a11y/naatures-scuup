@@ -1261,3 +1261,11 @@
 - [x] Render “From the first bite to the final frozen spoonful” as a cup-safe lime printed label.
 - [x] Add a compact, complementary lime closing stamp to the fourth story beat without covering the zoomed dessert.
 - [x] Verify label contrast, desktop/mobile placement, reduced-motion behavior, and cinematic sequence integrity.
+
+# Expanded Maximalist Correction
+- [x] Remove the failed flowing-text seam and use the established stitched/wave language for the cinematic-to-Drag It transition.
+- [x] Apply a more substantial maximalist treatment to the Drag It section and fully redesign the header with large green-ring forms.
+- [x] Move the reserved pasta photo into the circular image treatment inside the map and preserve map controls.
+- [x] Add more large green circles across appropriate non-cinematic surfaces without reducing content legibility.
+- [x] Replace the Full Menu frontispiece gradient and current image with a stronger gradient-free, image-led composition.
+- [x] Verify desktop/mobile visual hierarchy, map/menu interactions, image integrity, and production performance.

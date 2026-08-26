@@ -14,7 +14,7 @@ const structuralStyles = read("client/src/components/StructuralStyles.tsx");
 describe("implementation integrity", () => {
   it("keeps the Home food stack on distinct owner-supplied image references", () => {
     const references = [...home.matchAll(/src: authenticImages\.([A-Za-z0-9_]+)/g)].map((match) => match[1]);
-    expect(references).toHaveLength(6);
+    expect(references).toHaveLength(5);
     expect(new Set(references).size).toBe(references.length);
   });
 
