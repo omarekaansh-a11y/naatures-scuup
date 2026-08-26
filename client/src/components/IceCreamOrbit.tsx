@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,11 +10,27 @@ const MOBILE_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-portrait-mobile_4b0f
 const VIDEO_POSTER = "/manus-storage/ezgif-frame-001_c0bf1371.png";
 
 const sequenceStyles = `
-  .ice-orbit{position:relative;width:100%;background:#090306}
+  .ice-orbit{position:relative;width:100%;background:#090306;isolation:isolate}
   .ice-orbit__stage{position:relative;width:100%;height:100svh;overflow:hidden;background:#090306}
-  .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#090306}
-  .ice-orbit__loading{position:absolute;inset:0;background:#090306}
-  @media(max-width:767px){.ice-orbit__video{object-fit:cover}}
+  .ice-orbit__stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at 50% 48%,transparent 0%,rgb(9 3 6 / 18%) 46%,rgb(9 3 6 / 78%) 100%),linear-gradient(90deg,rgb(9 3 6 / 42%),transparent 30%,transparent 70%,rgb(9 3 6 / 42%));mix-blend-mode:multiply}
+  .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#090306;filter:brightness(.76) saturate(.82) contrast(1.08)}
+  .ice-orbit__loading{position:absolute;inset:0;z-index:4;background:#090306}
+  .ice-orbit__story{position:absolute;inset:0;z-index:3;pointer-events:none;color:rgb(255 255 255 / 90%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:-.018em;-webkit-mask-image:radial-gradient(ellipse 31% 45% at 50% 59%,transparent 0 56%,#000 79%);mask-image:radial-gradient(ellipse 31% 45% at 50% 59%,transparent 0 56%,#000 79%)}
+  .ice-orbit__story-card{position:absolute;max-width:min(37rem,74vw);text-wrap:balance}
+  .ice-orbit__story-card--origin{top:13%;left:0;right:0;width:auto;padding-inline:5vw;text-align:center}
+  .ice-orbit__story-card--left{top:20%;left:clamp(1.5rem,6vw,6rem);max-width:min(31rem,45vw)}
+  .ice-orbit__story-card--right{top:22%;right:clamp(1.5rem,6vw,6rem);bottom:auto;max-width:min(31rem,45vw);text-align:right}
+  .ice-orbit__story-card--end{right:0;bottom:10%;left:0;width:auto;padding-inline:6vw;text-align:center}
+  .ice-orbit__story-kicker{display:flex;align-items:center;gap:.7rem;margin:0 0 1rem;color:rgb(255 255 255 / 60%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:.62rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase}
+  .ice-orbit__story-card--right .ice-orbit__story-kicker{justify-content:flex-end}
+  .ice-orbit__story-kicker::before{content:"";display:block;width:1.8rem;height:1px;background:currentColor}
+  .ice-orbit__story-title{margin:0;color:rgb(255 255 255 / 92%)!important;font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.3rem,6.1vw,6.4rem);font-weight:700;line-height:.9;letter-spacing:-.065em;text-shadow:0 2px 22px rgb(9 3 6 / 56%);text-transform:uppercase}
+  .ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(3rem,9.8vw,9rem)}
+  .ice-orbit__story-title em{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:-.075em;text-transform:none}
+  .ice-orbit__story-copy{max-width:29rem;margin:1.2rem 0 0;color:rgb(255 255 255 / 60%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:clamp(.76rem,1.2vw,1rem);font-weight:400;line-height:1.6;letter-spacing:.06em}
+  .ice-orbit__story-card--origin .ice-orbit__story-copy,.ice-orbit__story-card--end .ice-orbit__story-copy{margin-inline:auto}
+  .ice-orbit__story-card--right .ice-orbit__story-copy{margin-left:auto}
+  @media(max-width:767px){.ice-orbit__video{object-fit:cover;filter:brightness(.7) saturate(.8) contrast(1.08)}.ice-orbit__stage::after{background:linear-gradient(180deg,rgb(9 3 6 / 62%),transparent 36%,transparent 62%,rgb(9 3 6 / 78%))}.ice-orbit__story{-webkit-mask-image:radial-gradient(ellipse 46% 31% at 50% 65%,transparent 0 57%,#000 81%);mask-image:radial-gradient(ellipse 46% 31% at 50% 65%,transparent 0 57%,#000 81%)}.ice-orbit__story-card{max-width:calc(100vw - 3rem)}.ice-orbit__story-card--origin{top:12%;padding-inline:1.5rem}.ice-orbit__story-card--left{top:17%;left:1.5rem;max-width:calc(100vw - 3rem)}.ice-orbit__story-card--right{top:19%;right:1.5rem;max-width:calc(100vw - 3rem)}.ice-orbit__story-card--end{right:0;bottom:11%;left:0;padding-inline:1.5rem}.ice-orbit__story-title{font-size:clamp(2.1rem,12.5vw,4.35rem)}.ice-orbit__story-kicker{font-size:.56rem}.ice-orbit__story-copy{font-size:.75rem}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
 
@@ -23,6 +40,15 @@ export function IceCreamOrbit() {
   const targetTimeRef = useRef(0);
   const settleAnimationRef = useRef<number | null>(null);
   const releaseCompletionLockRef = useRef<(() => void) | null>(null);
+  const storyProgress = useMotionValue(0);
+  const openingOpacity = useTransform(storyProgress, [0, 0.035, 0.15, 0.235], [0, 1, 1, 0]);
+  const openingY = useTransform(storyProgress, [0, 0.12, 0.235], [24, 0, -20]);
+  const parlourOpacity = useTransform(storyProgress, [0.18, 0.29, 0.43, 0.51], [0, 1, 1, 0]);
+  const parlourY = useTransform(storyProgress, [0.18, 0.32, 0.51], [30, 0, -20]);
+  const cravingOpacity = useTransform(storyProgress, [0.48, 0.58, 0.74, 0.82], [0, 1, 1, 0]);
+  const cravingY = useTransform(storyProgress, [0.48, 0.62, 0.82], [30, 0, -20]);
+  const endOpacity = useTransform(storyProgress, [0.78, 0.88, 1], [0, 1, 1]);
+  const endY = useTransform(storyProgress, [0.78, 0.9], [22, 0]);
   const [isReady, setIsReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -64,6 +90,7 @@ export function IceCreamOrbit() {
     video.pause();
     video.currentTime = 0;
     targetTimeRef.current = 0;
+    storyProgress.set(0);
     setIsReady(true);
   };
 
@@ -84,6 +111,7 @@ export function IceCreamOrbit() {
     if (reduceMotion) {
       video.pause();
       video.currentTime = 0;
+      storyProgress.set(0.12);
       return;
     }
 
@@ -98,6 +126,7 @@ export function IceCreamOrbit() {
       invalidateOnRefresh: true,
       onUpdate: (self) => {
         targetTimeRef.current = self.progress * video.duration;
+        storyProgress.set(self.progress);
         advanceToTarget();
       },
       onLeave: (self) => {
@@ -141,6 +170,27 @@ export function IceCreamOrbit() {
           <source media="(max-width: 767px)" src={MOBILE_VIDEO_SOURCE} type="video/mp4" />
           <source src={DESKTOP_VIDEO_SOURCE} type="video/mp4" />
         </video>
+        <div className="ice-orbit__story" aria-hidden="true">
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--origin" style={{ opacity: openingOpacity, y: openingY }}>
+            <p className="ice-orbit__story-kicker">The cold chapter</p>
+            <h2 className="ice-orbit__story-title">Naatures<br /><em>Scuup</em></h2>
+            <p className="ice-orbit__story-copy">A pause for the scoop, served at the pace of the table.</p>
+          </motion.div>
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--left" style={{ opacity: parlourOpacity, y: parlourY }}>
+            <p className="ice-orbit__story-kicker">Mall Road, Kanpur</p>
+            <h2 className="ice-orbit__story-title">Kanpur&apos;s first<br /><em>live ice-cream</em><br />parlour</h2>
+            <p className="ice-orbit__story-copy">Watch the cold come alive, one slow turn at a time.</p>
+          </motion.div>
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--right" style={{ opacity: cravingOpacity, y: cravingY }}>
+            <p className="ice-orbit__story-kicker">Made for the table</p>
+            <h2 className="ice-orbit__story-title">One place.<br /><em>Every craving.</em></h2>
+            <p className="ice-orbit__story-copy">From the first bite to the final frozen spoonful.</p>
+          </motion.div>
+          <motion.div className="ice-orbit__story-card ice-orbit__story-card--end" style={{ opacity: endOpacity, y: endY }}>
+            <p className="ice-orbit__story-kicker">Keep it cold</p>
+            <h2 className="ice-orbit__story-title"><em>#Freeze the</em><br />happiness</h2>
+          </motion.div>
+        </div>
         {!isReady && <div className="ice-orbit__loading" role="status" aria-label="Preparing the image sequence" />}
       </div>
     </section>

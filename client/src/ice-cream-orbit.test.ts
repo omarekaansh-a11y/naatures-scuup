@@ -31,12 +31,23 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain('pin: ".ice-orbit__stage"');
   });
 
-  it("keeps playback text-free with the dedicated portrait mobile composition and safe loading behavior", () => {
+  it("adds a dark cinematic four-part story system while retaining dedicated portrait playback and safe loading behavior", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
     expect(orbit).toContain("prefers-reduced-motion");
-    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__video{object-fit:cover}}");
-    expect(orbit).not.toContain("Come for the craving.");
-    expect(orbit).not.toContain("Stay for the scoop.");
+    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__video{object-fit:cover;filter:brightness(.7)");
+    expect(orbit).toContain('from "framer-motion"');
+    expect(orbit).toContain("const storyProgress = useMotionValue(0)");
+    expect(orbit).toContain("Naatures");
+    expect(orbit).toContain("Kanpur&apos;s first");
+    expect(orbit).toContain("One place.");
+    expect(orbit).toContain("#Freeze the");
+    expect(orbit).toContain("ice-orbit__story");
+    expect(orbit).toContain("rgb(255 255 255 / 90%)");
+    expect(orbit).toContain("color:rgb(255 255 255 / 92%)!important");
+    expect(orbit).toContain(".ice-orbit__story-card--end{right:0;bottom:10%;left:0");
+    expect(orbit).toContain("-webkit-mask-image:radial-gradient(ellipse 31% 45% at 50% 59%");
+    expect(orbit).toContain('font-family:"Playfair Display",Georgia,serif');
+    expect(orbit).toContain("font-family:Montserrat,ui-sans-serif,system-ui,sans-serif");
   });
 
   it("keeps the sequence before Drag It on Home", () => {

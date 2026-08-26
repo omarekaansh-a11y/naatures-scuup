@@ -939,3 +939,18 @@
 - [x] Encode a synchronized 9:16 mobile video from the approved cleaned sequence, with a dynamic blurred extension behind the centred original frame.
 - [x] Upload and activate the portrait source for compact screens while retaining the desktop sequence and fast-scroll completion behavior.
 - [x] Validate the mobile composition, playback continuity, and performance before publishing.
+
+# Cinematic Scrollytelling Redesign
+- [x] Audit the current sequence, visual assets, and Home integration against the requested dark scrollytelling direction.
+- [x] Define and implement the four-part Naatures Scuup story overlay system with polished scroll-synced motion.
+- [x] Retain high-performance adaptive playback and validate the redesigned chapter across desktop and mobile before publishing.
+
+# Cup-First Cinematic Depth
+- [x] Recompose the cinematic narrative treatment into cup-safe background zones across desktop and mobile.
+- [x] Preserve the ice-cream cup as the dominant foreground subject while maintaining legible story overlays.
+- [x] Validate responsive depth, readability, and continuous playback before publishing.
+
+# Cinematic Typography System
+- [x] Load Playfair Display Bold for large scrollytelling titles and Montserrat Regular for billing blocks and subtitles.
+- [x] Apply the requested display-versus-billing hierarchy with generous subtitle tracking across the cinematic story chapter.
+- [x] Validate typography contrast, responsive fit, and sequence performance before publishing.
