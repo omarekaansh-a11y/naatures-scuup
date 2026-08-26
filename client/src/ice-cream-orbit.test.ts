@@ -31,10 +31,10 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain('pin: ".ice-orbit__stage"');
   });
 
-  it("adds a dark cinematic four-part story system while retaining dedicated portrait playback and safe loading behavior", () => {
+  it("adds a clean video-integrated four-part story system while retaining dedicated portrait playback and safe loading behavior", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
     expect(orbit).toContain("prefers-reduced-motion");
-    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__video{object-fit:cover;filter:brightness(.7)");
+    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__video{object-fit:cover}");
     expect(orbit).toContain('from "framer-motion"');
     expect(orbit).toContain("const storyProgress = useMotionValue(0)");
     expect(orbit).toContain("Naatures");
@@ -42,12 +42,17 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("One place.");
     expect(orbit).toContain("#Freeze the");
     expect(orbit).toContain("ice-orbit__story");
-    expect(orbit).toContain("rgb(255 255 255 / 90%)");
-    expect(orbit).toContain("color:rgb(255 255 255 / 92%)!important");
+    expect(orbit).toContain("background:#d6d4d0");
+    expect(orbit).toContain("color:rgb(47 38 34)!important");
     expect(orbit).toContain(".ice-orbit__story-card--origin{top:18%;left:clamp(1.25rem,5vw,5.25rem);text-align:left}");
     expect(orbit).toContain(".ice-orbit__story-card--right{top:24%;right:clamp(1.25rem,5vw,5.25rem)");
     expect(orbit).toContain(".ice-orbit__story-card--end{right:clamp(1.25rem,5vw,5.25rem);bottom:14%;left:auto;text-align:right}");
     expect(orbit).not.toContain("-webkit-mask-image");
+    expect(orbit).not.toContain("ice-orbit__stage::after");
+    expect(orbit).not.toContain("radial-gradient");
+    expect(orbit).not.toContain("linear-gradient");
+    expect(orbit).not.toContain("filter:");
+    expect(orbit).not.toContain("text-shadow:");
     expect(orbit).toContain('font-family:"Playfair Display",Georgia,serif');
     expect(orbit).toContain("font-family:Montserrat,ui-sans-serif,system-ui,sans-serif");
   });

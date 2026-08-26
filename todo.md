@@ -959,3 +959,8 @@
 - [x] Define fixed left and right narrative safe zones that leave the central ice-cream cup completely unobstructed.
 - [x] Reposition every cinematic story block into a safe side zone and remove the cup-overlap mask treatment.
 - [x] Validate clear central composition, responsive legibility, and playback before publishing.
+
+# Clean Video-Integrated Story Treatment
+- [x] Remove every black gradient, vignette, and added cinematic darkening layer from the ice-cream chapter.
+- [x] Preserve only the natural grey video background, the ice-cream cup, and the side-safe narrative text.
+- [x] Verify the clean composition on desktop and mobile before publishing.

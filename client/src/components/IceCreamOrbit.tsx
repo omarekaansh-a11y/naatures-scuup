@@ -10,27 +10,26 @@ const MOBILE_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-portrait-mobile_4b0f
 const VIDEO_POSTER = "/manus-storage/ezgif-frame-001_c0bf1371.png";
 
 const sequenceStyles = `
-  .ice-orbit{position:relative;width:100%;background:#090306;isolation:isolate}
-  .ice-orbit__stage{position:relative;width:100%;height:100svh;overflow:hidden;background:#090306}
-  .ice-orbit__stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at 50% 48%,transparent 0%,rgb(9 3 6 / 18%) 46%,rgb(9 3 6 / 78%) 100%),linear-gradient(90deg,rgb(9 3 6 / 42%),transparent 30%,transparent 70%,rgb(9 3 6 / 42%));mix-blend-mode:multiply}
-  .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#090306;filter:brightness(.76) saturate(.82) contrast(1.08)}
-  .ice-orbit__loading{position:absolute;inset:0;z-index:4;background:#090306}
-  .ice-orbit__story{position:absolute;inset:0;z-index:3;pointer-events:none;color:rgb(255 255 255 / 90%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:-.018em}
+  .ice-orbit{position:relative;width:100%;background:#d6d4d0;isolation:isolate}
+  .ice-orbit__stage{position:relative;width:100%;height:100svh;overflow:hidden;background:#d6d4d0}
+  .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#d6d4d0}
+  .ice-orbit__loading{position:absolute;inset:0;z-index:4;background:#d6d4d0}
+  .ice-orbit__story{position:absolute;inset:0;z-index:3;pointer-events:none;color:rgb(54 43 38 / 90%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:-.018em}
   .ice-orbit__story-card{position:absolute;width:min(25rem,29vw);text-wrap:balance}
   .ice-orbit__story-card--origin{top:18%;left:clamp(1.25rem,5vw,5.25rem);text-align:left}
   .ice-orbit__story-card--left{top:29%;left:clamp(1.25rem,5vw,5.25rem)}
   .ice-orbit__story-card--right{top:24%;right:clamp(1.25rem,5vw,5.25rem);bottom:auto;text-align:right}
   .ice-orbit__story-card--end{right:clamp(1.25rem,5vw,5.25rem);bottom:14%;left:auto;text-align:right}
-  .ice-orbit__story-kicker{display:flex;align-items:center;gap:.7rem;margin:0 0 1rem;color:rgb(255 255 255 / 60%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:.62rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase}
+  .ice-orbit__story-kicker{display:flex;align-items:center;gap:.7rem;margin:0 0 1rem;color:rgb(74 63 57 / 82%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:.62rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase}
   .ice-orbit__story-card--right .ice-orbit__story-kicker{justify-content:flex-end}
   .ice-orbit__story-kicker::before{content:"";display:block;width:1.8rem;height:1px;background:currentColor}
-  .ice-orbit__story-title{margin:0;color:rgb(255 255 255 / 92%)!important;font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.3rem,6.1vw,6.4rem);font-weight:700;line-height:.9;letter-spacing:-.065em;text-shadow:0 2px 22px rgb(9 3 6 / 56%);text-transform:uppercase}
+  .ice-orbit__story-title{margin:0;color:rgb(47 38 34)!important;font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.3rem,6.1vw,6.4rem);font-weight:700;line-height:.9;letter-spacing:-.065em;text-transform:uppercase}
   .ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(2.8rem,6.6vw,6.8rem)}
   .ice-orbit__story-title em{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:-.075em;text-transform:none}
-  .ice-orbit__story-copy{max-width:29rem;margin:1.2rem 0 0;color:rgb(255 255 255 / 60%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:clamp(.76rem,1.2vw,1rem);font-weight:400;line-height:1.6;letter-spacing:.06em}
+  .ice-orbit__story-copy{max-width:29rem;margin:1.2rem 0 0;color:rgb(84 74 68 / 88%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:clamp(.76rem,1.2vw,1rem);font-weight:400;line-height:1.6;letter-spacing:.06em}
   .ice-orbit__story-card--origin .ice-orbit__story-copy,.ice-orbit__story-card--end .ice-orbit__story-copy{margin-inline:auto}
   .ice-orbit__story-card--right .ice-orbit__story-copy{margin-left:auto}
-  @media(max-width:767px){.ice-orbit__video{object-fit:cover;filter:brightness(.7) saturate(.8) contrast(1.08)}.ice-orbit__stage::after{background:linear-gradient(180deg,rgb(9 3 6 / 62%),transparent 36%,transparent 62%,rgb(9 3 6 / 78%))}.ice-orbit__story-card{width:40vw;max-width:calc(100vw - 2.5rem)}.ice-orbit__story-card--origin{top:16%;left:1.25rem;text-align:left}.ice-orbit__story-card--left{top:25%;left:1.25rem}.ice-orbit__story-card--right{top:20%;right:1.25rem;text-align:right}.ice-orbit__story-card--end{right:1.25rem;bottom:14%;left:auto;text-align:right}.ice-orbit__story-title{font-size:clamp(1.55rem,7.8vw,2.6rem)}.ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(1.8rem,8.7vw,3rem)}.ice-orbit__story-kicker{font-size:.54rem}.ice-orbit__story-copy{font-size:.68rem;letter-spacing:.04em}}
+  @media(max-width:767px){.ice-orbit__video{object-fit:cover}.ice-orbit__story-card{width:40vw;max-width:calc(100vw - 2.5rem)}.ice-orbit__story-card--origin{top:16%;left:1.25rem;text-align:left}.ice-orbit__story-card--left{top:25%;left:1.25rem}.ice-orbit__story-card--right{top:20%;right:1.25rem;text-align:right}.ice-orbit__story-card--end{right:1.25rem;bottom:14%;left:auto;text-align:right}.ice-orbit__story-title{font-size:clamp(1.55rem,7.8vw,2.6rem)}.ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(1.8rem,8.7vw,3rem)}.ice-orbit__story-kicker{font-size:.54rem}.ice-orbit__story-copy{font-size:.68rem;letter-spacing:.04em}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
 
