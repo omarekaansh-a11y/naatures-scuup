@@ -974,3 +974,9 @@
 - [x] Map the usable grey portrait-video region independently from the full pinned screen.
 - [x] Anchor every mobile story card inside that usable region with device-aware scale and offsets.
 - [x] Verify the actual device proportion, central cup clearance, and desktop preservation before publishing.
+
+# Site-Wide Overflow, Favicon, and 404 Clarity
+- [x] Eliminate horizontal scrolling and identify the responsible responsive overflow rules.
+- [x] Confirm the favicon uses the company logo and correct it if necessary.
+- [x] Rewrite the 404 page to explain what happened, why it happened, and what visitors can do next in plain language.
+- [x] Verify existing meta descriptions across public routes and validate the final update before publishing.

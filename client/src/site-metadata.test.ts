@@ -24,7 +24,11 @@ describe("site recovery and social metadata", () => {
   });
 
   it("keeps the custom 404 route useful and out of search indexing", () => {
-    expect(notFound).toContain("This craving");
+    expect(notFound).toContain("What happened");
+    expect(notFound).toContain("Why it happened");
+    expect(notFound).toContain("What you can do");
+    expect(notFound).toContain("The page you tried to open is not available here.");
+    expect(notFound).toContain("href=\"/\"");
     expect(notFound).toContain('href="/menu"');
     expect(notFound).toContain('href="/#location"');
     expect(notFound).toContain("noIndex");

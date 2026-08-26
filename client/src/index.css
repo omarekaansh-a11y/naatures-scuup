@@ -40,8 +40,10 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: var(--cream); }
-body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Manrope", Arial, sans-serif; }
+html { width: 100%; max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; background: var(--cream); overscroll-behavior-x: none; }
+body { width: 100%; max-width: 100%; margin: 0; overflow-x: hidden; background: var(--cream); color: var(--ink); font-family: "Manrope", Arial, sans-serif; overscroll-behavior-x: none; }
+#root { width: 100%; max-width: 100%; overflow-x: clip; }
+img, svg, video, canvas { max-width: 100%; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; text-decoration: none; }
 button { color: inherit; font: inherit; }
