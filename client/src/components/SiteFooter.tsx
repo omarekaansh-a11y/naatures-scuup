@@ -1,6 +1,6 @@
 /**
  * Style reminder — Mall Road Monograph: a warm maroon close with a graphic text-mark, direct local links, and no duplicated image asset.
- * The footer extends the restaurant invitation through verified social and map links while retaining the display-only intent.
+ * The footer extends the restaurant invitation through verified social and map links.
  */
 import { AtSign, Instagram, MapPin } from "lucide-react";
 import { Link } from "wouter";

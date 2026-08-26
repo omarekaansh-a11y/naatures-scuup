@@ -1,5 +1,5 @@
 /**
- * Style reminder — Mall Road Monograph: approved-reference food cards in deep maroon, with a hand-drawn café dog and tactile, display-only exploration.
+ * Style reminder — Mall Road Monograph: approved-reference food cards in deep maroon, with a hand-drawn café dog and tactile exploration.
  * The stack uses owner restaurant imagery and supports pointer, touch, keyboard, natural momentum, and compact pagination controls.
  */
 import { ArrowLeft, ArrowRight } from "lucide-react";

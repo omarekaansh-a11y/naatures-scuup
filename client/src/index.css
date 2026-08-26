@@ -178,7 +178,7 @@ h2 { font-size: clamp(58px, 7.5vw, 112px); color: var(--maroon-deep); }
 .tactile-table__card figcaption { margin-top: 11px; }
 @media (max-width: 640px) { .tactile-table { height: 372px; }.tactile-table__set { gap: 14px; padding-left: 25px; padding-right: 25px; }.tactile-table__card { flex-basis: 216px; }.tactile-table__frame { height: 258px; } }
 
-/* Display-only refinement — owner-supplied logo, menu discovery, and social/location cues supersede transactional affordances. */
+/* Owner-supplied logo, menu discovery, and social/location cues remain central to the experience. */
 /* Original tactile table — use the restaurant's own visual world and direct manipulation, never a copied interaction layout. */
 .hero-slogan { margin-left: 5px; padding: 5px 7px 4px; border: 1px solid rgb(244 240 232 / 30%); color: var(--mango); font-size: 8px; letter-spacing: .11em; white-space: nowrap; }
 .footer-voice { display: grid; gap: 18px; }.footer-slogan { margin: 0; color: var(--mango); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }

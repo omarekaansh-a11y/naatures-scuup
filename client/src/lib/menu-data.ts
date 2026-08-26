@@ -1,6 +1,6 @@
 /**
- * Style reminder — Mall Road Monograph: verified, display-only menu data.
- * Names and category counts are transcribed from the public Naatures Scuup Zomato menu page.
+ * Style reminder — Mall Road Monograph: verified menu data.
+ * Names and category counts are transcribed from the public Naatures Scuup menu.
  * No prices, availability, ordering, or reservation capability is represented here.
  */
 export const menuChapters = [

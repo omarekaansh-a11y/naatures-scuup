@@ -980,3 +980,23 @@
 - [x] Confirm the favicon uses the company logo and correct it if necessary.
 - [x] Rewrite the 404 page to explain what happened, why it happened, and what visitors can do next in plain language.
 - [x] Verify existing meta descriptions across public routes and validate the final update before publishing.
+
+# Ice-Cream and Vegan SEO Metadata
+- [x] Audit the homepage and public route descriptions for relevant ice-cream and vegan-option keyword opportunities.
+- [x] Update descriptions naturally without keyword stuffing or unsupported product claims.
+- [x] Validate the final metadata, tests, and production build before publishing.
+
+# Delivery-Platform Reference Cleanup
+- [x] Audit all source, visible content, and metadata for Swiggy and Zomato mentions.
+- [x] Remove or replace every public-facing Swiggy and Zomato reference.
+- [x] Verify no Swiggy or Zomato mention remains before publishing.
+
+# Browser-Compatible Logo Favicon
+- [x] Audit the blank favicon behavior and current external image/mask dependency.
+- [x] Create a self-contained company-logo favicon that works in browser tabs.
+- [x] Verify the favicon response and rendered browser icon before publishing.
+
+# Display-Only Wording Cleanup
+- [x] Audit all public content and metadata for display-only wording.
+- [x] Replace every display-only reference with natural restaurant language.
+- [x] Verify no public display-only wording remains before publishing.

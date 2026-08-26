@@ -1,5 +1,5 @@
 /**
- * Style reminder — Mall Road Monograph: the navigation is a quiet, logo-led display-only portal with a compact name-and-slogan signature.
+ * Style reminder — Mall Road Monograph: the navigation is a quiet, logo-led portal with a compact name-and-slogan signature.
  * It exposes only Home and Full Menu, never ordering, reservations, or a copied navigation pattern.
  */
 import { ArrowUp, Menu as MenuIcon, X } from "lucide-react";
