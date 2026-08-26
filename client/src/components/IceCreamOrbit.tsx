@@ -43,7 +43,7 @@ const sequenceStyles = `
   .ice-orbit__story-kicker::before{content:"";display:block;width:1.8rem;height:1px;background:currentColor}
   .ice-orbit__story-title{margin:0;color:rgb(47 38 34)!important;font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.3rem,5.6vw,5.8rem);font-weight:700;line-height:.86;letter-spacing:-.075em;text-transform:uppercase}
   .ice-orbit__magnetic-word{display:inline-block;white-space:nowrap}
-  .ice-orbit__story-glyph{display:inline-block;will-change:transform;transform:translate3d(var(--glyph-x,0px),var(--glyph-y,0px),var(--glyph-z,0px)) scale(var(--glyph-scale-x,1),var(--glyph-scale-y,1)) skewX(var(--glyph-skew,0deg));transition:transform 360ms cubic-bezier(.16,1,.3,1)}
+  .ice-orbit__story-glyph{display:inline-block;will-change:transform;transform:translate3d(var(--glyph-x,0px),var(--glyph-y,0px),var(--glyph-z,0px)) scale(var(--glyph-scale-x,1),var(--glyph-scale-y,1)) skewX(var(--glyph-skew,0deg));transition:transform 440ms cubic-bezier(.16,1,.3,1)}
   .ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(2.75rem,5.9vw,6.05rem)}
   .ice-orbit__story-title em{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:700;letter-spacing:-.085em;text-transform:none}
   .ice-orbit__story-copy{max-width:29rem;margin:1.2rem 0 0;color:rgb(84 74 68 / 88%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;font-size:clamp(.76rem,1.2vw,1rem);font-weight:400;line-height:1.6;letter-spacing:.06em}
@@ -51,7 +51,7 @@ const sequenceStyles = `
   .ice-orbit__story-card--right .ice-orbit__story-copy{margin-left:auto}
   .ice-orbit__story-facts{display:flex;gap:.65rem;flex-wrap:wrap;margin:1.25rem 0 0;padding-top:.75rem;border-top:1px solid rgb(74 63 57 / 26%);color:rgb(74 63 57 / 76%);font:400 .54rem/1.3 Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase}.ice-orbit__story-facts span+span::before{content:"/";margin-right:.65rem;color:rgb(74 63 57 / 44%)}
   .ice-orbit__checkpoint-rail{position:absolute;z-index:4;left:clamp(1.25rem,5vw,5.25rem);bottom:clamp(1.5rem,4vw,3rem);display:flex;align-items:center;gap:.55rem;color:rgb(58 49 44 / 56%);font:400 .55rem/1 Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:.12em}.ice-orbit__checkpoint{display:block;width:.46rem;height:.46rem;border:1px solid currentColor;border-radius:999px;transition:background 180ms var(--ease-out),transform 180ms var(--ease-out)}.ice-orbit__checkpoint[data-active="true"]{background:currentColor;transform:scale(1.25)}.ice-orbit__checkpoint-label{margin-left:.25rem;text-transform:uppercase}.ice-orbit__checkpoint-prompt{margin-right:.3rem;font-size:.5rem;letter-spacing:.17em;text-transform:uppercase}
-  @media(hover:hover) and (pointer:fine){.ice-orbit__story-card[data-active="true"]{pointer-events:auto}.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__story-glyph{transition-duration:75ms}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-title{letter-spacing:-.086em;transition:letter-spacing 420ms cubic-bezier(.16,1,.3,1)}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-kicker{transform:translateZ(32px) translateY(-2px);transition:transform 420ms cubic-bezier(.16,1,.3,1)}.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-copy,.ice-orbit__story-card[data-active="true"]:hover .ice-orbit__story-facts{transform:translateZ(25px) translateY(2px);transition:transform 460ms cubic-bezier(.16,1,.3,1)}}
+  @media(hover:hover) and (pointer:fine){.ice-orbit__story-card[data-active="true"]{pointer-events:auto}.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__story-glyph{transition-duration:150ms}}
   @media(max-width:767px){.ice-orbit__stage{perspective:850px}.ice-orbit__video{object-fit:cover}.ice-orbit__story{--portrait-content-top:35svh;--portrait-content-bottom:66svh;padding-inline:max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-right))}.ice-orbit__story-card{box-sizing:border-box;width:clamp(6.25rem,31vw,9.5rem);max-width:calc(38vw - 1rem);text-wrap:pretty}.ice-orbit__story-card--origin{top:clamp(8.5rem,var(--portrait-content-top),17.5rem);left:max(1rem,env(safe-area-inset-left));text-align:left}.ice-orbit__story-card--left{top:clamp(10rem,38svh,19rem);left:max(1rem,env(safe-area-inset-left));text-align:left}.ice-orbit__story-card--right{top:clamp(9.5rem,37svh,18.5rem);right:max(1rem,env(safe-area-inset-right));text-align:right}.ice-orbit__story-card--end{top:clamp(11rem,42svh,20.5rem);right:max(1rem,env(safe-area-inset-right));bottom:auto;left:auto;text-align:right}.ice-orbit__story-title{font-size:clamp(1rem,5.4vw,1.55rem);line-height:.9;letter-spacing:-.06em}.ice-orbit__story-card--origin .ice-orbit__story-title{font-size:clamp(1.15rem,6vw,1.7rem)}.ice-orbit__story-card--end .ice-orbit__story-title{font-size:clamp(1.05rem,5.6vw,1.6rem)}.ice-orbit__story-kicker{gap:.38rem;margin-bottom:.5rem;font-size:clamp(.38rem,1.55vw,.48rem);letter-spacing:.13em}.ice-orbit__story-kicker::before{width:.9rem}.ice-orbit__story-copy{max-width:100%;margin-top:.6rem;font-size:clamp(.54rem,1.9vw,.62rem);line-height:1.4;letter-spacing:.02em}.ice-orbit__story-facts{display:none}.ice-orbit__checkpoint-rail{left:max(1rem,env(safe-area-inset-left));bottom:max(1rem,env(safe-area-inset-bottom));gap:.4rem;font-size:.42rem}.ice-orbit__checkpoint{width:.36rem;height:.36rem}.ice-orbit__checkpoint-prompt{display:none}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
@@ -96,16 +96,16 @@ export function IceCreamOrbit() {
       const deltaX = event.clientX - (bounds.left + bounds.width / 2);
       const deltaY = event.clientY - (bounds.top + bounds.height / 2);
       const distance = Math.hypot(deltaX, deltaY);
-      const influence = Math.max(0, 1 - distance / 168);
+      const influence = Math.max(0, 1 - distance / 210);
       const safeDistance = Math.max(distance, 1);
       const directionX = deltaX / safeDistance;
       const directionY = deltaY / safeDistance;
-      glyph.style.setProperty("--glyph-x", `${(directionX * influence * 15).toFixed(2)}px`);
-      glyph.style.setProperty("--glyph-y", `${(directionY * influence * 10).toFixed(2)}px`);
-      glyph.style.setProperty("--glyph-z", `${(influence * 18).toFixed(2)}px`);
-      glyph.style.setProperty("--glyph-scale-x", `${(1 + influence * 0.15).toFixed(3)}`);
-      glyph.style.setProperty("--glyph-scale-y", `${(1 - influence * 0.08).toFixed(3)}`);
-      glyph.style.setProperty("--glyph-skew", `${(directionX * influence * 7).toFixed(2)}deg`);
+      glyph.style.setProperty("--glyph-x", `${(directionX * influence * 3.2).toFixed(2)}px`);
+      glyph.style.setProperty("--glyph-y", `${(directionY * influence * 2.2).toFixed(2)}px`);
+      glyph.style.setProperty("--glyph-z", `${(influence * 3).toFixed(2)}px`);
+      glyph.style.setProperty("--glyph-scale-x", `${(1 + influence * 0.025).toFixed(3)}`);
+      glyph.style.setProperty("--glyph-scale-y", `${(1 - influence * 0.015).toFixed(3)}`);
+      glyph.style.setProperty("--glyph-skew", `${(directionX * influence * 0.8).toFixed(2)}deg`);
     });
   };
 

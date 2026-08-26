@@ -95,8 +95,9 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("data-story-glyph");
     expect(orbit).toContain("--glyph-x");
     expect(orbit).not.toContain("ice-orbit__liquid-wake");
-    expect(orbit).toContain("transform 360ms");
-    expect(orbit).toContain("distance / 168");
+    expect(orbit).toContain("transform 440ms");
+    expect(orbit).toContain("distance / 210");
+    expect(orbit).toContain("influence * 3.2");
     expect(orbit).toContain("[40, 76, 104, 14]");
     expect(orbit).toContain("[20, 82, 118, 10]");
     expect(orbit).toContain("0.19, 0.22");

@@ -1043,3 +1043,8 @@
 - [x] Analyze the supplied interaction reference and identify its visible cursor-motion behavior.
 - [x] Replace the current wake with a reference-inspired desktop text effect that preserves the central cup and mobile fallback.
 - [x] Verify visual behavior, checkpoint integrity, and performance before publishing.
+
+# Subtle Cursor-Gravity Text Refinement
+- [x] Reduce per-letter displacement, scaling, depth, and skew to remove the glitch-like effect.
+- [x] Tune the motion response and settling timing into a gentle gravitation toward the desktop cursor.
+- [x] Verify text integrity, mobile fallback, and sequence performance before publishing.
