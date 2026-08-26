@@ -1294,3 +1294,8 @@
 - [x] Continue halftone-wave fields into the adjacent upper and lower bands so cropped arcs do not leave visually empty seams.
 - [x] Reduce and reposition the second cinematic story label so it remains safely clear of the central ice-cream cup.
 - [x] Validate responsive composition, cinematic safeguards, and production behavior before publishing.
+
+# Drag It Clipping Repair
+- [x] Remove the visibly cut-off halftone edges and oversized ornamental frame corners in the Drag It section.
+- [x] Preserve the intended ring, trajectory line, and generous halftone-wave texture with contained visual boundaries.
+- [x] Verify desktop/mobile composition and publish the repaired treatment.
