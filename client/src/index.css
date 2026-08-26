@@ -52,8 +52,10 @@ button:not(:disabled), a[href] { cursor: pointer; }
 .site-shell { overflow: clip; background: var(--cream); }
 .site-header {
   position: fixed; z-index: 40; top: 0; left: 0; right: 0; height: 86px; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 34px; color: var(--cream); transition: background 260ms var(--ease-out), color 260ms var(--ease-out), box-shadow 260ms var(--ease-out);
+  padding: 0 34px; color: var(--cream); transition: background 260ms var(--ease-out), color 260ms var(--ease-out), box-shadow 260ms var(--ease-out), opacity 220ms var(--ease-out), transform 260ms var(--ease-out);
 }
+:root[data-ice-hero-active="true"] .site-header { opacity: 0; pointer-events: none; transform: translateY(-18px); }
+.site-header { opacity: 1; transform: translateY(0); }
 .site-header--scrolled { background: rgb(244 240 232 / 93%); color: var(--maroon-deep); backdrop-filter: blur(15px); box-shadow: 0 1px 0 rgb(53 16 26 / 11%); }
 .brand-text { display: grid; grid-template-columns: auto auto; grid-template-rows: 22px 10px; align-items: end; column-gap: 5px; min-width: 130px; line-height: .75; }
 .brand-text span, .brand-text strong { font-family: "Cormorant Garamond", Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -.065em; }

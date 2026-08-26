@@ -16,9 +16,12 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
 
   useEffect(() => {
     const updateHeader = () => setIsScrolled(window.scrollY > 28);
-    updateHeader();
+    const frame = window.requestAnimationFrame(updateHeader);
     window.addEventListener("scroll", updateHeader, { passive: true });
-    return () => window.removeEventListener("scroll", updateHeader);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateHeader);
+    };
   }, []);
 
   const closeMenu = () => setIsOpen(false);

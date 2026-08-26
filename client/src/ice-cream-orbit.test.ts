@@ -34,10 +34,14 @@ describe("full-screen GSAP ice-cream sequence", () => {
   it("adds a clean video-integrated four-part story system while retaining dedicated portrait playback and safe loading behavior", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
     expect(orbit).toContain("prefers-reduced-motion");
-    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__video{object-fit:cover}");
+    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__stage{perspective:850px}");
+    expect(orbit).toContain(".ice-orbit__video{object-fit:cover}");
     expect(orbit).toContain('from "framer-motion"');
     expect(orbit).toContain("const storyProgress = useMotionValue(0)");
-    expect(orbit).toContain("Naatures");
+    expect(orbit).toContain("The Mall · Kanpur");
+    expect(orbit).toContain("Kanpur&apos;s first live ice-cream parlour");
+    expect(orbit).toContain("Live ice cream");
+    expect(orbit).toContain("Scroll to unfreeze");
     expect(orbit).toContain("Kanpur&apos;s first");
     expect(orbit).toContain("One place.");
     expect(orbit).toContain("#Freeze the");
@@ -77,11 +81,24 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("snapTo: STORY_SNAP_POINTS");
     expect(orbit).toContain("getStoryCheckpoint");
     expect(orbit).toContain("ice-orbit__checkpoint-rail");
+    expect(orbit).toContain("perspective:1150px");
+    expect(orbit).toContain("transform-style:preserve-3d");
+    expect(orbit).toContain("const openingRotateY");
+    expect(orbit).toContain("const parlourRotateY");
+    expect(orbit).toContain("const cravingRotateY");
+    expect(orbit).toContain("const endRotateY");
     expect(orbit).toContain("0.19, 0.22");
     expect(orbit).toContain("0.25, 0.28");
     expect(orbit).toContain("0.45, 0.48");
     expect(orbit).toContain("0.52, 0.55");
     expect(orbit).toContain("0.72, 0.75");
+  });
+
+  it("conceals the global header while the opening sequence remains in view", () => {
+    expect(orbit).toContain("setOpeningHeaderHidden");
+    expect(orbit).toContain("document.documentElement.dataset.iceHeroActive");
+    expect(orbit).toContain("onEnter: () => setOpeningHeaderHidden(true)");
+    expect(orbit).toContain("setOpeningHeaderHidden(false)");
   });
 });
 

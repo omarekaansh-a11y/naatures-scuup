@@ -1006,3 +1006,18 @@
 - [x] Adapt the sequence opening state so it functions as a clear branded hero on first load.
 - [x] Add discrete narrative checkpoints that never leave two story cards partially visible at once.
 - [x] Validate desktop and mobile first-load hierarchy, checkpoint timing, and video playback before publishing.
+
+# Opening-Sequence Header Concealment
+- [x] Hide the global header while the opening ice-cream sequence is active.
+- [x] Restore the header when visitors enter the editorial restaurant introduction.
+- [x] Verify desktop and mobile transitions without affecting menu navigation.
+
+# Refined Ice-Cream Hero Hierarchy
+- [x] Define concise hero-level brand, location, and discovery information for the opening sequence.
+- [x] Enhance the opening story typography and spacing without cluttering the central dessert composition.
+- [x] Preserve the four clean narrative checkpoints and verify desktop/mobile hero readability before publishing.
+
+# Dimensional Ice-Cream Hero Text
+- [x] Add restrained perspective and depth to each active story card so it floats above the video scene.
+- [x] Preserve central cup clearance and all checkpoint timing during 3D card transitions.
+- [x] Verify the effect remains readable and performant on desktop and mobile.
