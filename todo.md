@@ -915,3 +915,8 @@
 - [x] Measure frame advancement and asset decode behavior while scrolling through the 1440p sequence.
 - [x] Replace the cache-churn playback path with a stable high-resolution rendering strategy that does not freeze the page.
 - [x] Validate continuous full-screen playback under repeated scroll input, then publish the repair.
+
+# Performance-First Momentum Refinement
+- [x] Audit the restored high-resolution sequence for lightweight rendering and loading improvements.
+- [x] Add restrained easing and momentum while bounding rendering and asset work to avoid choppiness or freezing.
+- [x] Validate continuous desktop and mobile scroll playback before publishing the refinement.
