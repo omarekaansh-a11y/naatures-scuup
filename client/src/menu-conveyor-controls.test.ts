@@ -9,8 +9,8 @@ describe("menu chapter conveyor controls", () => {
   it("keeps chapter imagery static and adds keyboard-accessible arrow navigation plus pointer grab scrolling", () => {
     expect(chapterStyles).toContain("transition:none!important");
     expect(chapterStyles).toContain("transform:none!important");
-    expect(menu).toContain('aria-label="Show previous menu chapters"');
-    expect(menu).toContain('aria-label="Show next menu chapters"');
+    expect(menu).toContain('aria-label={copy.previousChapters}');
+    expect(menu).toContain('aria-label={copy.nextChapters}');
     expect(menu).toContain("onPointerDown={startConveyorDrag}");
     expect(menu).toContain("onPointerMove={moveConveyorDrag}");
     expect(menu).toContain("scrollBy({ left: direction");

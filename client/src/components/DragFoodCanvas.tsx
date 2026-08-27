@@ -4,6 +4,8 @@
  */
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import type { SiteLanguage } from "@/contexts/LanguageContext";
+import { dragCopy } from "@/lib/language-copy";
 
 type FoodCanvasItem = {
   src: string;
@@ -15,6 +17,7 @@ type FoodCanvasItem = {
 
 type DragFoodCanvasProps = {
   items: readonly FoodCanvasItem[];
+  language?: SiteLanguage;
 };
 
 type DragVector = { x: number; y: number };
@@ -60,7 +63,8 @@ function DogMascot() {
   );
 }
 
-export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
+export function DragFoodCanvas({ items, language = "en" }: DragFoodCanvasProps) {
+  const copy = dragCopy[language];
   const [activeIndex, setActiveIndex] = useState(0);
   const [dragVector, setDragVector] = useState<DragVector>(ZERO_VECTOR);
   const [isDragging, setIsDragging] = useState(false);
@@ -314,26 +318,26 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
               type="button"
               className={`drag-it-mascot-button ${dogReacting ? "drag-it-mascot-button--reacting" : ""} ${dogHappy ? "drag-it-mascot-button--happy" : ""}`}
               onClick={greetDog}
-              aria-label="Greet the Naatures Scuup café dog"
+              aria-label={copy.dogLabel}
             >
               <DogMascot />
             </button>
           </div>
-          <p className="drag-it-eyebrow">01 / The food edit</p>
-          <h2 id="drag-it-title" className="film-print-text">Drag into<br /><i>the good bits.</i></h2>
-          <p className="drag-it-body">A small stack of real table moments from Naatures Scuup. Pull a card aside to find the next craving.</p>
+          <p className="drag-it-eyebrow">{copy.eyebrow}</p>
+          <h2 id="drag-it-title" className="film-print-text">{copy.titleStart}<br /><i>{copy.titleEnd}</i></h2>
+          <p className="drag-it-body">{copy.body}</p>
           <p className="drag-it-signature">#FREEZETHEHAPPINESS</p>
         </div>
 
         <div className="drag-it-playground">
-          <p className="drag-it-hint"><ArrowLeft size={14} /> Drag me <ArrowRight size={14} /></p>
-          <p className={`drag-it-mobile-guide${showMobileGestureGuide ? " drag-it-mobile-guide--visible" : ""}`} aria-live="polite">Swipe a card in any direction</p>
+          <p className="drag-it-hint"><ArrowLeft size={14} /> {copy.dragMe} <ArrowRight size={14} /></p>
+          <p className={`drag-it-mobile-guide${showMobileGestureGuide ? " drag-it-mobile-guide--visible" : ""}`} aria-live="polite">{copy.swipeGuide}</p>
           <div className="drag-it-stack-shell">
             <div
               className={`drag-it-stack ${isDragging ? "drag-it-stack--dragging" : ""} ${isAnimating ? "drag-it-stack--animating" : ""} ${isArriving ? "drag-it-stack--arriving" : ""}`}
               tabIndex={0}
               role="region"
-              aria-label="A stack of Naatures Scuup food photographs. Drag in any direction, or use the arrow keys to reveal another food moment."
+              aria-label={copy.stackLabel}
               data-card-index={activeIndex + 1}
               aria-busy={loadedSources.size < items.length}
               onPointerDown={(event) => { dismissMobileGestureGuide(); handlePointerDown(event); }}
@@ -373,11 +377,11 @@ export function DragFoodCanvas({ items }: DragFoodCanvasProps) {
               })}
             </div>
           </div>
-          <div className="drag-it-pagination" aria-label={`Showing item ${activeIndex + 1} of ${items.length}`}>
+          <div className="drag-it-pagination" aria-label={`${copy.showing} ${activeIndex + 1} ${copy.of} ${items.length}`}>
             <span>{activeNumber} <i>/</i> {totalNumber}</span>
             <div>
-              <button type="button" aria-label="Show previous food moment" onClick={() => step(-1)}><ArrowLeft size={14} /></button>
-              <button type="button" aria-label="Show next food moment" onClick={() => step(1)}><ArrowRight size={14} /></button>
+              <button type="button" aria-label={copy.previous} onClick={() => step(-1)}><ArrowLeft size={14} /></button>
+              <button type="button" aria-label={copy.next} onClick={() => step(1)}><ArrowRight size={14} /></button>
             </div>
           </div>
         </div>

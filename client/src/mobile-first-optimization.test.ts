@@ -9,6 +9,7 @@ const enhancer = readFileSync(resolve(process.cwd(), "client/src/components/Mobi
 const menu = readFileSync(resolve(process.cwd(), "client/src/pages/MenuPage.tsx"), "utf8");
 const dragCanvas = readFileSync(resolve(process.cwd(), "client/src/components/DragFoodCanvas.tsx"), "utf8");
 const header = readFileSync(resolve(process.cwd(), "client/src/components/SiteHeader.tsx"), "utf8");
+const languageCopy = readFileSync(resolve(process.cwd(), "client/src/lib/language-copy.ts"), "utf8");
 
 describe("mobile-first optimization safeguards", () => {
   it("keeps navigation usable through the mobile opening sequence and reserves safe areas", () => {
@@ -44,7 +45,8 @@ describe("mobile-first optimization safeguards", () => {
     expect(menu).toContain('enterKeyHint="search"');
     expect(menu).toContain('aria-live="polite"');
     expect(dragCanvas).toContain("naatures-scuup-mobile-drag-guide");
-    expect(dragCanvas).toContain("Swipe a card in any direction");
+    expect(dragCanvas).toContain("copy.swipeGuide");
+    expect(languageCopy).toContain("Swipe a card in any direction");
   });
 
   it("keeps the header free of a duplicate mobile top action while adding mobile network and category-navigation safeguards", () => {

@@ -3,15 +3,17 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
+const languageCopy = readFileSync(resolve(process.cwd(), "client/src/lib/language-copy.ts"), "utf8");
 
 describe("consolidated home story", () => {
   it("removes the redundant follow-on hero and carries its hospitality details into the scoop destination", () => {
     expect(home).not.toContain('className="hero hero--frontispiece hero--after-story"');
-    expect(home).toContain("Save room.");
-    expect(home).toContain("From South Indian favourites and shareable pizza");
+    expect(home).toContain("const copy = homeCopy[language]");
+    expect(languageCopy).toContain("Save room.");
+    expect(languageCopy).toContain("From South Indian favourites and shareable pizza");
     expect(home).toContain("100%");
     expect(home).toContain("204 DISHES");
-    expect(home).toContain("Directions to Mall Road");
+    expect(languageCopy).toContain("Directions to Mall Road");
     expect(home).toContain('<OrganicWaveDivider tone="cream-to-maroon" />');
     expect(home).not.toContain('className="craving-ribbon"');
     expect(home).not.toContain("One table.<br /><i>Every craving.</i>");

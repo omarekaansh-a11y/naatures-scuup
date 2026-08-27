@@ -13,6 +13,8 @@ import { OrganicWaveDivider } from "@/components/OrganicWaveDivider";
 import { RouteMeta } from "@/components/RouteMeta";
 import { menuChapters, menuItemCount } from "@/lib/menu-data";
 import { menuDishPrices } from "@/lib/menu-prices";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { localizeChapterTitle, menuCopy } from "@/lib/language-copy";
 
 const dishNotes: Record<string, string> = {
   "Dahi Kabab":"Classic, creamy Indian appetizer.","Paneer Tikka":"Soft paneer marinated in aromatic spices.","Hara Bhara Kabab":"Tender vegetarian kabab with mint notes.","Paneer Afghani Tikka":"Fragrant spiced paneer, grilled.","Crispy Corn":"Crunchy corn fritters for snacking.","Chinese Bhel":"Crisp, crunchy Chinese-style bhel.","Dahi Kabab Roll":"Crispy, juicy kababs for a quick bite.","Paneer 65":"Crispy paneer with peppers in spicy sauce.",
@@ -46,10 +48,6 @@ const chapterArtwork: Record<string, { src: string; alt: string; position: strin
   "drinks": { src: "/manus-storage/drinks_ecf68021.jpg", alt: "Colourful chilled mocktails for the Drinks & Shakes chapter", position: "center 52%" },
   "bakery-specials": { src: "/manus-storage/bakery-specials_6008eb2e.webp", alt: "Flaky paneer puff pastries for the Bakery Specials chapter", position: "center 52%" },
 };
-
-function formatHeading(value: string) {
-  return value.replace(/\band\b/gi, "&");
-}
 
 function noteForDish(dish: string, chapterDetail: string) {
   const withoutSize = dish.replace(/ \[[^\]]+\]/, "");
@@ -99,6 +97,8 @@ const cardMenuStyles = `
 `;
 
 export default function MenuPage() {
+  const { language } = useLanguage();
+  const copy = menuCopy[language];
   const [activeGroup, setActiveGroup] = useState("all");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("recommended");
@@ -131,7 +131,8 @@ export default function MenuPage() {
     }, 440);
     return () => window.clearTimeout(destinationTimer);
   }, [reduceMotion]);
-  const menuGroups = [{ slug: "all", title: `All items (${menuItemCount})` }, ...menuChapters.map((chapter) => ({ slug: chapter.slug, title: formatHeading(chapter.title) }))];
+  const localizedChapterTitle = (slug: string, title: string) => localizeChapterTitle(slug, title, language);
+  const menuGroups = [{ slug: "all", title: `${localizedChapterTitle("all", "All items")} (${menuItemCount})` }, ...menuChapters.map((chapter) => ({ slug: chapter.slug, title: localizedChapterTitle(chapter.slug, chapter.title) }))];
   const normalizedQuery = query.trim().toLowerCase();
   const visibleItems = useMemo(() => {
     const chapters = menuChapters
@@ -173,37 +174,37 @@ export default function MenuPage() {
       <section className="menu-page-hero section-pad print-surface maximalist-surface" aria-labelledby="full-menu-title">
         <div className="maximalist-surface__forms" aria-hidden="true" />
         <span className="maximalist-surface__figure" aria-hidden="true">17</span>
-        <Breadcrumbs current="Full menu" />
-        <span className="maximalist-surface__label">A vegetarian craving atlas</span>
-        <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />100% vegetarian menu</p>
-        <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title print-ink"><span className="title-outline">Many cravings.</span><br /><i>One table.</i></h1><div><p>From a hot dosa to a chilled scoop, move through every Mall Road mood in one craving atlas—made for reading, sharing and planning the next table.</p><span className="menu-page-hours">17 chapters · 204 dishes · Mon, Tue, Thu–Sun 11 AM–11 PM · Wed 10 AM–11 PM</span></div></div>
+        <Breadcrumbs current={copy.current} />
+        <span className="maximalist-surface__label">{copy.atlas}</span>
+        <p className="eyebrow eyebrow--maroon"><Leaf size={13} style={{display:"inline",marginRight:7,verticalAlign:"-2px"}} />{copy.vegetarianMenu}</p>
+        <div className="menu-page-hero__grid"><h1 id="full-menu-title" className="editorial-title print-ink"><span className="title-outline">{copy.headlineStart}</span><br /><i>{copy.headlineEnd}</i></h1><div><p>{copy.heroCopy}</p><span className="menu-page-hours">{copy.chapterHours}</span></div></div>
       </section>
       <OrganicWaveDivider tone="cream-to-sage" />
-      <section className="menu-browser-block section-pad maximalist-surface maximalist-surface--sage layered-image-depth layered-image-depth--menu" aria-label="Browse Full Menu chapters">
+      <section className="menu-browser-block section-pad maximalist-surface maximalist-surface--sage layered-image-depth layered-image-depth--menu" aria-label={copy.browseChapters}>
         <div className="maximalist-surface__forms" aria-hidden="true" />
-        <div className="menu-browser" aria-label="Browse the Naatures Scuup menu">
-          <div className="menu-conveyor-shell" role="group" aria-label="Menu chapter navigation">
-            <button className="menu-conveyor-nav" type="button" onClick={() => nudgeConveyor(-1)} aria-label="Show previous menu chapters"><ChevronLeft size={17} /></button>
-            <div ref={conveyorRef} className="menu-conveyor" role="group" aria-label="Drag to browse menu chapters" onPointerDown={startConveyorDrag} onPointerMove={moveConveyorDrag} onPointerUp={endConveyorDrag} onPointerCancel={endConveyorDrag}>
+        <div className="menu-browser" aria-label={copy.browseMenu}>
+          <div className="menu-conveyor-shell" role="group" aria-label={copy.chapterNavigation}>
+            <button className="menu-conveyor-nav" type="button" onClick={() => nudgeConveyor(-1)} aria-label={copy.previousChapters}><ChevronLeft size={17} /></button>
+            <div ref={conveyorRef} className="menu-conveyor" role="group" aria-label={copy.dragChapters} onPointerDown={startConveyorDrag} onPointerMove={moveConveyorDrag} onPointerUp={endConveyorDrag} onPointerCancel={endConveyorDrag}>
               <div className="menu-conveyor__track">
                 {[false, true].map((isDuplicate) => <div className="menu-conveyor__set" key={isDuplicate ? "duplicate" : "primary"} aria-hidden={isDuplicate ? "true" : undefined}>{menuGroups.map((group, groupIndex) => <button key={`${isDuplicate ? "duplicate" : "primary"}-${group.slug}`} className="menu-filter menu-filter--indexed" data-active={activeGroup === group.slug} onClick={() => selectMobileGroup(group.slug)} aria-pressed={activeGroup === group.slug} tabIndex={isDuplicate ? -1 : undefined}><span>{String(groupIndex).padStart(2, "0")}</span><b>{group.title}</b></button>)}</div>)}
               </div>
             </div>
-            <button className="menu-conveyor-nav" type="button" onClick={() => nudgeConveyor(1)} aria-label="Show next menu chapters"><ChevronRight size={17} /></button>
+            <button className="menu-conveyor-nav" type="button" onClick={() => nudgeConveyor(1)} aria-label={copy.nextChapters}><ChevronRight size={17} /></button>
           </div>
-          <div className="menu-browser__tools"><label className="menu-search"><Search size={19} strokeWidth={1.6} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search dosa, pizza, ice cream, shakes…" aria-label="Search dishes" inputMode="search" enterKeyHint="search" autoComplete="off" spellCheck={false} /></label><label className="menu-sort">Sort by <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort menu items"><option value="recommended">Recommended</option><option value="az">A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select><ChevronDown size={14} /></label></div>
-          <div id="menu-results" className="menu-browser__result" aria-live="polite" aria-atomic="true" tabIndex={-1}><span>{visibleItemCount} dishes to explore</span><span>{activeGroup === "all" ? "All cravings" : formatHeading(menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
+          <div className="menu-browser__tools"><label className="menu-search"><Search size={19} strokeWidth={1.6} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={copy.searchPlaceholder} aria-label={copy.searchDishes} inputMode="search" enterKeyHint="search" autoComplete="off" spellCheck={false} /></label><label className="menu-sort">{copy.sortBy}<select value={sort} onChange={(event) => setSort(event.target.value)} aria-label={copy.sortItems}><option value="recommended">{copy.recommended}</option><option value="az">{copy.alphabetical}</option><option value="price-low">{copy.lowToHigh}</option><option value="price-high">{copy.highToLow}</option></select><ChevronDown size={14} /></label></div>
+          <div id="menu-results" className="menu-browser__result" aria-live="polite" aria-atomic="true" tabIndex={-1}><span>{visibleItemCount} {copy.dishesToExplore}</span><span>{activeGroup === "all" ? copy.allCravings : localizedChapterTitle(activeGroup, menuChapters.find((chapter) => chapter.slug === activeGroup)?.title ?? "")}</span></div>
         </div>
       </section>
       <OrganicWaveDivider tone="sage-to-cream" />
       <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">
-        {visibleItems.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">No craving found</p><h2>Try another<br /><i>table mood.</i></h2><p>Search by a dish name, flavour or menu group. Your menu is still here—just waiting for a different word.</p></div>}
+        {visibleItems.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">{copy.noCraving}</p><h2>{copy.emptyStart}<br /><i>{copy.emptyEnd}</i></h2><p>{copy.emptyCopy}</p></div>}
         <div className="menu-card-grid">{visibleItems.map(({ dish, chapter }, index) => { const price = menuDishPrices[dish]; const previousItem = visibleItems[index - 1]; const showChapterBreak = sort === "recommended" && (!previousItem || previousItem.chapter.slug !== chapter.slug); const chapterNumber = `${menuChapters.findIndex((menuChapter) => menuChapter.slug === chapter.slug) + 1}`.padStart(2, "0"); const artwork = chapterArtwork[chapter.slug]; return <Fragment key={`${chapter.slug}-${dish}`}>
-          {showChapterBreak && <div className="menu-chapter-break print-surface print-halftone maximalist-chapter" data-chapter={chapter.slug}><img className="menu-chapter-break__image" src={artwork.src} alt="" style={{ objectPosition: artwork.position }} /><span className="menu-chapter-break__veil" aria-hidden="true" /><div className="menu-chapter-break__body"><span className="maximalist-index">{chapterNumber} / Chapter</span><p className="menu-chapter-break__index">{chapterNumber} / Craving chapter</p><h2 className="print-ink">{formatHeading(chapter.title)}</h2><small className="menu-chapter-break__art-note">Naatures Scuup / {formatHeading(chapter.note)}</small></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
-          <motion.article className={`menu-dish-card print-edge-boil maximalist-card${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}>{showChapterBreak && <p className="menu-dish-card__lead-label"><span>{chapterNumber}</span> The first plate</p>}<p className="menu-dish-card__meta">100% pure veg · {formatHeading(chapter.title)}</p><div><h2 className="print-ink">{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>Menu price</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? "Price not listed" : "Menu listing"}</span></footer></motion.article>
+          {showChapterBreak && <div className="menu-chapter-break print-surface print-halftone maximalist-chapter" data-chapter={chapter.slug}><img className="menu-chapter-break__image" src={artwork.src} alt="" style={{ objectPosition: artwork.position }} /><span className="menu-chapter-break__veil" aria-hidden="true" /><div className="menu-chapter-break__body"><span className="maximalist-index">{chapterNumber} / {copy.chapter}</span><p className="menu-chapter-break__index">{chapterNumber} / {copy.cravingChapter}</p><h2 className="print-ink">{localizedChapterTitle(chapter.slug, chapter.title)}</h2><small className="menu-chapter-break__art-note">Naatures Scuup / {chapter.note}</small></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
+          <motion.article className={`menu-dish-card print-edge-boil maximalist-card${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}>{showChapterBreak && <p className="menu-dish-card__lead-label"><span>{chapterNumber}</span> {copy.firstPlate}</p>}<p className="menu-dish-card__meta">{copy.pureVeg} · {localizedChapterTitle(chapter.slug, chapter.title)}</p><div><h2 className="print-ink">{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>{copy.menuPrice}</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? copy.priceNotListed : copy.menuListing}</span></footer></motion.article>
         </Fragment>; })}</div>
       </section>
-      <section className="menu-page-closing section-pad"><div><p className="eyebrow menu-page-closing__eyebrow">Freeze the happiness</p><h2>Find your<br /><i>table mood.</i></h2></div><div className="menu-page-closing__actions"><a className="button button--cream" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">Get directions <MapPin size={16} /></a><Link className="text-action text-action--cream" href="/">Back to home <ArrowDownRight size={16} /></Link></div></section>
+      <section className="menu-page-closing section-pad"><div><p className="eyebrow menu-page-closing__eyebrow">{copy.closingEyebrow}</p><h2>{copy.closingStart}<br /><i>{copy.closingEnd}</i></h2></div><div className="menu-page-closing__actions"><a className="button button--cream" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">{copy.getDirections} <MapPin size={16} /></a><Link className="text-action text-action--cream" href="/">{copy.backHome} <ArrowDownRight size={16} /></Link></div></section>
     </main>
     <SiteFooter />
     <MobileVisitDock />

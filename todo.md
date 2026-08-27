@@ -1337,3 +1337,9 @@
 - [x] Analyze the supplied follow-up reference and strengthen the incoming homepage plane’s top-edge shadow.
 - [x] Ensure the slide-over depth is clearly visible on desktop and mobile without altering the cinematic video.
 - [x] Verify the shadowed handoff, completion lock, and production behavior before publishing.
+
+# English/Hindi Language Switcher
+- [x] Add an accessible top-right English/Hindi pill switcher to the shared header, with English selected by default.
+- [x] Persist the selected language across Home and Full Menu and update the document language.
+- [x] Translate key public interface text on Home and Full Menu while leaving original dish names understandable.
+- [x] Verify desktop/mobile header ergonomics, keyboard support, bilingual route persistence, and production quality.

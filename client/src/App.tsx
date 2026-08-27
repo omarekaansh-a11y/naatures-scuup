@@ -9,6 +9,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { MobileExperienceEnhancer } from "./components/MobileExperienceEnhancer";
 import { SiteHeader } from "./components/SiteHeader";
 import { StructuralStyles } from "./components/StructuralStyles";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import MenuPage from "./pages/MenuPage";
@@ -38,7 +39,7 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
-        <TooltipProvider><StructuralStyles /><Toaster /><Router /><MobileExperienceEnhancer /></TooltipProvider>
+        <LanguageProvider><TooltipProvider><StructuralStyles /><Toaster /><Router /><MobileExperienceEnhancer /></TooltipProvider></LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

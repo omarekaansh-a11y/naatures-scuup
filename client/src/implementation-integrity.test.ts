@@ -10,6 +10,7 @@ const header = read("client/src/components/SiteHeader.tsx");
 const app = read("client/src/App.tsx");
 const styles = read("client/src/seamless-conveyor.css");
 const structuralStyles = read("client/src/components/StructuralStyles.tsx");
+const languageCopy = read("client/src/lib/language-copy.ts");
 
 describe("implementation integrity", () => {
   it("keeps the Home food stack on distinct owner-supplied image references", () => {
@@ -30,7 +31,8 @@ describe("implementation integrity", () => {
     expect(drag).toContain("onKeyDown={handleKeyDown}");
     expect(drag).toContain('tabIndex={0}');
     expect(drag).toContain('draggable={false}');
-    expect(drag).toContain('aria-label="A stack of Naatures Scuup food photographs');
+    expect(drag).toContain('aria-label={copy.stackLabel}');
+    expect(languageCopy).toContain("A stack of Naatures Scuup food photographs");
     expect(styles).toContain(".drag-it-card");
   });
 
