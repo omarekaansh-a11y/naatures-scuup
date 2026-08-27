@@ -1356,3 +1356,24 @@
 - [x] Tighten the review section spacing and rewrite its bilingual heading, descriptor, and review-count treatment with an accessible star icon.
 - [x] Update the shared hours display to the requested daily schedule in both languages.
 - [x] Verify desktop/mobile, localization, and regression behavior before publishing.
+
+# Cinematic, Controls, Reviews, FAQ, and Footer Refinement
+- [x] Update the cinematic phrasing in both English and Hindi modes.
+- [x] Reposition the Drag It pagination controls safely below the food-card stack.
+- [x] Reduce the review section’s remaining excess headroom and strengthen its visible heading treatment.
+- [x] Remove the restaurant-hours FAQ from both language variants without disrupting the accordion.
+- [x] Replace footer social/map text links with accessible Instagram, Facebook, and map icons, and remove the duplicated lower contact row.
+- [x] Add a short, smooth, reduced-motion-safe open-and-close transition to the FAQ accordion.
+- [x] Expand each remaining FAQ answer to roughly twice its current useful, factual length in English and Hindi.
+- [x] Render Naatures Scuup as नेचर्स स्कूप in Hindi mode, including the header, while keeping #FREEZETHEHAPPINESS, NS, and 126 Mall Road unchanged.
+- [x] Standardize every public opening-hours reference to Mon-Sun, 11 AM to 11 PM in both languages and structured metadata.
+- [ ] Apply Adel Sans Devanagari to Hindi headings and Khand to smaller Hindi interface text, preserving English typography.
+- [x] Audit every unavailable menu price against the public Zomato listing and populate only directly verifiable prices.
+- [x] Compare every readable public-menu dish against the website catalogue and add any clearly sourced missing items.
+- [x] Remove Menu listing and Price not listed copy from every menu-card price treatment.
+- [x] Add selective line-screen color-dodge and masked frosted-ripple texture to supporting surfaces, excluding the ice-cream cinematic and readable controls.
+- [x] Use anime.js as the future visual reference for vector motion and Motion as the future reference for block-based interface animation.
+- [x] Replace the duplicate Extras and Live Ice Creams chapter images with two distinct, category-appropriate static images.
+- [x] Verify bilingual content, desktop/mobile layout, interactions, and production quality before publishing.
+- [ ] Add Adel Sans Devanagari after an owner-provided licensed webfont kit or URL, then validate its Hindi heading rendering.
+- [ ] Add the 22 remaining current menu prices after receiving a source that unambiguously maps each dish to its price.

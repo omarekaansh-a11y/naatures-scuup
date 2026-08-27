@@ -12,7 +12,7 @@ describe("consolidated home story", () => {
     expect(languageCopy).toContain("Save room.");
     expect(languageCopy).toContain("From South Indian favourites and shareable pizza");
     expect(home).toContain("100%");
-    expect(home).toContain("204 DISHES");
+    expect(home).toContain("231 DISHES");
     expect(languageCopy).toContain("Directions to Mall Road");
     expect(home).toContain('<OrganicWaveDivider tone="cream-to-maroon" />');
     expect(home).not.toContain('className="craving-ribbon"');

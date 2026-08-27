@@ -36,8 +36,9 @@ describe("implementation integrity", () => {
     expect(styles).toContain(".drag-it-card");
   });
 
-  it("keeps the slogan stacked beneath the shared wordmark and the italic title contrasted", () => {
-    expect(header).toContain('<span className="brand-text"><strong>Naatures Scuup</strong><small>#FREEZETHEHAPPINESS</small></span>');
+  it("keeps the translated brand and fixed English slogan stacked beneath the shared wordmark", () => {
+    expect(header).toContain('const brandName = isHindi ? "नेचर्स स्कूप" : "Naatures Scuup";');
+    expect(header).toContain('<span className="brand-text"><strong>{brandName}</strong><small>#FREEZETHEHAPPINESS</small></span>');
     expect(styles).toContain(".brand-text small");
     expect(styles).toContain(".drag-it-copy h2 i { color: var(--mango); font-weight: 500; }");
   });

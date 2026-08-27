@@ -7,6 +7,7 @@
  */
 import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
 import { Link } from "wouter";
 import { DragFoodCanvas } from "@/components/DragFoodCanvas";
 import { GoogleReviews } from "@/components/GoogleReviews";
@@ -39,6 +40,11 @@ const foodCanvasItems = [
 
 function scrollToId(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function FaqItem({ id, question, answer, delay, reduceMotion }: { id: string; question: string; answer: string; delay: number; reduceMotion: boolean | null }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return <motion.article className="faq-item" data-open={isOpen} initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, delay, ease: [0.23, 1, 0.32, 1] }}><button className="faq-question" type="button" aria-expanded={isOpen} aria-controls={`${id}-answer`} onClick={() => setIsOpen((value) => !value)}><span>{question}</span><span className="faq-question__indicator" aria-hidden="true">+</span></button><motion.div id={`${id}-answer`} className="faq-answer-wrap" initial={false} animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }} transition={reduceMotion ? { duration: 0 } : { duration: 0.22, ease: [0.23, 1, 0.32, 1] }}><p>{answer} <span className="faq-answer-signature">#FREEZETHEHAPPINESS</span></p></motion.div></motion.article>;
 }
 
 export default function Home() {
@@ -74,7 +80,7 @@ export default function Home() {
             <p className="eyebrow eyebrow--mango">{copy.tableEyebrow}</p>
             <h2 id="ice-cream-destination-title" className="editorial-title editorial-title--light print-ink film-print-text film-print-text--bright"><span className="title-outline">{copy.saveRoom}</span><br /><i>{copy.forScoop}</i></h2>
             <p className="ice-cream-destination__copy">{copy.scoopCopy}</p>
-            <div className="ice-cream-destination__facts" aria-label={language === "hi" ? "नेचर्स स्कूप टेबल गाइड" : "Naatures Scuup table guide"}><span><b>100%</b><small>{copy.vegetarianDining}</small></span><span><b>204 DISHES</b><small>{copy.cravingChapters}</small></span><span><b>MALL ROAD</b><small>Kanpur · 11 AM–11 PM</small></span></div>
+            <div className="ice-cream-destination__facts" aria-label={language === "hi" ? "नेचर्स स्कूप टेबल गाइड" : "Naatures Scuup table guide"}><span><b>100%</b><small>{copy.vegetarianDining}</small></span><span><b>231 DISHES</b><small>{copy.cravingChapters}</small></span><span><b>MALL ROAD</b><small>Mon-Sun, 11 AM to 11 PM</small></span></div>
             <div className="ice-cream-destination__actions"><Link className="ice-cream-destination__cta" href="/menu#ice-creams">{copy.exploreIceCreams} <ArrowRight size={17} /></Link><button className="ice-cream-destination__secondary-action" type="button" onClick={() => scrollToId("#location")}>{copy.directions} <ArrowRight size={16} /></button></div>
           </motion.div>
         </section>
@@ -83,7 +89,7 @@ export default function Home() {
         <GoogleReviews />
 
         <LocationAtlas />
-        <section id="faq" className="faq-section section-pad print-paper print-halftone print-edge-boil layered-image-depth layered-image-depth--faq" aria-labelledby="faq-title"><div><p className="eyebrow eyebrow--maroon">{copy.beforeVisit}</p><h2 id="faq-title" className="film-print-text film-print-text--slow">{copy.goodToKnow}<br /><i>{copy.know}</i></h2><p>{copy.faqIntro}<a href="tel:07860880088">+91 78608 80088</a>{copy.faqEnding}</p></div><div className="faq-list"><motion.details open initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}><summary>{copy.where}</summary><p>{copy.whereAnswer} <span className="faq-answer-signature">#FREEZETHEHAPPINESS</span></p></motion.details><motion.details initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, delay: 0.05, ease: [0.23, 1, 0.32, 1] }}><summary>{copy.vegetarian}</summary><p>{copy.vegetarianAnswer} <span className="faq-answer-signature">#FREEZETHEHAPPINESS</span></p></motion.details><motion.details initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}><summary>{copy.browse}</summary><p>{copy.browseAnswer} <span className="faq-answer-signature">#FREEZETHEHAPPINESS</span></p></motion.details><motion.details initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}><summary>{copy.order}</summary><p>{copy.orderAnswer} <span className="faq-answer-signature">#FREEZETHEHAPPINESS</span></p></motion.details><motion.details initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}><summary>{copy.directionsQuestion}</summary><p>{copy.directionsAnswer} <span className="faq-answer-signature">#FREEZETHEHAPPINESS</span></p></motion.details></div></section>
+        <section id="faq" className="faq-section section-pad print-paper print-halftone print-edge-boil layered-image-depth layered-image-depth--faq" aria-labelledby="faq-title"><span className="surface-crt-texture" aria-hidden="true" /><span className="surface-ripple-texture" aria-hidden="true" /><div><p className="eyebrow eyebrow--maroon">{copy.beforeVisit}</p><h2 id="faq-title" className="film-print-text film-print-text--slow">{copy.goodToKnow}<br /><i>{copy.know}</i></h2><p>{copy.faqIntro}<a href="tel:07860880088">+91 78608 80088</a>{copy.faqEnding}</p></div><div className="faq-list"><FaqItem id="faq-location" question={copy.where} answer={copy.whereAnswer} delay={0} reduceMotion={reduceMotion} /><FaqItem id="faq-vegetarian" question={copy.vegetarian} answer={copy.vegetarianAnswer} delay={0.05} reduceMotion={reduceMotion} /><FaqItem id="faq-contact" question={copy.order} answer={copy.orderAnswer} delay={0.1} reduceMotion={reduceMotion} /><FaqItem id="faq-directions" question={copy.directionsQuestion} answer={copy.directionsAnswer} delay={0.15} reduceMotion={reduceMotion} /></div></section>
         </div>
       </main>
       <SiteFooter />

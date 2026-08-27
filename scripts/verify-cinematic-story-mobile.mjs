@@ -62,7 +62,7 @@ for (const viewport of viewportCases) {
     { progress: 0.08, expectedIndex: 0, expectedText: "live scoop.", expectedZone: "base" },
     { progress: 0.32, expectedIndex: 1, expectedText: "made live.", expectedZone: "base" },
     { progress: 0.63, expectedIndex: 2, expectedText: "every craving.", expectedZone: "base" },
-    { progress: 0.92, expectedIndex: 3, expectedText: "happiness.", expectedZone: "base" },
+    { progress: 0.92, expectedIndex: 3, expectedText: "#freezethehappiness", expectedZone: "base" },
   ];
   const mobileChapters = [];
   for (const chapter of chapters) {

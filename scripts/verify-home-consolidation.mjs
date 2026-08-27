@@ -43,7 +43,7 @@ const destination = await page.evaluate(() => {
   };
 });
 
-if (!destination.title?.includes("Save room.") || !destination.copy?.includes("South Indian favourites") || destination.factCount !== 3 || !destination.facts.some((fact) => fact?.includes("100%")) || !destination.facts.some((fact) => fact?.includes("204 DISHES")) || !destination.facts.some((fact) => fact?.includes("MALL ROAD")) || destination.actionCount !== 2) {
+if (!destination.title?.includes("Save room.") || !destination.copy?.includes("South Indian favourites") || destination.factCount !== 3 || !destination.facts.some((fact) => fact?.includes("100%")) || !destination.facts.some((fact) => fact?.includes("231 DISHES")) || !destination.facts.some((fact) => fact?.includes("MALL ROAD")) || destination.actionCount !== 2) {
   throw new Error(`Consolidated scoop destination failed: ${JSON.stringify(destination)}`);
 }
 

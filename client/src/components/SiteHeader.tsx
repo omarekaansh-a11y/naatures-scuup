@@ -16,6 +16,7 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
   const [location, setLocation] = useLocation();
   const { language, setLanguage } = useLanguage();
   const isHindi = language === "hi";
+  const brandName = isHindi ? "नेचर्स स्कूप" : "Naatures Scuup";
   const copy = isHindi ? {
     home: "होम",
     fullMenu: "पूरा मेनू",
@@ -69,7 +70,7 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
 		  <header className={`site-header site-header--hamburger ${(paper || isScrolled) ? "site-header--scrolled" : ""} ${isOpen ? "site-header--menu-open" : ""}`}>
 			<span className="site-header__ring-field" aria-hidden="true"><i /><i /><i /></span>
 			<span className="site-header__edition" aria-hidden="true">NS / 126 / MALL ROAD</span>
-	        <Link className="brand-logo-link" href="/" aria-label="Naatures Scuup home" onClick={closeMenu}>
+        <Link className="brand-logo-link" href="/" aria-label={`${brandName} ${copy.home}`} onClick={closeMenu}>
 	          <span className="brand-logo-crop" aria-hidden="true">
 	            <svg className="brand-logo" viewBox="0 0 1920 1920" preserveAspectRatio="xMidYMid meet">
 	              <defs>
@@ -90,7 +91,7 @@ export function SiteHeader({ paper = false }: { paper?: boolean }) {
 	              <image href={ownerLogo} width="1920" height="1920" preserveAspectRatio="xMidYMid meet" mask="url(#owner-logo-foreground-mask)" />
 	            </svg>
 	          </span>
-	          <span className="brand-text"><strong>Naatures Scuup</strong><small>#FREEZETHEHAPPINESS</small></span>
+          <span className="brand-text"><strong>{brandName}</strong><small>#FREEZETHEHAPPINESS</small></span>
         </Link>
         <div className="site-header-actions">
           <div className="site-language-switcher" role="group" aria-label={isHindi ? "भाषा चुनें" : "Choose language"}>

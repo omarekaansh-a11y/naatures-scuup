@@ -42,7 +42,7 @@ describe("English/Hindi language switcher", () => {
     expect(copy).toContain('beforeVisit: "04 / FAQs"');
     expect(copy).toContain('browse: "What time does the restaurant open?"');
     expect(copy).toContain('summary: "6 public reviews"');
-    expect(copy).toContain('hours: "Mon–Sun · 11 AM–11 PM"');
-    expect(copy).toContain('hours: "सोम–रवि · 11 AM–11 PM"');
+    expect(copy).toContain('hours: "Mon-Sun, 11 AM to 11 PM"');
+    expect(copy).toContain('hours: "सोम-रवि, सुबह 11 बजे से रात 11 बजे तक"');
   });
 });

@@ -52,7 +52,7 @@ await page.locator('.site-language-switcher__option[lang="en"]').click();
 await page.waitForFunction(() => document.documentElement.lang === "en");
 const restoredEnglishDish = await page.locator(".menu-dish-card h2").first().textContent();
 
-const completeHindiMenu = hindiMenu.titleCount === 204 && hindiMenu.cards === 204 && hindiMenu.latinTitles.length === 0 && hindiMenu.latinDescriptions.length === 0 && /[\u0900-\u097F]/.test(hindiMenu.firstTitle ?? "") && /बहुत-सी/.test(hindiMenu.menuHeading ?? "");
+const completeHindiMenu = hindiMenu.titleCount === 231 && hindiMenu.cards === 231 && hindiMenu.latinTitles.length === 0 && hindiMenu.latinDescriptions.length === 0 && /[\u0900-\u097F]/.test(hindiMenu.firstTitle ?? "") && /बहुत-सी/.test(hindiMenu.menuHeading ?? "");
 const completeHindiHome = hindiHome.lang === "hi" && /कानपुर/.test(hindiHome.cinematic ?? "") && /डाइनर रिव्यू/.test(hindiHome.reviews ?? "") && /जानना/.test(hindiHome.faq ?? "") && /हमें खोजें/.test(hindiHome.footer ?? "") && /दिशा-निर्देश/.test(hindiHome.mapButton ?? "");
 
 if (!completeHindiMenu || !completeHindiHome || !englishDish?.includes("Hara Bhara Kabab") || !restoredEnglishDish?.includes("Hara Bhara Kabab")) {

@@ -26,10 +26,9 @@ describe("site recovery and social metadata", () => {
     expect(documentHead).toContain('href="/apple-touch-icon.png?v=3"');
     expect(documentHead).toContain('"@type": "Restaurant"');
     expect(documentHead).toContain('"openingHoursSpecification"');
-    expect(documentHead).toContain('"dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"]');
+    expect(documentHead).toContain('"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]');
     expect(documentHead).toContain('"opens": "11:00"');
-    expect(documentHead).toContain('"dayOfWeek": ["Wednesday"]');
-    expect(documentHead).toContain('"opens": "10:00"');
+    expect(documentHead).not.toContain('"opens": "10:00"');
     expect(documentHead).toContain('"closes": "23:00"');
   });
 

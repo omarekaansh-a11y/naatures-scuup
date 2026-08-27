@@ -51,7 +51,7 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(languageCopy).toContain("Scroll to unfreeze");
     expect(languageCopy).toContain("Kanpur's first");
     expect(languageCopy).toContain("One place.");
-    expect(languageCopy).toContain("#Freeze the");
+    expect(languageCopy).toContain("#FREEZETHEHAPPINESS");
     expect(orbit).toContain("ice-orbit__story");
     expect(orbit).toContain("background:#d6d4d0");
     expect(orbit).toContain("color:rgb(47 38 34)!important");

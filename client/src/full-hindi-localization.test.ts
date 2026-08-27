@@ -14,9 +14,9 @@ const atlas = readFileSync(resolve(process.cwd(), "client/src/components/Locatio
 describe("complete Hindi localization", () => {
   it("translates every verified menu dish title into Hindi-script text while English retains source titles", () => {
     const dishes = menuChapters.flatMap((chapter) => chapter.dishes);
-    expect(dishes).toHaveLength(204);
+    expect(dishes).toHaveLength(231);
     const translations = dishes.map((dish) => localizeMenuDishName(dish, "hi"));
-    expect(translations).toHaveLength(204);
+    expect(translations).toHaveLength(231);
     expect(translations.every((translation, index) => translation !== dishes[index] && devanagari.test(translation) && !/[A-Za-z]/.test(translation))).toBe(true);
     expect(dishes.every((dish) => localizeMenuDishName(dish, "en") === dish)).toBe(true);
   });
