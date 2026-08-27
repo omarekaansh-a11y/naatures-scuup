@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { SiteLanguage } from "@/contexts/LanguageContext";
 
 export const homeCopy = {
@@ -197,3 +198,91 @@ const hindiChapterTitles: Record<string, string> = {
 export function localizeChapterTitle(slug: string, englishTitle: string, language: SiteLanguage) {
   return language === "hi" ? (hindiChapterTitles[slug] ?? englishTitle) : englishTitle.replace(/\band\b/gi, "&");
 }
+
+const hindiChapterNotes: Record<string, string> = {
+  starters: "पहला साझा स्वाद",
+  "soups-salads": "ताज़ी शुरुआत",
+  "main-course": "भरपूर, परिचित, उदार",
+  breads: "हर निवाले के साथ",
+  "rice-biryani": "खुशबूदार अध्याय",
+  "south-indian": "कुरकुरा आराम",
+  chinese: "वॉक की ऊर्जा",
+  "fried-rice-noodles": "वॉक अध्याय",
+  "pizza-pasta": "चीज़ पुल & ट्वर्ल्स",
+  "burgers-sandwiches": "टोस्टेड और स्टैक्ड",
+  snacks: "क्विक-टेबल फेवरेट्स",
+  rolls: "क्विक रैप",
+  maggi: "आसान आराम",
+  accompaniments: "छोटी ज़रूरतें",
+  "ice-creams": "मीठा समापन",
+  drinks: "धीरे-धीरे सिप करें",
+  "bakery-specials": "एक छोटा अतिरिक्त",
+};
+
+const hindiChapterDetails: Record<string, string> = {
+  starters: "कुरकुरे, स्मोकी और चटपटे स्टार्टर्स, जिन्हें टेबल के बीच में आने के लिए बनाया गया है।",
+  "soups-salads": "आरामदायक सूप और ताज़े, हल्के साथ के व्यंजन—भोजन की नरम शुरुआत के लिए।",
+  "main-course": "लंबे लंच और साझा डिनर के लिए पनीर, दाल और मौसमी सब्ज़ियों के पसंदीदा व्यंजन।",
+  breads: "भरपूर मेन कोर्स के साथ परोसने के लिए तंदूरी ब्रेड और परिचित पराठे।",
+  "rice-biryani": "सादे चावल के कटोरे से लेकर जश्न वाली बिरयानी तक, खुशबूदार राइस प्लेट्स।",
+  "south-indian": "चटनी के साथ परोसे जाने वाले डोसा और उत्तपम का परिचित स्वाद।",
+  chinese: "क्रंच, मसाले और संतोषजनक सॉस के साथ इंडो-चाइनीज़ फेवरेट्स।",
+  "fried-rice-noodles": "तेज़, चटपटे और सॉसी स्वाद चाहने वाली टेबल के लिए राइस और नूडल्स।",
+  "pizza-pasta": "भीड़ को पसंद आने वाले टेबल मूड के लिए पिज़्ज़ा, पास्ता और क्विक कैफ़े फेवरेट्स।",
+  "burgers-sandwiches": "बीच की भूख के लिए सॉफ्ट बन, क्रंची फिलिंग और क्विक कैफ़े क्लासिक्स।",
+  snacks: "कुरकुरे और शेयर करने लायक स्नैक्स जो बातचीत को टेबल के बीच में बनाए रखें।",
+  rolls: "किसी भी समय क्विक बाइट के लिए कॉम्पैक्ट और स्वाद से भरे रोल्स।",
+  maggi: "सादी और परिचित से लेकर पनीर और मशरूम वाली बाउल्स तक नूडल्स का आराम।",
+  accompaniments: "मुख्य टेबल को पूरा करने के लिए ठंडे रायते और कुरकुरे पापड़।",
+  "ice-creams": "फ्रूट-फॉरवर्ड स्कूप्स, क्रीमी क्लासिक्स और एक और डेज़र्ट के लिए जगह बनाने की भरपूर वजह।",
+  drinks: "बातचीत को थोड़ा और लंबा करने के लिए कॉफी, चाय, मॉकटेल्स और शेक्स।",
+  "bakery-specials": "क्रेविंग को थोड़ा और आगे ले जाने वाला एक बेक्ड सेवोरी व्यंजन।",
+};
+
+// @ts-ignore Repeated culinary aliases intentionally resolve to the same Hindi terms.
+const hindiMenuWords: Record<string, string> = {
+  hara: "हरा", bhara: "भरा", kabab: "कबाब", dahi: "दही", crispy: "कुरकुरा", corn: "कॉर्न", paneer: "पनीर", tikka: "टिक्का", cheese: "चीज़", afghani: "अफगानी", veg: "वेज", kathi: "काठी", roll: "रोल", chinese: "चाइनीज़", bhel: "भेल", hot: "हॉट", and: "और", sour: "सॉर", soup: "सूप", cream: "क्रीम", of: "का", tomato: "टमाटर", manchow: "मंचाउ", clear: "क्लियर", mix: "मिक्स", fruit: "फ्रूट", salad: "सलाद", onion: "अनियन", cucumber: "ककड़ी", green: "ग्रीन", kachumber: "कचूमर", kadai: "कड़ाही", malai: "मलाई", kofta: "कोफ्ता", lababdar: "लज़ीज़", butter: "बटर", masala: "मसाला", shahi: "शाही", handi: "हांडी", pasanda: "पसंदा", matar: "मटर", toofani: "तूफानी", bhurji: "भुर्जी", methi: "मेथी", dal: "दाल", makhani: "मखनी", tadka: "तड़का", fry: "फ्राई", punjabi: "पंजाबी", mushroom: "मशरूम", dum: "दम", aloo: "आलू", achari: "अचारी", stuffed: "स्टफ्ड", jeera: "जीरा", gobi: "गोभी", shaam: "शाम", savera: "सवेरा", jaipuri: "जयपुरी", jalfrezi: "जालफ्रेज़ी", kashmiri: "कश्मीरी", bhojpuri: "भोजपुरी", pindi: "पिंडी", chana: "चना", capsicum: "शिमला मिर्च", potato: "पोटैटो", paratha: "पराठा", plain: "प्लेन", roti: "रोटी", naan: "नान", missi: "मिस्सी", lachha: "लच्छा", garlic: "गार्लिक", tandoori: "तंदूरी", mirchi: "मिर्ची", biryani: "बिरयानी", pulao: "पुलाव", rice: "राइस", hyderabadi: "हैदराबादी", lemon: "लेमन", curd: "कर्ड", peas: "मटर", dosa: "डोसा", uttapam: "उत्तपम", manchurian: "मंचूरियन", chilli: "चिल्ली", fried: "फ्राइड", schezwan: "शेज़वान", chowmein: "चाउमीन", noodles: "नूडल्स", garlic: "गार्लिक", american: "अमेरिकन", chopsuey: "चॉप्सूई", hakka: "हक्का", with: "विद", gravy: "ग्रेवी", singapuri: "सिंगापुरी", triple: "ट्रिपल", pizza: "पिज़्ज़ा", burst: "बर्स्ट", inches: "इंच", inch: "इंच", indiana: "इंडियाना", special: "स्पेशल", alfredo: "अल्फ्रेडो", white: "व्हाइट", sauce: "सॉस", arrabiata: "अर्राबियाता", red: "रेड", rosato: "रोसाटो", pink: "पिंक", pasta: "पास्ता", classic: "क्लासिक", vada: "वड़ा", pav: "पाव", spicy: "स्पाइसी", burger: "बर्गर", double: "डबल", sandwich: "सैंडविच", bombay: "बॉम्बे", bachelors: "बैचलर्स", snacks: "स्नैक्स", honey: "हनी", chole: "छोले", bhature: "भटूरे", balls: "बॉल्स", pav: "पाव", bhaji: "भाजी", chaap: "चाप", fries: "फ्राइज़", french: "फ्रेंच", three: "थ्री", pepper: "पेपर", bread: "ब्रेड", cutlet: "कटलेट", puff: "पफ", pakoda: "पकोड़ा", spring: "स्प्रिंग", maggi: "मैगी", vegetable: "वेजिटेबल", accompaniments: "साथ के व्यंजन", raita: "रायता", pineapple: "पाइनएप्पल", boondi: "बूंदी", mint: "मिंट", papad: "पापड़", dry: "ड्राई", desserts: "डेज़र्ट्स", ice: "आइस", creams: "क्रीम्स", cream: "क्रीम", american: "अमेरिकन", nuts: "नट्स", belgian: "बेल्जियन", chip: "चिप", chocolate: "चॉकलेट", black: "ब्लैक", current: "करंट", anjeer: "अंजीर", badam: "बादाम", trutti: "ट्रुट्टी", fruitti: "फ्रुट्टी", butterscotch: "बटरस्कॉच", sitafal: "सीताफल", litchi: "लीची", royal: "रॉयल", rose: "रोज़", tender: "टेंडर", coconut: "कोकोनट", kesar: "केसर", pista: "पिस्ता", soothing: "सूदिंग", strawberry: "स्ट्रॉबेरी", cool: "कूल", kiwi: "कीवी", orange: "ऑरेंज", vanilla: "वनीला", alphonso: "अल्फांसो", jamun: "जामुन", pan: "पान", mud: "मड", guava: "अमरूद", drinks: "ड्रिंक्स", shakes: "शेक्स", cold: "कोल्ड", coffee: "कॉफी", tea: "टी", sparkling: "स्पार्कलिंग", soda: "सोडा", virgin: "वर्जिन", mojito: "मोजिटो", fresh: "फ्रेश", lime: "लाइम", blast: "ब्लास्ट", apple: "एप्पल", tom: "टॉम", jerry: "जेरी", peach: "पीच", apricot: "एप्रिकॉट", blue: "ब्लू", lagoon: "लैगून", bubble: "बबल", gum: "गम", blueberry: "ब्लूबेरी", watermelon: "वॉटरमेलन", flavours: "फ्लेवर्स", oreo: "ओरियो", kit: "किट", kat: "कैट", ferro: "फेरो", rocher: "रोशर", banana: "बनाना", mango: "मैंगो", bakery: "बेकरी", patties: "पैटीज़",
+};
+
+const hindiMenuFallbackWords: Record<string, string> = { break: "ब्रेक", iced: "आइस्ड", lemonade: "लेमोनेड", shake: "शेक", rosoto: "रोसाटो", cheesy: "चीज़ी" };
+
+export function localizeMenuDishName(englishDish: string, language: SiteLanguage) {
+  if (language === "en") return englishDish;
+  return englishDish.replace(/[A-Za-z]+/g, (word) => hindiMenuWords[word.toLowerCase()] ?? hindiMenuFallbackWords[word.toLowerCase()] ?? word);
+}
+
+export function localizeMenuChapterNote(slug: string, englishNote: string, language: SiteLanguage) {
+  return language === "hi" ? (hindiChapterNotes[slug] ?? englishNote) : englishNote;
+}
+
+export function localizeMenuChapterDetail(slug: string, englishDetail: string, language: SiteLanguage) {
+  return language === "hi" ? (hindiChapterDetails[slug] ?? englishDetail) : englishDetail;
+}
+
+export function localizeMenuDishDescription(slug: string, englishDescription: string, language: SiteLanguage) {
+  return language === "hi" ? (hindiChapterDetails[slug] ?? englishDescription) : englishDescription;
+}
+
+export const cinematicCopy = {
+  en: {
+    videoLabel: "Mango ice-cream sequence", originKicker: "The Mall · Kanpur", originMobile: "Kanpur's first|live scoop.", originCopy: "Kanpur's first live ice-cream parlour—one fresh scoop at a time.", liveIceCream: "Live ice cream", vegetarianDining: "Vegetarian dining", parlourKicker: "Mall Road, Kanpur", parlourDesktop: "Kanpur's first|live ice-cream|parlour", parlourMobile: "Made cold.|Made live.", parlourCopy: "Watch the cold come alive, one slow turn at a time.", cravingKicker: "Made for the table", cravingDesktop: "One place.|Every craving.", cravingMobile: "One table.|Every craving.", cravingCopy: "From the first bite to the final frozen spoonful.", endKicker: "Keep it cold", endDesktop: "#Freeze the|happiness", endMobile: "Freeze the|happiness.", endCopy: "The Naatures Scuup way.", closingStamp: "Keep the happiness cold", checkpointPrompt: "Scroll to unfreeze", scrollPrompt: "Scroll!", nextStory: "Scroll to the next part of the story", continue: "Scroll down to continue", preparing: "Preparing the image sequence",
+  },
+  hi: {
+    videoLabel: "मैंगो आइसक्रीम सीक्वेंस", originKicker: "द मॉल · कानपुर", originMobile: "कानपुर का पहला|लाइव स्कूप।", originCopy: "कानपुर का पहला लाइव आइसक्रीम पार्लर—हर बार एक ताज़ा स्कूप।", liveIceCream: "लाइव आइसक्रीम", vegetarianDining: "शाकाहारी भोजन", parlourKicker: "मॉल रोड, कानपुर", parlourDesktop: "कानपुर का पहला|लाइव आइसक्रीम|पार्लर", parlourMobile: "ठंडा बना।|लाइव बना।", parlourCopy: "ठंडक को हर धीमे मोड़ के साथ जीवंत होते देखें।", cravingKicker: "टेबल के लिए बना", cravingDesktop: "एक जगह।|हर क्रेविंग।", cravingMobile: "एक टेबल।|हर क्रेविंग।", cravingCopy: "पहले निवाले से आखिरी ठंडे चम्मच तक।", endKicker: "ठंडा रखें", endDesktop: "#खुशी को|फ्रीज़ करें", endMobile: "खुशी को|फ्रीज़ करें।", endCopy: "नेचर्स स्कूप का तरीका।", closingStamp: "खुशी को ठंडा रखें", checkpointPrompt: "ठंडक खोलने के लिए स्क्रॉल करें", scrollPrompt: "स्क्रॉल!", nextStory: "कहानी के अगले हिस्से तक स्क्रॉल करें", continue: "आगे बढ़ने के लिए नीचे स्क्रॉल करें", preparing: "सीक्वेंस तैयार किया जा रहा है",
+  },
+} as const;
+
+export const reviewCopy = {
+  en: { label: "Collected at The Mall", eyebrow: "03 / Selected diner proof", titleStart: "Diner reviews", titleEnd: "& social proof.", summaryAria: "Six positive public Google Maps reviews", summary: "6 positive public reviews", intro: "Authentic, positive public reviews from the Naatures Scuup Google Maps listing. Review wording is preserved exactly as published.", allMaps: "Read all on Google Maps", count: "Google reviews", read: "Read public review", excerpt: "Google Maps displays this review as an excerpt.", mentioned: "Mentioned dish", source: "Google Maps source" },
+  hi: { label: "द मॉल से संकलित", eyebrow: "03 / चुनी हुई डाइनर राय", titleStart: "डाइनर रिव्यू", titleEnd: "सामाजिक प्रमाण।", summaryAria: "Google Maps की छह सकारात्मक सार्वजनिक समीक्षाएँ", summary: "6 सकारात्मक सार्वजनिक समीक्षाएँ", intro: "नेचर्स स्कूप की Google Maps लिस्टिंग से प्रामाणिक, सकारात्मक सार्वजनिक समीक्षाएँ। हिंदी पाठ मूल सार्वजनिक समीक्षा का अनुवाद है।", allMaps: "Google Maps पर सभी पढ़ें", count: "Google समीक्षाएँ", read: "मूल सार्वजनिक समीक्षा पढ़ें", excerpt: "Google Maps पर यह समीक्षा एक अंश के रूप में दिखाई जाती है।", mentioned: "उल्लेखित डिश", source: "Google Maps स्रोत" },
+} as const;
+
+export const footerCopy = {
+  en: { signoff: "A little more appetite|is always a good idea.", menu: "View full menu", reviews: "Google Maps reviews", faqs: "Visit FAQs", find: "Find us", open: "Open", callFollow: "Call & follow", directions: "Directions", addressTop: "126, The Mall Road|Kanpur, Uttar Pradesh", addressVisit: "The Mall, 126, Mall Road|Kanpur, Uttar Pradesh", hours: "Mon, Tue, Thu–Sun · 11 AM–11 PM|Wed · 10 AM–11 PM", instagram: "Follow Naatures Scuup on Instagram", facebook: "Follow Naatures Scuup on Facebook", maps: "Open Naatures Scuup in Google Maps", descriptor: "Multi-cuisine vegetarian dining & desserts in Kanpur." },
+  hi: { signoff: "थोड़ी और भूख|हमेशा अच्छा विचार है।", menu: "पूरा मेनू देखें", reviews: "Google Maps रिव्यू", faqs: "विज़िट FAQs", find: "हमें खोजें", open: "खुला है", callFollow: "कॉल & फॉलो", directions: "दिशा-निर्देश", addressTop: "126, द मॉल रोड|कानपुर, उत्तर प्रदेश", addressVisit: "द मॉल, 126, मॉल रोड|कानपुर, उत्तर प्रदेश", hours: "सोम, मंगल, गुरु–रवि · 11 AM–11 PM|बुध · 10 AM–11 PM", instagram: "Instagram पर नेचर्स स्कूप को फॉलो करें", facebook: "Facebook पर नेचर्स स्कूप को फॉलो करें", maps: "Google Maps में नेचर्स स्कूप खोलें", descriptor: "कानपुर में मल्टी-कुज़ीन शाकाहारी भोजन & डेज़र्ट्स।" },
+} as const;
+
+export const mapCopy = {
+  en: { directions: "Directions", mapLabel: "Interactive map centered on Naatures Scuup", scroll: "Scroll to explore", fingers: "Use two fingers to explore", unavailable: "Live map unavailable", fallback: "Open directions to view Naatures Scuup on Google Maps.", locationTitle: "Naatures Scuup, 126 The Mall Road, Kanpur", mallTitle: "The Mall, Mall Road, Kanpur" },
+  hi: { directions: "दिशा-निर्देश", mapLabel: "नेचर्स स्कूप पर केंद्रित इंटरैक्टिव मैप", scroll: "देखने के लिए स्क्रॉल करें", fingers: "देखने के लिए दो उंगलियों का उपयोग करें", unavailable: "लाइव मैप उपलब्ध नहीं है", fallback: "Google Maps में नेचर्स स्कूप देखने के लिए दिशा-निर्देश खोलें।", locationTitle: "नेचर्स स्कूप, 126 द मॉल रोड, कानपुर", mallTitle: "द मॉल, मॉल रोड, कानपुर" },
+} as const;

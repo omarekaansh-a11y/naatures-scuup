@@ -24,7 +24,7 @@ describe("mobile-first optimization safeguards", () => {
     expect(orbit).toContain("transform:scale(2.9)");
     expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
     expect(orbit).toContain(".ice-orbit__checkpoint-rail{display:none}");
-    expect(orbit).toContain('aria-label="Scroll down to continue"');
+    expect(orbit).toContain('aria-label={copy.continue}');
   });
 
   it("adds app-style progress, return navigation, touch resilience, low-motion fallbacks, and menu input guidance", () => {

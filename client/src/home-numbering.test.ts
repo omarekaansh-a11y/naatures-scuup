@@ -13,7 +13,9 @@ describe("Home editorial numbering", () => {
     expect(home).toContain("copy.tableEyebrow");
     expect(languageCopy).toContain("01 / The food edit");
     expect(languageCopy).toContain("02 / The Mall table");
-    expect(reviews).toContain("03 / Selected diner proof");
+    expect(reviews).toContain("copy.eyebrow");
+    expect(languageCopy).toContain("03 / Selected diner proof");
+    expect(home).toContain("copy.beforeVisit");
     expect(languageCopy).toContain("04 / Before you visit");
     expect(home).toContain('maximalist-surface__figure" aria-hidden="true">02');
     expect(reviews).toContain('maximalist-surface__figure" aria-hidden="true">03');

@@ -3,6 +3,8 @@ import type { PointerEvent as ReactPointerEvent } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { cinematicCopy } from "@/lib/language-copy";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +69,15 @@ const sequenceStyles = `
 `;
 
 export function IceCreamOrbit() {
+  const { language } = useLanguage();
+  const copy = cinematicCopy[language];
+  const [originMobileTop, originMobileEmphasis] = copy.originMobile.split("|");
+  const [parlourDesktopTop, parlourDesktopEmphasis, parlourDesktopBottom] = copy.parlourDesktop.split("|");
+  const [parlourMobileTop, parlourMobileEmphasis] = copy.parlourMobile.split("|");
+  const [cravingDesktopTop, cravingDesktopEmphasis] = copy.cravingDesktop.split("|");
+  const [cravingMobileTop, cravingMobileEmphasis] = copy.cravingMobile.split("|");
+  const [endDesktopTop, endDesktopBottom] = copy.endDesktop.split("|");
+  const [endMobileTop, endMobileEmphasis] = copy.endMobile.split("|");
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const targetTimeRef = useRef(0);
@@ -284,39 +295,39 @@ export function IceCreamOrbit() {
           preload="auto"
           onLoadedData={handleVideoReady}
           onEnded={() => releaseCompletionLockRef.current?.()}
-          aria-label="Mango ice-cream sequence"
+          aria-label={copy.videoLabel}
         >
           <source media="(max-width: 767px)" src={MOBILE_VIDEO_SOURCE} type="video/mp4" />
           <source src={DESKTOP_VIDEO_SOURCE} type="video/mp4" />
         </video>
         <div className="ice-orbit__story" aria-hidden="true">
           <motion.div className="ice-orbit__story-card ice-orbit__story-card--origin" data-active={activeCheckpoint === 0} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: openingOpacity, y: openingY, rotateY: openingRotateY, rotateX: openingRotateX, rotateZ: openingRotateZ, z: openingZ }}>
-            <p className="ice-orbit__story-kicker">The Mall · Kanpur</p>
-            <h2 className="ice-orbit__story-title"><span className="ice-orbit__desktop-title"><MagneticTitle text="Naatures" /><br /><em><MagneticTitle text="Scuup" /></em></span><span className="ice-orbit__mobile-title">Kanpur&apos;s first<br /><em>live scoop.</em></span></h2>
-            <p className="ice-orbit__story-copy">Kanpur&apos;s first live ice-cream parlour—one fresh scoop at a time.</p>
-            <div className="ice-orbit__story-facts"><span>Live ice cream</span><span>Vegetarian dining</span></div>
+            <p className="ice-orbit__story-kicker">{copy.originKicker}</p>
+            <h2 className="ice-orbit__story-title"><span className="ice-orbit__desktop-title"><MagneticTitle text="Naatures" /><br /><em><MagneticTitle text="Scuup" /></em></span><span className="ice-orbit__mobile-title">{originMobileTop}<br /><em>{originMobileEmphasis}</em></span></h2>
+            <p className="ice-orbit__story-copy">{copy.originCopy}</p>
+            <div className="ice-orbit__story-facts"><span>{copy.liveIceCream}</span><span>{copy.vegetarianDining}</span></div>
           </motion.div>
           <motion.div className="ice-orbit__story-card ice-orbit__story-card--left" data-active={activeCheckpoint === 1} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: parlourOpacity, y: parlourY, rotateY: parlourRotateY, rotateX: parlourRotateX, rotateZ: parlourRotateZ, z: parlourZ }}>
-            <p className="ice-orbit__story-kicker">Mall Road, Kanpur</p>
-            <h2 className="ice-orbit__story-title ice-orbit__story-title--label"><span className="ice-orbit__desktop-title"><MagneticTitle text="Kanpur&apos;s first" /><br /><em><MagneticTitle text="live ice-cream" /></em><br /><MagneticTitle text="parlour" /></span><span className="ice-orbit__mobile-title">Made cold.<br /><em>Made live.</em></span></h2>
-            <p className="ice-orbit__story-copy">Watch the cold come alive, one slow turn at a time.</p>
+            <p className="ice-orbit__story-kicker">{copy.parlourKicker}</p>
+            <h2 className="ice-orbit__story-title ice-orbit__story-title--label"><span className="ice-orbit__desktop-title"><MagneticTitle text={parlourDesktopTop} /><br /><em><MagneticTitle text={parlourDesktopEmphasis} /></em><br /><MagneticTitle text={parlourDesktopBottom} /></span><span className="ice-orbit__mobile-title">{parlourMobileTop}<br /><em>{parlourMobileEmphasis}</em></span></h2>
+            <p className="ice-orbit__story-copy">{copy.parlourCopy}</p>
           </motion.div>
           <motion.div className="ice-orbit__story-card ice-orbit__story-card--right" data-active={activeCheckpoint === 2} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: cravingOpacity, y: cravingY, rotateY: cravingRotateY, rotateX: cravingRotateX, rotateZ: cravingRotateZ, z: cravingZ }}>
-            <p className="ice-orbit__story-kicker">Made for the table</p>
-            <h2 className="ice-orbit__story-title"><span className="ice-orbit__desktop-title"><MagneticTitle text="One place." /><br /><em><MagneticTitle text="Every craving." /></em></span><span className="ice-orbit__mobile-title">One table.<br /><em>Every craving.</em></span></h2>
-            <p className="ice-orbit__story-copy ice-orbit__story-copy--label">From the first bite to the final frozen spoonful.</p>
+            <p className="ice-orbit__story-kicker">{copy.cravingKicker}</p>
+            <h2 className="ice-orbit__story-title"><span className="ice-orbit__desktop-title"><MagneticTitle text={cravingDesktopTop} /><br /><em><MagneticTitle text={cravingDesktopEmphasis} /></em></span><span className="ice-orbit__mobile-title">{cravingMobileTop}<br /><em>{cravingMobileEmphasis}</em></span></h2>
+            <p className="ice-orbit__story-copy ice-orbit__story-copy--label">{copy.cravingCopy}</p>
           </motion.div>
           <motion.div className="ice-orbit__story-card ice-orbit__story-card--end" data-active={activeCheckpoint === 3} onPointerMove={handleStoryPointerMove} onPointerLeave={handleStoryPointerLeave} style={{ opacity: endOpacity, y: endY, rotateY: endRotateY, rotateX: endRotateX, rotateZ: endRotateZ, z: endZ }}>
-            <p className="ice-orbit__story-kicker">Keep it cold</p>
-            <h2 className="ice-orbit__story-title"><span className="ice-orbit__desktop-title"><em><MagneticTitle text="#Freeze the" /></em><br /><MagneticTitle text="happiness" /></span><span className="ice-orbit__mobile-title">Freeze the<br /><em>happiness.</em></span></h2>
-            <p className="ice-orbit__story-copy">The Naatures Scuup way.</p>
-            <span className="ice-orbit__story-closing-stamp">Keep the happiness cold</span>
+            <p className="ice-orbit__story-kicker">{copy.endKicker}</p>
+            <h2 className="ice-orbit__story-title"><span className="ice-orbit__desktop-title"><em><MagneticTitle text={endDesktopTop} /></em><br /><MagneticTitle text={endDesktopBottom} /></span><span className="ice-orbit__mobile-title">{endMobileTop}<br /><em>{endMobileEmphasis}</em></span></h2>
+            <p className="ice-orbit__story-copy">{copy.endCopy}</p>
+            <span className="ice-orbit__story-closing-stamp">{copy.closingStamp}</span>
           </motion.div>
         </div>
-        <div className="ice-orbit__checkpoint-rail" aria-hidden="true"><span className="ice-orbit__checkpoint-prompt">Scroll to unfreeze</span>{["01", "02", "03", "04"].map((label, index) => <span key={label} className="ice-orbit__checkpoint" data-active={index === activeCheckpoint} />)}<span className="ice-orbit__checkpoint-label">{String(activeCheckpoint + 1).padStart(2, "0")} / 04</span></div>
-        <button type="button" className="ice-orbit__scroll-prompt" onClick={handleScrollAdvance} disabled={!isReady} aria-label="Scroll to the next part of the story">Scroll!</button>
-        <button type="button" className="ice-orbit__scroll-button" onClick={handleScrollAdvance} disabled={!isReady} aria-label="Scroll down to continue"><span aria-hidden="true">↓</span></button>
-        {!isReady && <div className="ice-orbit__loading" role="status" aria-label="Preparing the image sequence" />}
+        <div className="ice-orbit__checkpoint-rail" aria-hidden="true"><span className="ice-orbit__checkpoint-prompt">{copy.checkpointPrompt}</span>{["01", "02", "03", "04"].map((label, index) => <span key={label} className="ice-orbit__checkpoint" data-active={index === activeCheckpoint} />)}<span className="ice-orbit__checkpoint-label">{String(activeCheckpoint + 1).padStart(2, "0")} / 04</span></div>
+        <button type="button" className="ice-orbit__scroll-prompt" onClick={handleScrollAdvance} disabled={!isReady} aria-label={copy.nextStory}>{copy.scrollPrompt}</button>
+        <button type="button" className="ice-orbit__scroll-button" onClick={handleScrollAdvance} disabled={!isReady} aria-label={copy.continue}><span aria-hidden="true">↓</span></button>
+        {!isReady && <div className="ice-orbit__loading" role="status" aria-label={copy.preparing} />}
       </div>
     </section>
   );

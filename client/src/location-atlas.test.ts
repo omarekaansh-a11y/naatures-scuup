@@ -6,20 +6,23 @@ const atlas = readFileSync(resolve(process.cwd(), "client/src/components/Locatio
 const map = readFileSync(resolve(process.cwd(), "client/src/components/Map.tsx"), "utf8");
 const styles = readFileSync(resolve(process.cwd(), "client/src/components/StructuralStyles.tsx"), "utf8");
 const printStyles = readFileSync(resolve(process.cwd(), "client/src/tactile-print.css"), "utf8");
+const languageCopy = readFileSync(resolve(process.cwd(), "client/src/lib/language-copy.ts"), "utf8");
 
 describe("interactive visit map", () => {
   it("keeps the location discoverable through a real interactive Google Map and directions link", () => {
     expect(atlas).toContain("MapView");
     expect(atlas).toContain("window.google.maps.Marker");
     expect(atlas).toContain("google.com/maps/search/?api=1");
-    expect(atlas).toContain("Directions");
+    expect(atlas).toContain("const copy = mapCopy[language]");
+    expect(languageCopy).toContain('directions: "Directions"');
   });
 
   it("uses a wider real-world map view with native gestures and nearby landmark context", () => {
-    expect(atlas).toContain("The Mall");
+    expect(atlas).toContain('label: { text: language === "hi" ? "द मॉल" : "THE MALL"');
     expect(atlas).toContain('initialZoom={17}');
     expect(atlas).toContain("map.setZoom(17)");
-    expect(atlas).toContain("Use two fingers to explore");
+    expect(atlas).toContain("gestureMapStyles(copy.scroll, copy.fingers)");
+    expect(languageCopy).toContain("Use two fingers to explore");
     expect(atlas).not.toContain('aria-label="Zoom in"');
     expect(atlas).not.toContain("visit-map__fallback");
     expect(map).toContain("__naaturesMapsReady");

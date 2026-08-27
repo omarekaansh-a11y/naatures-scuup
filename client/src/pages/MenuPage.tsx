@@ -14,7 +14,7 @@ import { RouteMeta } from "@/components/RouteMeta";
 import { menuChapters, menuItemCount } from "@/lib/menu-data";
 import { menuDishPrices } from "@/lib/menu-prices";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { localizeChapterTitle, menuCopy } from "@/lib/language-copy";
+import { localizeChapterTitle, localizeMenuChapterDetail, localizeMenuChapterNote, localizeMenuDishDescription, localizeMenuDishName, menuCopy } from "@/lib/language-copy";
 
 const dishNotes: Record<string, string> = {
   "Dahi Kabab":"Classic, creamy Indian appetizer.","Paneer Tikka":"Soft paneer marinated in aromatic spices.","Hara Bhara Kabab":"Tender vegetarian kabab with mint notes.","Paneer Afghani Tikka":"Fragrant spiced paneer, grilled.","Crispy Corn":"Crunchy corn fritters for snacking.","Chinese Bhel":"Crisp, crunchy Chinese-style bhel.","Dahi Kabab Roll":"Crispy, juicy kababs for a quick bite.","Paneer 65":"Crispy paneer with peppers in spicy sauce.",
@@ -132,18 +132,20 @@ export default function MenuPage() {
     return () => window.clearTimeout(destinationTimer);
   }, [reduceMotion]);
   const localizedChapterTitle = (slug: string, title: string) => localizeChapterTitle(slug, title, language);
+  const localizedChapterDetail = (slug: string, detail: string) => localizeMenuChapterDetail(slug, detail, language);
+  const localizedChapterNote = (slug: string, note: string) => localizeMenuChapterNote(slug, note, language);
   const menuGroups = [{ slug: "all", title: `${localizedChapterTitle("all", "All items")} (${menuItemCount})` }, ...menuChapters.map((chapter) => ({ slug: chapter.slug, title: localizedChapterTitle(chapter.slug, chapter.title) }))];
   const normalizedQuery = query.trim().toLowerCase();
   const visibleItems = useMemo(() => {
     const chapters = menuChapters
       .filter((chapter) => activeGroup === "all" || chapter.slug === activeGroup)
-      .map((chapter) => ({ ...chapter, dishes: chapter.dishes.filter((dish) => `${dish} ${noteForDish(dish, chapter.detail)}`.toLowerCase().includes(normalizedQuery)) }))
+      .map((chapter) => ({ ...chapter, dishes: chapter.dishes.filter((dish) => `${dish} ${noteForDish(dish, chapter.detail)} ${localizeMenuDishName(dish, language)} ${localizedChapterDetail(chapter.slug, chapter.detail)}`.toLowerCase().includes(normalizedQuery)) }))
       .filter((chapter) => chapter.dishes.length > 0);
     const flatItems = chapters.flatMap((chapter) => chapter.dishes.map((dish) => ({ dish, chapter })));
     const orderedNames = sortDishes(flatItems.map((item) => item.dish), sort);
     const order = new Map(orderedNames.map((dish, index) => [dish, index]));
     return [...flatItems].sort((a, b) => (order.get(a.dish) ?? 0) - (order.get(b.dish) ?? 0));
-  }, [activeGroup, normalizedQuery, sort]);
+  }, [activeGroup, language, normalizedQuery, sort]);
   const visibleItemCount = visibleItems.length;
   const nudgeConveyor = (direction: number) => conveyorRef.current?.scrollBy({ left: direction * Math.max(280, conveyorRef.current.clientWidth * 0.72), behavior: reduceMotion ? "auto" : "smooth" });
   const startConveyorDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -197,11 +199,11 @@ export default function MenuPage() {
         </div>
       </section>
       <OrganicWaveDivider tone="sage-to-cream" />
-      <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label="Full Naatures Scuup menu">
+      <section id={activeGroup === "ice-creams" ? "ice-creams" : undefined} className="menu-card-list section-pad" aria-label={language === "hi" ? "नेचर्स स्कूप का पूरा मेनू" : "Full Naatures Scuup menu"}>
         {visibleItems.length === 0 && <div className="menu-empty"><p className="eyebrow eyebrow--maroon">{copy.noCraving}</p><h2>{copy.emptyStart}<br /><i>{copy.emptyEnd}</i></h2><p>{copy.emptyCopy}</p></div>}
         <div className="menu-card-grid">{visibleItems.map(({ dish, chapter }, index) => { const price = menuDishPrices[dish]; const previousItem = visibleItems[index - 1]; const showChapterBreak = sort === "recommended" && (!previousItem || previousItem.chapter.slug !== chapter.slug); const chapterNumber = `${menuChapters.findIndex((menuChapter) => menuChapter.slug === chapter.slug) + 1}`.padStart(2, "0"); const artwork = chapterArtwork[chapter.slug]; return <Fragment key={`${chapter.slug}-${dish}`}>
-          {showChapterBreak && <div className="menu-chapter-break print-surface print-halftone maximalist-chapter" data-chapter={chapter.slug}><img className="menu-chapter-break__image" src={artwork.src} alt="" style={{ objectPosition: artwork.position }} /><span className="menu-chapter-break__veil" aria-hidden="true" /><div className="menu-chapter-break__body"><span className="maximalist-index">{chapterNumber} / {copy.chapter}</span><p className="menu-chapter-break__index">{chapterNumber} / {copy.cravingChapter}</p><h2 className="print-ink">{localizedChapterTitle(chapter.slug, chapter.title)}</h2><small className="menu-chapter-break__art-note">Naatures Scuup / {chapter.note}</small></div><div className="menu-chapter-break__aside"><p>{chapter.detail}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
-          <motion.article className={`menu-dish-card print-edge-boil maximalist-card${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}>{showChapterBreak && <p className="menu-dish-card__lead-label"><span>{chapterNumber}</span> {copy.firstPlate}</p>}<p className="menu-dish-card__meta">{copy.pureVeg} · {localizedChapterTitle(chapter.slug, chapter.title)}</p><div><h2 className="print-ink">{dish}</h2><p className="menu-dish-card__note">{noteForDish(dish, chapter.detail)}</p></div><footer><div><span>{copy.menuPrice}</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? copy.priceNotListed : copy.menuListing}</span></footer></motion.article>
+          {showChapterBreak && <div className="menu-chapter-break print-surface print-halftone maximalist-chapter" data-chapter={chapter.slug}><img className="menu-chapter-break__image" src={artwork.src} alt="" style={{ objectPosition: artwork.position }} /><span className="menu-chapter-break__veil" aria-hidden="true" /><div className="menu-chapter-break__body"><span className="maximalist-index">{chapterNumber} / {copy.chapter}</span><p className="menu-chapter-break__index">{chapterNumber} / {copy.cravingChapter}</p><h2 className="print-ink">{localizedChapterTitle(chapter.slug, chapter.title)}</h2><small className="menu-chapter-break__art-note">Naatures Scuup / {localizedChapterNote(chapter.slug, chapter.note)}</small></div><div className="menu-chapter-break__aside"><p>{localizedChapterDetail(chapter.slug, chapter.detail)}</p><span className="menu-chapter-break__stamp">NS<br />SCOOP</span></div></div>}
+          <motion.article className={`menu-dish-card print-edge-boil maximalist-card${showChapterBreak ? " menu-dish-card--lead" : ""}`} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.46, delay: (index % 3) * 0.055, ease: [0.23, 1, 0.32, 1] }}>{showChapterBreak && <p className="menu-dish-card__lead-label"><span>{chapterNumber}</span> {copy.firstPlate}</p>}<p className="menu-dish-card__meta">{copy.pureVeg} · {localizedChapterTitle(chapter.slug, chapter.title)}</p><div><h2 className="print-ink">{localizeMenuDishName(dish, language)}</h2><p className="menu-dish-card__note">{localizeMenuDishDescription(chapter.slug, noteForDish(dish, chapter.detail), language)}</p></div><footer><div><span>{copy.menuPrice}</span><strong>{price === undefined ? "—" : `₹${price}`}</strong></div><span className={`menu-dish-card__display${price === undefined ? " menu-dish-card__display--muted" : ""}`}>{price === undefined ? copy.priceNotListed : copy.menuListing}</span></footer></motion.article>
         </Fragment>; })}</div>
       </section>
       <section className="menu-page-closing section-pad"><div><p className="eyebrow menu-page-closing__eyebrow">{copy.closingEyebrow}</p><h2>{copy.closingStart}<br /><i>{copy.closingEnd}</i></h2></div><div className="menu-page-closing__actions"><a className="button button--cream" href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">{copy.getDirections} <MapPin size={16} /></a><Link className="text-action text-action--cream" href="/">{copy.backHome} <ArrowDownRight size={16} /></Link></div></section>

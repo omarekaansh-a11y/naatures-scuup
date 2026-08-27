@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 
 const orbit = readFileSync(resolve(process.cwd(), "client/src/components/IceCreamOrbit.tsx"), "utf8");
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
+const languageCopy = readFileSync(resolve(process.cwd(), "client/src/lib/language-copy.ts"), "utf8");
 
 describe("full-screen GSAP ice-cream sequence", () => {
   it("uses cleaned desktop and mobile video sources derived from the approved frames", () => {
@@ -43,13 +44,14 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%");
     expect(orbit).toContain('from "framer-motion"');
     expect(orbit).toContain("const storyProgress = useMotionValue(0)");
-    expect(orbit).toContain("The Mall · Kanpur");
-    expect(orbit).toContain("Kanpur&apos;s first live ice-cream parlour");
-    expect(orbit).toContain("Live ice cream");
-    expect(orbit).toContain("Scroll to unfreeze");
-    expect(orbit).toContain("Kanpur&apos;s first");
-    expect(orbit).toContain("One place.");
-    expect(orbit).toContain("#Freeze the");
+    expect(orbit).toContain("const copy = cinematicCopy[language]");
+    expect(languageCopy).toContain("The Mall · Kanpur");
+    expect(languageCopy).toContain("Kanpur's first live ice-cream parlour");
+    expect(languageCopy).toContain("Live ice cream");
+    expect(languageCopy).toContain("Scroll to unfreeze");
+    expect(languageCopy).toContain("Kanpur's first");
+    expect(languageCopy).toContain("One place.");
+    expect(languageCopy).toContain("#Freeze the");
     expect(orbit).toContain("ice-orbit__story");
     expect(orbit).toContain("background:#d6d4d0");
     expect(orbit).toContain("color:rgb(47 38 34)!important");
@@ -67,13 +69,13 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;transform:scale(2.9)");
     expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
     expect(orbit).toContain('.ice-orbit__story-card[data-active="true"]{display:block!important;opacity:1!important');
-    expect(orbit).toContain("Kanpur&apos;s first<br /><em>live scoop.</em>");
-    expect(orbit).toContain("Made cold.<br /><em>Made live.</em>");
-    expect(orbit).toContain("One table.<br /><em>Every craving.</em>");
-    expect(orbit).toContain("Freeze the<br /><em>happiness.</em>");
+    expect(orbit).toContain('copy.originMobile.split("|")');
+    expect(orbit).toContain('copy.parlourMobile.split("|")');
+    expect(orbit).toContain('copy.cravingMobile.split("|")');
+    expect(orbit).toContain('copy.endMobile.split("|")');
     expect(orbit).toContain("transform:translate3d(-50%,0,44px) rotateX(5deg) rotateY(-4deg)!important");
     expect(orbit).toContain("perspective:980px!important");
-    expect(orbit).toContain("The Naatures Scuup way.");
+    expect(languageCopy).toContain("The Naatures Scuup way.");
     expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:60%!important");
     expect(orbit).toContain(".ice-orbit__story-card--end{top:56%!important");
     expect(orbit).toContain(".ice-orbit__story-copy{font-size:.68rem!important");
@@ -85,12 +87,12 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain(".ice-orbit__story-card--end{top:auto!important");
     expect(orbit).toContain("ice-orbit__scroll-button");
     expect(orbit).toContain("4.35rem");
-    expect(orbit).toContain('aria-label="Scroll down to continue"');
+    expect(orbit).toContain('aria-label={copy.continue}');
     expect(orbit).toContain("const handleScrollAdvance");
     expect(orbit).toContain("window.scrollBy");
     expect(orbit).toContain("ice-orbit__scroll-prompt");
-    expect(orbit).toContain('aria-label="Scroll to the next part of the story"');
-    expect(orbit).toContain(">Scroll!</button>");
+    expect(orbit).toContain('aria-label={copy.nextStory}');
+    expect(orbit).toContain('{copy.scrollPrompt}</button>');
   });
 
   it("keeps the sequence before Drag It on Home", () => {
@@ -123,7 +125,7 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("MagneticTitle");
     expect(orbit).toContain("ice-orbit__story-title--label");
     expect(orbit).toContain("ice-orbit__story-copy--label");
-    expect(orbit).toContain("Keep the happiness cold");
+    expect(languageCopy).toContain("Keep the happiness cold");
     expect(orbit).toContain("data-story-glyph");
     expect(orbit).toContain("--glyph-x");
     expect(orbit).not.toContain("ice-orbit__liquid-wake");

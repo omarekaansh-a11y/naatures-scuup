@@ -1343,3 +1343,9 @@
 - [x] Persist the selected language across Home and Full Menu and update the document language.
 - [x] Translate key public interface text on Home and Full Menu while leaving original dish names understandable.
 - [x] Verify desktop/mobile header ergonomics, keyboard support, bilingual route persistence, and production quality.
+
+# Complete Hindi Localization
+- [x] Translate the cinematic scroll-story text, review chrome, FAQs, footer, map controls, and mobile dock in Hindi mode.
+- [x] Translate every visible menu dish title, dish description, chapter title, and menu card label in Hindi mode while preserving accurate prices.
+- [x] Maintain English as the default and preserve complete English fallback text across both routes.
+- [x] Verify full Hindi coverage, responsive typography, bilingual persistence, and production quality before publishing.
