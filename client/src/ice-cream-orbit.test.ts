@@ -69,6 +69,7 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain('font-family:"Playfair Display",Georgia,serif');
     expect(orbit).toContain("font-family:Montserrat,ui-sans-serif,system-ui,sans-serif");
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;background-color:${CINEMATIC_GROUND};transform:translate3d(var(--mobile-camera-x,0vw),var(--mobile-camera-y,0vh),0) scale(2.9)");
+    expect(orbit).toContain(".ice-orbit__video{transform:scale(2.72)!important;transition:none!important}");
     expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
     expect(orbit).toContain('.ice-orbit__story-card[data-active="true"]{display:block!important;opacity:1!important');
     expect(orbit).toContain('copy.originMobile.split("|")');
@@ -79,9 +80,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("transform:translate3d(-50%,0,44px) rotateX(5deg) rotateY(-4deg)!important");
     expect(orbit).toContain("perspective:980px!important");
     expect(languageCopy).toContain("The Naatures Scuup way.");
-    expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:60%!important");
-    expect(orbit).toContain(".ice-orbit__story-card--variety{top:53%!important");
-    expect(orbit).toContain(".ice-orbit__story-card--end{top:53%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:64%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--variety,.ice-orbit__story-card--end{top:59%!important");
     expect(orbit).toContain(".ice-orbit__story-copy{font-size:.68rem!important");
     expect(orbit).toContain("@media(min-width:768px){.ice-orbit__stage{perspective:1150px!important");
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover!important;object-position:center!important}");
@@ -95,11 +95,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain(".ice-orbit__story-card--left{top:25%!important");
     expect(orbit).toContain(".ice-orbit__story-card--left .ice-orbit__story-title--label{padding:.42rem .54rem .48rem!important;font-size:clamp(2.1rem,3.9vw,4.2rem)!important");
     expect(orbit).toContain(".ice-orbit__story-card--end{top:auto!important");
-    expect(orbit).toContain("ice-orbit__scroll-button");
-    expect(orbit).toContain("display:none;width:3rem;height:3rem");
-    expect(orbit).toContain("4.35rem");
-    expect(orbit).toContain("display:grid;width:3.25rem;height:3.25rem");
-    expect(orbit).toContain('aria-label={copy.continue}');
+    expect(orbit).not.toContain('className="ice-orbit__scroll-button"');
+    expect(orbit).not.toContain('aria-label={copy.continue}');
     expect(orbit).toContain("const handleScrollAdvance");
     expect(orbit).toContain("window.scrollTo");
     expect(orbit).toContain("ice-orbit__scroll-prompt");
@@ -129,6 +126,11 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain('window.addEventListener("wheel", handleCheckpointWheel, { passive: false, capture: true })');
     expect(orbit).toContain("onTouchEnd={handleTouchEnd}");
     expect(orbit).toContain("checkpointInputLockedRef");
+    expect(orbit).toContain("const checkpointInputDirectionRef");
+    expect(orbit).toContain("checkpointInputDirectionRef.current !== direction");
+    expect(orbit).toContain("window.cancelAnimationFrame(checkpointAnimationRef.current)");
+    expect(orbit).toContain("const [cameraReadyForMotion, setCameraReadyForMotion] = useState(false)");
+    expect(orbit).toContain('"--camera-duration": `${cameraReadyForMotion ? camera.duration : 0}ms`');
     expect(orbit).toContain("getStoryCheckpoint");
     expect(orbit).toContain("return closestStop");
     expect(orbit).toContain("const cardStyle");

@@ -82,6 +82,7 @@ const sequenceStyles = `
   @media(max-width:767px){.ice-orbit__story-card--origin{top:55%!important;left:50%!important;width:min(16rem,70vw)!important;text-align:center!important}.ice-orbit__story-card--origin[data-active="true"]{transform:translate3d(-50%,0,48px) rotateX(6deg) rotateY(-3deg)!important}.ice-orbit__story-card--left{top:49%!important;left:.7rem!important;width:min(12rem,47vw)!important;text-align:left!important}.ice-orbit__story-card--left[data-active="true"]{transform:translate3d(0,0,52px) rotateX(5deg) rotateY(7deg)!important}.ice-orbit__story-card--left .ice-orbit__story-kicker{justify-content:flex-start!important}.ice-orbit__story-card--left .ice-orbit__story-copy{margin-left:0!important}.ice-orbit__story-card--right{top:46%!important;right:.7rem!important;left:auto!important;width:min(12rem,47vw)!important;text-align:right!important}.ice-orbit__story-card--right[data-active="true"]{transform:translate3d(0,0,54px) rotateX(6deg) rotateY(-8deg)!important}.ice-orbit__story-card--right .ice-orbit__story-kicker{justify-content:flex-end!important}.ice-orbit__story-card--right .ice-orbit__story-copy{margin-right:0!important;margin-left:auto!important}.ice-orbit__story-card--variety{top:53%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(15rem,68vw)!important;text-align:center!important}.ice-orbit__story-card--variety[data-active="true"]{transform:translate3d(-50%,0,44px) rotateX(5deg) rotateY(-4deg)!important}.ice-orbit__story-card--end{top:54%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(17rem,74vw)!important;text-align:center!important}.ice-orbit__story-card--end[data-active="true"]{transform:translate3d(-50%,0,42px) rotateX(4deg) rotateY(3deg)!important}.ice-orbit__story-card--end .ice-orbit__story-copy{margin-top:.42rem!important}}
   @media(max-width:767px){.ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:60%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(15rem,67vw)!important;text-align:center!important}.ice-orbit__story-card--variety{top:53%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(14.5rem,65vw)!important;text-align:center!important}.ice-orbit__story-card--end{top:53%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(17rem,74vw)!important;text-align:center!important}.ice-orbit__story-card--origin[data-active="true"]{transform:translate3d(-50%,0,48px) rotateX(5deg) rotateY(-3deg)!important}.ice-orbit__story-card--left[data-active="true"]{transform:translate3d(-50%,0,50px) rotateX(4deg) rotateY(4deg)!important}.ice-orbit__story-card--right[data-active="true"]{transform:translate3d(-50%,0,52px) rotateX(5deg) rotateY(-5deg)!important}.ice-orbit__story-card--variety[data-active="true"]{transform:translate3d(-50%,0,50px) rotateX(4deg) rotateY(-4deg)!important}.ice-orbit__story-card--end[data-active="true"]{transform:translate3d(-50%,0,46px) rotateX(4deg) rotateY(3deg)!important}.ice-orbit__story-card--left .ice-orbit__story-kicker,.ice-orbit__story-card--right .ice-orbit__story-kicker,.ice-orbit__story-card--variety .ice-orbit__story-kicker{justify-content:center!important}.ice-orbit__story-card--left .ice-orbit__story-copy,.ice-orbit__story-card--right .ice-orbit__story-copy,.ice-orbit__story-card--variety .ice-orbit__story-copy{margin-right:auto!important;margin-left:auto!important}.ice-orbit__story-kicker{font-size:.5rem!important;color:rgb(47 38 34 / 92%)!important}.ice-orbit__story-copy{font-size:.68rem!important;line-height:1.42!important;color:rgb(47 38 34 / 94%)!important}.ice-orbit__story-facts{font-size:.45rem!important;color:rgb(47 38 34 / 84%)!important}.ice-orbit__story-card--origin .ice-orbit__story-facts,.ice-orbit__story-card--left .ice-orbit__story-facts,.ice-orbit__story-card--right .ice-orbit__story-facts,.ice-orbit__story-card--variety .ice-orbit__story-facts{display:none!important}.ice-orbit__story-card--origin .ice-orbit__story-kicker,.ice-orbit__story-card--left .ice-orbit__story-kicker,.ice-orbit__story-card--right .ice-orbit__story-kicker,.ice-orbit__story-card--variety .ice-orbit__story-kicker{margin-bottom:.28rem!important}.ice-orbit__story-card--origin .ice-orbit__story-copy,.ice-orbit__story-card--left .ice-orbit__story-copy,.ice-orbit__story-card--right .ice-orbit__story-copy,.ice-orbit__story-card--variety .ice-orbit__story-copy{margin-top:.34rem!important;font-size:.62rem!important;line-height:1.3!important}.ice-orbit__story-card--end .ice-orbit__story-title{font-size:clamp(1.85rem,9.2vw,2.55rem)!important;line-height:.82!important}.ice-orbit__story-title--label{margin-inline:auto!important;padding:.34rem .42rem .4rem!important;font-size:clamp(1.6rem,7vw,2.1rem)!important;box-shadow:3px 3px 0 var(--print-ink)}.ice-orbit__story-copy--label{margin:.45rem auto 0!important;padding:.4rem .48rem!important;font-size:.56rem!important;line-height:1.27!important;box-shadow:3px 3px 0 var(--print-ink)}.ice-orbit__story-closing-stamp{margin:.6rem auto 0!important;padding:.36rem .43rem!important;font-size:.46rem!important;box-shadow:3px 3px 0 var(--print-ink)} }
   @media(min-width:768px){.ice-orbit__stage{perspective:1150px!important;perspective-origin:50% 50%!important}.ice-orbit__video{object-fit:cover!important;object-position:center!important}.ice-orbit__story-card--origin{top:18%!important;right:auto!important;bottom:auto!important;left:clamp(1.25rem,5vw,5.25rem)!important;width:min(25rem,29vw)!important;text-align:left!important}.ice-orbit__story-card--left{top:25%!important;right:auto!important;bottom:auto!important;left:clamp(1.25rem,5vw,5.25rem)!important;width:min(20rem,22vw)!important;text-align:left!important}.ice-orbit__story-card--left .ice-orbit__story-title--label{padding:.42rem .54rem .48rem!important;font-size:clamp(2.1rem,3.9vw,4.2rem)!important;line-height:.82!important}.ice-orbit__story-card--right{top:24%!important;right:clamp(1.25rem,5vw,5.25rem)!important;bottom:auto!important;left:auto!important;width:min(25rem,29vw)!important;text-align:right!important}.ice-orbit__story-card--end{top:auto!important;right:clamp(1.25rem,5vw,5.25rem)!important;bottom:14%!important;left:auto!important;width:min(25rem,29vw)!important;text-align:right!important}.ice-orbit__story-card>*{transform:translateZ(14px)!important}.ice-orbit__story-kicker,.ice-orbit__story-copy,.ice-orbit__story-facts{display:flex!important}.ice-orbit__story-copy{display:block!important}.ice-orbit__mobile-title{display:none!important}.ice-orbit__desktop-title{display:inline!important}}
+  @media(max-width:767px){.ice-orbit__video{transform:scale(2.72)!important;transition:none!important}.ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:64%!important}.ice-orbit__story-card--variety,.ice-orbit__story-card--end{top:59%!important}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
 
@@ -106,6 +107,7 @@ export function IceCreamOrbit() {
   const completionLockedRef = useRef(false);
   const checkpointStepRef = useRef(0);
   const checkpointInputLockedRef = useRef(false);
+  const checkpointInputDirectionRef = useRef<1 | -1 | null>(null);
   const checkpointReleaseTimeoutRef = useRef<number | null>(null);
   const checkpointAnimationRef = useRef<number | null>(null);
   const touchStartYRef = useRef<number | null>(null);
@@ -115,6 +117,7 @@ export function IceCreamOrbit() {
   const [isReady, setIsReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [activeCheckpoint, setActiveCheckpoint] = useState(0);
+  const [cameraReadyForMotion, setCameraReadyForMotion] = useState(false);
   const cardStyle = (index: number, rotateY: number, rotateX: number, rotateZ: number) => ({
     opacity: activeCheckpoint === index ? 1 : 0,
     y: activeCheckpoint === index ? 0 : index < activeCheckpoint ? -28 : 28,
@@ -130,7 +133,7 @@ export function IceCreamOrbit() {
     "--camera-rotation": `${camera.rotation}deg`,
     "--camera-scale": String(camera.scale),
     "--camera-origin": camera.origin,
-    "--camera-duration": `${camera.duration}ms`,
+    "--camera-duration": `${cameraReadyForMotion ? camera.duration : 0}ms`,
     "--mobile-camera-x": `${camera.mobileX}vw`,
     "--mobile-camera-y": `${camera.mobileY}vh`,
   } as React.CSSProperties;
@@ -165,15 +168,26 @@ export function IceCreamOrbit() {
 
   const requestCheckpointAdvance = (direction: 1 | -1) => {
     const trigger = cinematicTriggerRef.current;
-    if (!trigger || checkpointInputLockedRef.current || completionLockedRef.current) return;
+    if (!trigger || completionLockedRef.current) return;
     const currentScroll = trigger.scroll();
     if (currentScroll < trigger.start - 4 || currentScroll > trigger.end + 4) return;
 
     const nextStep = Math.max(0, Math.min(STORY_SCROLL_POINTS.length - 1, checkpointStepRef.current + direction));
     if (nextStep === checkpointStepRef.current) return;
 
+    if (checkpointInputLockedRef.current && checkpointInputDirectionRef.current !== direction) {
+      if (checkpointReleaseTimeoutRef.current !== null) window.clearTimeout(checkpointReleaseTimeoutRef.current);
+      if (checkpointAnimationRef.current !== null) window.cancelAnimationFrame(checkpointAnimationRef.current);
+      checkpointReleaseTimeoutRef.current = null;
+      checkpointAnimationRef.current = null;
+    } else if (checkpointInputLockedRef.current) {
+      return;
+    }
+
+    setCameraReadyForMotion(true);
     checkpointStepRef.current = nextStep;
     checkpointInputLockedRef.current = true;
+    checkpointInputDirectionRef.current = direction;
     if (checkpointReleaseTimeoutRef.current !== null) window.clearTimeout(checkpointReleaseTimeoutRef.current);
     const targetScroll = trigger.start + (trigger.end - trigger.start) * STORY_SCROLL_POINTS[nextStep];
     if (checkpointAnimationRef.current !== null) window.cancelAnimationFrame(checkpointAnimationRef.current);
@@ -198,6 +212,7 @@ export function IceCreamOrbit() {
     }
     checkpointReleaseTimeoutRef.current = window.setTimeout(() => {
       checkpointInputLockedRef.current = false;
+      checkpointInputDirectionRef.current = null;
       checkpointReleaseTimeoutRef.current = null;
     }, reduceMotion ? 0 : CHECKPOINT_GLIDE_MS + CHECKPOINT_IDLE_MS);
   };
@@ -294,6 +309,8 @@ export function IceCreamOrbit() {
     completionLockedRef.current = false;
     checkpointStepRef.current = 0;
     checkpointInputLockedRef.current = false;
+    checkpointInputDirectionRef.current = null;
+    setCameraReadyForMotion(false);
     storyProgress.set(0);
     checkpointRef.current = 0;
     setActiveCheckpoint(0);
@@ -314,11 +331,17 @@ export function IceCreamOrbit() {
       if (currentScroll < trigger.start - 4 || currentScroll > trigger.end + 4) return;
       event.preventDefault();
       if (checkpointInputLockedRef.current) {
+        const inputDirection: 1 | -1 = event.deltaY > 0 ? 1 : -1;
+        if (checkpointInputDirectionRef.current !== inputDirection) {
+          requestCheckpointAdvance(inputDirection);
+          return;
+        }
         if (checkpointReleaseTimeoutRef.current !== null) window.clearTimeout(checkpointReleaseTimeoutRef.current);
         checkpointReleaseTimeoutRef.current = window.setTimeout(() => {
           checkpointInputLockedRef.current = false;
+          checkpointInputDirectionRef.current = null;
           checkpointReleaseTimeoutRef.current = null;
-        }, reduceMotion ? 0 : CHECKPOINT_IDLE_MS + 220);
+        }, reduceMotion ? 0 : CHECKPOINT_GLIDE_MS + CHECKPOINT_IDLE_MS);
         return;
       }
       requestCheckpointAdvance(event.deltaY > 0 ? 1 : -1);
@@ -481,7 +504,6 @@ export function IceCreamOrbit() {
         </div>
         <div className="ice-orbit__checkpoint-rail" aria-hidden="true"><span className="ice-orbit__checkpoint-prompt">{copy.checkpointPrompt}</span>{["01", "02", "03", "04", "05"].map((label, index) => <span key={label} className="ice-orbit__checkpoint" data-active={index === activeCheckpoint} />)}<span className="ice-orbit__checkpoint-label">{String(activeCheckpoint + 1).padStart(2, "0")} / 05</span></div>
         <button type="button" className="ice-orbit__scroll-prompt" onClick={handleScrollAdvance} disabled={!isReady} aria-label={copy.nextStory}>{copy.scrollPrompt}</button>
-        <button type="button" className="ice-orbit__scroll-button" onClick={handleScrollAdvance} disabled={!isReady} aria-label={copy.continue}><span aria-hidden="true">↓</span></button>
         {!isReady && <div className="ice-orbit__loading" role="status" aria-label={copy.preparing} />}
       </div>
     </section>

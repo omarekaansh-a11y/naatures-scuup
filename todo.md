@@ -1400,3 +1400,5 @@
 - [x] Match every exposed cinematic edge to the approved grey background and slow the chapter-to-chapter camera movement further before considering any video-speed adjustment.
 - [x] Study scfo.de’s mobile behavior and adapt its mobile composition, text-safe pacing, and edge-treatment principles without copying its visual design or implementation.
 - [x] Explore an original camera-space and vertical story-handoff treatment that creates more room for text without altering the approved footage framing or violating the single-visible-card requirement.
+- [x] Stabilize the cinematic camera at first load so no camera transition shifts the viewport, and restore reverse wheel/touch checkpoint traversal through all prior story cards.
+- [x] Remove the cinematic circular scroll button entirely, zoom the mobile cup out slightly, lower the mobile text placement, and keep the cup stationary on mobile.

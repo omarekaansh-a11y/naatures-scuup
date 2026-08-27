@@ -21,10 +21,11 @@ describe("mobile-first optimization safeguards", () => {
   });
 
   it("preserves the focused mobile opening and a direct scroll affordance", () => {
-    expect(orbit).toContain("transform:translate3d(var(--mobile-camera-x,0vw),var(--mobile-camera-y,0vh),0) scale(2.9)");
+    expect(orbit).toContain(".ice-orbit__video{transform:scale(2.72)!important;transition:none!important}");
     expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
     expect(orbit).toContain(".ice-orbit__checkpoint-rail{display:none}");
-    expect(orbit).toContain('aria-label={copy.continue}');
+    expect(orbit).toContain('aria-label={copy.nextStory}');
+    expect(orbit).not.toContain('className="ice-orbit__scroll-button"');
   });
 
   it("adds app-style progress, return navigation, touch resilience, low-motion fallbacks, and menu input guidance", () => {

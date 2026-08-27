@@ -25,7 +25,7 @@ const readStory = () => page.evaluate(() => {
     top: Math.round(stage.getBoundingClientRect().top),
     cards: cards.map((card) => Math.round(Number.parseFloat(getComputedStyle(card).opacity) * 100) / 100),
     video: { transform: getComputedStyle(video).transform, objectFit: getComputedStyle(video).objectFit, objectPosition: getComputedStyle(video).objectPosition },
-    scrollButtonDisplay: getComputedStyle(document.querySelector(".ice-orbit__scroll-button")).display,
+    circularButtonPresent: Boolean(document.querySelector(".ice-orbit__scroll-button")),
     cardPositions: cards.map((card) => {
       const rect = card.getBoundingClientRect();
       return { x: Math.round(((rect.left - stageRect.left) / stageRect.width) * 100) / 100, y: Math.round(((rect.top - stageRect.top) / stageRect.height) * 100) / 100 };
@@ -45,7 +45,7 @@ async function inspectChapter(label, expectedVisible) {
   if (result.cards.filter((opacity) => opacity > 0.15).length !== 1) throw new Error(`${label} checkpoint shows overlapping story cards: ${JSON.stringify(result)}`);
   if (result.activeCheckpoint !== expectedVisible) throw new Error(`${label} checkpoint rail does not match the visible story card: ${JSON.stringify(result)}`);
   if (result.video.transform === "none" || result.video.objectFit !== "cover" || result.video.objectPosition !== "50% 50%") throw new Error(`${label} desktop video does not retain the intended original composition drift and cover framing: ${JSON.stringify(result)}`);
-  if (result.scrollButtonDisplay !== "none") throw new Error(`${label} desktop cinematic scroll button should be hidden: ${JSON.stringify(result)}`);
+  if (result.circularButtonPresent) throw new Error(`${label} cinematic circular scroll button should be removed: ${JSON.stringify(result)}`);
   const position = result.cardPositions[expectedVisible];
   const expectedZones = [{ side: "left", minY: 0.1, maxY: 0.3 }, { side: "left", minY: 0.2, maxY: 0.42 }, { side: "right", minY: 0.15, maxY: 0.38 }, { side: "left", minY: 0.48, maxY: 0.78 }, { side: "right", minY: 0.55, maxY: 0.86 }];
   const expectedZone = expectedZones[expectedVisible];

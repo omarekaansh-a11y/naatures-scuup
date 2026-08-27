@@ -6,8 +6,8 @@ const page = await browser.newPage({ viewport: { width: 390, height: 844 }, devi
 await page.goto("http://localhost:3000/", { waitUntil: "domcontentloaded" });
 await page.waitForFunction(() => document.querySelector(".mobile-scroll-progress") instanceof HTMLElement);
 await page.waitForFunction(() => {
-  const button = document.querySelector(".ice-orbit__scroll-button");
-  return button instanceof HTMLButtonElement && !button.disabled;
+  const prompt = document.querySelector(".ice-orbit__scroll-prompt");
+  return prompt instanceof HTMLButtonElement && !prompt.disabled && !document.querySelector(".ice-orbit__scroll-button");
 });
 
 const initial = await page.evaluate(() => {

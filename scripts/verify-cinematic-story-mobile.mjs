@@ -17,9 +17,8 @@ for (const viewport of viewportCases) {
     return video instanceof HTMLVideoElement && video.readyState >= 2;
   });
   await page.waitForFunction(() => {
-    const button = document.querySelector(".ice-orbit__scroll-button");
     const prompt = document.querySelector(".ice-orbit__scroll-prompt");
-    return button instanceof HTMLButtonElement && prompt instanceof HTMLButtonElement && !button.disabled && !prompt.disabled;
+    return prompt instanceof HTMLButtonElement && !prompt.disabled && !document.querySelector(".ice-orbit__scroll-button");
   });
 
   const before = await page.evaluate(() => {
@@ -27,26 +26,21 @@ for (const viewport of viewportCases) {
     const video = document.querySelector(".ice-orbit__video");
     const story = document.querySelector(".ice-orbit__story");
     const rail = document.querySelector(".ice-orbit__checkpoint-rail");
-    const button = document.querySelector(".ice-orbit__scroll-button");
     const prompt = document.querySelector(".ice-orbit__scroll-prompt");
     const dock = document.querySelector(".mobile-dock");
     const activeStory = document.querySelector('.ice-orbit__story-card[data-active="true"]');
-    if (!(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || !(story instanceof HTMLElement) || !(rail instanceof HTMLElement) || !(button instanceof HTMLButtonElement) || !(prompt instanceof HTMLButtonElement) || !(activeStory instanceof HTMLElement)) throw new Error("Mobile hero controls are missing.");
+    if (!(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || !(story instanceof HTMLElement) || !(rail instanceof HTMLElement) || !(prompt instanceof HTMLButtonElement) || !(activeStory instanceof HTMLElement)) throw new Error("Mobile hero controls are missing.");
     const stageRect = stage.getBoundingClientRect();
-    const buttonRect = button.getBoundingClientRect();
     const promptRect = prompt.getBoundingClientRect();
-    const dockRect = dock instanceof HTMLElement ? dock.getBoundingClientRect() : null;
     const storyRect = activeStory.getBoundingClientRect();
     return {
       storyDisplay: getComputedStyle(story).display,
       railDisplay: getComputedStyle(rail).display,
       activeStoryDisplay: getComputedStyle(activeStory).display,
       activeStoryText: activeStory.innerText.replace(/\s+/g, " ").trim(),
-      activeStoryOnStem: storyRect.top >= stageRect.top + stageRect.height * 0.55 && storyRect.bottom <= stageRect.top + stageRect.height * 0.92 && Math.abs((storyRect.left + storyRect.width / 2) - (stageRect.left + stageRect.width / 2)) <= stageRect.width * 0.12,
+      activeStoryOnStem: storyRect.top >= stageRect.top + stageRect.height * 0.6 && storyRect.bottom <= stageRect.top + stageRect.height * 0.93 && Math.abs((storyRect.left + storyRect.width / 2) - (stageRect.left + stageRect.width / 2)) <= stageRect.width * 0.12,
       videoTransform: getComputedStyle(video).transform,
-      buttonLabel: button.getAttribute("aria-label"),
-      buttonVisible: buttonRect.width > 0 && buttonRect.height > 0 && buttonRect.bottom <= stageRect.bottom + 1,
-      buttonAboveDock: !dockRect || buttonRect.bottom <= dockRect.top + 1,
+      circularButtonPresent: Boolean(document.querySelector(".ice-orbit__scroll-button")),
       promptText: prompt.innerText.trim(),
       promptLabel: prompt.getAttribute("aria-label"),
       promptUpperSafe: promptRect.top >= stageRect.top && promptRect.bottom <= stageRect.top + stageRect.height * 0.18,
@@ -54,7 +48,7 @@ for (const viewport of viewportCases) {
     };
   });
 
-  if (before.storyDisplay !== "block" || before.railDisplay !== "none" || before.activeStoryDisplay !== "block" || !before.activeStoryText.includes("KANPUR'S FIRST live scoop.") || !before.activeStoryOnStem || !before.videoTransform.includes("2.9") || before.buttonLabel !== "Scroll down to continue" || !before.buttonVisible || !before.buttonAboveDock || before.promptText !== "SCROLL!" || before.promptLabel !== "Scroll to the next part of the story" || !before.promptUpperSafe) {
+  if (before.storyDisplay !== "block" || before.railDisplay !== "none" || before.activeStoryDisplay !== "block" || !before.activeStoryText.includes("KANPUR'S FIRST live scoop.") || !before.activeStoryOnStem || !before.videoTransform.includes("2.72") || before.circularButtonPresent || before.promptText !== "SCROLL!" || before.promptLabel !== "Scroll to the next part of the story" || !before.promptUpperSafe) {
     throw new Error(`Focused mobile opening state failed at ${viewport.width}x${viewport.height}: ${JSON.stringify(before)}`);
   }
 
@@ -75,11 +69,9 @@ for (const viewport of viewportCases) {
       const stage = document.querySelector(".ice-orbit__stage");
       const cards = [...document.querySelectorAll(".ice-orbit__story-card")];
       const active = document.querySelector('.ice-orbit__story-card[data-active="true"]');
-      const button = document.querySelector(".ice-orbit__scroll-button");
-      if (!(stage instanceof HTMLElement) || !(active instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) throw new Error("Active mobile story card is missing.");
+      if (!(stage instanceof HTMLElement) || !(active instanceof HTMLElement)) throw new Error("Active mobile story card is missing.");
       const stageRect = stage.getBoundingClientRect();
       const activeRect = active.getBoundingClientRect();
-      const buttonRect = button.getBoundingClientRect();
       return {
         top: Math.round(stage.getBoundingClientRect().top),
         activeIndex: cards.indexOf(active),
@@ -88,7 +80,6 @@ for (const viewport of viewportCases) {
         topRatio: (activeRect.top - stageRect.top) / stageRect.height,
         bottomRatio: (activeRect.bottom - stageRect.top) / stageRect.height,
         centerRatio: (activeRect.left + activeRect.width / 2 - stageRect.left) / stageRect.width,
-        clearOfArrow: activeRect.bottom <= buttonRect.top - 10,
       };
     });
     const matchesZone = chapter.expectedZone === "stem"
@@ -97,7 +88,7 @@ for (const viewport of viewportCases) {
         ? chapterResult.centerRatio < 0.44 && chapterResult.topRatio >= 0.38 && chapterResult.topRatio <= 0.64
         : chapter.expectedZone === "right"
           ? chapterResult.centerRatio > 0.56 && chapterResult.topRatio >= 0.36 && chapterResult.topRatio <= 0.62
-          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && (chapter.expectedIndex >= 3 ? chapterResult.topRatio >= 0.5 : chapterResult.topRatio >= 0.58) && chapterResult.clearOfArrow;
+          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && (chapter.expectedIndex >= 3 ? chapterResult.topRatio >= 0.56 : chapterResult.topRatio >= 0.62);
     if (Math.abs(chapterResult.top) > 2 || chapterResult.activeIndex !== chapter.expectedIndex || chapterResult.visibleCount !== 1 || !chapterResult.activeText.includes(chapter.expectedText) || !matchesZone) {
       throw new Error(`Mobile story checkpoint is not resolved at ${viewport.width}x${viewport.height}: ${JSON.stringify({ chapter, chapterResult })}`);
     }
