@@ -1327,3 +1327,8 @@
 - [x] Reposition and resize the Drag It “01” background marker for a top-left chapter placement.
 - [x] Keep visitors pinned to the cinematic sequence until adaptive video playback is fully complete, not merely until its scroll checkpoint is reached.
 - [x] Verify responsive marker balance, cinematic completion behavior, and production quality before publishing.
+
+# Layered Cinematic Exit Transition
+- [x] Analyze the supplied motion reference and identify a safe layered handoff from the completed ice-cream sequence into the homepage.
+- [x] Make the following homepage layer rise over the completed cinematic stage after video playback has fully completed.
+- [x] Preserve desktop/mobile framing, the completion lock, and interaction accessibility while validating the new handoff.

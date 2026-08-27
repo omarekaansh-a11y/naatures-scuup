@@ -91,5 +91,8 @@
 /* Chapter 01 stays beneath the interactive deck as a quiet editorial field mark. */
 .drag-it-section.maximalist-drag:before{display:block;z-index:1;width:auto;aspect-ratio:auto;left:clamp(1rem,5vw,5.5rem);bottom:-.18em;top:auto;border:0;color:rgb(212 244 90 / .12);content:"01";font-family:"Playfair Display",Georgia,serif;font-size:clamp(10rem,20vw,23rem);font-weight:700;letter-spacing:-.12em;line-height:.72;opacity:1;transform:none;pointer-events:none}@media(max-width:640px){.drag-it-section.maximalist-drag:before{left:1rem;bottom:-.04em;font-size:44vw;color:rgb(212 244 90 / .11)}}
 
+/* The homepage content plane enters above the pinned dessert sequence, like a physical editorial sheet passing over film. */
+.ice-orbit{z-index:0}.home-after-orbit{position:relative;z-index:12;isolation:isolate;min-height:100svh;background:var(--cream);box-shadow:0 -18px 42px rgb(30 7 12 / .12)}.home-after-orbit>.organic-wave:first-child{z-index:2}.home-after-orbit .drag-it-section{position:relative;z-index:3}@media(max-width:640px){.home-after-orbit{box-shadow:0 -10px 26px rgb(30 7 12 / .1)}}
+
 /* Align chapter 01 at the proportional top-left chapter position used by the sequence. */
 .drag-it-section.maximalist-drag:before{top:-.12em;right:auto;bottom:auto;left:clamp(.6rem,2.5vw,3.5rem);font-size:clamp(8.5rem,15vw,18rem)}@media(max-width:640px){.drag-it-section.maximalist-drag:before{top:-.05em;right:auto;bottom:auto;left:.65rem;font-size:38vw}}

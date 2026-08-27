@@ -8,12 +8,16 @@ await page.waitForFunction(() => {
   return video instanceof HTMLVideoElement && video.readyState >= 2;
 });
 
-const initial = await page.evaluate(() => ({
-  redundantHero: document.querySelector(".hero--after-story") !== null,
-  nextSectionClass: document.querySelector(".ice-orbit + *")?.className,
-}));
+const initial = await page.evaluate(() => {
+  const handoff = document.querySelector(".ice-orbit + .home-after-orbit");
+  return {
+    redundantHero: document.querySelector(".hero--after-story") !== null,
+    nextSectionClass: handoff?.className,
+    firstSeamClass: handoff?.querySelector(":scope > .organic-wave")?.className,
+  };
+});
 
-if (initial.redundantHero || !String(initial.nextSectionClass).includes("organic-wave--cream-to-maroon")) {
+if (initial.redundantHero || !String(initial.nextSectionClass).includes("home-after-orbit") || !String(initial.firstSeamClass).includes("organic-wave--cream-to-maroon")) {
   throw new Error(`Homepage hero consolidation failed: ${JSON.stringify(initial)}`);
 }
 
