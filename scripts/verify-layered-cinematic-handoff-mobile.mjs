@@ -43,5 +43,6 @@ if (!result.atEnd || result.planeZ < 1 || result.planeTop >= 844 || result.stage
   throw new Error(`Mobile layered cinematic handoff failed: ${JSON.stringify(result)}`);
 }
 
+await page.screenshot({ path: "/home/ubuntu/layered-cinematic-handoff-mobile.png" });
 console.log(`Mobile layered cinematic handoff verified: ${JSON.stringify(result)}`);
 await browser.close();

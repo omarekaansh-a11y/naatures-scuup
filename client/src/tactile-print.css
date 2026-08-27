@@ -94,5 +94,8 @@
 /* The homepage content plane enters above the pinned dessert sequence, like a physical editorial sheet passing over film. */
 .ice-orbit{z-index:0}.home-after-orbit{position:relative;z-index:12;isolation:isolate;min-height:100svh;background:var(--cream);box-shadow:0 -18px 42px rgb(30 7 12 / .12)}.home-after-orbit>.organic-wave:first-child{z-index:2}.home-after-orbit .drag-it-section{position:relative;z-index:3}@media(max-width:640px){.home-after-orbit{box-shadow:0 -10px 26px rgb(30 7 12 / .1)}}
 
+/* A firm edge and two soft shadow passes give the advancing page plane clear physical depth. */
+.home-after-orbit{box-shadow:0 -1px 0 rgb(244 240 232 / .82),0 -8px 18px rgb(31 8 13 / .23),0 -30px 54px rgb(31 8 13 / .17)}@media(max-width:640px){.home-after-orbit{box-shadow:0 -1px 0 rgb(244 240 232 / .78),0 -7px 15px rgb(31 8 13 / .25),0 -24px 42px rgb(31 8 13 / .18)}}
+
 /* Align chapter 01 at the proportional top-left chapter position used by the sequence. */
 .drag-it-section.maximalist-drag:before{top:-.12em;right:auto;bottom:auto;left:clamp(.6rem,2.5vw,3.5rem);font-size:clamp(8.5rem,15vw,18rem)}@media(max-width:640px){.drag-it-section.maximalist-drag:before{top:-.05em;right:auto;bottom:auto;left:.65rem;font-size:38vw}}

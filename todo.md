@@ -1332,3 +1332,8 @@
 - [x] Analyze the supplied motion reference and identify a safe layered handoff from the completed ice-cream sequence into the homepage.
 - [x] Make the following homepage layer rise over the completed cinematic stage after video playback has fully completed.
 - [x] Preserve desktop/mobile framing, the completion lock, and interaction accessibility while validating the new handoff.
+
+# Layered Handoff Depth Cue
+- [x] Analyze the supplied follow-up reference and strengthen the incoming homepage plane’s top-edge shadow.
+- [x] Ensure the slide-over depth is clearly visible on desktop and mobile without altering the cinematic video.
+- [x] Verify the shadowed handoff, completion lock, and production behavior before publishing.

@@ -16,6 +16,9 @@ describe("layered cinematic handoff", () => {
   it("keeps the incoming plane above the pinned sequence without applying effects to the video", () => {
     expect(printStyles).toContain("homepage content plane enters above the pinned dessert sequence");
     expect(printStyles).toContain(".ice-orbit{z-index:0}.home-after-orbit{position:relative;z-index:12");
+    expect(printStyles).toContain("firm edge and two soft shadow passes");
+    expect(printStyles).toContain("0 -8px 18px rgb(31 8 13 / .23)");
+    expect(printStyles).toContain("0 -7px 15px rgb(31 8 13 / .25)");
     expect(printStyles).not.toContain(".ice-orbit__video{filter:");
   });
 });
