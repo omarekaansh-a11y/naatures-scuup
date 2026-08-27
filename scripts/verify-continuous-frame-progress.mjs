@@ -1,6 +1,4 @@
 import { chromium } from "playwright";
-import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
 
 const browser = await chromium.launch({
   headless: true,
@@ -11,26 +9,36 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 
 await page.goto("http://localhost:3000/", { waitUntil: "domcontentloaded" });
 await page.waitForFunction(() => {
-  const canvas = document.querySelector(".ice-orbit__canvas");
-  return canvas instanceof HTMLCanvasElement && canvas.width > 0 && canvas.height > 0;
+  const video = document.querySelector(".ice-orbit__video");
+  return video instanceof HTMLVideoElement && video.readyState >= 2 && video.duration > 0;
 });
-await page.waitForTimeout(750);
+await page.waitForTimeout(700);
 
-const readSignature = async (offset) => {
-  await page.evaluate((nextOffset) => {
-    const section = document.querySelector(".ice-orbit");
-    if (!section) throw new Error("Canvas sequence section is missing.");
-    window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY + nextOffset);
-  }, offset);
-  await page.waitForTimeout(1100);
-  const screenshotPath = `/home/ubuntu/frame-progress-${offset}.png`;
-  await page.screenshot({ path: screenshotPath });
-  return createHash("sha256").update(readFileSync(screenshotPath)).digest("hex");
-};
+const samples = [];
+for (let checkpoint = 0; checkpoint < 5; checkpoint += 1) {
+  if (checkpoint > 0) {
+    await page.mouse.wheel(0, 2_400);
+    await page.waitForTimeout(1_400);
+  }
+  samples.push(await page.evaluate(() => {
+    const video = document.querySelector(".ice-orbit__video");
+    const stage = document.querySelector(".ice-orbit__stage");
+    const cards = [...document.querySelectorAll(".ice-orbit__story-card")];
+    if (!(video instanceof HTMLVideoElement) || !(stage instanceof HTMLElement)) throw new Error("Native cinematic video is missing.");
+    return {
+      checkpoint: cards.findIndex((card) => card.getAttribute("data-active") === "true"),
+      time: Number(video.currentTime.toFixed(3)),
+      stageTop: Math.round(stage.getBoundingClientRect().top),
+    };
+  }));
+}
 
-const signatures = [];
-for (const offset of [120, 850, 1600, 2450]) signatures.push(await readSignature(offset));
-if (new Set(signatures).size < 3) throw new Error(`Canvas did not advance through distinct frames: ${JSON.stringify(signatures)}`);
+if (samples.some((sample, index) => sample.checkpoint !== index || Math.abs(sample.stageTop) > 2)) {
+  throw new Error(`Native cinematic checkpoints did not remain continuously pinned: ${JSON.stringify(samples)}`);
+}
+if (samples.some((sample, index) => index > 0 && sample.time <= samples[index - 1].time + 0.05)) {
+  throw new Error(`Native cinematic video did not progress continuously between bounded stops: ${JSON.stringify(samples)}`);
+}
 
-console.log(`Continuous frame progress verified: ${JSON.stringify(signatures)}`);
+console.log(`Continuous native video progress verified: ${JSON.stringify(samples)}`);
 await browser.close();

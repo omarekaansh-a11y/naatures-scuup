@@ -4,32 +4,38 @@ const browser = await chromium.launch({ headless: true, executablePath: "/usr/bi
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 });
 await page.goto("http://localhost:3000/", { waitUntil: "domcontentloaded" });
 await page.waitForFunction(() => {
-  const canvas = document.querySelector(".ice-orbit__canvas");
-  return canvas instanceof HTMLCanvasElement && canvas.width > 0 && canvas.height > 0;
+  const video = document.querySelector(".ice-orbit__video");
+  return video instanceof HTMLVideoElement && video.readyState >= 2 && video.videoWidth > 0;
 });
-await page.waitForTimeout(750);
+await page.waitForTimeout(700);
 
-const inspect = async (scrollOffset) => {
-  await page.evaluate((offset) => {
-    const section = document.querySelector(".ice-orbit");
-    if (!section) throw new Error("Canvas sequence section is missing.");
-    window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY + offset);
-  }, scrollOffset);
-  await page.waitForTimeout(350);
-  return page.evaluate(() => {
-    const stage = document.querySelector(".ice-orbit__stage");
-    const canvas = document.querySelector(".ice-orbit__canvas");
-    if (!(stage instanceof HTMLElement) || !(canvas instanceof HTMLCanvasElement)) throw new Error("Canvas stage is missing.");
-    const stageRect = stage.getBoundingClientRect();
-    return { top: Math.round(stageRect.top), height: Math.round(stageRect.height), canvasWidth: canvas.width, canvasHeight: canvas.height, viewportHeight: window.innerHeight };
-  });
-};
+const inspect = () => page.evaluate(() => {
+  const stage = document.querySelector(".ice-orbit__stage");
+  const video = document.querySelector(".ice-orbit__video");
+  if (!(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement)) throw new Error("Native cinematic stage is missing.");
+  const stageRect = stage.getBoundingClientRect();
+  return {
+    top: Math.round(stageRect.top),
+    height: Math.round(stageRect.height),
+    viewportHeight: window.innerHeight,
+    videoWidth: video.videoWidth,
+    videoHeight: video.videoHeight,
+    objectFit: getComputedStyle(video).objectFit,
+  };
+});
 
-const start = await inspect(100);
-const middle = await inspect(1000);
+const start = await inspect();
+await page.mouse.wheel(0, 2_400);
+await page.waitForTimeout(1_400);
+const middle = await inspect();
 await page.screenshot({ path: "/home/ubuntu/ai-still-sequence-mid.png" });
-if (Math.abs(start.top) > 2 || Math.abs(middle.top) > 2) throw new Error(`Sequence was not pinned: start=${start.top}, middle=${middle.top}`);
-if (start.height !== start.viewportHeight || start.canvasWidth < 1200 || start.canvasHeight < 850) throw new Error(`Canvas is not full viewport or sharp: ${JSON.stringify(start)}`);
 
-console.log(`Pinned sequence verified: ${JSON.stringify({ start, middle })}`);
+if (Math.abs(start.top) > 2 || Math.abs(middle.top) > 2 || start.height !== start.viewportHeight || middle.height !== middle.viewportHeight) {
+  throw new Error(`Native cinematic stage was not pinned fullscreen: ${JSON.stringify({ start, middle })}`);
+}
+if (start.videoWidth !== 2560 || start.videoHeight !== 1440 || start.objectFit !== "cover") {
+  throw new Error(`Desktop cinematic does not retain the approved 1440p cover source: ${JSON.stringify(start)}`);
+}
+
+console.log(`Pinned native-video cinematic verified: ${JSON.stringify({ start, middle })}`);
 await browser.close();

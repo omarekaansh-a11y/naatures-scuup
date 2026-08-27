@@ -1377,3 +1377,26 @@
 - [x] Verify bilingual content, desktop/mobile layout, interactions, and production quality before publishing.
 - [ ] Add Adel Sans Devanagari after an owner-provided licensed webfont kit or URL, then validate its Hindi heading rendering.
 - [ ] Add the 22 remaining current menu prices after receiving a source that unambiguously maps each dish to its price.
+- [x] Replace the directions FAQ with restaurant-opening-hours guidance in English and Hindi.
+- [x] Add bounded wheel/touch checkpoint progression so any small or large gesture advances only one intentional story step and completion does not jump the viewport upward.
+- [x] Add more halftone texture to the jagged menu and deepen layered background texture behind supporting site sections without affecting critical content or the ice-cream video.
+- [x] Validate the checkpointed cinematic progression, FAQ behavior, and desktop/mobile visual texture before publishing.
+- [x] Normalize the Drag It 01 background numeral to the established 02 and 03 visual treatment.
+- [x] Add matching 04 and 05 background chapter numerals to the map and FAQ sections, completing the Home sequence.
+- [x] Repair the cinematic completion-lock behavior so actual video playback reaches its final frame before release.
+- [x] Add a menu-variety fourth cinematic story card and translate it for Hindi mode, clearing it before the final card appears.
+- [x] Keep #FREEZETHEHAPPINESS as the only final story text, with a controlled visual line break that remains in view after the fourth card clears.
+- [x] Superseded by the later requested one-checkpoint-per-card model: Use 10 bounded internal scroll stops, two per cinematic card, while retaining five visible progress dots and continuous one-card text coverage.
+- [x] Keep the final hashtag card visible through native completion, longer than an individual regular checkpoint.
+- [x] Superseded by the later requested one-checkpoint-per-card model: Replace the 10-stop timing with 11 equal-duration bounded internal stops: two holds for each of the first four cards and three holds for the final #FREEZETHEHAPPINESS card, while retaining five visible progress dots.
+- [x] Hide the circular cinematic scroll button on laptop and desktop widths while retaining the mobile-only accessible control.
+- [x] Use a short, consistent momentum-led deceleration into each cinematic checkpoint without allowing a single gesture to skip more than one stop.
+- [x] Compare the cinematic checkpoint motion with scfo.de and refine the gesture response, interpolation, and deceleration so it feels continuous rather than mechanically abrupt.
+- [x] Explore an original camera-space and vertical story-handoff treatment that creates more room for text without altering the approved footage framing or violating the single-visible-card requirement.
+- [x] Apply restrained, chapter-specific composition rotation or drift with varied but systematic rates, easing each change into the bounded checkpoint system.
+- [x] Slow and soften the chapter-specific cup composition motion, then enlarge story typography selectively within the newly created text space without reducing clearance or mobile readability.
+- [x] Move the desktop cup decisively toward the appropriate edge for each story card, maintain a clear text column, and remove mobile edge bleed using a matched-grey framing field.
+- [x] Replace the multi-hold internal sequence with one bounded checkpoint per story card, keeping the final slogan visible through native completion and returning the header only after the visitor scrolls beyond the finished cinematic.
+- [x] Match every exposed cinematic edge to the approved grey background and slow the chapter-to-chapter camera movement further before considering any video-speed adjustment.
+- [x] Study scfo.de’s mobile behavior and adapt its mobile composition, text-safe pacing, and edge-treatment principles without copying its visual design or implementation.
+- [x] Explore an original camera-space and vertical story-handoff treatment that creates more room for text without altering the approved footage framing or violating the single-visible-card requirement.

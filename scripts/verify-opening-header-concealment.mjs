@@ -16,23 +16,31 @@ if (duringSequence.opacity > 0.05 || duringSequence.pointerEvents !== "none" || 
   throw new Error(`Header should be hidden during the opening sequence: ${JSON.stringify(duringSequence)}`);
 }
 
-await page.evaluate(() => {
-  const section = document.querySelector(".ice-orbit");
-  if (!(section instanceof HTMLElement)) throw new Error("Sequence section is missing.");
-  const top = section.getBoundingClientRect().top + window.scrollY;
-  window.scrollTo(0, top + section.offsetHeight + 24);
-});
-await page.waitForTimeout(5_600);
-await page.evaluate(() => {
-  const postSequenceBorder = document.querySelector(".organic-wave--cream-to-maroon");
-  if (!(postSequenceBorder instanceof HTMLElement)) throw new Error("Post-sequence stitched-wave boundary is missing.");
-  const top = postSequenceBorder.getBoundingClientRect().top + window.scrollY;
-  window.scrollTo(0, top + window.innerHeight * 0.2);
-});
-console.log(`Header transition probe: ${JSON.stringify(await page.evaluate(() => {
-  const postSequenceBorder = document.querySelector(".organic-wave--cream-to-maroon");
+for (let checkpoint = 0; checkpoint < 4; checkpoint += 1) {
+  await page.mouse.wheel(0, 2_400);
+  await page.waitForTimeout(1_400);
+}
+await page.waitForFunction(() => {
+  const video = document.querySelector(".ice-orbit__video");
+  return video instanceof HTMLVideoElement && video.ended;
+}, undefined, { timeout: 5_000 });
+
+const completedButStillHidden = await readHeader();
+if (completedButStillHidden.opacity > 0.05 || completedButStillHidden.pointerEvents !== "none" || completedButStillHidden.heroActive !== "true") {
+  throw new Error(`Header appeared before the visitor left the completed cinematic: ${JSON.stringify(completedButStillHidden)}`);
+}
+
+await page.mouse.wheel(0, 2_400);
+await page.waitForTimeout(360);
+console.log(`Desktop release probe: ${JSON.stringify(await page.evaluate(() => {
+  const stage = document.querySelector(".ice-orbit__stage");
   const header = document.querySelector(".site-header");
-  return { scrollY: window.scrollY, postSequenceBorderTop: postSequenceBorder instanceof HTMLElement ? postSequenceBorder.getBoundingClientRect().top : null, headerClass: header?.className, headerOpacity: header instanceof HTMLElement ? getComputedStyle(header).opacity : null };
+  return {
+    scrollY: window.scrollY,
+    stageTop: stage instanceof HTMLElement ? stage.getBoundingClientRect().top : null,
+    headerOpacity: header instanceof HTMLElement ? getComputedStyle(header).opacity : null,
+    heroActive: document.documentElement.dataset.iceHeroActive ?? "",
+  };
 }))}`);
 await page.waitForFunction(() => {
   const header = document.querySelector(".site-header");

@@ -12,7 +12,7 @@ const iconLoad = await page.evaluate(async (href) => {
   return { ok: response.ok, contentType: response.headers.get("content-type"), width: bitmap.width, height: bitmap.height };
 }, iconHref);
 
-if (iconHref !== "/favicon.png?v=2") throw new Error(`Unexpected favicon reference: ${iconHref}`);
+if (iconHref !== "/favicon.png?v=3") throw new Error(`Unexpected favicon reference: ${iconHref}`);
 if (!iconLoad.ok || iconLoad.width !== 512 || iconLoad.height !== 512 || !iconLoad.contentType?.includes("image/png")) {
   throw new Error(`Favicon failed browser verification: ${JSON.stringify(iconLoad)}`);
 }

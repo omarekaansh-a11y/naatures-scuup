@@ -28,7 +28,8 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("const completionLockedRef");
     expect(orbit).toContain("onLeave: (self)");
     expect(orbit).toContain("self.scroll(self.end - 2)");
-    expect(orbit).toContain("trigger.scroll(trigger.end + 2)");
+    expect(orbit).toContain("const exitCompletedCinematic");
+    expect(orbit).toContain("trigger.kill(true)");
     expect(orbit).toContain("completionLockedRef.current ? video.duration");
     expect(orbit).toContain("video.ended || video.currentTime >= video.duration - 0.01");
     expect(orbit).toContain("onEnded={() => releaseCompletionLockRef.current?.()}");
@@ -38,9 +39,10 @@ describe("full-screen GSAP ice-cream sequence", () => {
 
   it("adds a clean desktop narrative while creating a distraction-free, tightly focused mobile hero", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
-    expect(orbit).toContain('background:#d6d4d0 url("/manus-storage/ezgif-frame-001_c0bf1371.png") center/cover no-repeat');
+    expect(orbit).toContain('const CINEMATIC_GROUND = "#b8babc"');
+    expect(orbit).toContain('background:${CINEMATIC_GROUND} url("/manus-storage/ezgif-frame-001_c0bf1371.png") center/cover no-repeat');
     expect(orbit).toContain("prefers-reduced-motion");
-    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__stage{perspective:none}");
+    expect(orbit).toContain("@media(max-width:767px){.ice-orbit__stage{perspective:none;background:${CINEMATIC_GROUND}}");
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%");
     expect(orbit).toContain('from "framer-motion"');
     expect(orbit).toContain("const storyProgress = useMotionValue(0)");
@@ -53,7 +55,7 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(languageCopy).toContain("One place.");
     expect(languageCopy).toContain("#FREEZETHEHAPPINESS");
     expect(orbit).toContain("ice-orbit__story");
-    expect(orbit).toContain("background:#d6d4d0");
+    expect(orbit).toContain("background:${CINEMATIC_GROUND}");
     expect(orbit).toContain("color:rgb(47 38 34)!important");
     expect(orbit).toContain(".ice-orbit__story-card--origin{top:18%;left:clamp(1.25rem,5vw,5.25rem);text-align:left}");
     expect(orbit).toContain(".ice-orbit__story-card--right{top:24%;right:clamp(1.25rem,5vw,5.25rem)");
@@ -66,30 +68,40 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).not.toContain("text-shadow:");
     expect(orbit).toContain('font-family:"Playfair Display",Georgia,serif');
     expect(orbit).toContain("font-family:Montserrat,ui-sans-serif,system-ui,sans-serif");
-    expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;transform:scale(2.9)");
+    expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%;background-color:${CINEMATIC_GROUND};transform:translate3d(var(--mobile-camera-x,0vw),var(--mobile-camera-y,0vh),0) scale(2.9)");
     expect(orbit).toContain(".ice-orbit__story{display:block;z-index:6;pointer-events:none}");
     expect(orbit).toContain('.ice-orbit__story-card[data-active="true"]{display:block!important;opacity:1!important');
     expect(orbit).toContain('copy.originMobile.split("|")');
     expect(orbit).toContain('copy.parlourMobile.split("|")');
     expect(orbit).toContain('copy.cravingMobile.split("|")');
+    expect(orbit).toContain('copy.varietyMobile.split("|")');
     expect(orbit).toContain('copy.endMobile.split("|")');
     expect(orbit).toContain("transform:translate3d(-50%,0,44px) rotateX(5deg) rotateY(-4deg)!important");
     expect(orbit).toContain("perspective:980px!important");
     expect(languageCopy).toContain("The Naatures Scuup way.");
     expect(orbit).toContain(".ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:60%!important");
-    expect(orbit).toContain(".ice-orbit__story-card--end{top:56%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--variety{top:53%!important");
+    expect(orbit).toContain(".ice-orbit__story-card--end{top:53%!important");
     expect(orbit).toContain(".ice-orbit__story-copy{font-size:.68rem!important");
     expect(orbit).toContain("@media(min-width:768px){.ice-orbit__stage{perspective:1150px!important");
-    expect(orbit).toContain(".ice-orbit__video{object-fit:cover!important;object-position:center!important;transform:none!important}");
+    expect(orbit).toContain(".ice-orbit__video{object-fit:cover!important;object-position:center!important}");
+    expect(orbit).toContain("const CAMERA_COMPOSITIONS");
+    expect(orbit).toContain('"--camera-x"');
+    expect(orbit).toContain('"--camera-rotation"');
+    expect(orbit).toContain('"--camera-origin"');
+    expect(orbit).toContain('"--mobile-camera-x"');
+    expect(orbit).toContain("transition:transform var(--camera-duration,2000ms) cubic-bezier(.22,1,.36,1)");
     expect(orbit).toContain(".ice-orbit__story-card--origin{top:18%!important");
     expect(orbit).toContain(".ice-orbit__story-card--left{top:25%!important");
-    expect(orbit).toContain(".ice-orbit__story-card--left .ice-orbit__story-title--label{padding:.42rem .54rem .48rem!important;font-size:clamp(1.9rem,3.55vw,3.8rem)!important");
+    expect(orbit).toContain(".ice-orbit__story-card--left .ice-orbit__story-title--label{padding:.42rem .54rem .48rem!important;font-size:clamp(2.1rem,3.9vw,4.2rem)!important");
     expect(orbit).toContain(".ice-orbit__story-card--end{top:auto!important");
     expect(orbit).toContain("ice-orbit__scroll-button");
+    expect(orbit).toContain("display:none;width:3rem;height:3rem");
     expect(orbit).toContain("4.35rem");
+    expect(orbit).toContain("display:grid;width:3.25rem;height:3.25rem");
     expect(orbit).toContain('aria-label={copy.continue}');
     expect(orbit).toContain("const handleScrollAdvance");
-    expect(orbit).toContain("window.scrollBy");
+    expect(orbit).toContain("window.scrollTo");
     expect(orbit).toContain("ice-orbit__scroll-prompt");
     expect(orbit).toContain('aria-label={copy.nextStory}');
     expect(orbit).toContain('{copy.scrollPrompt}</button>');
@@ -103,21 +115,29 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(home).not.toContain('className="story-section section-pad"');
   });
 
-  it("uses discrete narrative checkpoints and non-overlapping story windows", () => {
-    expect(orbit).toContain("STORY_SNAP_POINTS");
-    expect(orbit).toContain("snapTo: STORY_SNAP_POINTS");
+  it("uses five evenly spaced story checkpoints with continuous one-card coverage and a five-dot public rail", () => {
+    expect(orbit).toContain("STORY_SCROLL_POINTS");
+    expect(orbit).toContain("const STORY_CHECKPOINT_COUNT = 5");
+    expect(orbit).toContain("const STORY_SCROLL_START = 0.02");
+    expect(orbit).toContain("const STORY_SCROLL_END = 0.88");
+    expect(orbit).toContain("(STORY_SCROLL_END - STORY_SCROLL_START) * index");
+    expect(orbit).toContain("requestCheckpointAdvance");
+    expect(orbit).toContain("const CHECKPOINT_GLIDE_MS = 780");
+    expect(orbit).toContain("const CHECKPOINT_IDLE_MS = 120");
+    expect(orbit).toContain("const easedProgress = 1 - Math.pow(1 - progress, 3)");
+    expect(orbit).toContain("checkpointAnimationRef");
+    expect(orbit).toContain('window.addEventListener("wheel", handleCheckpointWheel, { passive: false, capture: true })');
+    expect(orbit).toContain("onTouchEnd={handleTouchEnd}");
+    expect(orbit).toContain("checkpointInputLockedRef");
     expect(orbit).toContain("getStoryCheckpoint");
+    expect(orbit).toContain("return closestStop");
+    expect(orbit).toContain("const cardStyle");
+    expect(orbit).toContain("opacity: activeCheckpoint === index ? 1 : 0");
     expect(orbit).toContain("ice-orbit__checkpoint-rail");
+    expect(orbit).toContain('["01", "02", "03", "04", "05"]');
+    expect(orbit).toContain(' / 05</span>');
     expect(orbit).toContain("perspective:1150px");
     expect(orbit).toContain("transform-style:preserve-3d");
-    expect(orbit).toContain("const openingRotateY");
-    expect(orbit).toContain("const openingRotateZ");
-    expect(orbit).toContain("const parlourRotateY");
-    expect(orbit).toContain("const parlourRotateZ");
-    expect(orbit).toContain("const cravingRotateY");
-    expect(orbit).toContain("const cravingRotateZ");
-    expect(orbit).toContain("const endRotateY");
-    expect(orbit).toContain("const endRotateZ");
     expect(orbit).toContain("@media(hover:hover) and (pointer:fine)");
     expect(orbit).toContain('data-active={activeCheckpoint === 0}');
     expect(orbit).toContain('.ice-orbit__story-card[data-active="true"][data-interacting="true"] .ice-orbit__story-glyph');
@@ -132,13 +152,10 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("transform 560ms");
     expect(orbit).toContain("distance / 260");
     expect(orbit).toContain("influence * 1.05");
-    expect(orbit).toContain("[40, 76, 104, 14]");
-    expect(orbit).toContain("[20, 82, 118, 10]");
-    expect(orbit).toContain("0.19, 0.22");
-    expect(orbit).toContain("0.25, 0.28");
-    expect(orbit).toContain("0.45, 0.48");
-    expect(orbit).toContain("0.52, 0.55");
-    expect(orbit).toContain("0.72, 0.75");
+    expect(orbit).toContain('data-active={activeCheckpoint === 3}');
+    expect(orbit).toContain('data-active={activeCheckpoint === 4}');
+    expect(languageCopy).toContain("Dosas to desserts.");
+    expect(languageCopy).toContain("#FREEZE THE|HAPPINESS");
   });
 
   it("conceals the global header while the opening sequence remains in view", () => {
@@ -146,6 +163,9 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("document.documentElement.dataset.iceHeroActive");
     expect(orbit).toContain("onEnter: () => setOpeningHeaderHidden(true)");
     expect(orbit).toContain("setOpeningHeaderHidden(false)");
+    expect(orbit).toContain("const postCinematicExitRef");
+    expect(orbit).toContain("self.scroll() > self.end + 80");
+    expect(orbit).toContain('window.addEventListener("scroll", revealHeaderAfterExit, { passive: true })');
   });
 });
 

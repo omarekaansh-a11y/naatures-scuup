@@ -5,6 +5,7 @@ import { resolve } from "node:path";
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 const drag = readFileSync(resolve(process.cwd(), "client/src/components/DragFoodCanvas.tsx"), "utf8");
 const reviews = readFileSync(resolve(process.cwd(), "client/src/components/GoogleReviews.tsx"), "utf8");
+const locationAtlas = readFileSync(resolve(process.cwd(), "client/src/components/LocationAtlas.tsx"), "utf8");
 const languageCopy = readFileSync(resolve(process.cwd(), "client/src/lib/language-copy.ts"), "utf8");
 
 describe("Home editorial numbering", () => {
@@ -19,5 +20,8 @@ describe("Home editorial numbering", () => {
     expect(languageCopy).toContain("04 / FAQs");
     expect(home).toContain('maximalist-surface__figure" aria-hidden="true">02');
     expect(reviews).toContain('maximalist-surface__figure" aria-hidden="true">03');
+    expect(locationAtlas).toContain('maximalist-surface__figure" aria-hidden="true">04');
+    expect(home).toContain('maximalist-surface__figure" aria-hidden="true">05');
+    expect(languageCopy).toContain("04 / FAQs");
   });
 });

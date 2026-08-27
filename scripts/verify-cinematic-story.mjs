@@ -19,12 +19,13 @@ const readStory = () => page.evaluate(() => {
   const stage = document.querySelector(".ice-orbit__stage");
   const video = document.querySelector(".ice-orbit__video");
   const cards = [...document.querySelectorAll(".ice-orbit__story-card")];
-  if (!(section instanceof HTMLElement) || !(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || cards.length !== 4) throw new Error("Cinematic story elements are missing.");
+  if (!(section instanceof HTMLElement) || !(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || cards.length !== 5) throw new Error("Cinematic story elements are missing.");
   const stageRect = stage.getBoundingClientRect();
   return {
     top: Math.round(stage.getBoundingClientRect().top),
     cards: cards.map((card) => Math.round(Number.parseFloat(getComputedStyle(card).opacity) * 100) / 100),
     video: { transform: getComputedStyle(video).transform, objectFit: getComputedStyle(video).objectFit, objectPosition: getComputedStyle(video).objectPosition },
+    scrollButtonDisplay: getComputedStyle(document.querySelector(".ice-orbit__scroll-button")).display,
     cardPositions: cards.map((card) => {
       const rect = card.getBoundingClientRect();
       return { x: Math.round(((rect.left - stageRect.left) / stageRect.width) * 100) / 100, y: Math.round(((rect.top - stageRect.top) / stageRect.height) * 100) / 100 };
@@ -33,23 +34,20 @@ const readStory = () => page.evaluate(() => {
   };
 });
 
-async function inspectChapter(label, progress, expectedVisible) {
-  await page.evaluate((chapterProgress) => {
-    const section = document.querySelector(".ice-orbit");
-    if (!(section instanceof HTMLElement)) throw new Error("Sequence section is missing.");
-    const top = section.getBoundingClientRect().top + window.scrollY;
-    const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-    window.scrollTo(0, top + travel * chapterProgress);
-  }, progress);
-  await page.waitForTimeout(700);
+async function inspectChapter(label, expectedVisible) {
+  if (expectedVisible > 0) {
+    await page.mouse.wheel(0, 2_400);
+    await page.waitForTimeout(2_300);
+  }
   const result = await readStory();
   if (Math.abs(result.top) > 2) throw new Error(`${label} chapter is not pinned: ${JSON.stringify(result)}`);
   if (result.cards[expectedVisible] < 0.55) throw new Error(`${label} chapter does not reveal the intended overlay: ${JSON.stringify(result)}`);
   if (result.cards.filter((opacity) => opacity > 0.15).length !== 1) throw new Error(`${label} checkpoint shows overlapping story cards: ${JSON.stringify(result)}`);
   if (result.activeCheckpoint !== expectedVisible) throw new Error(`${label} checkpoint rail does not match the visible story card: ${JSON.stringify(result)}`);
-  if (result.video.transform !== "none" || result.video.objectFit !== "cover" || result.video.objectPosition !== "50% 50%") throw new Error(`${label} desktop video framing inherited a mobile transform: ${JSON.stringify(result)}`);
+  if (result.video.transform === "none" || result.video.objectFit !== "cover" || result.video.objectPosition !== "50% 50%") throw new Error(`${label} desktop video does not retain the intended original composition drift and cover framing: ${JSON.stringify(result)}`);
+  if (result.scrollButtonDisplay !== "none") throw new Error(`${label} desktop cinematic scroll button should be hidden: ${JSON.stringify(result)}`);
   const position = result.cardPositions[expectedVisible];
-  const expectedZones = [{ side: "left", minY: 0.1, maxY: 0.3 }, { side: "left", minY: 0.2, maxY: 0.42 }, { side: "right", minY: 0.15, maxY: 0.38 }, { side: "right", minY: 0.55, maxY: 0.86 }];
+  const expectedZones = [{ side: "left", minY: 0.1, maxY: 0.3 }, { side: "left", minY: 0.2, maxY: 0.42 }, { side: "right", minY: 0.15, maxY: 0.38 }, { side: "left", minY: 0.48, maxY: 0.78 }, { side: "right", minY: 0.55, maxY: 0.86 }];
   const expectedZone = expectedZones[expectedVisible];
   const inExpectedSide = expectedZone.side === "left" ? position.x < 0.36 : position.x > 0.58;
   if (!inExpectedSide || position.y < expectedZone.minY || position.y > expectedZone.maxY) throw new Error(`${label} desktop story card is not in its original zone: ${JSON.stringify({ position, expectedZone, result })}`);
@@ -58,10 +56,11 @@ async function inspectChapter(label, progress, expectedVisible) {
 }
 
 const results = [
-  await inspectChapter("origin", 0.08, 0),
-  await inspectChapter("parlour", 0.32, 1),
-  await inspectChapter("craving", 0.63, 2),
-  await inspectChapter("happiness", 0.92, 3),
+  await inspectChapter("origin", 0),
+  await inspectChapter("parlour", 1),
+  await inspectChapter("craving", 2),
+  await inspectChapter("variety", 3),
+  await inspectChapter("happiness", 4),
 ];
 
 console.log(`Cinematic story chapters verified: ${JSON.stringify(results)}`);

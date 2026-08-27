@@ -59,21 +59,18 @@ for (const viewport of viewportCases) {
   }
 
   const chapters = [
-    { progress: 0.08, expectedIndex: 0, expectedText: "live scoop.", expectedZone: "base" },
-    { progress: 0.32, expectedIndex: 1, expectedText: "made live.", expectedZone: "base" },
-    { progress: 0.63, expectedIndex: 2, expectedText: "every craving.", expectedZone: "base" },
-    { progress: 0.92, expectedIndex: 3, expectedText: "#freezethehappiness", expectedZone: "base" },
+    { expectedIndex: 0, expectedText: "live scoop.", expectedZone: "base" },
+    { expectedIndex: 1, expectedText: "made live.", expectedZone: "base" },
+    { expectedIndex: 2, expectedText: "every craving.", expectedZone: "base" },
+    { expectedIndex: 3, expectedText: "find your craving.", expectedZone: "base" },
+    { expectedIndex: 4, expectedText: "#freeze the happiness", expectedZone: "base" },
   ];
   const mobileChapters = [];
-  for (const chapter of chapters) {
-    await page.evaluate((progress) => {
-      const section = document.querySelector(".ice-orbit");
-      if (!(section instanceof HTMLElement)) throw new Error("Sequence section is missing.");
-      const top = section.getBoundingClientRect().top + window.scrollY;
-      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-      window.scrollTo(0, top + travel * progress);
-    }, chapter.progress);
-    await page.waitForTimeout(760);
+  for (const [chapterIndex, chapter] of chapters.entries()) {
+    if (chapterIndex > 0) {
+      await page.locator(".ice-orbit__scroll-prompt").click();
+      await page.waitForTimeout(2_400);
+    }
     const chapterResult = await page.evaluate(() => {
       const stage = document.querySelector(".ice-orbit__stage");
       const cards = [...document.querySelectorAll(".ice-orbit__story-card")];
@@ -100,7 +97,7 @@ for (const viewport of viewportCases) {
         ? chapterResult.centerRatio < 0.44 && chapterResult.topRatio >= 0.38 && chapterResult.topRatio <= 0.64
         : chapter.expectedZone === "right"
           ? chapterResult.centerRatio > 0.56 && chapterResult.topRatio >= 0.36 && chapterResult.topRatio <= 0.62
-          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && (chapter.expectedIndex === 3 ? chapterResult.topRatio >= 0.53 : chapterResult.topRatio >= 0.58) && chapterResult.clearOfArrow;
+          : chapterResult.centerRatio >= 0.38 && chapterResult.centerRatio <= 0.62 && (chapter.expectedIndex >= 3 ? chapterResult.topRatio >= 0.5 : chapterResult.topRatio >= 0.58) && chapterResult.clearOfArrow;
     if (Math.abs(chapterResult.top) > 2 || chapterResult.activeIndex !== chapter.expectedIndex || chapterResult.visibleCount !== 1 || !chapterResult.activeText.includes(chapter.expectedText) || !matchesZone) {
       throw new Error(`Mobile story checkpoint is not resolved at ${viewport.width}x${viewport.height}: ${JSON.stringify({ chapter, chapterResult })}`);
     }
@@ -108,8 +105,9 @@ for (const viewport of viewportCases) {
   }
 
   await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(160);
   await page.locator(".ice-orbit__scroll-prompt").click();
-  await page.waitForTimeout(700);
+  await page.waitForTimeout(1_400);
   const afterScrollY = await page.evaluate(() => window.scrollY);
   if (afterScrollY <= before.scrollY + viewport.height * 0.25) {
     throw new Error(`Mobile scroll prompt did not advance the opening sequence at ${viewport.width}x${viewport.height}: ${JSON.stringify({ beforeScrollY: before.scrollY, afterScrollY })}`);

@@ -43,6 +43,7 @@ export function LocationAtlas() {
 
   return (
     <><style>{gestureMapStyles(copy.scroll, copy.fingers)}</style><section id="location" className="location-atlas maximalist-map print-surface print-surface--dark" aria-labelledby="location-title">
+      <span className="maximalist-surface__figure" aria-hidden="true">04</span>
       <div className="location-atlas__inner section-pad">
         <div className="visit-map print-edge-boil print-edge-boil--light print-edge-boil--rough layered-image-depth layered-image-depth--map" aria-label={copy.mapLabel}>
           <MapView className="visit-map__canvas" initialCenter={naaturesScuup} initialZoom={17} onMapReady={onMapReady} onMapError={() => setHasMapError(true)} />
