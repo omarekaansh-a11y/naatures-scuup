@@ -92,7 +92,7 @@
 .drag-it-eyebrow,
 .drag-it-signature,
 .drag-it-hint,
-.drag-it-pagination { font-family: Manrope, sans-serif; font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.drag-it-pagination { font-family: "Switzer", Manrope, sans-serif; font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 
 .drag-it-eyebrow { margin: 0 0 18px; color: var(--mango); }
 
@@ -107,7 +107,7 @@
 }
 
 .drag-it-copy h2 i { color: var(--mango); font-weight: 500; }
-.drag-it-body { max-width: 340px; margin: 31px 0 0; color: rgb(244 240 232 / 78%); font-size: 14px; line-height: 1.75; }
+.drag-it-body { max-width: 340px; margin: 31px 0 0; color: rgb(244 240 232 / 78%); font-family: "Switzer", Manrope, sans-serif; font-size: 14px; line-height: 1.75; }
 .drag-it-signature { margin: 29px 0 0; color: var(--mango); }
 
 .drag-it-playground { width: min(100%, 535px); justify-self: end; }

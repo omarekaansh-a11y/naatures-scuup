@@ -24,13 +24,13 @@ export function SiteFooter() {
         <div className="footer-identity footer-identity--text">
           <div className="footer-logo-panel print-edge-boil print-edge-boil--light print-edge-boil--rough" aria-label="Naatures Scuup"><span aria-hidden="true">NS</span><strong>Naatures <i>Scuup</i></strong></div>
           <p>{addressTop}<br />{addressBottom}</p>
-          <p className="footer-hours">{hoursTop}<br />{hoursBottom}</p>
+          <p className="footer-hours">{hoursTop}{hoursBottom && <><br />{hoursBottom}</>}</p>
           <div className="footer-links"><Link href="/menu">{copy.menu}</Link><Link href="/#reviews">{copy.reviews}</Link><Link href="/#faq">{copy.faqs}</Link></div>
         </div>
       </div>
       <div className="footer-visit-card print-edge-boil print-edge-boil--light print-edge-boil--rough">
         <div><small>{copy.find}</small><strong>{visitTop}<br />{visitBottom}</strong></div>
-        <div><small>{copy.open}</small><strong>{hoursTop}<br />{hoursBottom}</strong></div>
+        <div><small>{copy.open}</small><strong>{hoursTop}{hoursBottom && <><br />{hoursBottom}</>}</strong></div>
         <div><small>{copy.callFollow}</small><strong><a href="tel:+917860880088">+91 78608 80088</a><br /><a href="https://www.instagram.com/naatures_scuup/" target="_blank" rel="noreferrer">Instagram</a> · <a href="https://www.facebook.com/naaturesscuup/" target="_blank" rel="noreferrer">Facebook</a> · <a href="https://www.google.com/maps/search/?api=1&query=Naatures+Scuup+The+Mall+126+Mall+Road+Kanpur" target="_blank" rel="noreferrer">{copy.directions}</a></strong></div>
       </div>
       <div className="footer-bottom">

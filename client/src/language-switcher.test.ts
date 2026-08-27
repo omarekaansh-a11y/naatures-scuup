@@ -8,6 +8,7 @@ const header = readFileSync(resolve(process.cwd(), "client/src/components/SiteHe
 const home = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 const menu = readFileSync(resolve(process.cwd(), "client/src/pages/MenuPage.tsx"), "utf8");
 const styles = readFileSync(resolve(process.cwd(), "client/src/tactile-print.css"), "utf8");
+const copy = readFileSync(resolve(process.cwd(), "client/src/lib/language-copy.ts"), "utf8");
 
 describe("English/Hindi language switcher", () => {
   it("defaults to English and persists the selected document language", () => {
@@ -32,5 +33,16 @@ describe("English/Hindi language switcher", () => {
     expect(menu).toContain("const copy = menuCopy[language]");
     expect(menu).toContain("localizeChapterTitle(slug, title, language)");
     expect(menu).toContain("placeholder={copy.searchPlaceholder}");
+  });
+
+  it("keeps the refined Home, Drag It, review, FAQ, and daily-hours content bilingual", () => {
+    expect(copy).toContain('lateTable: "Mall Road’s icy cold table"');
+    expect(copy).toContain('titleStart: "Swipe &"');
+    expect(copy).toContain('dragMe: "Swipe!"');
+    expect(copy).toContain('beforeVisit: "04 / FAQs"');
+    expect(copy).toContain('browse: "What time does the restaurant open?"');
+    expect(copy).toContain('summary: "6 public reviews"');
+    expect(copy).toContain('hours: "Mon–Sun · 11 AM–11 PM"');
+    expect(copy).toContain('hours: "सोम–रवि · 11 AM–11 PM"');
   });
 });

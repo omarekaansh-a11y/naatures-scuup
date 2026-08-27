@@ -14,9 +14,9 @@ describe("Home editorial numbering", () => {
     expect(languageCopy).toContain("01 / The food edit");
     expect(languageCopy).toContain("02 / The Mall table");
     expect(reviews).toContain("copy.eyebrow");
-    expect(languageCopy).toContain("03 / Selected diner proof");
+    expect(languageCopy).toContain("03 / Authentic restaurant reviews");
     expect(home).toContain("copy.beforeVisit");
-    expect(languageCopy).toContain("04 / Before you visit");
+    expect(languageCopy).toContain("04 / FAQs");
     expect(home).toContain('maximalist-surface__figure" aria-hidden="true">02');
     expect(reviews).toContain('maximalist-surface__figure" aria-hidden="true">03');
   });

@@ -4,16 +4,16 @@ import type { SiteLanguage } from "@/contexts/LanguageContext";
 export const homeCopy = {
   en: {
     menuBridge: "Explore the full menu",
-    lateTable: "Mall Road’s late table",
+    lateTable: "Mall Road’s icy cold table",
     tableEyebrow: "02 / The Mall table · #FREEZETHEHAPPINESS",
     saveRoom: "Save room.",
     forScoop: "For the scoop.",
-    scoopCopy: "From South Indian favourites and shareable pizza to Chinese, comfort snacks, shakes and dessert—Naatures Scuup keeps every vegetarian craving at one Mall Road table.",
+    scoopCopy: "From South Indian favourites and shareable pizza to Chinese, comfort snacks, shakes and dessert, Naatures Scuup keeps every vegetarian craving at one Mall Road table.",
     vegetarianDining: "Vegetarian multi-cuisine",
     cravingChapters: "17 craving chapters",
     exploreIceCreams: "Explore ice creams",
     directions: "Directions to Mall Road",
-    beforeVisit: "04 / Before you visit",
+    beforeVisit: "04 / FAQs",
     goodToKnow: "Good to",
     know: "know.",
     faqIntro: "Questions about a visit? Call ",
@@ -22,8 +22,8 @@ export const homeCopy = {
     whereAnswer: "Find us at 126, The Mall Road, Mirpur, Kanpur, Uttar Pradesh 208004.",
     vegetarian: "Is the menu vegetarian?",
     vegetarianAnswer: "Yes. The restaurant presents a vegetarian multi-cuisine menu.",
-    browse: "What can I browse online?",
-    browseAnswer: "The digital menu lists 204 dishes across 17 groups, with search and price sorting.",
+    browse: "What time does the restaurant open?",
+    browseAnswer: "We are open Monday–Sunday from 11 AM–11 PM.",
     order: "Can I order or reserve from this website?",
     orderAnswer: "For reservations or order enquiries, please call the restaurant directly.",
     directionsQuestion: "How do I get directions?",
@@ -31,16 +31,16 @@ export const homeCopy = {
   },
   hi: {
     menuBridge: "पूरा मेनू देखें",
-    lateTable: "मॉल रोड की शाम वाली टेबल",
+    lateTable: "मॉल रोड की बर्फ़-सी ठंडी टेबल",
     tableEyebrow: "02 / मॉल रोड टेबल · #FREEZETHEHAPPINESS",
     saveRoom: "थोड़ी जगह",
     forScoop: "स्कूप के लिए।",
-    scoopCopy: "साउथ इंडियन फेवरेट्स और शेयर करने लायक पिज़्ज़ा से लेकर चाइनीज़, कम्फर्ट स्नैक्स, शेक्स और डेज़र्ट तक—नेचर्स स्कूप हर शाकाहारी क्रेविंग को मॉल रोड की एक टेबल पर लाता है।",
+    scoopCopy: "साउथ इंडियन फेवरेट्स और शेयर करने लायक पिज़्ज़ा से लेकर चाइनीज़, कम्फर्ट स्नैक्स, शेक्स और डेज़र्ट तक, नेचर्स स्कूप हर शाकाहारी क्रेविंग को मॉल रोड की एक टेबल पर लाता है।",
     vegetarianDining: "शाकाहारी मल्टी-कुज़ीन",
     cravingChapters: "17 स्वाद अध्याय",
     exploreIceCreams: "आइसक्रीम देखें",
     directions: "मॉल रोड के निर्देश",
-    beforeVisit: "04 / आने से पहले",
+    beforeVisit: "04 / FAQs",
     goodToKnow: "जानना",
     know: "अच्छा है।",
     faqIntro: "आने से पहले कोई सवाल है? कॉल करें ",
@@ -49,8 +49,8 @@ export const homeCopy = {
     whereAnswer: "हमारा पता है: 126, द मॉल रोड, मिरपुर, कानपुर, उत्तर प्रदेश 208004।",
     vegetarian: "क्या मेनू शाकाहारी है?",
     vegetarianAnswer: "हाँ। रेस्टोरेंट में शाकाहारी मल्टी-कुज़ीन मेनू उपलब्ध है।",
-    browse: "मैं ऑनलाइन क्या देख सकता/सकती हूँ?",
-    browseAnswer: "डिजिटल मेनू में 17 ग्रुप्स में 204 डिश हैं, जिनमें सर्च और कीमत के अनुसार सॉर्ट करने की सुविधा है।",
+    browse: "रेस्टोरेंट कितने बजे खुलता है?",
+    browseAnswer: "हम सोमवार से रविवार, सुबह 11 बजे से रात 11 बजे तक खुले रहते हैं।",
     order: "क्या मैं इस वेबसाइट से ऑर्डर या रिज़र्व कर सकता/सकती हूँ?",
     orderAnswer: "रिज़र्वेशन या ऑर्डर संबंधी जानकारी के लिए कृपया सीधे रेस्टोरेंट को कॉल करें।",
     directionsQuestion: "मुझे दिशा-निर्देश कैसे मिलेंगे?",
@@ -62,10 +62,10 @@ export const dragCopy = {
   en: {
     dogLabel: "Greet the Naatures Scuup café dog",
     eyebrow: "01 / The food edit",
-    titleStart: "Drag into",
-    titleEnd: "the good bits.",
-    body: "A small stack of real table moments from Naatures Scuup. Pull a card aside to find the next craving.",
-    dragMe: "Drag me",
+    titleStart: "Swipe &",
+    titleEnd: "discover the good bits.",
+    body: "A stack of real table moments from Naatures Scuup. Pull a card aside to find the next craving!",
+    dragMe: "Swipe!",
     swipeGuide: "Swipe a card in any direction",
     stackLabel: "A stack of Naatures Scuup food photographs. Drag in any direction, or use the arrow keys to reveal another food moment.",
     showing: "Showing item",
@@ -76,10 +76,10 @@ export const dragCopy = {
   hi: {
     dogLabel: "नेचर्स स्कूप कैफ़े डॉग को नमस्ते कहें",
     eyebrow: "01 / फूड एडिट",
-    titleStart: "खींचें",
-    titleEnd: "स्वादिष्ट पल।",
-    body: "नेचर्स स्कूप की असली टेबल यादों का छोटा स्टैक। अगली क्रेविंग देखने के लिए एक कार्ड को किनारे खींचें।",
-    dragMe: "खींचें",
+    titleStart: "स्वाइप करें &",
+    titleEnd: "स्वादिष्ट पल खोजें।",
+    body: "नेचर्स स्कूप की असली टेबल यादों का एक स्टैक। अगली क्रेविंग देखने के लिए एक कार्ड को किनारे खींचें!",
+    dragMe: "स्वाइप करें!",
     swipeGuide: "कार्ड को किसी भी दिशा में स्वाइप करें",
     stackLabel: "नेचर्स स्कूप के फूड फ़ोटो का स्टैक। किसी भी दिशा में खींचें या दूसरा फूड मोमेंट देखने के लिए ऐरो कीज़ का उपयोग करें।",
     showing: "आइटम",
@@ -97,7 +97,7 @@ export const menuCopy = {
     headlineStart: "Many cravings.",
     headlineEnd: "One table.",
     heroCopy: "From a hot dosa to a chilled scoop, move through every Mall Road mood in one craving atlas—made for reading, sharing and planning the next table.",
-    chapterHours: "17 chapters · 204 dishes · Mon, Tue, Thu–Sun 11 AM–11 PM · Wed 10 AM–11 PM",
+    chapterHours: "17 chapters · 204 dishes · Mon–Sun 11 AM–11 PM",
     browseChapters: "Browse Full Menu chapters",
     browseMenu: "Browse the Naatures Scuup menu",
     chapterNavigation: "Menu chapter navigation",
@@ -138,7 +138,7 @@ export const menuCopy = {
     headlineStart: "बहुत-सी क्रेविंग्स।",
     headlineEnd: "एक टेबल।",
     heroCopy: "गरम डोसा से लेकर ठंडे स्कूप तक, एक ही क्रेविंग एटलस में मॉल रोड के हर मूड को देखें—पढ़ने, शेयर करने और अगली टेबल प्लान करने के लिए।",
-    chapterHours: "17 अध्याय · 204 डिश · सोम, मंगल, गुरु–रवि 11 AM–11 PM · बुध 10 AM–11 PM",
+    chapterHours: "17 अध्याय · 204 डिश · सोम–रवि 11 AM–11 PM",
     browseChapters: "पूरा मेनू अध्याय देखें",
     browseMenu: "नेचर्स स्कूप मेनू देखें",
     chapterNavigation: "मेनू अध्याय नेविगेशन",
@@ -265,21 +265,21 @@ export function localizeMenuDishDescription(slug: string, englishDescription: st
 
 export const cinematicCopy = {
   en: {
-    videoLabel: "Mango ice-cream sequence", originKicker: "The Mall · Kanpur", originMobile: "Kanpur's first|live scoop.", originCopy: "Kanpur's first live ice-cream parlour—one fresh scoop at a time.", liveIceCream: "Live ice cream", vegetarianDining: "Vegetarian dining", parlourKicker: "Mall Road, Kanpur", parlourDesktop: "Kanpur's first|live ice-cream|parlour", parlourMobile: "Made cold.|Made live.", parlourCopy: "Watch the cold come alive, one slow turn at a time.", cravingKicker: "Made for the table", cravingDesktop: "One place.|Every craving.", cravingMobile: "One table.|Every craving.", cravingCopy: "From the first bite to the final frozen spoonful.", endKicker: "Keep it cold", endDesktop: "#Freeze the|happiness", endMobile: "Freeze the|happiness.", endCopy: "The Naatures Scuup way.", closingStamp: "Keep the happiness cold", checkpointPrompt: "Scroll to unfreeze", scrollPrompt: "Scroll!", nextStory: "Scroll to the next part of the story", continue: "Scroll down to continue", preparing: "Preparing the image sequence",
+    videoLabel: "Mango ice-cream sequence", originKicker: "The Mall · Kanpur", originMobile: "Kanpur's first|live scoop.", originCopy: "Kanpur's first live ice-cream parlour—one fresh scoop at a time.", liveIceCream: "Live ice cream", vegetarianDining: "Vegetarian dining", parlourKicker: "Mall Road, Kanpur", parlourDesktop: "Kanpur's first|live ice-cream|parlour", parlourMobile: "Made cold.|Made live.", parlourCopy: "Watch the cold come alive, one step at a time.", cravingKicker: "Made for the table", cravingDesktop: "One place.|Every craving.", cravingMobile: "One table.|Every craving.", cravingCopy: "From the first bite to the final frozen spoonful.", endKicker: "Keep it cold", endDesktop: "#Freeze the|happiness", endMobile: "Freeze the|happiness.", endCopy: "The Naatures Scuup way.", closingStamp: "Keep the happiness cold", checkpointPrompt: "Scroll to unfreeze", scrollPrompt: "Scroll!", nextStory: "Scroll to the next part of the story", continue: "Scroll down to continue", preparing: "Preparing the image sequence",
   },
   hi: {
-    videoLabel: "मैंगो आइसक्रीम सीक्वेंस", originKicker: "द मॉल · कानपुर", originMobile: "कानपुर का पहला|लाइव स्कूप।", originCopy: "कानपुर का पहला लाइव आइसक्रीम पार्लर—हर बार एक ताज़ा स्कूप।", liveIceCream: "लाइव आइसक्रीम", vegetarianDining: "शाकाहारी भोजन", parlourKicker: "मॉल रोड, कानपुर", parlourDesktop: "कानपुर का पहला|लाइव आइसक्रीम|पार्लर", parlourMobile: "ठंडा बना।|लाइव बना।", parlourCopy: "ठंडक को हर धीमे मोड़ के साथ जीवंत होते देखें।", cravingKicker: "टेबल के लिए बना", cravingDesktop: "एक जगह।|हर क्रेविंग।", cravingMobile: "एक टेबल।|हर क्रेविंग।", cravingCopy: "पहले निवाले से आखिरी ठंडे चम्मच तक।", endKicker: "ठंडा रखें", endDesktop: "#खुशी को|फ्रीज़ करें", endMobile: "खुशी को|फ्रीज़ करें।", endCopy: "नेचर्स स्कूप का तरीका।", closingStamp: "खुशी को ठंडा रखें", checkpointPrompt: "ठंडक खोलने के लिए स्क्रॉल करें", scrollPrompt: "स्क्रॉल!", nextStory: "कहानी के अगले हिस्से तक स्क्रॉल करें", continue: "आगे बढ़ने के लिए नीचे स्क्रॉल करें", preparing: "सीक्वेंस तैयार किया जा रहा है",
+    videoLabel: "मैंगो आइसक्रीम सीक्वेंस", originKicker: "द मॉल · कानपुर", originMobile: "कानपुर का पहला|लाइव स्कूप।", originCopy: "कानपुर का पहला लाइव आइसक्रीम पार्लर—हर बार एक ताज़ा स्कूप।", liveIceCream: "लाइव आइसक्रीम", vegetarianDining: "शाकाहारी भोजन", parlourKicker: "मॉल रोड, कानपुर", parlourDesktop: "कानपुर का पहला|लाइव आइसक्रीम|पार्लर", parlourMobile: "ठंडा बना।|लाइव बना।", parlourCopy: "ठंडक को हर कदम के साथ जीवंत होते देखें।", cravingKicker: "टेबल के लिए बना", cravingDesktop: "एक जगह।|हर क्रेविंग।", cravingMobile: "एक टेबल।|हर क्रेविंग।", cravingCopy: "पहले निवाले से आखिरी ठंडे चम्मच तक।", endKicker: "ठंडा रखें", endDesktop: "#खुशी को|फ्रीज़ करें", endMobile: "खुशी को|फ्रीज़ करें।", endCopy: "नेचर्स स्कूप का तरीका।", closingStamp: "खुशी को ठंडा रखें", checkpointPrompt: "ठंडक खोलने के लिए स्क्रॉल करें", scrollPrompt: "स्क्रॉल!", nextStory: "कहानी के अगले हिस्से तक स्क्रॉल करें", continue: "आगे बढ़ने के लिए नीचे स्क्रॉल करें", preparing: "सीक्वेंस तैयार किया जा रहा है",
   },
 } as const;
 
 export const reviewCopy = {
-  en: { label: "Collected at The Mall", eyebrow: "03 / Selected diner proof", titleStart: "Diner reviews", titleEnd: "& social proof.", summaryAria: "Six positive public Google Maps reviews", summary: "6 positive public reviews", intro: "Authentic, positive public reviews from the Naatures Scuup Google Maps listing. Review wording is preserved exactly as published.", allMaps: "Read all on Google Maps", count: "Google reviews", read: "Read public review", excerpt: "Google Maps displays this review as an excerpt.", mentioned: "Mentioned dish", source: "Google Maps source" },
-  hi: { label: "द मॉल से संकलित", eyebrow: "03 / चुनी हुई डाइनर राय", titleStart: "डाइनर रिव्यू", titleEnd: "सामाजिक प्रमाण।", summaryAria: "Google Maps की छह सकारात्मक सार्वजनिक समीक्षाएँ", summary: "6 सकारात्मक सार्वजनिक समीक्षाएँ", intro: "नेचर्स स्कूप की Google Maps लिस्टिंग से प्रामाणिक, सकारात्मक सार्वजनिक समीक्षाएँ। हिंदी पाठ मूल सार्वजनिक समीक्षा का अनुवाद है।", allMaps: "Google Maps पर सभी पढ़ें", count: "Google समीक्षाएँ", read: "मूल सार्वजनिक समीक्षा पढ़ें", excerpt: "Google Maps पर यह समीक्षा एक अंश के रूप में दिखाई जाती है।", mentioned: "उल्लेखित डिश", source: "Google Maps स्रोत" },
+  en: { label: "Collected at The Mall", eyebrow: "03 / Authentic restaurant reviews", titleStart: "Diner reviews", titleEnd: "", summaryAria: "Six public Google Maps reviews", summary: "6 public reviews", intro: "Authentic public reviews for Naatures Scuup. Review wording is preserved exactly as published.", allMaps: "Read all on Google Maps", count: "Google reviews", read: "Read public review", excerpt: "Google Maps displays this review as an excerpt.", mentioned: "Mentioned dish", source: "Google Maps source" },
+  hi: { label: "द मॉल से संकलित", eyebrow: "03 / प्रामाणिक रेस्टोरेंट समीक्षाएँ", titleStart: "डाइनर रिव्यू", titleEnd: "", summaryAria: "Google Maps की छह सार्वजनिक समीक्षाएँ", summary: "6 सार्वजनिक समीक्षाएँ", intro: "नेचर्स स्कूप की प्रामाणिक सार्वजनिक समीक्षाएँ। मूल रूप से प्रकाशित शब्द स्रोत दृश्य में उपलब्ध हैं।", allMaps: "Google Maps पर सभी पढ़ें", count: "Google समीक्षाएँ", read: "मूल सार्वजनिक समीक्षा पढ़ें", excerpt: "Google Maps पर यह समीक्षा एक अंश के रूप में दिखाई जाती है।", mentioned: "उल्लेखित डिश", source: "Google Maps स्रोत" },
 } as const;
 
 export const footerCopy = {
-  en: { signoff: "A little more appetite|is always a good idea.", menu: "View full menu", reviews: "Google Maps reviews", faqs: "Visit FAQs", find: "Find us", open: "Open", callFollow: "Call & follow", directions: "Directions", addressTop: "126, The Mall Road|Kanpur, Uttar Pradesh", addressVisit: "The Mall, 126, Mall Road|Kanpur, Uttar Pradesh", hours: "Mon, Tue, Thu–Sun · 11 AM–11 PM|Wed · 10 AM–11 PM", instagram: "Follow Naatures Scuup on Instagram", facebook: "Follow Naatures Scuup on Facebook", maps: "Open Naatures Scuup in Google Maps", descriptor: "Multi-cuisine vegetarian dining & desserts in Kanpur." },
-  hi: { signoff: "थोड़ी और भूख|हमेशा अच्छा विचार है।", menu: "पूरा मेनू देखें", reviews: "Google Maps रिव्यू", faqs: "विज़िट FAQs", find: "हमें खोजें", open: "खुला है", callFollow: "कॉल & फॉलो", directions: "दिशा-निर्देश", addressTop: "126, द मॉल रोड|कानपुर, उत्तर प्रदेश", addressVisit: "द मॉल, 126, मॉल रोड|कानपुर, उत्तर प्रदेश", hours: "सोम, मंगल, गुरु–रवि · 11 AM–11 PM|बुध · 10 AM–11 PM", instagram: "Instagram पर नेचर्स स्कूप को फॉलो करें", facebook: "Facebook पर नेचर्स स्कूप को फॉलो करें", maps: "Google Maps में नेचर्स स्कूप खोलें", descriptor: "कानपुर में मल्टी-कुज़ीन शाकाहारी भोजन & डेज़र्ट्स।" },
+  en: { signoff: "A little more appetite|is always a good idea.", menu: "View full menu", reviews: "Google Maps reviews", faqs: "Visit FAQs", find: "Find us", open: "Open", callFollow: "Call & follow", directions: "Directions", addressTop: "126, The Mall Road|Kanpur, Uttar Pradesh", addressVisit: "The Mall, 126, Mall Road|Kanpur, Uttar Pradesh", hours: "Mon–Sun · 11 AM–11 PM", instagram: "Follow Naatures Scuup on Instagram", facebook: "Follow Naatures Scuup on Facebook", maps: "Open Naatures Scuup in Google Maps", descriptor: "Multi-cuisine vegetarian dining & desserts in Kanpur." },
+  hi: { signoff: "थोड़ी और भूख|हमेशा अच्छा विचार है।", menu: "पूरा मेनू देखें", reviews: "Google Maps रिव्यू", faqs: "विज़िट FAQs", find: "हमें खोजें", open: "खुला है", callFollow: "कॉल & फॉलो", directions: "दिशा-निर्देश", addressTop: "126, द मॉल रोड|कानपुर, उत्तर प्रदेश", addressVisit: "द मॉल, 126, मॉल रोड|कानपुर, उत्तर प्रदेश", hours: "सोम–रवि · 11 AM–11 PM", instagram: "Instagram पर नेचर्स स्कूप को फॉलो करें", facebook: "Facebook पर नेचर्स स्कूप को फॉलो करें", maps: "Google Maps में नेचर्स स्कूप खोलें", descriptor: "कानपुर में मल्टी-कुज़ीन शाकाहारी भोजन & डेज़र्ट्स।" },
 } as const;
 
 export const mapCopy = {

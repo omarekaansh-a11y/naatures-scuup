@@ -1349,3 +1349,10 @@
 - [x] Translate every visible menu dish title, dish description, chapter title, and menu card label in Hindi mode while preserving accurate prices.
 - [x] Maintain English as the default and preserve complete English fallback text across both routes.
 - [x] Verify full Hindi coverage, responsive typography, bilingual persistence, and production quality before publishing.
+
+# Home and Review Visual Editor Refinements
+- [x] Update the Drag It prompt and copy with responsive two-font typography, without fixed inline widths.
+- [x] Refresh the Home destination and FAQ wording in both English and Hindi modes.
+- [x] Tighten the review section spacing and rewrite its bilingual heading, descriptor, and review-count treatment with an accessible star icon.
+- [x] Update the shared hours display to the requested daily schedule in both languages.
+- [x] Verify desktop/mobile, localization, and regression behavior before publishing.

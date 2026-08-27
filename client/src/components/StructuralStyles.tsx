@@ -29,6 +29,8 @@ const styles = `
 		.site-shell,.menu-page,.not-found-page{max-width:100%;overflow-x:clip}.review-grid{max-width:100%}@media(max-width:640px){.review-grid,.review-grid--proof{display:grid;grid-template-columns:1fr;overflow:visible;scroll-snap-type:none;padding-right:0}.review-card,.review-card--proof{min-width:0}}
 		/* Plain-language recovery guide: answer the three questions visitors naturally have after a missing-page error. */
 		.not-found-page__guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:700px;margin:31px 0 34px}.not-found-page__guide section{min-height:132px;padding:16px;border-top:1px solid rgba(244,240,232,.28);border-bottom:1px solid rgba(244,240,232,.16)}.not-found-page__guide strong{display:block;color:var(--mango);font:800 8px/1.4 Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase}.not-found-page__guide p{margin:10px 0 0;color:rgba(244,240,232,.82);font:500 12px/1.58 Manrope,sans-serif}@media(max-width:640px){.not-found-page__guide{grid-template-columns:1fr;gap:0;margin:25px 0 29px}.not-found-page__guide section{min-height:0;padding:14px 0}.not-found-page__guide p{font-size:12px}}
+		/* Editor refinement pass: remove excess bridge/review headroom without altering the cinematic handoff. */
+		.food-menu-bridge{padding-top:18px}.reviews-section{padding-top:clamp(70px,8vw,112px)}@media(max-width:640px){.food-menu-bridge{padding-top:16px}.reviews-section{padding-top:58px}}
 		`;
 
 export function StructuralStyles() { return <style>{styles}</style>; }
