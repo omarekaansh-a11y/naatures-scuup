@@ -1409,4 +1409,4 @@
 
 - [x] Move checkpoint-blocking large media into the managed static-asset area and preserve the original filenames for portability documentation.
 - [x] Update active runtime references to the uploaded managed URLs and document the external-storage boundary for GitHub clones.
-- [ ] Re-run tests, TypeScript, production build, and checkpoint save after the media packaging fix.
+- [x] Re-run tests, TypeScript, production build, and checkpoint save after the media packaging fix.
