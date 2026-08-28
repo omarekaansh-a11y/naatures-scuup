@@ -21,12 +21,12 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { homeCopy } from "@/lib/language-copy";
 
 const authenticImages = {
-  pizza: "/manus-storage/NS1_10e3ab35.png",
-  iceCreamCup: "/manus-storage/NS2_17e883c9.png",
-  starterPlate: "/manus-storage/NS3_a099f388.png",
-  kababs: "/manus-storage/Screenshot(107)_33b7f867.png",
-  pastaRed: "/manus-storage/Screenshot(109)_b4ce8442.png",
-  iceCreamCounter: "/manus-storage/Screenshot(106)_f7d47076.png",
+  pizza: "/site-media/NS1_10e3ab35.png",
+  iceCreamCup: "/site-media/NS2_17e883c9.png",
+  starterPlate: "/site-media/NS3_a099f388.png",
+  kababs: "/site-media/screenshot-107_33b7f867.png",
+  pastaRed: "/site-media/screenshot-109_b4ce8442.png",
+  iceCreamCounter: "/site-media/screenshot-106_f7d47076.png",
 } as const;
 
 const foodCanvasItems = [

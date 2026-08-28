@@ -8,9 +8,9 @@ import { cinematicCopy } from "@/lib/language-copy";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DESKTOP_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-1440p-clean-scrub_59b5e815.mp4";
-const MOBILE_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-portrait-mobile_4b0f7dd0.mp4";
-const VIDEO_POSTER = "/manus-storage/ezgif-frame-001_c0bf1371.png";
+const DESKTOP_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-1440p-clean-scrub_59b5e815_6c44a1ac.mp4";
+const MOBILE_VIDEO_SOURCE = "/manus-storage/mango-ice-cream-portrait-mobile_4b0f7dd0_e590f890.mp4";
+const VIDEO_POSTER = "/site-media/ezgif-frame-001_c0bf1371.png";
 const STORY_SCROLL_START = 0.02;
 const STORY_SCROLL_END = 0.88;
 const STORY_CHECKPOINT_COUNT = 5;
@@ -55,8 +55,8 @@ function MagneticTitle({ text }: { text: string }) {
 const sequenceStyles = `
   .ice-orbit{position:relative;width:100%;background:${CINEMATIC_GROUND};isolation:isolate}
   .ice-orbit__stage{position:relative;width:100%;height:100svh;overflow:hidden;background:${CINEMATIC_GROUND};perspective:1150px;perspective-origin:50% 50%}
-  .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:${CINEMATIC_GROUND} url("/manus-storage/ezgif-frame-001_c0bf1371.png") center/cover no-repeat;transform:translate3d(var(--camera-x,0vw),var(--camera-y,0vh),0) rotate(var(--camera-rotation,0deg)) scale(var(--camera-scale,1));transform-origin:var(--camera-origin,50% 50%);transition:transform var(--camera-duration,2000ms) cubic-bezier(.22,1,.36,1);will-change:transform}
-  .ice-orbit__loading{position:absolute;inset:0;z-index:4;background:${CINEMATIC_GROUND} url("/manus-storage/ezgif-frame-001_c0bf1371.png") center/cover no-repeat;pointer-events:none}
+  .ice-orbit__video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:${CINEMATIC_GROUND} url("/site-media/ezgif-frame-001_c0bf1371.png") center/cover no-repeat;transform:translate3d(var(--camera-x,0vw),var(--camera-y,0vh),0) rotate(var(--camera-rotation,0deg)) scale(var(--camera-scale,1));transform-origin:var(--camera-origin,50% 50%);transition:transform var(--camera-duration,2000ms) cubic-bezier(.22,1,.36,1);will-change:transform}
+  .ice-orbit__loading{position:absolute;inset:0;z-index:4;background:${CINEMATIC_GROUND} url("/site-media/ezgif-frame-001_c0bf1371.png") center/cover no-repeat;pointer-events:none}
   .ice-orbit__story{position:absolute;inset:0;z-index:3;pointer-events:none;color:rgb(54 43 38 / 90%);font-family:Montserrat,ui-sans-serif,system-ui,sans-serif;letter-spacing:-.018em}
   .ice-orbit__story-card{position:absolute;width:min(21rem,24vw);text-wrap:balance;transform-style:preserve-3d;transform-origin:center center;will-change:transform,opacity}
   .ice-orbit__story-card>*{position:relative;z-index:2;transform:translateZ(14px)}

@@ -1402,4 +1402,11 @@
 - [x] Explore an original camera-space and vertical story-handoff treatment that creates more room for text without altering the approved footage framing or violating the single-visible-card requirement.
 - [x] Stabilize the cinematic camera at first load so no camera transition shifts the viewport, and restore reverse wheel/touch checkpoint traversal through all prior story cards.
 - [x] Remove the cinematic circular scroll button entirely, zoom the mobile cup out slightly, lower the mobile text placement, and keep the cup stationary on mobile.
-- [ ] Make Chrome Desktop site mode use the landscape cinematic video and desktop story composition, while preserving the normal portrait mobile layout.
+- [x] Make Chrome Desktop site mode use the landscape cinematic video and desktop story composition, while preserving the normal portrait mobile layout.
+- [x] Package all required project images, reusable components, and configuration references into the GitHub repository so a fresh clone is as close as possible to a 1:1 copy, with unavoidable secrets and managed-storage requirements documented.
+
+# Large-Media Checkpoint Packaging Checklist
+
+- [x] Move checkpoint-blocking large media into the managed static-asset area and preserve the original filenames for portability documentation.
+- [x] Update active runtime references to the uploaded managed URLs and document the external-storage boundary for GitHub clones.
+- [ ] Re-run tests, TypeScript, production build, and checkpoint save after the media packaging fix.

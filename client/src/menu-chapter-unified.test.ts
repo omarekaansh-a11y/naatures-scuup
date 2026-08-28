@@ -15,9 +15,9 @@ describe("unified image-led menu chapters", () => {
   });
 
   it("uses distinct chapter artwork for Live Ice Creams and Extras", () => {
-    expect(menuPage).toContain('"live-ice-creams": { src: "/manus-storage/naatures-scuup-live-ice-cream_cc0fddc0.jpg"');
-    expect(menuPage).toContain('extras: { src: "/manus-storage/naatures-scuup-pizza-pasta_d2c371a3.jpg"');
-    expect(menuPage).not.toContain('"live-ice-creams": { src: "/manus-storage/desserts-ice-creams-chapter-hd_8d76f08d.png"');
-    expect(menuPage).not.toContain('extras: { src: "/manus-storage/pizza-and-pasta-chapter-hd_5aadedcb.png"');
+    expect(menuPage).toContain('"live-ice-creams": { src: "/manus-storage/naatures-scuup-live-ice-cream_cc0fddc0_60926744.jpg"');
+    expect(menuPage).toContain('extras: { src: "/manus-storage/naatures-scuup-pizza-pasta_d2c371a3_70204bd5.jpg"');
+    expect(menuPage).not.toContain('"live-ice-creams": { src: "/manus-storage/desserts-ice-creams-chapter-hd_8d76f08d_6c11cac9.png"');
+    expect(menuPage).not.toContain('extras: { src: "/manus-storage/pizza-and-pasta-chapter-hd_5aadedcb_04d0d487.png"');
   });
 });

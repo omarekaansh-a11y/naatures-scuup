@@ -83,7 +83,7 @@ button:not(:disabled), a[href] { cursor: pointer; }
 .drawer-call { display: inline-flex; gap: 10px; align-items: center; margin-top: 22px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 
 .hero { min-height: max(690px, 100svh); position: relative; display: flex; align-items: flex-end; padding: 147px 8.5vw 100px; color: var(--cream); isolation: isolate; }
-.hero-image { position: absolute; z-index: -2; inset: 0; background-image: url("/manus-storage/naatures-scuup-hero_6e17014a.jpg"); background-size: cover; background-position: center; transform: scale(1.02); animation: hero-in 1.25s var(--ease-out) both; }
+.hero-image { position: absolute; z-index: -2; inset: 0; background-image: url("/site-media/naatures-scuup-hero_6e17014a.jpg"); background-size: cover; background-position: center; transform: scale(1.02); animation: hero-in 1.25s var(--ease-out) both; }
 .hero-tint { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgb(22 7 12 / 87%) 0%, rgb(33 12 17 / 64%) 43%, rgb(22 7 12 / 18%) 76%), linear-gradient(0deg, rgb(22 7 12 / 52%) 0%, transparent 44%); }
 .hero-content { max-width: 650px; }
 .hero-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 24px; color: rgb(244 240 232 / 85%); }

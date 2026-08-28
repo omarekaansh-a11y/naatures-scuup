@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const ownerLogo = "/manus-storage/naatures-scuup-logo-transparent_7cd2ca72.png";
+const ownerLogo = "/manus-storage/naatures-scuup-logo-transparent_7cd2ca72_f0ac6aa1.png";
 
 export function SiteHeader({ paper = false }: { paper?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);

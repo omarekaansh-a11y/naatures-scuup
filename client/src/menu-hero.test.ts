@@ -11,16 +11,16 @@ const menuPage = readFileSync(resolve(process.cwd(), "client/src/pages/MenuPage.
 describe("Full Menu hero background", () => {
   it("uses the generated background without a gradient and keeps the heading in a high-contrast green label", () => {
     expect(heroStyles).toContain(
-      "/manus-storage/naatures-scuup-menu-hero-custom_6f7d6358.png",
+      "/manus-storage/naatures-scuup-menu-hero-custom_6f7d6358_ee90b33c.png",
     );
     expect(heroStyles).toContain(
-      ".menu-page .menu-page-hero{background:url('/manus-storage/naatures-scuup-menu-hero-custom_6f7d6358.png')",
+      ".menu-page .menu-page-hero{background:url('/manus-storage/naatures-scuup-menu-hero-custom_6f7d6358_ee90b33c.png')",
     );
   });
 
   it("retains an unfiltered dedicated mobile image treatment for readable hero labels", () => {
     expect(heroStyles).toContain(
-      "@media(max-width:640px){.menu-page .menu-page-hero{background:url('/manus-storage/naatures-scuup-menu-hero-custom_6f7d6358.png')",
+      "@media(max-width:640px){.menu-page .menu-page-hero{background:url('/manus-storage/naatures-scuup-menu-hero-custom_6f7d6358_ee90b33c.png')",
     );
   });
 

@@ -9,10 +9,10 @@ const sequenceVerifier = readFileSync(resolve(process.cwd(), "scripts/verify-dra
 
 describe("pasta image placement", () => {
   it("reserves green pasta for the circular map layer and keeps red pasta in Drag It", () => {
-    expect(home).toContain("Screenshot(109)_b4ce8442.png");
-    expect(home).not.toContain("Screenshot(108)_6acee474.png");
+    expect(home).toContain("screenshot-109_b4ce8442.png");
+    expect(home).not.toContain("screenshot-108_6acee474.png");
     expect(map).toContain("visit-map__material-image");
-    expect(printStyles).toContain("Screenshot(108)_6acee474.png");
+    expect(printStyles).toContain("screenshot-108_6acee474.png");
     expect(printStyles).toContain("border-radius:50%");
     expect(sequenceVerifier).toContain("[1, 2, 3, 4, 5, 6, 1]");
   });

@@ -8,8 +8,8 @@ const languageCopy = readFileSync(resolve(process.cwd(), "client/src/lib/languag
 
 describe("full-screen GSAP ice-cream sequence", () => {
   it("uses cleaned desktop and mobile video sources derived from the approved frames", () => {
-    expect(orbit).toContain("mango-ice-cream-1440p-clean-scrub_59b5e815.mp4");
-    expect(orbit).toContain("mango-ice-cream-portrait-mobile_4b0f7dd0.mp4");
+    expect(orbit).toContain("mango-ice-cream-1440p-clean-scrub_59b5e815_6c44a1ac.mp4");
+    expect(orbit).toContain("mango-ice-cream-portrait-mobile_4b0f7dd0_e590f890.mp4");
     expect(orbit).toContain('media="(max-width: 767px)"');
     expect(orbit).toContain("isChromeDesktopSiteViewport");
     expect(orbit).toContain('data-cinematic-layout={desktopSiteLayout ? "desktop" : "mobile"}');
@@ -43,7 +43,7 @@ describe("full-screen GSAP ice-cream sequence", () => {
   it("adds a clean desktop narrative while creating a distraction-free, tightly focused mobile hero", () => {
     expect(orbit).toContain('className="ice-orbit__loading"');
     expect(orbit).toContain('const CINEMATIC_GROUND = "#b8babc"');
-    expect(orbit).toContain('background:${CINEMATIC_GROUND} url("/manus-storage/ezgif-frame-001_c0bf1371.png") center/cover no-repeat');
+    expect(orbit).toContain('background:${CINEMATIC_GROUND} url("/site-media/ezgif-frame-001_c0bf1371.png") center/cover no-repeat');
     expect(orbit).toContain("prefers-reduced-motion");
     expect(orbit).toContain("@media(max-width:767px){.ice-orbit__stage{perspective:none;background:${CINEMATIC_GROUND}}");
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover;object-position:50% 50%");
