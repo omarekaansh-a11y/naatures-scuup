@@ -1402,3 +1402,4 @@
 - [x] Explore an original camera-space and vertical story-handoff treatment that creates more room for text without altering the approved footage framing or violating the single-visible-card requirement.
 - [x] Stabilize the cinematic camera at first load so no camera transition shifts the viewport, and restore reverse wheel/touch checkpoint traversal through all prior story cards.
 - [x] Remove the cinematic circular scroll button entirely, zoom the mobile cup out slightly, lower the mobile text placement, and keep the cup stationary on mobile.
+- [ ] Make Chrome Desktop site mode use the landscape cinematic video and desktop story composition, while preserving the normal portrait mobile layout.

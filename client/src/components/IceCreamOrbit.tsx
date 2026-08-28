@@ -33,6 +33,13 @@ function setOpeningHeaderHidden(isHidden: boolean) {
   document.documentElement.dataset.iceHeroActive = isHidden ? "true" : "false";
 }
 
+function isChromeDesktopSiteViewport() {
+  if (typeof window === "undefined") return false;
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const mobileUserAgent = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  return window.innerWidth >= 768 || (coarsePointer && !mobileUserAgent);
+}
+
 function getStoryCheckpoint(progress: number) {
   const closestStop = STORY_SCROLL_POINTS.reduce(
     (closestIndex, point, index) => Math.abs(point - progress) < Math.abs(STORY_SCROLL_POINTS[closestIndex] - progress) ? index : closestIndex,
@@ -83,6 +90,7 @@ const sequenceStyles = `
   @media(max-width:767px){.ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:60%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(15rem,67vw)!important;text-align:center!important}.ice-orbit__story-card--variety{top:53%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(14.5rem,65vw)!important;text-align:center!important}.ice-orbit__story-card--end{top:53%!important;right:auto!important;bottom:auto!important;left:50%!important;width:min(17rem,74vw)!important;text-align:center!important}.ice-orbit__story-card--origin[data-active="true"]{transform:translate3d(-50%,0,48px) rotateX(5deg) rotateY(-3deg)!important}.ice-orbit__story-card--left[data-active="true"]{transform:translate3d(-50%,0,50px) rotateX(4deg) rotateY(4deg)!important}.ice-orbit__story-card--right[data-active="true"]{transform:translate3d(-50%,0,52px) rotateX(5deg) rotateY(-5deg)!important}.ice-orbit__story-card--variety[data-active="true"]{transform:translate3d(-50%,0,50px) rotateX(4deg) rotateY(-4deg)!important}.ice-orbit__story-card--end[data-active="true"]{transform:translate3d(-50%,0,46px) rotateX(4deg) rotateY(3deg)!important}.ice-orbit__story-card--left .ice-orbit__story-kicker,.ice-orbit__story-card--right .ice-orbit__story-kicker,.ice-orbit__story-card--variety .ice-orbit__story-kicker{justify-content:center!important}.ice-orbit__story-card--left .ice-orbit__story-copy,.ice-orbit__story-card--right .ice-orbit__story-copy,.ice-orbit__story-card--variety .ice-orbit__story-copy{margin-right:auto!important;margin-left:auto!important}.ice-orbit__story-kicker{font-size:.5rem!important;color:rgb(47 38 34 / 92%)!important}.ice-orbit__story-copy{font-size:.68rem!important;line-height:1.42!important;color:rgb(47 38 34 / 94%)!important}.ice-orbit__story-facts{font-size:.45rem!important;color:rgb(47 38 34 / 84%)!important}.ice-orbit__story-card--origin .ice-orbit__story-facts,.ice-orbit__story-card--left .ice-orbit__story-facts,.ice-orbit__story-card--right .ice-orbit__story-facts,.ice-orbit__story-card--variety .ice-orbit__story-facts{display:none!important}.ice-orbit__story-card--origin .ice-orbit__story-kicker,.ice-orbit__story-card--left .ice-orbit__story-kicker,.ice-orbit__story-card--right .ice-orbit__story-kicker,.ice-orbit__story-card--variety .ice-orbit__story-kicker{margin-bottom:.28rem!important}.ice-orbit__story-card--origin .ice-orbit__story-copy,.ice-orbit__story-card--left .ice-orbit__story-copy,.ice-orbit__story-card--right .ice-orbit__story-copy,.ice-orbit__story-card--variety .ice-orbit__story-copy{margin-top:.34rem!important;font-size:.62rem!important;line-height:1.3!important}.ice-orbit__story-card--end .ice-orbit__story-title{font-size:clamp(1.85rem,9.2vw,2.55rem)!important;line-height:.82!important}.ice-orbit__story-title--label{margin-inline:auto!important;padding:.34rem .42rem .4rem!important;font-size:clamp(1.6rem,7vw,2.1rem)!important;box-shadow:3px 3px 0 var(--print-ink)}.ice-orbit__story-copy--label{margin:.45rem auto 0!important;padding:.4rem .48rem!important;font-size:.56rem!important;line-height:1.27!important;box-shadow:3px 3px 0 var(--print-ink)}.ice-orbit__story-closing-stamp{margin:.6rem auto 0!important;padding:.36rem .43rem!important;font-size:.46rem!important;box-shadow:3px 3px 0 var(--print-ink)} }
   @media(min-width:768px){.ice-orbit__stage{perspective:1150px!important;perspective-origin:50% 50%!important}.ice-orbit__video{object-fit:cover!important;object-position:center!important}.ice-orbit__story-card--origin{top:18%!important;right:auto!important;bottom:auto!important;left:clamp(1.25rem,5vw,5.25rem)!important;width:min(25rem,29vw)!important;text-align:left!important}.ice-orbit__story-card--left{top:25%!important;right:auto!important;bottom:auto!important;left:clamp(1.25rem,5vw,5.25rem)!important;width:min(20rem,22vw)!important;text-align:left!important}.ice-orbit__story-card--left .ice-orbit__story-title--label{padding:.42rem .54rem .48rem!important;font-size:clamp(2.1rem,3.9vw,4.2rem)!important;line-height:.82!important}.ice-orbit__story-card--right{top:24%!important;right:clamp(1.25rem,5vw,5.25rem)!important;bottom:auto!important;left:auto!important;width:min(25rem,29vw)!important;text-align:right!important}.ice-orbit__story-card--end{top:auto!important;right:clamp(1.25rem,5vw,5.25rem)!important;bottom:14%!important;left:auto!important;width:min(25rem,29vw)!important;text-align:right!important}.ice-orbit__story-card>*{transform:translateZ(14px)!important}.ice-orbit__story-kicker,.ice-orbit__story-copy,.ice-orbit__story-facts{display:flex!important}.ice-orbit__story-copy{display:block!important}.ice-orbit__mobile-title{display:none!important}.ice-orbit__desktop-title{display:inline!important}}
   @media(max-width:767px){.ice-orbit__video{transform:scale(2.72)!important;transition:none!important}.ice-orbit__story-card--origin,.ice-orbit__story-card--left,.ice-orbit__story-card--right{top:64%!important}.ice-orbit__story-card--variety,.ice-orbit__story-card--end{top:59%!important}}
+  @media(max-width:767px){.ice-orbit__stage[data-cinematic-layout="desktop"]{perspective:1150px!important;perspective-origin:50% 50%!important;background:${CINEMATIC_GROUND}!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__video{object-fit:cover!important;object-position:center!important;transform:translate3d(var(--camera-x,0vw),var(--camera-y,0vh),0) rotate(var(--camera-rotation,0deg)) scale(var(--camera-scale,1))!important;transform-origin:var(--camera-origin,50% 50%)!important;transition:transform var(--camera-duration,2000ms) cubic-bezier(.22,1,.36,1)!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story{display:block!important;z-index:3!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card{display:block!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;width:min(25rem,29vw)!important;text-align:left!important;transform:none!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card[data-active="true"]{opacity:1!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card--origin{top:18%!important;left:clamp(1.25rem,5vw,5.25rem)!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card--left{top:25%!important;left:clamp(1.25rem,5vw,5.25rem)!important;width:min(20rem,22vw)!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card--right{top:24%!important;right:clamp(1.25rem,5vw,5.25rem)!important;left:auto!important;text-align:right!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card--variety{top:58%!important;left:clamp(1.25rem,5vw,5.25rem)!important;width:min(20rem,23vw)!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card--end{right:clamp(1.25rem,5vw,5.25rem)!important;bottom:14%!important;left:auto!important;text-align:right!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-kicker,.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-copy,.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-facts{display:flex!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-copy{display:block!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__mobile-title{display:none!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__desktop-title{display:inline!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__checkpoint-rail{display:flex!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__scroll-prompt{top:clamp(1.25rem,3.2vw,2.6rem)!important;right:auto!important;left:50%!important;font-size:.56rem!important;letter-spacing:.2em!important;transform:translateX(-50%)!important}.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__scroll-prompt:active{transform:translateX(-50%) scale(.96)!important}}
   @media(prefers-reduced-motion:reduce){.ice-orbit__stage{min-height:100svh}}
 `;
 
@@ -118,6 +126,7 @@ export function IceCreamOrbit() {
   const [reduceMotion, setReduceMotion] = useState(false);
   const [activeCheckpoint, setActiveCheckpoint] = useState(0);
   const [cameraReadyForMotion, setCameraReadyForMotion] = useState(false);
+  const [desktopSiteLayout, setDesktopSiteLayout] = useState(false);
   const cardStyle = (index: number, rotateY: number, rotateX: number, rotateZ: number) => ({
     opacity: activeCheckpoint === index ? 1 : 0,
     y: activeCheckpoint === index ? 0 : index < activeCheckpoint ? -28 : 28,
@@ -127,6 +136,12 @@ export function IceCreamOrbit() {
     z: activeCheckpoint === index ? 84 : 10,
   });
   const camera = CAMERA_COMPOSITIONS[activeCheckpoint];
+  useEffect(() => {
+    const updateDesktopSiteLayout = () => setDesktopSiteLayout(isChromeDesktopSiteViewport());
+    updateDesktopSiteLayout();
+    window.addEventListener("resize", updateDesktopSiteLayout, { passive: true });
+    return () => window.removeEventListener("resize", updateDesktopSiteLayout);
+  }, []);
   const cameraStyle = {
     "--camera-x": `${camera.x}vw`,
     "--camera-y": `${camera.y}vh`,
@@ -457,7 +472,7 @@ export function IceCreamOrbit() {
   return (
     <section ref={sectionRef} id="story" className="ice-orbit" aria-label="Full-screen mango ice-cream sequence">
       <style>{sequenceStyles}</style>
-      <div className="ice-orbit__stage" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+      <div className="ice-orbit__stage" data-cinematic-layout={desktopSiteLayout ? "desktop" : "mobile"} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
         <video
           ref={videoRef}
           className="ice-orbit__video"
@@ -470,7 +485,7 @@ export function IceCreamOrbit() {
           onEnded={() => releaseCompletionLockRef.current?.()}
           aria-label={copy.videoLabel}
         >
-          <source media="(max-width: 767px)" src={MOBILE_VIDEO_SOURCE} type="video/mp4" />
+          {!desktopSiteLayout && <source media="(max-width: 767px)" src={MOBILE_VIDEO_SOURCE} type="video/mp4" />}
           <source src={DESKTOP_VIDEO_SOURCE} type="video/mp4" />
         </video>
         <div className="ice-orbit__story" aria-hidden="true">

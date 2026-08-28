@@ -11,6 +11,9 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain("mango-ice-cream-1440p-clean-scrub_59b5e815.mp4");
     expect(orbit).toContain("mango-ice-cream-portrait-mobile_4b0f7dd0.mp4");
     expect(orbit).toContain('media="(max-width: 767px)"');
+    expect(orbit).toContain("isChromeDesktopSiteViewport");
+    expect(orbit).toContain('data-cinematic-layout={desktopSiteLayout ? "desktop" : "mobile"}');
+    expect(orbit).toContain('{!desktopSiteLayout && <source media="(max-width: 767px)"');
     expect(orbit).toContain("ezgif-frame-001_c0bf1371.png");
     expect(orbit).toContain("<video");
     expect(orbit).toContain('preload="auto"');
@@ -84,6 +87,9 @@ describe("full-screen GSAP ice-cream sequence", () => {
     expect(orbit).toContain(".ice-orbit__story-card--variety,.ice-orbit__story-card--end{top:59%!important");
     expect(orbit).toContain(".ice-orbit__story-copy{font-size:.68rem!important");
     expect(orbit).toContain("@media(min-width:768px){.ice-orbit__stage{perspective:1150px!important");
+    expect(orbit).toContain('.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__video{object-fit:cover!important');
+    expect(orbit).toContain('.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__story-card{display:block!important');
+    expect(orbit).toContain('.ice-orbit__stage[data-cinematic-layout="desktop"] .ice-orbit__mobile-title{display:none!important}');
     expect(orbit).toContain(".ice-orbit__video{object-fit:cover!important;object-position:center!important}");
     expect(orbit).toContain("const CAMERA_COMPOSITIONS");
     expect(orbit).toContain('"--camera-x"');
